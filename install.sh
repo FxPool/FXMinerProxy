@@ -1,14 +1,13 @@
 #bin
 version='8.0.0'
 shell_version='3.0'
-uiname='FXMinerProxy-shell'
-pkgname='FXMinerProxy'
-authorname='mingmingge891'
-installname='porttranpay.sh'
+uiname='FXMinerProxyV3-shell'
+pkgname='FxMinerProxyV3'
+authorname='FxPool'
+installname='install.sh'
 webuiname='ui'
-sofname='proxyminer'
-installfolder='/etc/porttran/proxyminer'
-oldinstallfolder='/etc/porttran/porttran'
+sofname='fxminerproxyv3'
+installfolder='/etc/fxminerproxyv3/fxminerproxyv3'
 
 red='\033[0;31m'
 green='\033[0;32m'
@@ -101,8 +100,8 @@ install() {
        wget https://github.com/$authorname/$pkgname/archive/refs/tags/$version.tar.gz
        if [ -f "$version.tar.gz" ];then
            tar -zxvf $version.tar.gz
-           cd $pkgname-$version/porttranpay
-           tar -zxvf porttranlatest.tar.gz
+           cd $pkgname-$version/fxminerproxyv3linux
+           tar -zxvf fxminerproxyv3linux.tar.gz
            cd ../..
            mv $pkgname-$version/porttranpay/porttran/portdir.sh $pkgname-$version/porttranpay/porttran/$sofname
            mkdir porttran && chmod 777 porttran
