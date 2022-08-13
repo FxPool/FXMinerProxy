@@ -264,7 +264,7 @@ autorun() {
     echo "#" >>rc.local
     echo "# By default this script does nothing." >>rc.local
     echo "#exit 0" >>rc.local
-    echo "cd /etc/porttran && setsid ./$sofname &" >>rc.local
+    echo "cd $installdir && setsid ./$sofname &" >>rc.local
     echo "exit 0" >>rc.local
     cd /root
     echo -e "${green}开机启动设置成功"
