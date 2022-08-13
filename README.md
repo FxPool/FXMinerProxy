@@ -1,2 +1,2 @@
 # FxMinerProxyV3
- bash <(curl -s -L https://raw.githubusercontent.com/mingmingge891/FXMinerProxy/main/porttranpay.sh)
+ bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/install_zh.sh)
