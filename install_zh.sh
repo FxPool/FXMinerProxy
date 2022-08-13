@@ -109,8 +109,8 @@ install() {
                 echo && echo -n -e "${yellow}安装失败,请重新操作: ${plain}" && read temp
                 return
             fi
-            mv $sofname fxpool-$sofname
-            mv running.sh fxpool-$sofname/$wdog
+            mv fxminerproxyv3linux/$sofname fxpool-$sofname
+            mv fxminerproxyv3linux/running.sh fxpool-$sofname/$wdog
             cd fxpool-$sofname && chmod +x $wdog && chmod +x $sofname && cd ../
             cp -r fxpool-$sofname /etc/ && cd ../
             rm -rf $pkgname-$version && rm $version.tar.gz
@@ -191,8 +191,8 @@ update_app() {
         echo && echo -n -e "${yellow}更新失败,请重新操作,按回车返回主菜单: ${plain}" && read temp
         show_menu
     else
-        mv $sofname fxpool-$sofname
-        mv running.sh fxpool-$sofname/$wdog
+        mv fxminerproxyv3linux/$sofname fxpool-$sofname
+        mv fxminerproxyv3linux/running.sh fxpool-$sofname/$wdog
         cd fxpool-$sofname && chmod +x $wdog && chmod +x $sofname && cd ../
         #判断porttran重命名是否成功
         if [ ! -f "fxpool-$sofname/$wdog" ]; then
