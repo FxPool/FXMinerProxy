@@ -9,7 +9,7 @@ webuiname='ui'
 sofname='fxminerproxyv3'
 wdog='running_fxminerproxyv3'
 installfolder='/etc/fxpool-fxminerproxyv3/running_fxminerproxyv3'
-installdir='/etc/fxpool-$sofname/'
+installdir='/etc/fxpool-fxminerproxyv3/'
 myFile=$version.tar.gz
 
 red='\033[0;31m'
