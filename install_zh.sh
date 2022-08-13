@@ -1,6 +1,6 @@
 #bin
 version='8.0.1.0'
-shell_version='3.0.2'
+shell_version='3.0.3'
 uiname='FXMinerProxyV3-shell'
 pkgname='FxMinerProxyV3'
 authorname='FxPool'
@@ -84,13 +84,16 @@ checkProcess() {
 
 killProcess() {
     #停止主程序
-    PROCESS=$(ps -ef | grep $sofname | grep -v grep | grep -v PPID | awk '{ print $2}')
+    PROCESS=$(ps -ef | grep $sofname|grep -v grep | grep -v PPID | awk '{ print $2}')
     for i in $PROCESS; do
         echo "Kill the $1 process [ $i ]"
         kill -9 $i
     done
+}
+
+kill_wdog(){
     #停止看门狗
-    PROCESS=$(ps -ef | grep $wdog | grep -v grep | grep -v PPID | awk '{ print $2}')
+    PROCESS=$(ps -ef | grep $wdog|grep -v grep | grep -v PPID | awk '{ print $2}')
     for i in $PROCESS; do
         echo "Kill the $1 process [ $i ]"
         kill -9 $i
@@ -183,6 +186,7 @@ update_app() {
         retutn
     fi
     killProcess
+    kill_wdog
     tar -zxvf $version.tar.gz
     cd $pkgname-$version/
     tar -zxvf fxminerproxyv3linux.tar.gz
@@ -214,6 +218,7 @@ update_app() {
 uninstall_app() {
     echo && echo -n -e "${yellow}确定卸载吗,按回车确定,CTRL+C退出: ${plain}" && read temp
     killProcess
+    kill_wdog
     rm -rf /etc/fxpool-$sofname/
     before_show_menu
 }
@@ -238,6 +243,7 @@ start() {
 stop() {
     echo && echo -n -e "${yellow}确定停止吗,按回车确定,CTRL+C退出: ${plain}" && read temp
     killProcess
+    kill_wdog
     before_show_menu
 }
 autorun() {
