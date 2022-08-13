@@ -1,16 +1,16 @@
 #bin
 version='8.0.1.0'
-shell_version='3.0'
+shell_version='3.0.1'
 uiname='FXMinerProxyV3-shell'
 pkgname='FxMinerProxyV3'
 authorname='FxPool'
 installname='install.sh'
 webuiname='ui'
 sofname='fxminerproxyv3'
-installfolder='/etc/fxpool-$sofname/fxminerproxyv3'
+wdog='running_fxminerproxyv3'
+installfolder='/etc/fxpool-$sofname/running_fxminerproxyv3'
 installdir='/etc/fxpool-$sofname/'
 myFile=$version.tar.gz
-wdog='running_fxminerproxyv3'
 
 red='\033[0;31m'
 green='\033[0;32m'
