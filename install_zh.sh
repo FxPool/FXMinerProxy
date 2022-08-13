@@ -7,7 +7,8 @@ authorname='FxPool'
 installname='install.sh'
 webuiname='ui'
 sofname='fxminerproxyv3'
-installfolder='/etc/fxpool-$sofname/$sofname'
+installfolder='/etc/fxpool-$sofname/fxminerproxyv3'
+installdir='/etc/fxpool-$sofname/'
 myFile=$version.tar.gz
 wdog='running_fxminerproxyv3'
 
@@ -115,7 +116,7 @@ install() {
             cp -r fxpool-$sofname /etc/ && cd ../
             rm -rf $pkgname-$version && rm $version.tar.gz
             if [ ! -f "$installfolder" ]; then
-                rm -rf /etc/porttran
+                rm -rf  $installdir
                 echo -e "${red}安装时失败，请输入一键安装脚本重新安装"
                 return
             fi
@@ -194,7 +195,7 @@ update_app() {
         mv fxminerproxyv3linux/$sofname fxpool-$sofname
         mv fxminerproxyv3linux/running.sh fxpool-$sofname/$wdog
         cd fxpool-$sofname && chmod +x $wdog && chmod +x $sofname && cd ../
-        #判断porttran重命名是否成功
+        #判断重命名是否成功
         if [ ! -f "fxpool-$sofname/$wdog" ]; then
             echo && echo -n -e "${yellow}更新失败,重命名失败,请重新操作: ${plain}" && read temp
             return
@@ -226,7 +227,7 @@ start() {
             before_show_menu
         else
             echo -e "${green}启动中..."
-            cd /etc/porttran
+            cd $installdir
             sed -i 's/"is_open_general_swap": true/"is_open_general_swap": false/g' localconfig.json
             setsid ./$wdog &
             sleep 3
