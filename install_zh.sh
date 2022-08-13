@@ -1,6 +1,6 @@
 #bin
 version='8.0.1.0'
-shell_version='3.0.3'
+shell_version='3.0.4'
 uiname='FXMinerProxyV3-shell'
 pkgname='FxMinerProxyV3'
 authorname='FxPool'
@@ -185,8 +185,8 @@ update_app() {
         echo -e "${red}下载安装包失败，请输入一键安装脚本重新更新"
         retutn
     fi
-    killProcess
     kill_wdog
+    killProcess
     tar -zxvf $version.tar.gz
     cd $pkgname-$version/
     tar -zxvf fxminerproxyv3linux.tar.gz
@@ -217,8 +217,8 @@ update_app() {
 }
 uninstall_app() {
     echo && echo -n -e "${yellow}确定卸载吗,按回车确定,CTRL+C退出: ${plain}" && read temp
-    killProcess
     kill_wdog
+    killProcess
     rm -rf /etc/fxpool-$sofname/
     before_show_menu
 }
@@ -242,8 +242,8 @@ start() {
 }
 stop() {
     echo && echo -n -e "${yellow}确定停止吗,按回车确定,CTRL+C退出: ${plain}" && read temp
-    killProcess
     kill_wdog
+    killProcess
     before_show_menu
 }
 autorun() {
