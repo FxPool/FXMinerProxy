@@ -273,9 +273,9 @@ show_menu() {
     clear
     check_install
     echo -e "
-     ${green}$uinameThe script management interface is installed
-     ${green}Script version${shell_version}
-     ${green}Software version${version}
+     ${green}$uiname The script management interface is installed
+     ${green}Script version:${shell_version}
+     ${green}Software version:${version}
      ${green}The default maximum connection value of Linux has been changed to 65535(for this to take effect, restart the server).
      ${green}During installation, the software is automatically set to boot
      ${red}The default port number of the browser is 62438. The default user name and password are admin and admin${plain}
