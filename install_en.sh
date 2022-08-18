@@ -61,7 +61,7 @@ change_limit() {
     if [[ "$changeLimit" = "y" ]]; then
         echo "The connection limit is changed to 65535. The value takes effect after the server is restarted"
     else
-        echo -n "当前连接数限制："
+        echo -n "Current connection limit:"
         ulimit -n
     fi
     before_show_menu
