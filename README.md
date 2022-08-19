@@ -1,8 +1,5 @@
 
-# FXMinerProxyV3
-<h4 align="center">基于Golang高性能Pow挖矿代理中转服务器软件.FXMinerProxy的设计版本</h4>
-<h4 align="center">支持ETH/ETC/BTC/LTC/RVN/CFX/TON/BEAM/ERG/BTG.</h4>
-<h4 align="center">官网(http://www.fxpool.org).</h4>
+<p align="center"><a href="https://vuejs.org" target="_blank" rel="noopener noreferrer"><img width="100" src="https://vuejs.org/images/logo.png" alt="Vue logo"></a></p>
 <p align="center">
   <a>
     <img src="https://img.shields.io/badge/Release-8.0.2-orgin.svg" alt="travis">
@@ -17,13 +14,16 @@
     <img src="https://img.shields.io/badge/License-Apache-green.svg" alt="travis">
   </a>
 </p>
-  主页
+
+## 简介
+
+基于Golang高性能Pow挖矿代理中转服务器软件.FXMinerProxy的升级版本
+
+## 支持币种
+
+ETH/ETC/BTC/LTC/RVN/CFX/TON/BEAM/ERG/BTG
   
   ![](https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/home.png)
-  
-  端口界面
-  
-  ![](https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/miner.png)
   
 ## :sparkles: 特性
 
@@ -39,6 +39,7 @@
 * :eye_speech_bubble: 多人社区交流支持，不懂的问题都有人解答，QQ群:809118996，Telegram讨论组:
 * :gear: 实时系统错误日志显示，让你知道任何时候服务器工作状态
 * :family_woman_girl_boy: 多系统支持，windows，linux一键安装运行
+* 💻 linux SSH2 群控模式 软件自带服务器远程登录一键管理你的服务器
 
 ## :hammer_and_wrench: 部署
 ### linux一键管理脚本(需root权限)
