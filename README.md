@@ -5,7 +5,7 @@
     <img src="https://img.shields.io/badge/Release-8.0.2-orgin.svg" alt="travis">
   </a>
   <a>
-    <img src="https://img.shields.io/badge/Last_Update-2022_06_02-orgin.svg" alt="travis">
+    <img src="https://img.shields.io/badge/Last_Update-2022_08_19-orgin.svg" alt="travis">
   </a>
   <a>
     <img src="https://img.shields.io/badge/Language-GoLang-green.svg" alt="travis">
