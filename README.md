@@ -23,7 +23,7 @@
   </a>
 </p>
 
-  ![](http://47.105.86.47/image/fxproxyminer/home1.jpg)
+  ![]https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/home.png
   
 ## :sparkles: 特性
 
