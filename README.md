@@ -14,6 +14,12 @@
     <img src="https://img.shields.io/badge/License-Apache-green.svg" alt="travis">
   </a>
 </p>
+<p align="center">
+  <a href="https://wwww.google.com">English(en-us)</a> •
+  <a href="https://wwww.google.com/">文档</a> •
+  <a href="https://wwww.google.com">Telegram 讨论群组</a> •
+  <a href="https://wwww.google.com">Telegram 通知頻道</a>
+</p>
 
 ## 简介
 
