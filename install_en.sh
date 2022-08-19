@@ -234,6 +234,7 @@ start() {
             echo -e "${green}Start..."
             cd $installdir
             sed -i 's/"is_open_general_swap": true/"is_open_general_swap": false/g' localconfig.json
+            sed -i 's/"language": "zh"/"language": "en"/g' localconfig.json
             setsid ./$wdog &
             sleep 3
         fi
