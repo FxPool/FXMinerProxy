@@ -1,11 +1,6 @@
-# FxMinerProxyV3
-## zh
- 
-## en
- bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/install_en.sh)
- 
- # FXMinerProxyV3
-<h4 align="center">基于Golang高性能Pow挖矿代理中转服务器软件.</h4>
+
+# FXMinerProxyV3
+<h4 align="center">基于Golang高性能Pow挖矿代理中转服务器软件.FXMinerProxy的设计版本</h4>
 <h4 align="center">支持ETH/ETC/BTC/LTC/RVN/CFX/TON/BEAM/ERG/BTG.</h4>
 <h4 align="center">官网(http://www.fxpool.org).</h4>
 <p align="center">
@@ -22,8 +17,13 @@
     <img src="https://img.shields.io/badge/License-Apache-green.svg" alt="travis">
   </a>
 </p>
-
-  ![]https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/home.png
+  主页
+  
+  ![](https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/home.png)
+  
+  端口界面
+  
+  ![](https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/miner.png)
   
 ## :sparkles: 特性
 
