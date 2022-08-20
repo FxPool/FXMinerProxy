@@ -1,6 +1,6 @@
 #bin
 version='8.0.2'
-shell_version='3.1.3'
+shell_version='3.1.4'
 uiname='FXMinerProxyV3-shell'
 pkgname='FxMinerProxyV3'
 authorname='FxPool'
@@ -211,6 +211,7 @@ update_app() {
             return
         else
             echo && echo -n -e "${yellow}更新完成,按回车启动,CTRL+C退出: ${plain}" && read temp
+            autorun
             start
         fi
     fi
