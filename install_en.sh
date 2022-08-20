@@ -211,6 +211,7 @@ update_app() {
             return
         else
             echo && echo -n -e "${yellow}When the update is complete, press Enter to start,CTRL+C to exit: ${plain}" && read temp
+            autorun
             start
         fi
     fi
