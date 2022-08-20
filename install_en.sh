@@ -289,9 +289,10 @@ show_menu() {
      ${green}5.${plain} stop
      ${green}6.${plain} View the maximum Linux connection
      ${green}7.${plain} Number of Linux connections changed to 65535(the server needs to be restarted to take effect)
+     ${green}8.${plain} autorun
     
    "
-    echo && read -p "Please enter selection [0-7]: " num
+    echo && read -p "Please enter selection [0-8]: " num
 
     case "${num}" in
     0)
@@ -318,8 +319,11 @@ show_menu() {
     7)
         change_limit
         ;;
+    8)
+        autorun
+        ;;
     *)
-        echo -e "${red}Please enter the correct number [0-7]${plain}"
+        echo -e "${red}Please enter the correct number [0-8]${plain}"
         ;;
     esac
 }
