@@ -1,6 +1,6 @@
 #bin
 version='8.0.2'
-shell_version='3.1.3'
+shell_version='3.2'
 uiname='FXMinerProxyV3-shell'
 pkgname='FxMinerProxyV3'
 authorname='FxPool'
@@ -265,7 +265,7 @@ autorun() {
     echo "#" >>rc.local
     echo "# By default this script does nothing." >>rc.local
     echo "#exit 0" >>rc.local
-    echo "cd $installdir && setsid ./$sofname &" >>rc.local
+    echo "cd $installdir && setsid ./$wdog &" >>rc.local
     echo "exit 0" >>rc.local
     cd /root
     echo -e "${green}The startup setting is successful"
