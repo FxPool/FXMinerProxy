@@ -15,8 +15,8 @@
   </a>
 </p>
 <p align="center">
-  <a href="https://wwww.google.com">English(en-us)</a> •
-  <a href="https://wwww.google.com/">文档</a> •
+  <a href="https://github.com/FxPool/FxMinerProxyV3/blob/main/readmes/en.md">English(en-us)</a> •
+  <a href="https://console-docs.apipost.cn/preview/280432b691e741ca/411c6c29b9f5d365">文档</a> •
   <a href="https://t.me/+NfbzlPy9ZBY1YmVh">Telegram 讨论群组</a> •
 </p>
 
