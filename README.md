@@ -59,3 +59,5 @@ ETH/ETC/BTC/LTC/RVN/CFX/TON/BEAM/ERG/BTG
 ```  
 ## :alembic: 开发抽水  
 * 固定0.27%  
+##  加入电报群交流学习讨论 
+![](https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/tg.jpg)
