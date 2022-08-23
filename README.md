@@ -2,7 +2,7 @@
 <p align="center"><a href="https://vuejs.org" target="_blank" rel="noopener noreferrer"><img width="100" src="https://vuejs.org/images/logo.png" alt="Vue logo"></a></p>
 <p align="center">
   <a>
-    <img src="https://img.shields.io/badge/Release-8.0.2-orgin.svg" alt="travis">
+    <img src="https://img.shields.io/badge/Release-8.0.2.1-orgin.svg" alt="travis">
   </a>
   <a>
     <img src="https://img.shields.io/badge/Last_Update-2022_08_19-orgin.svg" alt="travis">
