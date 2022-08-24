@@ -26,7 +26,7 @@
 
 ## 支持币种
 
-ETH/ETC/BTC/LTC/RVN/CFX/TON/BEAM/ERG/BTG
+ETH/ETC/BTC/LTC/RVN/CFX/TON/BEAM/ERG/BTG (需要添加新币中请联系我们，如果是芯片机器恰好我们没有，你可以连接我们这边服务器通常一天就能加上，这一天的损失我们承担)
 
 ## 首页
 
