@@ -66,7 +66,7 @@ ETH/ETC/BTC/LTC/RVN/CFX/TON/BEAM/ERG/BTG
 ### Linux one-click Management scripts (root permission required)
 * 如果没有curl命令请输入 apt-get install curl installation
 ```shell
-  bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/install_zh.sh)
+  bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/install_en.sh)
 ```
 ### Windows directly download and decompress run run.exe
 * Run run.exe (to ensure the program never crashes)
