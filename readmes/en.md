@@ -16,8 +16,8 @@
 </p>
 <p align="center">
   <a href="https://wwww.google.com">English(en-us)</a> •
-  <a href="https://wwww.google.com/">文档</a> •
-  <a href="https://t.me/+NfbzlPy9ZBY1YmVh">Telegram 讨论群组</a> •
+  <a href="https://wwww.google.com/">doc</a> •
+  <a href="https://t.me/+NfbzlPy9ZBY1YmVh">Telegram</a> •
 </p>
 
 ## Introduction
@@ -70,7 +70,7 @@ ETH/ETC/BTC/LTC/RVN/CFX/TON/BEAM/ERG/BTG
 
 ## :hammer_and_wrench: deployment
 ### Linux one-click Management scripts (root permission required)
-* 如果没有curl命令请输入 apt-get install curl installation
+* if curl cmd not fund: apt-get install curl installation
 ```shell
   bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/install_en.sh)
 ```
@@ -81,4 +81,4 @@ ETH/ETC/BTC/LTC/RVN/CFX/TON/BEAM/ERG/BTG
 ```  
 ## :alembic: Development Fee
 * Fixed 0.27%
-* close fee model: 0%
+* if close fee model: 0%
