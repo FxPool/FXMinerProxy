@@ -27,8 +27,14 @@
 ## 支持币种
 
 ETH/ETC/BTC/LTC/RVN/CFX/TON/BEAM/ERG/BTG
-  
+
+## 首页
+
   ![](https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/home.png)
+  
+## SSH服务器群控
+
+  ![](https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/ssh_zh.jpg)
   
 ## :sparkles: 特性
 
@@ -58,6 +64,9 @@ ETH/ETC/BTC/LTC/RVN/CFX/TON/BEAM/ERG/BTG
   https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/fxminerproxyv3windows.zip
 ```  
 ## :alembic: 开发抽水  
-* 固定0.27%  
+* 开启抽水固定0.27%  
+* 不开抽水为0
+* 大算力用户可激活软件享受更低的费用
+
 ##  加入电报群交流学习讨论 
 ![](https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/tg.jpg)
