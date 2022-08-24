@@ -28,7 +28,13 @@ Based on Golang high performance Pow mining agent transfer server software. An u
 
 ETH/ETC/BTC/LTC/RVN/CFX/TON/BEAM/ERG/BTG
   
+## home
+
   ![](https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/home.png)
+  
+## ssh server
+
+  ![](https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/ssh_en.jpg)
   
 # # : sparkles: features
 
@@ -75,3 +81,4 @@ ETH/ETC/BTC/LTC/RVN/CFX/TON/BEAM/ERG/BTG
 ```  
 ## :alembic: Development Fee
 * Fixed 0.27%
+* close fee model: 0%
