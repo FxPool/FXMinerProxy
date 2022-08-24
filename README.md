@@ -17,7 +17,7 @@
 <p align="center">
   <a href="https://github.com/FxPool/FxMinerProxyV3/blob/main/readmes/en.md">English(en-us)</a> •
   <a href="https://console-docs.apipost.cn/preview/280432b691e741ca/411c6c29b9f5d365">文档</a> •
-  <a href="https://t.me/+NfbzlPy9ZBY1YmVh">Telegram 讨论群组</a> •
+  <a href="https://t.me/+OVih6MkOAFsxYTMx">Telegram 讨论群组</a> •
 </p>
 
 ## 简介
@@ -41,7 +41,7 @@ ETH/ETC/BTC/LTC/RVN/CFX/TON/BEAM/ERG/BTG
 * :outbox_tray: 芯片矿机实时计算算力，解决芯片级无法显示算力的问题
 * :card_file_box: 配置热修改，决绝传统配置后需重启修改配置文件等繁琐步骤，支持一键导入导出配置文件
 * :art: 精美UI，支持历史记录曲线管理详细到单台矿机支持
-* :eye_speech_bubble: 多人社区交流支持，不懂的问题都有人解答，QQ群:809118996，Telegram讨论组:https://t.me/+NfbzlPy9ZBY1YmVh
+* :eye_speech_bubble: 多人社区交流支持，不懂的问题都有人解答，QQ群:809118996，Telegram讨论组:https://t.me/+OVih6MkOAFsxYTMx
 * :gear: 实时系统错误日志显示，让你知道任何时候服务器工作状态
 * :family_woman_girl_boy: 多系统支持，windows，linux一键安装运行
 * 💻 linux SSH2 群控模式 软件自带服务器远程登录一键管理你的服务器
