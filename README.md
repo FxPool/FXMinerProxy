@@ -22,7 +22,7 @@
 
 ## 简介
 
-基于Golang高性能Pow挖矿代理中转服务器软件.FXMinerProxy的升级版本
+基于Golang高性能Pow挖矿代理中转服务器软件.FXMinerProxy的升级版本，中文名称傅里叶
 
 ## 支持币种
 
