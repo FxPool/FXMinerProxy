@@ -32,11 +32,11 @@ ETH/ETC/BTC/LTC/RVN/CFX/TON/BEAM/ERG/BTG (需要添加新币中请联系我们�
 
   ![](https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/phone1.jpg)
 
-## 首页
+## WEB后台首页
 
   ![](https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/home.png)
   
-## SSH服务器群控
+## SSH服务器群控后台
 
   ![](https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/ssh_zh.jpg)
   
