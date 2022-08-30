@@ -1,5 +1,5 @@
 
-<p align="center"><a href="https://vuejs.org" target="_blank" rel="noopener noreferrer"><img width="400" src="https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/logo.png" alt="Vue logo"></a></p>
+<p align="center"><a href="https://vuejs.org" target="_blank" rel="noopener noreferrer"><img width="500" src="https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/logo.png" alt="Vue logo"></a></p>
 <p align="center">
   <a>
     <img src="https://img.shields.io/badge/Release-8.0.2.1-orgin.svg" alt="travis">
