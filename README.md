@@ -28,7 +28,7 @@
 
 ETH/ETC/BTC/LTC/RVN/CFX/TON/BEAM/ERG/BTG (需要添加新币中请联系我们，如果是芯片机器恰好我们没有，你可以连接我们这边服务器通常一天就能加上，这一天的损失我们承担)
 
-## 手机APP支持 安卓 IOS
+## 手机APP支持 安卓 IOS （开发中9月15号之前出来）
 
   ![](https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/phone1.jpg)
 
