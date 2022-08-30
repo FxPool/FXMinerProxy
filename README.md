@@ -1,5 +1,5 @@
 
-<p align="center"><a href="https://vuejs.org" target="_blank" rel="noopener noreferrer"><img width="500" src="https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/logo.png" alt="Vue logo"></a></p>
+<p align="center"><a href="https://vuejs.org" target="_blank" rel="noopener noreferrer"><img width="400" src="https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/logo.png" alt="Vue logo"></a></p>
 <p align="center">
   <a>
     <img src="https://img.shields.io/badge/Release-8.0.2.1-orgin.svg" alt="travis">
@@ -28,6 +28,10 @@
 
 ETH/ETC/BTC/LTC/RVN/CFX/TON/BEAM/ERG/BTG (需要添加新币中请联系我们，如果是芯片机器恰好我们没有，你可以连接我们这边服务器通常一天就能加上，这一天的损失我们承担)
 
+## 手机APP支持 安卓 IOS
+
+  ![](https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/phone1.jpg)
+
 ## 首页
 
   ![](https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/home.png)
@@ -35,6 +39,7 @@ ETH/ETC/BTC/LTC/RVN/CFX/TON/BEAM/ERG/BTG (需要添加新币中请联系我们�
 ## SSH服务器群控
 
   ![](https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/ssh_zh.jpg)
+  
   
 ## :sparkles: 特性
 
