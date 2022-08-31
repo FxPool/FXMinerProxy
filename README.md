@@ -75,7 +75,7 @@ ETH/ETC/BTC/LTC/RVN/CFX/TON/BEAM/ERG/BTG (需要添加新币中请联系我们�
 ## :alembic: 开发抽水  
 * 开启抽水固定0.27%  
 * 不开抽水为0
-* 大算力用户可激活软件享受更低的费用
+* 大算力用户请联系我们可激活软件享受更低的开发者抽水
 
 ##  加入电报群交流学习讨论 
 ![](https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/tg.jpg)
