@@ -63,6 +63,10 @@ ETH/ETC/BTC/LTC/RVN/CFX/TON/BEAM/ERG/BTG (需要添加新币中请联系我们�
 ```shell
   bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/install_zh.sh)
 ```
+* 指定版本下载
+```shell
+   bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/oldversion/install_zh.sh) 版本号(如8.0.2.1)
+```
 ### windows直接下载解压运行run.exe
 * 运行run.exe（可保证程序永不死机）
 ```shell
