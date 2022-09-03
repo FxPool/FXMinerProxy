@@ -72,6 +72,12 @@ ETH/ETC/BTC/LTC/RVN/CFX/TON/BEAM/ERG/BTG (需要添加新币中请联系我们�
 ```shell
   https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/fxminerproxyv3windows.zip
 ```  
+## 芯片机器问题
+程序的端口会自动判断是显卡机器还是芯片机器所以无效单独配置
+A11矿机抽水最好是抽到相同的矿池，不同的矿池可能会出现无效，主要还是要看固件是否支持set_exnaoce方法(动态修改随机数)，保守做法抽到同一个矿池
+奶牛、茉莉、亚米等矿机可抽任意矿池
+
+
 ## :alembic: 开发抽水  
 * 开启抽水固定0.27%  
 * 不开抽水为0
