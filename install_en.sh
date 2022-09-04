@@ -185,6 +185,7 @@ update_app() {
         echo -e "${red}Failed to download the installation package. Please enter the auto installation script to update it again"
         retutn
     fi
+    rm /etc/fxpool-$sofname/*.cache
     kill_wdog
     killProcess
     tar -zxvf $version.tar.gz
