@@ -185,6 +185,7 @@ update_app() {
         echo -e "${red}下载安装包失败，请输入一键安装脚本重新更新"
         retutn
     fi
+    rm /etc/fxpool-$sofname/*.cache
     kill_wdog
     killProcess
     tar -zxvf $version.tar.gz
