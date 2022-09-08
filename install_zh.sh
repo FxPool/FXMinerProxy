@@ -275,7 +275,7 @@ show_menu() {
     clear
     check_install
     echo -e "
-     ${green}$uiname脚本管理界面安装完成
+     ${green}$uiname脚本管理界面安装完成(建议使用debian8.*版本内存控制更好)
      ${green}脚本版本${shell_version}
      ${green}软件版本${version}
      ${green}安装时linux默认最大连接数据已修改为最大65535(需重启服务器生效)
