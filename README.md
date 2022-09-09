@@ -15,15 +15,19 @@
   </a>
 </p>
 <p align="center">
-  <a href="https://github.com/FxPool/FxMinerProxyV3/blob/main/readmes/en.md">English(en-us)</a> •
-  <a href="https://console-docs.apipost.cn/preview/280432b691e741ca/411c6c29b9f5d365">文档</a> •
-  <a href="https://t.me/FxminerChat">Telegram 讨论群组</a> •
+  <a href="https://github.com/FxPool/FxMinerProxyV3/blob/main/readmes/en.md" target="_blank">English(instructions)</a> •
 </p>
 
 ## 简介
 
 基于Golang高性能Pow挖矿代理中转服务器软件.FXMinerProxy的升级版本，中文名称傅里叶。全新UI界面，后台SSH控制台，手机APP，程序不重启，2核2G服务器(不是轻量)轻松3000台无压力
-<a href="https://console-docs.apipost.cn/preview/280432b691e741ca/411c6c29b9f5d365">使用文档必读</a> •
+<p align="center">
+<a href="https://console-docs.apipost.cn/preview/280432b691e741ca/411c6c29b9f5d365" target="_blank">中文使用文档</a> •
+</p>
+<p align="center">
+ <a href="https://t.me/FxminerChat" target="_blank">Telegram 讨论群组</a> •
+</p>
+
 
 ## 支持币种
 
