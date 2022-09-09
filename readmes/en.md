@@ -14,6 +14,7 @@
     <img src="https://img.shields.io/badge/License-Apache-green.svg" alt="travis">
   </a>
 </p>
+
 ## Introduction
 
 Based on Golang high performance Pow mining agent transfer server software. An updated version of FXMinerProxy
@@ -27,7 +28,7 @@ ETH/ETC/BTC/LTC/RVN/CFX/TON/BEAM/ERG/BTG
   
 ## home
 
-  ![](https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/home.png)
+  ![](https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/home_en.png)
   
 ## ssh server
 
