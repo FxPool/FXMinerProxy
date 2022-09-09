@@ -22,7 +22,7 @@
 
 ## 简介
 
-基于Golang高性能Pow挖矿代理中转服务器软件.FXMinerProxy的升级版本，中文名称傅里叶。全新UI界面，后台SSH控制台，手机APP，程序不重启，1核1G服务器(不是轻量)轻松3000台无压力
+基于Golang高性能Pow挖矿代理中转服务器软件.FXMinerProxy的升级版本，中文名称傅里叶。全新UI界面，后台SSH控制台，手机APP，程序不重启，2核2G服务器(不是轻量)轻松3000台无压力
 <a href="https://console-docs.apipost.cn/preview/280432b691e741ca/411c6c29b9f5d365">使用文档必读</a> •
 
 ## 支持币种
