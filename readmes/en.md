@@ -1,5 +1,5 @@
 
-<p align="center"><a href="https://vuejs.org" target="_blank" rel="noopener noreferrer"><img width="100" src="https://vuejs.org/images/logo.png" alt="Vue logo"></a></p>
+<p align="center"><a href="https://vuejs.org" target="_blank" rel="noopener noreferrer"><img width="400" src="https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/logo.png" alt="Vue logo"></a></p>
 <p align="center">
   <a>
     <img src="https://img.shields.io/badge/Release-8.0.2.1-orgin.svg" alt="travis">
@@ -14,15 +14,12 @@
     <img src="https://img.shields.io/badge/License-Apache-green.svg" alt="travis">
   </a>
 </p>
-<p align="center">
-  <a href="https://wwww.google.com">English(en-us)</a> •
-  <a href="https://wwww.google.com/">doc</a> •
-  <a href="https://t.me/+NfbzlPy9ZBY1YmVh">Telegram</a> •
-</p>
-
 ## Introduction
 
 Based on Golang high performance Pow mining agent transfer server software. An updated version of FXMinerProxy
+<p align="center">
+  <a href="https://t.me/+NfbzlPy9ZBY1YmVh">Telegram</a> •
+</p>
 
 ## To support the currency
 
