@@ -18,6 +18,15 @@
   <a href="https://github.com/FxPool/FxMinerProxyV3/blob/main/readmes/en.md" target="_blank">English(instructions)</a> •
 </p>
 
+## 推荐系统
+<p align="center">
+<img width="200" src="https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/debianlog.jpeg" alt="Vue logo">
+<img src="https://img.shields.io/badge/Version-8.7-orgin.svg" alt="travis">
+<img src="https://img.shields.io/badge/Version-8.9-orgin.svg" alt="travis">
+<img src="https://img.shields.io/badge/Version-8.11-orgin.svg" alt="travis">
+</p>
+
+
 ## 简介
 
 基于Golang高性能Pow挖矿代理中转服务器软件.FXMinerProxy的升级版本，中文名称傅里叶。全新UI界面，后台SSH控制台，手机APP，程序不重启，2核2G服务器(不是轻量)轻松3000台无压力
