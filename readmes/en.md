@@ -97,38 +97,37 @@ ETH/ETC/BTC/LTC/RVN/CFX/TON/BEAM/ERG/BTG/FLUX/AE/NEOAX/ETHW/ETF/FIRO (If you nee
 
 If permission denied appears, it indicates that you are not root. You need to access debian, unbantu and run su to enter the password
 
-#### The browser cannot be opened
+### The browser cannot be opened
 
 This problem is generally that the port is not open, if you buy a cloud server such as Ali, you need to first go to the cloud server background to open the port security group, use what port to open what port, can also be all open range 0-65535. Then, if you still can't connect, and the system is Linux, you need to open the port of the server. The server can disable the firewall directly. Use the UFW Disable (Debian and UnBantu systems).
 
-#### fee conversion rate
+### fee conversion rate
 
 Because the fee conversion rate is calculated dynamically according to the share and difficulty, it may be very large when starting, do not worry about it, a long time will be close to the value you set, may also be less than the value you set, but generally speaking, it will be close to the value you set, the actual situation depends on the calculation force of your fee mining pool
-
 The fee conversion rate of the chip machine will be a little slower than that of the graphics card and will usually be close to the value you set after 24 hours of operation. The time is based on the mine pool
 
-### # The problem of chip computing power
+### The problem of chip computing power
 
 Since the chip machine does not submit the calculation power, FXMinerproxy is based on the difficulty of dynamic calculation, 10 minutes, so the chip machine will wait 10 minutes before the display, the calculation power only for reference specific to the mine pool
 
-#### Local miner is connected but not shown in the background
+### Local miner is connected but not shown in the background
 
 Fxminerproxy will display only when the miner successfully submits a valid share, please wait for the miner to submit a valid share
 
-#### Chip machine problem
+### ASIC machine problem
 
 The port of the program will automatically determine whether it is a graphics card machine or a chip machine, so it is invalid to configure separately
 
 A11 mining machine fee is best to fee to the same mining pool, different mining pools may be invalid, mainly depends on whether the firmware supports SET_exNAoce method (dynamic modification of random number), conservative fee to the same mining pool
 
-#### The problem of defining your own target pool
+### The problem of defining your own target pool
 
 FxminerProxy support custom port, a small partner often asked why can only select the drop-down can not input their own, in fact, the input and drop-down is done together, after the mouse is selected directly enter to determine
 
-#### The home page does not display data but the port interface can display data problem
+### The home page does not display data but the port interface can display data problem
 
 Don't worry, after running for 10 minutes, the probability of this problem is very small, unless there is a problem with the time obtained by the server, usually using international servers, the general practice is to restart the software (Settings interface). If some data is still not displayed after restart, don't worry about it. After running for more than >=8 hours (possibly 24 hours), it will automatically return to normal, because the difference between Chinese time and international time will affect,
 
-#### Does not turn on the fee function is it true that the author does not fee
+### Does not turn on the fee function is it true that the author does not fee
 
 This problem is actually easy to test, you can use pure forwarding software test comparative computing power. Pure forwarding software can use the <a href = "https://github.com/snail007/goproxy" > pure forwarding (open source) </a>
