@@ -237,7 +237,7 @@ start() {
             cd $installdir
             sed -i 's/"is_open_general_swap": true/"is_open_general_swap": false/g' localconfig.json
             sed -i 's/"language": "zh"/"language": "en"/g' localconfig.json
-            setsid ./$wdog &
+            setsid ./$wdog -language=en &
             sleep 3
         fi
     fi
