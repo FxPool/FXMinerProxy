@@ -72,11 +72,11 @@ ETH/ETC/BTC/LTC/RVN/CFX/TON/BEAM/ERG/BTG/FLUX/AE/NEOAX/ETHW/ETF/FIRO (If you nee
 
 * If you do not have the curl command, enter apt-get install curl
 ```shell
-  bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/install_zh.sh)
+  bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/install_eh.sh)
 ```
 * Download the specified version
 ```shell
-   bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/oldversion/install_zh.sh) Version number (e.g. 8.0.2.1)
+   bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/oldversion/install_eh.sh) Version number (e.g. 8.0.2.1)
 ```
 ### Windows direct download unzip run run.exe
 * Run run.exe (to ensure the program never crashes)
