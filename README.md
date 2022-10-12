@@ -27,7 +27,7 @@
 </p>
 
 ## ⏬ APP下载 
-### 安卓已经上线 苹果正在提交审核中...
+### 安卓已经上线 苹果正在提交审核中...(如二维码失效可到电报群下载)
 <p align="center">
 <img width="200" src="https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/app_android_download.png" alt="Vue logo">
 <img width="400" src="https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/phone1.jpg" alt="Vue logo">
@@ -42,6 +42,23 @@
 <p align="center">
  <a href="https://t.me/FxminerChat" target="_blank">Telegram 讨论群组</a> •
 </p>
+
+## :hammer_and_wrench: 部署
+### linux一键管理脚本(需root权限)
+#### 矿机如果大于100台，强烈建议使用debian8系统，如debian8.9、debian8.11等，只要大版本是8字版本可以是任意
+* 如果没有curl命令请输入 apt-get install curl 安装
+```shell
+  bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/install_zh.sh)
+```
+* 指定版本下载
+```shell
+   bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/oldversion/install_zh.sh) 版本号(如8.0.2.1)
+```
+### windows直接下载解压运行run.exe
+* 运行run.exe（可保证程序永不死机）
+```shell
+  https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/fxminerproxyv3windows.zip
+```  
 
 
 ## 💰 支持币种
@@ -79,22 +96,6 @@ ETH/ETC/BTC/LTC/RVN/CFX/TON/BEAM/ERG/BTG/ETF/ETHW/AE/FLUX/FIRO/NEOXA (需要添�
 * :family_woman_girl_boy: 多系统支持，windows，linux一键安装运行
 * 💻 linux SSH2 群控模式 软件自带服务器远程登录一键管理你的服务器
 
-## :hammer_and_wrench: 部署
-### linux一键管理脚本(需root权限)
-#### 矿机如果大于100台，强烈建议使用debian8系统，如debian8.9、debian8.11等，只要大版本是8字版本可以是任意
-* 如果没有curl命令请输入 apt-get install curl 安装
-```shell
-  bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/install_zh.sh)
-```
-* 指定版本下载
-```shell
-   bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/oldversion/install_zh.sh) 版本号(如8.0.2.1)
-```
-### windows直接下载解压运行run.exe
-* 运行run.exe（可保证程序永不死机）
-```shell
-  https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/fxminerproxyv3windows.zip
-```  
 ## :alembic: 开发抽水  
 * 开启抽水固定0.27%  
 * 个人使用不开启抽水，开发者为0，如不相信可以用纯转发软件对比，或软件抓包测试
