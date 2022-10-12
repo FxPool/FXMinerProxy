@@ -2,7 +2,7 @@
 version='8.2.2'
 shell_version='3.2.3'
 uiname='FXMinerProxyV3-shell'
-pkgname='FxMinerProxyV3'
+pkgname='FXMinerProxy'
 authorname='FxPool'
 installname='install.sh'
 webuiname='ui'
