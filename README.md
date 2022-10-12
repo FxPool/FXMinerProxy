@@ -48,10 +48,14 @@
 
 ETH/ETC/BTC/LTC/RVN/CFX/TON/BEAM/ERG/BTG/ETF/ETHW/AE/FLUX/FIRO/NEOXA (需要添加新币中请联系我们，如果是芯片机器恰好我们没有，你可以连接我们这边服务器通常一天就能加上，这一天的损失我们承担)
 
-## 🌐 WEB后台首页
+## 🌐 WEB后台
 
   ![](https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/home.png)
+  
+  ![](https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/miner_zh.png)
+  
 ## BTC 抽水曲线(鱼池F2pool)(其他币种持续更新中)
+
   ![](https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/btc_fee.png)
   
 ## 🖥️ SSH服务器群控后台
