@@ -48,11 +48,11 @@
 #### 矿机如果大于100台，强烈建议使用debian8系统，如debian8.9、debian8.11等，只要大版本是8字版本可以是任意
 * 如果没有curl命令请输入 apt-get install curl 安装
 ```shell
-  bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/install_zh.sh)
+  bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/install_zh.sh)
 ```
 * 指定版本下载
 ```shell
-   bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/oldversion/install_zh.sh) 版本号(如8.0.2.1)
+   bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/oldversion/install_zh.sh) 版本号(如8.0.2.1)
 ```
 ### windows直接下载解压运行run.exe
 * 运行run.exe（可保证程序永不死机）
