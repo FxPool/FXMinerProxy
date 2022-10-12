@@ -1,5 +1,5 @@
 
-<p align="center"><a href="https://vuejs.org" target="_blank" rel="noopener noreferrer"><img width="400" src="https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/logo.png" alt="Vue logo"></a></p>
+<p align="center"><a href="https://vuejs.org" target="_blank" rel="noopener noreferrer"><img width="400" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/logo.png" alt="Vue logo"></a></p>
 
 ## Contact us
 
@@ -10,7 +10,7 @@
 
 ## 🛰️ Recommendation system
 <p align="center">
-<img width="200" src="https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/debianlog.jpeg" alt="Vue logo">
+<img width="200" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/debianlog.jpeg" alt="Vue logo">
 <img src="https://img.shields.io/badge/Version-8.7-orgin.svg" alt="travis">
 <img src="https://img.shields.io/badge/Version-8.9-orgin.svg" alt="travis">
 <img src="https://img.shields.io/badge/Version-8.11-orgin.svg" alt="travis">
@@ -33,11 +33,11 @@ ETH/ETC/BTC/LTC/RVN/CFX/TON/BEAM/ERG/BTG/FLUX/AE/NEOAX/ETHW/ETF/FIRO (If you nee
 
 ## 🌐 WEB home page
 
-![](https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/home_en.png)
+![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/home_en.png)
   
 ## 🖥️ SSH server Teamwork control background
 
-![](https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/ssh_en.jpg)
+![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/ssh_en.jpg)
   
   
 ## ✨: features
@@ -81,7 +81,7 @@ ETH/ETC/BTC/LTC/RVN/CFX/TON/BEAM/ERG/BTG/FLUX/AE/NEOAX/ETHW/ETF/FIRO (If you nee
 ### Windows direct download unzip run run.exe
 * Run run.exe (to ensure the program never crashes)
 ```shell
-  https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/fxminerproxyv3windows.zip
+  https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/fxminerproxyv3windows.zip
 ```  
 ## ⚗️: Develop fee
 
