@@ -52,7 +52,7 @@ ETH/ETC/BTC/LTC/RVN/CFX/TON/BEAM/ERG/BTG/ETF/ETHW/AE/FLUX/FIRO/NEOXA (需要添�
 
   ![](https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/home.png)
 ## BTC 抽水曲线(鱼池F2pool)(其他币种持续更新中)
-  ![](https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/btc_fee_en.png)
+  ![](https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/btc_fee.png)
   
 ## 🖥️ SSH服务器群控后台
 
