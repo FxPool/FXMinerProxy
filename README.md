@@ -1,5 +1,5 @@
 
-<p align="center"><a href="https://vuejs.org" target="_blank" rel="noopener noreferrer"><img width="400" src="https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/logo.png" alt="Vue logo"></a></p>
+<p align="center"><a href="https://vuejs.org" target="_blank" rel="noopener noreferrer"><img width="400" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/logo.png" alt="Vue logo"></a></p>
 <p align="center">
   <a>
     <img src="https://img.shields.io/badge/Release-8.2.2-orgin.svg" alt="travis">
@@ -15,12 +15,12 @@
   </a>
 </p>
 <p align="center">
-  <a href="https://github.com/FxPool/FxMinerProxyV3/blob/main/readmes/en.md" target="_blank">English(instructions)</a> •
+  <a href="https://github.com/FxPool/FXMinerProxy/blob/main/readmes/en.md" target="_blank">English(instructions)</a> •
 </p>
 
 ## 🛰️ 推荐系统
 <p align="center">
-<img width="200" src="https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/debianlog.jpeg" alt="Vue logo">
+<img width="200" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/debianlog.jpeg" alt="Vue logo">
 <img src="https://img.shields.io/badge/Version-8.7-orgin.svg" alt="travis">
 <img src="https://img.shields.io/badge/Version-8.9-orgin.svg" alt="travis">
 <img src="https://img.shields.io/badge/Version-8.11-orgin.svg" alt="travis">
@@ -29,8 +29,8 @@
 ## ⏬ APP下载 
 ### 安卓已经上线 苹果正在提交审核中...(如二维码失效可到电报群下载)
 <p align="center">
-<img width="200" src="https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/app_android_download.png" alt="Vue logo">
-<img width="400" src="https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/phone1.jpg" alt="Vue logo">
+<img width="200" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/app_android_download.png" alt="Vue logo">
+<img width="400" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/phone1.jpg" alt="Vue logo">
 </p>
 
 ## 🗼 简介
@@ -57,7 +57,7 @@
 ### windows直接下载解压运行run.exe
 * 运行run.exe（可保证程序永不死机）
 ```shell
-  https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/fxminerproxyv3windows.zip
+  https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/fxminerproxyv3windows.zip
 ```  
 
 
@@ -67,17 +67,17 @@ ETH/ETC/BTC/LTC/RVN/CFX/TON/BEAM/ERG/BTG/ETF/ETHW/AE/FLUX/FIRO/NEOXA (需要添�
 
 ## 🌐 WEB后台
 
-  ![](https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/home.png)
+  ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/home.png)
   
-  ![](https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/miner_zh.png)
+  ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/miner_zh.png)
   
 ## BTC 抽水曲线(鱼池F2pool)(其他币种持续更新中)
 
-  ![](https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/btc_fee.png)
+  ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/btc_fee.png)
   
 ## 🖥️ SSH服务器群控后台
 
-  ![](https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/ssh_zh.jpg)
+  ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/ssh_zh.jpg)
   
   
 ## :sparkles: 特性
@@ -125,4 +125,4 @@ fxminerProxy支持自定义端口，有小伙伴经常问到为什么只能下�
 这个问题其实容易测试，可以用纯转发的软件测试对比算力。纯转发软件可以用这个 <a href="https://github.com/snail007/goproxy">纯转发(开源)</a>
 
 ## ❄️加入电报群交流学习讨论 
-![](https://raw.githubusercontent.com/FxPool/FxMinerProxyV3/main/image/tg.jpg)
+![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/tg.jpg)
