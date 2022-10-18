@@ -1,6 +1,6 @@
 #bin
 version=$1
-shell_version='3.2.3'
+shell_version='3.2.4'
 uiname='FXMinerProxyV3-shell'
 pkgname='FXMinerProxy'
 authorname='FxPool'
