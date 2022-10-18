@@ -1,8 +1,8 @@
 #bin
 version=$1
-shell_version='3.2'
+shell_version='3.2.1'
 uiname='FXMinerProxyV3-shell'
-pkgname='FxMinerProxyV3'
+pkgname='FXMinerProxy'
 authorname='FxPool'
 installname='install.sh'
 webuiname='ui'
@@ -329,3 +329,4 @@ show_menu() {
     esac
 }
 show_menu
+
