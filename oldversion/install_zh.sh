@@ -1,8 +1,8 @@
 #bin
 version=$1
-shell_version='3.1.4'
+shell_version='3.2.3'
 uiname='FXMinerProxyV3-shell'
-pkgname='FxMinerProxyV3'
+pkgname='FXMinerProxy'
 authorname='FxPool'
 installname='install.sh'
 webuiname='ui'
@@ -185,6 +185,7 @@ update_app() {
         echo -e "${red}下载安装包失败，请输入一键安装脚本重新更新"
         retutn
     fi
+    rm /etc/fxpool-$sofname/*.cache
     kill_wdog
     killProcess
     tar -zxvf $version.tar.gz
@@ -274,7 +275,7 @@ show_menu() {
     clear
     check_install
     echo -e "
-     ${green}$uiname脚本管理界面安装完成
+     ${green}$uiname脚本管理界面安装完成(建议使用debian8.*版本内存控制更好)
      ${green}脚本版本${shell_version}
      ${green}软件版本${version}
      ${green}安装时linux默认最大连接数据已修改为最大65535(需重启服务器生效)
@@ -327,3 +328,4 @@ show_menu() {
     esac
 }
 show_menu
+
