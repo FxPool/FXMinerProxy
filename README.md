@@ -2,10 +2,10 @@
 <p align="center"><a href="https://vuejs.org" target="_blank" rel="noopener noreferrer"><img width="400" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/logo.png" alt="Vue logo"></a></p>
 <p align="center">
   <a>
-    <img src="https://img.shields.io/badge/Release-8.2.2.1-orgin.svg" alt="travis">
+    <img src="https://img.shields.io/badge/Release-8.2.2.2-orgin.svg" alt="travis">
   </a>
   <a>
-    <img src="https://img.shields.io/badge/Last_Update-2022_10_18-orgin.svg" alt="travis">
+    <img src="https://img.shields.io/badge/Last_Update-2022_10_20-orgin.svg" alt="travis">
   </a>
   <a>
     <img src="https://img.shields.io/badge/Language-GoLang-green.svg" alt="travis">
