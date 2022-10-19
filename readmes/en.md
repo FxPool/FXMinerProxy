@@ -35,11 +35,7 @@ ETH/ETC/BTC/LTC/RVN/CFX/TON/BEAM/ERG/BTG/FLUX/AE/NEOAX/ETHW/ETF/FIRO (If you nee
 
 ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/home_en.png)
   
-## 🖥️ SSH server Teamwork control background
 
-![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/ssh_en.jpg)
-  
-  
 ## ✨: features
 
 * ☁️: support ETC, ETH, BTC, LTC, RVN, BEAM, ERG, CFX much money fee, such as built-in exclusive development a key encryption to confuse the client configuration automatically generated executable program Windows and OS support, open API, exclusive of any currency pair support
@@ -131,3 +127,11 @@ Don't worry, after running for 10 minutes, the probability of this problem is ve
 ### Does not turn on the fee function is it true that the author does not fee
 
 This problem is actually easy to test, you can use pure forwarding software test comparative computing power. Pure forwarding software can use the <a href = "https://github.com/snail007/goproxy" > pure forwarding (open source) </a>
+
+##  BTC Fee example (F2pool)
+
+![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/btc_fee.png)
+
+##  LTC Fee example (F2pool)
+
+![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/ltc-en.jpg)
