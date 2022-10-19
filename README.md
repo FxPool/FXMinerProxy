@@ -68,23 +68,7 @@ ETH/ETC/BTC/LTC/RVN/CFX/TON/BEAM/ERG/BTG/ETF/ETHW/AE/FLUX/FIRO/NEOXA (需要添�
 ## 🌐 WEB后台
 
   ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/home.png)
-##  矿工统计
 
-  ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/miner-zh.jpg)
- 
-## BTC 抽水曲线(鱼池F2pool)(其他币种持续更新中)
-
-  ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/btc_fee.png)
-  
-## LTC 抽水曲线(鱼池F2pool)
-  
-  ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/ltc-zh.jpg)
-  
-## 🖥️ SSH服务器群控后台
-
-  ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/ssh_zh.jpg)
-  
-  
 ## :sparkles: 特性
 
 * :cloud: 支持ETC,ETH,BTC,LTC,RVN,BEAM,ERG,CFX等多币抽水,内置独家开发的加密混淆客户端 一键配置自动生成执行程序win和os都支持,API 开放，独家任何币种双挖支持
@@ -131,3 +115,21 @@ fxminerProxy支持自定义端口，有小伙伴经常问到为什么只能下�
 
 ## ❄️加入电报群交流学习讨论 
 ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/tg.jpg)
+
+# 抽水展示
+
+## BTC 抽水曲线(鱼池F2pool)(其他币种持续更新中)
+
+  ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/btc_fee.png)
+  
+## LTC 抽水曲线(鱼池F2pool)
+  
+  ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/ltc-zh.jpg)
+# 其他页面
+
+##  矿工统计
+  ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/miner-zh.jpg)
+  
+## 🖥️ SSH服务器群控后台
+
+  ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/ssh_zh.jpg)
