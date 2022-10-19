@@ -68,10 +68,17 @@ ETH/ETC/BTC/LTC/RVN/CFX/TON/BEAM/ERG/BTG/ETF/ETHW/AE/FLUX/FIRO/NEOXA (需要添�
 ## 🌐 WEB后台
 
   ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/home.png)
+##  矿工统计
+
+  ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/miner-zh.jpg)
  
 ## BTC 抽水曲线(鱼池F2pool)(其他币种持续更新中)
 
   ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/btc_fee.png)
+  
+## LTC 抽水曲线(鱼池F2pool)
+  
+  ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/ltc-zh.jpg)
   
 ## 🖥️ SSH服务器群控后台
 
