@@ -125,6 +125,11 @@ fxminerProxy支持自定义端口，有小伙伴经常问到为什么只能下�
 ## LTC 抽水曲线(鱼池F2pool)
   
   ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/ltc-zh.jpg)
+  
+## ZEC 抽水曲线(鱼池F2pool)
+
+  ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/zec.png)
+  
 # 其他页面
 
 ##  矿工统计
