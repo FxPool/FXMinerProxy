@@ -134,9 +134,9 @@ fxminerProxy支持自定义端口，有小伙伴经常问到为什么只能下�
 ## ❄️加入电报群交流学习讨论 
 ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/tg.jpg)
 
-# 抽水展示
+# 抽水展示(优先常用币种，其他币种持续更新中)
 
-## BTC 抽水曲线(鱼池F2pool)(其他币种持续更新中)
+## BTC 抽水曲线(鱼池F2pool)
 
   ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/btc_fee.png)
   
