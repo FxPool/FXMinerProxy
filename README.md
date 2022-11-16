@@ -18,48 +18,17 @@
   <a href="https://github.com/FxPool/FXMinerProxy/blob/main/readmes/en.md" target="_blank">English(instructions)</a> •
 </p>
 
-## 🛰️ 推荐系统
-<p align="center">
-<img width="200" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/debianlog.jpeg" alt="Vue logo">
-<img src="https://img.shields.io/badge/Version-8.7-orgin.svg" alt="travis">
-<img src="https://img.shields.io/badge/Version-8.9-orgin.svg" alt="travis">
-<img src="https://img.shields.io/badge/Version-8.11-orgin.svg" alt="travis">
-</p>
-
-## ⏬ APP下载 
-### 安卓已经上线 苹果正在提交审核中...(如二维码失效可到电报群下载)
-<p align="center">
-<img width="200" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/app_android_download.png" alt="Vue logo">
-<img width="400" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/phone1.jpg" alt="Vue logo">
-</p>
-
 ## 🗼 简介
 
-基于Golang高性能Pow挖矿代理中转服务器软件.FXMinerProxy的升级版本，中文名称傅里叶。全新UI界面，后台SSH控制台，手机APP，程序不重启，2核2G服务器(不是轻量)轻松3000台无压力
+FXMinerProxy是基于Golang高性能Pow挖矿代理中转服务器软件。支持跨矿池无损耗，高级UI界面，后台SSH控制台，手机APP，程序不重启，2核2G服务器(不是轻量)轻松3000台无压力。
+特别针对BTC等芯片机进行优化，矿机连接稳定。
+
 <p align="center">
 <a href="https://console-docs.apipost.cn/preview/280432b691e741ca/411c6c29b9f5d365" target="_blank">中文使用文档</a> •
 </p>
 <p align="center">
  <a href="https://t.me/FxminerChat" target="_blank">Telegram 讨论群组</a> •
 </p>
-
-## :hammer_and_wrench: 部署
-### linux一键管理脚本(需root权限)
-#### 矿机如果大于100台，强烈建议使用debian8系统，如debian8.9、debian8.11等，只要大版本是8字版本可以是任意
-* 如果没有curl命令请输入 apt-get install curl 安装
-```shell
-  bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/install_zh.sh)
-```
-* 指定版本下载
-```shell
-   bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/oldversion/install_zh.sh) 版本号(如8.0.2.1)
-```
-### windows直接下载解压运行run.exe
-* 运行run.exe（可保证程序永不死机）
-```shell
-  https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/fxminerproxyv3windows.zip
-```  
-
 
 ## 💰 支持币种
 (需要添加新币中请联系我们，如果是芯片机器恰好我们没有，你可以连接我们这边服务器通常一天就能加上，这一天的损失我们承担)
@@ -81,6 +50,38 @@
 - ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/coin/xmr.png) XMR 
 - ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/coin/kas.png) KASPA 
 - ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/coin/grin.png) GRIN 
+
+## 🛰️ 推荐系统
+<p align="center">
+<img width="200" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/debianlog.jpeg" alt="Vue logo">
+<img src="https://img.shields.io/badge/Version-8.7-orgin.svg" alt="travis">
+<img src="https://img.shields.io/badge/Version-8.9-orgin.svg" alt="travis">
+<img src="https://img.shields.io/badge/Version-8.11-orgin.svg" alt="travis">
+</p>
+
+## ⏬ APP下载 
+### 安卓已经上线 苹果正在提交审核中...(如二维码失效可到电报群下载)
+<p align="center">
+<img width="200" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/app_android_download.png" alt="Vue logo">
+<img width="400" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/phone1.jpg" alt="Vue logo">
+</p>
+
+## :hammer_and_wrench: 部署
+### linux一键管理脚本(需root权限)
+#### 矿机如果大于100台，强烈建议使用debian8系统，如debian8.9、debian8.11等，只要大版本是8字版本可以是任意
+* 如果没有curl命令请输入 apt-get install curl 安装
+```shell
+  bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/install_zh.sh)
+```
+* 指定版本下载
+```shell
+   bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/oldversion/install_zh.sh) 版本号(如8.0.2.1)
+```
+### windows直接下载解压运行run.exe
+* 运行run.exe（可保证程序永不死机）
+```shell
+  https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/fxminerproxyv3windows.zip
+```  
 
 ## 🌐 WEB后台
 
