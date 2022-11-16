@@ -33,23 +33,23 @@ FXMinerProxy是基于Golang高性能Pow挖矿代理中转服务器软件，100%�
 ## 💰 支持币种
 (需要添加新币中请联系我们，如果是芯片机器恰好我们没有，你可以连接我们这边服务器通常一天就能加上，这一天的损失我们承担)
 - ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/coin/btc.png) BTC 
-- ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/coin/ltc.png) LTC
-- ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/coin/etc.png) ETC
-- ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/coin/etf.png) ETHF
-- ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/coin/ethw.png) ETHW
-- ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/coin/zec.png) ZEC
-- ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/coin/rvn.png) RVN
-- ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/coin/cfx.png) CFX 
-- ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/coin/beam.png) BEAM 
-- ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/coin/erg.png) ERG 
-- ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/coin/btg.png) BTG 
-- ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/coin/ae.png) AE 
+![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/coin/ltc.png) LTC
+![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/coin/etc.png) ETC
+![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/coin/etf.png) ETHF
+![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/coin/ethw.png) ETHW
+![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/coin/zec.png) ZEC
+![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/coin/rvn.png) RVN
+![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/coin/cfx.png) CFX 
+![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/coin/beam.png) BEAM 
+![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/coin/erg.png) ERG 
+![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/coin/btg.png) BTG 
+![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/coin/ae.png) AE 
 - ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/coin/flux.png) FLUX 
-- ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/coin/firo.png) FIRO 
-- ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/coin/neoxa.png) NEOXA 
-- ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/coin/xmr.png) XMR 
-- ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/coin/kas.png) KASPA 
-- ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/coin/grin.png) GRIN 
+![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/coin/firo.png) FIRO 
+![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/coin/neoxa.png) NEOXA 
+![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/coin/xmr.png) XMR 
+![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/coin/kas.png) KASPA 
+![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/coin/grin.png) GRIN 
 
 ## 🛰️ 推荐系统
 <p align="center">
