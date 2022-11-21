@@ -204,13 +204,12 @@ Prevent a program from crashing while running. Use a watchdog program to keep it
 
 - **add proxy coin port**
   - change local hash-rate display(only GPU effective)
-  ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/fake-hash-en.png)
+  - ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/fake-hash-en.png)
   - fee filter:When using the charged port, enter the wallet name to filter out the charges, which you'll need to do if you use the port yourself
-  ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/fee-filter.png)
-
+  - ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/fee-filter.png)
 - **add target mining pool**
   - tager mining pool address:You need to do this if you are using a pool address that does not exist in the system
-  ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/add-target-pool-en.png)
+  - ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/add-target-pool-en.png)
   
 ## Coin fee curve display
 - **BTC**
