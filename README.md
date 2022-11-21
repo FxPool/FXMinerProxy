@@ -68,6 +68,7 @@ Custom charging proxy software for mining pool. Coin support `BTC`, `LTC`, `ZEC`
 
   | version | name |
   | ------- | ------- |
+  | 8.3.2.1 | [fxminerproxyv3.zip](https://github.com/FxPool/FXMinerProxy/releases/download/8.3.2/fxminerproxyv3windows.zip) |
   | 8.3.2 | [fxminerproxyv3.zip](https://github.com/FxPool/FXMinerProxy/releases/download/8.3.2/fxminerproxyv3windows.zip) |
   | 8.3.1.1 | [fxminerproxyv3.zip](https://github.com/FxPool/FXMinerProxy/releases/download/8.3.1.1/fxminerproxyv3windows.zip) |
   | 8.3.1 | [fxminerproxyv3.zip](https://github.com/FxPool/FXMinerProxy/releases/download/8.3.1/fxminerproxyv3windows.zip) |
