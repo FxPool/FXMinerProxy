@@ -21,7 +21,9 @@
 </p>
 
 # FXMinerProxy
-![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/home-en.png")
+
+![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/home-en.png)
+
 Custom charging proxy software for mining pool. Coin support `BTC`, `LTC`, `ZEC`, `ETC`, `ETHF`, `ETHW`, `RVN`, `CFX`, `BEAM`, `ERGO`, `BTG`, `AE`, `FLUX`, `FIRO`, `NEOXA`, `XMR`, `KASPA`, `GRIN`
 
 ## Disclaimer
