@@ -61,8 +61,8 @@ Custom charging proxy software for mining pool. Coin support `BTC`, `LTC`, `ZEC`
 - **recommend** `WindowsServer2012`
 - **how to run**
 
-  * 1 Decompress fxminerproxy.zip
-  * 2 make sure run `run.exe`
+  * 1 Decompress fxminerproxyv3.zip
+  * 2 open fxminerproxyv3 dir and run `run.exe`
 
 - **download**
 
