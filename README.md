@@ -213,19 +213,19 @@ Prevent a program from crashing while running. Use a watchdog program to keep it
   
 ## Coin fee curve display
 - **BTC**
-<p><a target="_blank" rel="noopener noreferrer"><img width="600" height="50" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/btc-en.png" alt="Vue logo"></a></p>
+<p><a target="_blank" rel="noopener noreferrer"><img width="1200" height="50" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/btc-en.png" alt="Vue logo"></a></p>
 
 - **LTC**
-<p><a target="_blank" rel="noopener noreferrer"><img width="600" height="50" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/ltc-en.png" alt="Vue logo"></a></p>
+<p><a target="_blank" rel="noopener noreferrer"><img width="1200" height="50" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/ltc-en.png" alt="Vue logo"></a></p>
 
 - **ZEC**
-<p><a target="_blank" rel="noopener noreferrer"><img width="600" height="50" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/zec-en.png" alt="Vue logo"></a></p>
+<p><a target="_blank" rel="noopener noreferrer"><img width="1200" height="50" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/zec-en.png" alt="Vue logo"></a></p>
 
 - **ETHF**
-<p><a target="_blank" rel="noopener noreferrer"><img width="600" height="50" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/ethf-en.png" alt="Vue logo"></a></p>
+<p><a target="_blank" rel="noopener noreferrer"><img width="1200" height="50" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/ethf-en.png" alt="Vue logo"></a></p>
 
 - **ETHW**
-<p><a target="_blank" rel="noopener noreferrer"><img width="600" height="50" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/ethw-en.png" alt="Vue logo"></a></p>
+<p><a target="_blank" rel="noopener noreferrer"><img width="1200" height="50" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/ethw-en.png" alt="Vue logo"></a></p>
 
 
 
