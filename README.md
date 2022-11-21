@@ -14,7 +14,7 @@
   </a>
 </p>
 <p align="center">
-  <a href="https://github.com/FxPool/FXMinerProxy/blob/main/readmes/en.md" target="_blank">简体中文</a> •
+  <a href="https://github.com/FxPool/FXMinerProxy/blob/main/readmes/zh.md" target="_blank">简体中文</a> •
 </p>
 <p align="center">
 <a href="https://console-docs.apipost.cn/preview/280432b691e741ca/411c6c29b9f5d365" target="_blank">Tutorial</a> •
