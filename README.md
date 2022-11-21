@@ -10,7 +10,7 @@
     <img src="https://img.shields.io/badge/Language-GoLang-green.svg" alt="travis">
   </a>
   <a>
-    <img src="https://img.shields.io/badge/License-Apache-green.svg" alt="travis">
+    <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="travis">
   </a>
 </p>
 <p align="center">
@@ -21,10 +21,10 @@
 </p>
 
 # FXMinerProxy
+Custom charging proxy software for mining pool. Coin support `BTC`, `LTC`, `ZEC`, `ETC`, `ETHF`, `ETHW`, `RVN`, `CFX`, `BEAM`, `ERGO`, `BTG`, `AE`, `FLUX`, `FIRO`, `NEOXA`, `XMR`, `KASPA`, `GRIN`
 
 ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/home-en.png)
 
-Custom charging proxy software for mining pool. Coin support `BTC`, `LTC`, `ZEC`, `ETC`, `ETHF`, `ETHW`, `RVN`, `CFX`, `BEAM`, `ERGO`, `BTG`, `AE`, `FLUX`, `FIRO`, `NEOXA`, `XMR`, `KASPA`, `GRIN`
 
 ## Disclaimer
     1.The app design and maintenance personnel only provide technical services without any profit purpose, and the operation of this app complies with the laws and regulations where the server is located.
@@ -197,7 +197,6 @@ Prevent a program from crashing while running. Use a watchdog program to keep it
 * windows use: **run.exe**
 
 
-
 ## API Documentation
 [API Reference](https://www.fxpool.org)
 
@@ -205,12 +204,14 @@ Prevent a program from crashing while running. Use a watchdog program to keep it
 
 - **add proxy coin port**
   - change local hash-rate display(only GPU effective)
-  - ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/fake-hash-en.png)
+  - <p><a target="_blank" rel="noopener noreferrer"><img width="588" height="75" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/fake-hash-en.png" alt="Vue logo"></a></p>
   - fee filter:When using the charged port, enter the wallet name to filter out the charges, which you'll need to do if you use the port yourself
-  - ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/fee-filter.png)
+  - <p><a target="_blank" rel="noopener noreferrer"><img width="588" height="105" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/fee-filter.png" alt="Vue logo"></a></p>
+
 - **add target mining pool**
   - tager mining pool address:You need to do this if you are using a pool address that does not exist in the system
-  - ![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/add-target-pool-en.png)
+  - <p><a target="_blank" rel="noopener noreferrer"><img width="588" height="315" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/add-target-pool-en.png" alt="Vue logo"></a></p>
+  
   
 ## Coin fee curve display
 - **BTC**
