@@ -1,5 +1,5 @@
 #bin
-version='8.3.4.1'
+version='8.3.5'
 shell_version='3.2.1'
 uiname='FXMinerProxyV3-shell'
 pkgname='FXMinerProxy'
