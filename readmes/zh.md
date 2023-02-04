@@ -18,6 +18,8 @@
   <a href="https://github.com/FxPool/FXMinerProxy/blob/main/readmes/en.md" target="_blank">English(instructions)</a> •
 </p>
 
+重要必须使用9.2.0以上版本
+
 ## 🗼 简介
 
 FXMinerProxy是基于Golang高性能Pow挖矿代理中转服务器软件，100%原创持续更新。支持跨矿池无损耗，高级UI界面，后台SSH控制台，手机APP，程序不重启，2核2G服务器(不是轻量)轻松3000台无压力。
