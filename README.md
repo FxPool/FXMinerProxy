@@ -1,10 +1,10 @@
 <p align="center"><a  target="_blank" rel="noopener noreferrer"><img width="300" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/logo.png" alt="Vue logo"></a></p>
 <p align="center">
   <a>
-    <img src="https://img.shields.io/badge/Release-9.1.0-orgin.svg" alt="travis">
+    <img src="https://img.shields.io/badge/Release-9.2.0-orgin.svg" alt="travis">
   </a>
   <a>
-    <img src="https://img.shields.io/badge/Last_Update-2022_12_23-orgin.svg" alt="travis">
+    <img src="https://img.shields.io/badge/Last_Update-2023-2-5-orgin.svg" alt="travis">
   </a>
   <a>
     <img src="https://img.shields.io/badge/Language-GoLang-green.svg" alt="travis">
@@ -68,15 +68,7 @@ Custom charging proxy software for mining pool. Coin support `BTC`, `LTC`, `ZEC`
 
   | version | name |
   | ------- | ------- |
-  | 9.1.0 | [fxminerproxyv3.zip](https://github.com/FxPool/FXMinerProxy/releases/download/9.1.0/fxminerproxyv3windows.zip) |
-  | 8.3.4 | [fxminerproxyv3.zip](https://github.com/FxPool/FXMinerProxy/releases/download/8.3.4/fxminerproxyv3windows.zip) |
-  | 8.3.3 | [fxminerproxyv3.zip](https://github.com/FxPool/FXMinerProxy/releases/download/8.3.3/fxminerproxyv3windows.zip) |
-  | 8.3.2.1 | [fxminerproxyv3.zip](https://github.com/FxPool/FXMinerProxy/releases/download/8.3.2.1/fxminerproxyv3windows.zip) |
-  | 8.3.2 | [fxminerproxyv3.zip](https://github.com/FxPool/FXMinerProxy/releases/download/8.3.2/fxminerproxyv3windows.zip) |
-  | 8.3.1.1 | [fxminerproxyv3.zip](https://github.com/FxPool/FXMinerProxy/releases/download/8.3.1.1/fxminerproxyv3windows.zip) |
-  | 8.3.1 | [fxminerproxyv3.zip](https://github.com/FxPool/FXMinerProxy/releases/download/8.3.1/fxminerproxyv3windows.zip) |
-  | 8.3.0 | [fxminerproxyv3.zip](https://github.com/FxPool/FXMinerProxy/releases/download/8.3.0/fxminerproxyv3windows.zip) |
-  | 8.2.2.4 | [fxminerproxyv3.zip](https://github.com/FxPool/FXMinerProxy/releases/download/8.2.2.4/fxminerproxyv3windows.zip) |
+  | 9.2.0 | [fxminerproxyv3.zip](https://github.com/FxPool/FXMinerProxy/releases/download/9.2.0/fxminerproxyv3windows.zip) |
   
 - Download older versions from [github releases](https://github.com/FxPool/FXMinerProxy/releases)
 
