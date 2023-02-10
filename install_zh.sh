@@ -328,8 +328,11 @@ show_menu() {
     8)
         autorun
         ;;
+    9)
+        closeWhiteList
+        ;;
     *)
-        echo -e "${red}请输入正确的数字 [0-8]${plain}"
+        echo -e "${red}请输入正确的数字 [0-9]${plain}"
         ;;
     esac
 }
