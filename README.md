@@ -1,10 +1,10 @@
 <p align="center"><a  target="_blank" rel="noopener noreferrer"><img width="300" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/logo.png" alt="Vue logo"></a></p>
 <p align="center">
   <a>
-    <img src="https://img.shields.io/badge/Release-9.2.0-orgin.svg" alt="travis">
+    <img src="https://img.shields.io/badge/Release-9.3.0-orgin.svg" alt="travis">
   </a>
   <a>
-    <img src="https://img.shields.io/badge/Last_Update-2023-2-5-orgin.svg" alt="travis">
+    <img src="https://img.shields.io/badge/Last_Update-2023-2-11-orgin.svg" alt="travis">
   </a>
   <a>
     <img src="https://img.shields.io/badge/Language-GoLang-green.svg" alt="travis">
