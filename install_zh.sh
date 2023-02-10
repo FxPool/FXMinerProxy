@@ -271,6 +271,11 @@ autorun() {
     cd /root
     echo -e "${green}开机启动设置成功"
 }
+closeWhiteList(){
+    cd $installdir
+    sed -i 's/"is_open_white_list_mode": true/"is_open_white_list_mode": false/g' localconfig.json
+    echo -e "${green}关闭成功"
+}
 show_menu() {
     clear
     check_install
@@ -290,6 +295,7 @@ show_menu() {
      ${green}6.${plain} 查看linux最大连接
      ${green}7.${plain} linux大连接数改为65535(需重启服务器生效)
      ${green}8.${plain} 手动设置开机启动
+     ${green}9.${plain} 关闭IP白名单功能(关闭后重新登录即可)
     
    "
     echo && read -p "请输入选择 [0-8]: " num
