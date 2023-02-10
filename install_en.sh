@@ -211,7 +211,7 @@ update_app() {
             echo && echo -n -e "${yellow}Update failed. Please restart script operation"
             return
         else
-            echo && echo -n -e "${yellow}When the update is complete, press Enter to start,CTRL+C to exit: ${plain}" && read temp
+            #echo && echo -n -e "${yellow}When the update is complete, press Enter to start,CTRL+C to exit: ${plain}" && read temp
             autorun
             start
         fi
@@ -272,6 +272,11 @@ autorun() {
     cd /root
     echo -e "${green}The startup setting is successful"
 }
+closeWhiteList(){
+    cd $installdir
+    sed -i 's/"is_open_white_list_mode": true/"is_open_white_list_mode": false/g' localconfig.json
+    echo -e "${green}关闭成功"
+}
 show_menu() {
     clear
     check_install
@@ -291,9 +296,10 @@ show_menu() {
      ${green}6.${plain} View the maximum Linux connection
      ${green}7.${plain} Number of Linux connections changed to 65535(the server needs to be restarted to take effect)
      ${green}8.${plain} autorun
+     ${green}9.${plain} close ip white list(Re-login takes effect)
     
    "
-    echo && read -p "Please enter selection [0-8]: " num
+    echo && read -p "Please enter selection [0-9]: " num
 
     case "${num}" in
     0)
@@ -323,8 +329,11 @@ show_menu() {
     8)
         autorun
         ;;
+    9)
+        closeWhiteList
+        ;;
     *)
-        echo -e "${red}Please enter the correct number [0-8]${plain}"
+        echo -e "${red}Please enter the correct number [0-9]${plain}"
         ;;
     esac
 }
