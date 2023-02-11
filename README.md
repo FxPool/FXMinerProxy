@@ -43,7 +43,7 @@ Custom charging proxy software for mining pool. Coin support `BTC`, `LTC`, `ZEC`
     Users of this app must use this software in strict accordance with local laws and regulations, and shall bear corresponding legal responsibilities if they use this app to violate local laws.
     2.Before using this app, please read the description of this app in detail. If the user does not have any losses caused by the technical problems of this app, the user shall be responsible for it, and the app development and maintenance personnel shall be responsible for the loss. Regardless, the user shall not claim or file a lawsuit against the developer or maintainer for this.
     3.You should make sure you are not a resident of mainland China, Cuba, Iran, North Korea, Syria, Russia or other countries or regions subject to sanctions managed or enforced by relevant countries or governments or international agencies. The legal responsibility arising from the app shall be borne by myself.
-    4.fxminerproxyv3 are the only 1 officially software name.
+    4.fxminerproxy are the only 1 officially software name.
 
 ## Contact Us
 - Email: hansenloveyou520@gmail.com
