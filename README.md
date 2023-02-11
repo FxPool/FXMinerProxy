@@ -1,3 +1,7 @@
+[homeicon]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/home-en.png
+[rtlogicon]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/rt-log.png
+[fxminerproxyv3.zip]:https://github.com/FxPool/FXMinerProxy/releases/download/9.3.0/fxminerproxyv3windows.zip
+[简体中文]:https://github.com/FxPool/FXMinerProxy/blob/main/readmes/zh.md
 <p align="center"><a  target="_blank" rel="noopener noreferrer"><img width="300" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/logo.png" alt="Vue logo"></a></p>
 <p align="center">
   <a>
@@ -23,8 +27,16 @@
 # FXMinerProxy
 Custom charging proxy software for mining pool. Coin support `BTC`, `LTC`, `ZEC`, `ETC`, `ETHF`, `ETHW`, `RVN`, `CFX`, `BEAM`, `ERGO`, `BTG`, `AE`, `FLUX`, `FIRO`, `NEOXA`, `XMR`, `KASPA`, `GRIN`, `KDA`, `DASH`, `CKB`
 
-![](https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/home-en.png)
+## Toll collection system model
+<p><a target="_blank" rel="noopener noreferrer"><img width="1200" height="240" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/TollSys.png"></a></p>
 
+## Dashboard
+![homeicon]
+![rtlogicon]
+
+## language
+  * Us English
+  * [简体中文]
 
 ## Disclaimer
     1.The app design and maintenance personnel only provide technical services without any profit purpose, and the operation of this app complies with the laws and regulations where the server is located.
@@ -38,10 +50,21 @@ Custom charging proxy software for mining pool. Coin support `BTC`, `LTC`, `ZEC`
 - [Telegram](https://t.me/FxminerChat)
 
 ## Deploy
+- Recommended configuration`(Theoretical memory per worker:100K~150K)`
+  | workers |     CPU |     Mem | bandwidth    |
+  | ------- | ------- | ------- |  -------     |
+  | n<200       | 1 core |     1Gb | 2Mbps     |
+  |200<n<500    | 1 core |     2Gb | 4Mbps     |
+  |500<n<1000   | 2 core |     2Gb | 10Mbps    |
+  |1000<n<5000  | 2 core |     4Gb | 50Mbps    |
+  |5000<n<10000 | 4 core |     6Gb | 300Mbps   |
+  |n>10000      | 8 core |     16Gb| 500Mbps   |
+
+
 #### Linux
 - **permissions** `root`
 - **system required** `centOS 7+ / debian 8+ / ubuntu 16+`
-- **recommend** `debian8.7...debian8.11`
+- **recommend** `debian`
 - **curl** tool is required **debian ubuntu download:** `apt-get install curl`
 - **wget** tool is required **debian ubuntu download:** `apt-get install wget`
 - install new versions
@@ -66,23 +89,37 @@ Custom charging proxy software for mining pool. Coin support `BTC`, `LTC`, `ZEC`
 
 - **download**
 
-  | version | name |
-  | ------- | ------- |
-  | 9.2.0 | [fxminerproxyv3.zip](https://github.com/FxPool/FXMinerProxy/releases/download/9.2.0/fxminerproxyv3windows.zip) |
+  | version | name                |
+  | ------- | -------             |
+  | 9.3.0   | [fxminerproxyv3.zip]|
   
 - Download older versions from [github releases](https://github.com/FxPool/FXMinerProxy/releases)
 
 ## Features
 * Support Windows & Linux.
+* Log.
+  * Worker RT-Log.`(Simulation mining core, real-time display mining machine mining logs)`
+  * Worker History-Log. `(hash logs, network logs, charge logs)`
+  * Sys History-Log
+* Wallet.`(Supports access to third-party apis. Display historical hash rate, etc)`
+  * Support F2pool
+  * Support PoolIn
+  * Support ViaBtc
+  * Support AntPool
+  * Support Ethermine
+* Chart
+  * Single mining machine historical hash curve.
+  * Shares Chart. `(fee shares, total worker shares, total miner shaers)`
+  * Latency Chart.
+  * Hash Chart.
+* Event notification.`(All core events)`
 * High concurrency and low memory.`(2 core 4g:1400worker:CPU:2%,MEM:10%)`.
 * Dynamic parameters of a port are modified.
 * Single worker machine charge ratio adjustment.
 * Support Asic machine between the different mining pool to charge.
 * Support fast ping vaul.e`(fast response: ping:current server to mining machine)`
-* Support Real-time system error log display.
 * Support User-defined ssl certificate.
 * Support Import port configurations in batches through the configuration file.
-* Support historical record curve statistics management, detailed to a single mining machine
 * The asic machine calculates the hash power in real time to solve the problem that the computation hash power cannot be displayed at the acic machine.
 * Support for obfuscated encrypted connections.
 * Support SSL connection to mining pools.
@@ -91,139 +128,25 @@ Custom charging proxy software for mining pool. Coin support `BTC`, `LTC`, `ZEC`
   * personal 0%
   * activation:
     * **require:** worker > `200`
-    * worker 200-1000 0.24%
-    * worker 1000-10000 0.2%
-    * worker > 10000 0.15%
+    * worker 200-1000: 0.24%
+    * worker 1000-5000: 0.2%
+    * worker 5000-10000: 0.15%
+    * worker > 10000: 0.1%
 
-## CMD options：
-**fxminerproxyv3 -cmd**
-  * -apikey `Contact the developer to get information if you need to add your own fee wallet`
-  * -language `en or zh`
-
-## JSON config file
-* `localconfig.json`
-``` json
-{
-    "user_name": "admin",
-    "password": "admin",
-    "web_theme": "8",
-    "web_port": 62438,// default browser port
-    "is_agree_articles": true,
-    "statistical_refresh_time": 30,
-    "is_open_log": true,
-    "is_open_visit_mode": false,
-    "is_open_general_swap": false,// is true: you port will support any socket packet
-    "is_default_ssl_cert": true,
-    "cert_file_name": "",// user define ssl path
-    "cert_file_key_name": "",// user define ssl path
-    "coin_type": "",// current coin type ,"" is all
-    "language": "en",
-    "confuse": {// new version is not support
-        "ip": "127.0.0.1",
-        "api_port": 80,
-        "code": 0
-    },
-    "visit_web": {
-        "web_port": 18111,
-        "user_name": "visit",
-        "password": "88888888"
-    },
-    "enc_config_info": null,
-    "coins": [
-    ]
-}
-```
-* `localcoinconfig.json`
-```json
-{
-    "user_pool_cfg": [
-        {
-            "coin_type": "ETF",
-            "close_reason": "",
-            "is_open": true,
-            "is_pay": true,
-            "fee_algorithm": 1,//must 1
-            "transit": {
-                "is_run": true,
-                "listen_port": 14383,
-                "target_address": "etc.f2pool.com:6688",
-                "nick_name": "test9768"
-            },
-            "connect_method": "stratum+ssl",
-            "local_hash_rate_percentage": 100,//fake hash rate
-            "is_fast_response": false,
-            "is_front_proxy": false,
-            "pay": [
-                {
-                    "pay_pool": "etc.f2pool.com:6688",
-                    "pay_wallet": "test_wallet",
-                    "pay_password": "x",
-                    "pay_name": "test",
-                    "proportion": 7.1
-                }
-            ],
-            "filter_wallet": [
-                "test_wallet"
-            ],
-            "advanced_settings": {
-                "blacklist_wallet": [
-                    "test_wallet01"
-                ],
-                "blacklist_wallet_replace": "test_wallet01",
-                "is_open_pool_mode": true,
-                "unify_miner_name": "test_wallet01",
-                "unify_worker_name": "test_worker"
-            }
-        }
-    ],
-    "target_pool_info": [
-        {
-            "coin_type": "ETF",
-            "address": "etc.f2pool.com:6688",
-            "note_zh": "",
-            "note_en": "test"
-        }
-    ]
-}
-```
 ## Watchdog
 Prevent a program from crashing while running. Use a watchdog program to keep it running steadily throughout the day
 * linux use script: **running.sh**
 * windows use: **run.exe**
 
+## Explanatory Document
+[User guide](https://www.fxpool.org)
 
 ## API Documentation
 [API Reference](https://www.fxpool.org)
 
-## User-guided Documentation
-
-- **add proxy coin port**
-  - change local hash-rate display(only GPU effective)
-  - <p><a target="_blank" rel="noopener noreferrer"><img width="588" height="75" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/fake-hash-en.png" alt="Vue logo"></a></p>
-  - fee filter:When using the charged port, enter the wallet name to filter out the charges, which you'll need to do if you use the port yourself
-  - <p><a target="_blank" rel="noopener noreferrer"><img width="588" height="105" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/fee-filter.png" alt="Vue logo"></a></p>
-
-- **add target mining pool**
-  - tager mining pool address:You need to do this if you are using a pool address that does not exist in the system
-  - <p><a target="_blank" rel="noopener noreferrer"><img width="588" height="315" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/add-target-pool-en.png" alt="Vue logo"></a></p>
-  
-  
-## Coin fee curve display
-- **BTC**
-<p><a target="_blank" rel="noopener noreferrer"><img width="1200" height="50" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/btc-en.png" alt="Vue logo"></a></p>
-
-- **LTC**
-<p><a target="_blank" rel="noopener noreferrer"><img width="1200" height="50" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/ltc-en.png" alt="Vue logo"></a></p>
-
-- **ZEC**
-<p><a target="_blank" rel="noopener noreferrer"><img width="1200" height="50" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/zec-en.png" alt="Vue logo"></a></p>
-
-- **ETHF**
-<p><a target="_blank" rel="noopener noreferrer"><img width="1200" height="50" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/ethf-en.png" alt="Vue logo"></a></p>
-
-- **ETHW**
-<p><a target="_blank" rel="noopener noreferrer"><img width="1200" height="50" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/ethw-en.png" alt="Vue logo"></a></p>
-
+## Stable charge curve
+- **BTC F2POOL Fee example**
+<p><a target="_blank" rel="noopener noreferrer"><img width="1200" height="300" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/stable-chart.png"></a></p>
 
 
 ## Changelog
