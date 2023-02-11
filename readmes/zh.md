@@ -150,7 +150,7 @@
 ## API 开发文档
 [API Reference](https://www.fxpool.org)
 
-## 文档的抽水算力曲线
+## 稳定的抽水算力曲线
 - **鱼池 BTC 例子**
 <p><a target="_blank" rel="noopener noreferrer"><img width="1200" height="300" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/stable-chart.png"></a></p>
 
