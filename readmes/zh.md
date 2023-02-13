@@ -5,7 +5,7 @@
 <p align="center"><a  target="_blank" rel="noopener noreferrer"><img width="300" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/logo.png" alt="Vue logo"></a></p>
 <p align="center">
   <a>
-    <img src="https://img.shields.io/badge/Release-9.3.0-orgin.svg" alt="travis">
+    <img src="https://img.shields.io/badge/Release-9.3.1-orgin.svg" alt="travis">
   </a>
   <a>
     <img src="https://img.shields.io/badge/Last_Update-2023 02 10-orgin.svg" alt="travis">
