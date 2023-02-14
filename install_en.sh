@@ -286,7 +286,7 @@ show_menu() {
      ${green}Software version:${version}
      ${green}The default maximum connection value of Linux has been changed to 65535(for this to take effect, restart the server).
      ${green}During installation, the software is automatically set to boot
-     ${red}The default port number of the browser is 62438. The default user name and password are admin and admin${plain}
+     ${red}The user name and password of the default browser port are randomly generated.\n After successful startup, the user name and password are printed on the console. Note${plain}
      ${green}0.${plain} exit
      ${green}1.${plain} install
      ${green}2.${plain} update
