@@ -51,8 +51,10 @@ Custom charging proxy software for mining pool. Coin support `BTC`, `LTC`, `ZEC`
 - [Telegram](https://t.me/FxminerChat)
 
 ## Deploy
+
 - `The system uses random port user name and password, please pay attention to the console print when booting`
-![randlogin]
+  ![randlogin]
+  
 - Recommended configuration`(Theoretical memory per worker:100K~150K)`
   | workers |     CPU |     Mem | bandwidth    |
   | ------- | ------- | ------- |  -------     |
