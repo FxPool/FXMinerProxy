@@ -52,7 +52,7 @@ Custom charging proxy software for mining pool. Coin support `BTC`, `LTC`, `ZEC`
 
 ## Deploy
 
-- `The system uses random port user name and password, please pay attention to the console print when booting`
+- `The system uses random web port and user name and password, please pay attention to the console print when booting`
 - ![randlogin]
   
 - Recommended configuration`(Theoretical memory per worker:100K~150K)`
