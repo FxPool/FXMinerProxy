@@ -285,7 +285,7 @@ show_menu() {
      ${green}软件版本${version}
      ${green}安装时linux默认最大连接数据已修改为最大65535(需重启服务器生效)
      ${green}安装时软件已经自动设置开机启动
-     ${red}浏览器默认端口62438,默认用户名密码admin,admin${plain}
+     ${red}浏览器默认端口用户名和密码全部使用随机生成，启动成功后会在控制台上打印出来请注意${plain}
      ${green}0.${plain} 退出
      ${green}1.${plain} 安装
      ${green}2.${plain} 更新
