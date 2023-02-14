@@ -2,6 +2,7 @@
 [rtlogicon]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/rt-log.png
 [fxminerproxyv3.zip]:https://github.com/FxPool/FXMinerProxy/releases/download/9.3.0/fxminerproxyv3windows.zip
 [简体中文]:https://github.com/FxPool/FXMinerProxy/blob/main/readmes/zh.md
+[randlogin]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/randlogin.png
 <p align="center"><a  target="_blank" rel="noopener noreferrer"><img width="300" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/logo.png" alt="Vue logo"></a></p>
 <p align="center">
   <a>
@@ -50,6 +51,8 @@ Custom charging proxy software for mining pool. Coin support `BTC`, `LTC`, `ZEC`
 - [Telegram](https://t.me/FxminerChat)
 
 ## Deploy
+- `The system uses random port user name and password, please pay attention to the console print when booting`
+![randlogin]
 - Recommended configuration`(Theoretical memory per worker:100K~150K)`
   | workers |     CPU |     Mem | bandwidth    |
   | ------- | ------- | ------- |  -------     |
