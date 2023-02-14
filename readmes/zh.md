@@ -2,6 +2,7 @@
 [rtlogicon]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/rt-log.png
 [fxminerproxyv3.zip]:https://github.com/FxPool/FXMinerProxy/releases/download/9.3.0/fxminerproxyv3windows.zip
 [简体中文]:https://github.com/FxPool/FXMinerProxy/blob/main/readmes/zh.md
+[randlogin]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/randlogin.png
 <p align="center"><a  target="_blank" rel="noopener noreferrer"><img width="300" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/logo.png" alt="Vue logo"></a></p>
 <p align="center">
   <a>
@@ -56,6 +57,11 @@
 </p>
 
 ## 部署
+
+- `系统采用随机端口用户名和密码，启动的时候请注意控制台的打印`
+
+  ![randlogin]
+
 - 推荐配置`(理论单台矿机内存:100K~150K)`
   | 矿机数 |     CPU |     内存 | 带宽    |
   | ------- | ------- | ------- |  -------     |
