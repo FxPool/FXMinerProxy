@@ -1,15 +1,15 @@
 [homeicon]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/home-en.png
 [rtlogicon]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/rt-log.png
-[fxminerproxyv3.zip]:https://github.com/FxPool/FXMinerProxy/releases/download/9.3.0/fxminerproxyv3windows.zip
+[fxminerproxyv3.zip]:https://github.com/FxPool/FXMinerProxy/releases/download/9.3.2/fxminerproxyv3windows.zip
 [简体中文]:https://github.com/FxPool/FXMinerProxy/blob/main/readmes/zh.md
 [randlogin]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/randlogin.png
 <p align="center"><a  target="_blank" rel="noopener noreferrer"><img width="300" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/logo.png" alt="Vue logo"></a></p>
 <p align="center">
   <a>
-    <img src="https://img.shields.io/badge/Release-9.3.1-orgin.svg" alt="travis">
+    <img src="https://img.shields.io/badge/Release-9.3.2-orgin.svg" alt="travis">
   </a>
   <a>
-    <img src="https://img.shields.io/badge/Last_Update-2023 02 10-orgin.svg" alt="travis">
+    <img src="https://img.shields.io/badge/Last_Update-2023 02 15-orgin.svg" alt="travis">
   </a>
   <a>
     <img src="https://img.shields.io/badge/Language-GoLang-green.svg" alt="travis">
@@ -103,7 +103,7 @@
 
   | 版本 | 名称                |
   | ------- | -------             |
-  | 9.3.0   | [fxminerproxyv3.zip]|
+  | 最新   | [fxminerproxyv3.zip]|
   
 - 下载老版本 [github releases](https://github.com/FxPool/FXMinerProxy/releases)
 
