@@ -115,10 +115,11 @@ install() {
             mv fxminerproxyv3linux/$sofname fxpool-$sofname
             mv fxminerproxyv3linux/running.sh fxpool-$sofname/$wdog
             cd fxpool-$sofname && chmod +x $wdog && chmod +x $sofname && cd ../
-            cp -r fxpool-$sofname /etc/ && cd ../
-            rm -rf $appinstalname && rm $appinstalname.tar.gz
+            cp -r fxpool-$sofname /etc/
+            rm -rf $appinstalname && rm $appinstalname.tar.gz && rm-rf fxpool-$sofname
             if [ ! -f "$installfolder" ]; then
                 rm -rf  $installdir
+                rm -rf $appinstalname && rm $appinstalname.tar.gz && rm-rf fxpool-$sofname
                 echo -e "${red}安装时失败，请输入一键安装脚本重新安装"
                 return
             fi
@@ -151,6 +152,7 @@ install() {
             echo && echo -n -e "${yellow}安装完成,按回车启动,CTRL+C退出: ${plain}" && read temp
             start
         else
+            rm -rf $appinstalname && rm $appinstalname.tar.gz && rm-rf fxpool-$sofname
             echo -e "${red}下载安装包失败，请输入一键安装脚本重新安装"
             retutn
         fi
@@ -202,8 +204,8 @@ update_app() {
             echo && echo -n -e "${yellow}更新失败,重命名失败,请重新操作: ${plain}" && read temp
             return
         fi
-        cp -r fxpool-$sofname /etc/ && cd ../
-        rm -rf $appinstalname && rm $appinstalname.tar.gz
+        cp -r fxpool-$sofname /etc/
+        rm -rf $appinstalname && rm $appinstalname.tar.gz && rm-rf fxpool-$sofname
         if [ ! -f "$installfolder" ]; then
             echo && echo -n -e "${yellow}更新失败,请程序打开脚本操作"
             return
