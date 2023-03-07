@@ -80,14 +80,22 @@
 - **需要curl** 工具 **debian ubuntu 下载:** `apt-get install curl`
 - **需要wget** 工具 **debian ubuntu 下载:** `apt-get install wget`
 - 安装新版本一键安装脚本
-  
+  * 外网
   ```shell
   bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/install_zh.sh)
   ```
+  * 大陆
+  ```shell
+  bash <(curl -s -L https://cdn.jsdelivr.net/gh/FxPool/FXMinerProxy@main/install_zh_cdn.sh)
+  ```
 - 安装指定版本
-
+  * 外网
   ```shell
   bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/oldversion/install_zh.sh) 版本号
+  ```
+  * 大陆
+  ```shell
+  bash <(curl -s -L https://cdn.jsdelivr.net/gh/FxPool/FXMinerProxy@main/oldversion/install_zh_cdn.sh) 版本号
   ```
 
 #### windows系统
