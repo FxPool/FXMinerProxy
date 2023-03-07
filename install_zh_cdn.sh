@@ -102,7 +102,7 @@ kill_wdog(){
 
 install() {
     if [ ! -f "$installfolder" ]; then
-        wget https://cdn.jsdelivr.net/gh/$authorname/$pkgname/archive@$version/fxminerproxyv3linux.tar.gz
+        wget https://cdn.jsdelivr.net/gh/$authorname/$pkgname@$version/fxminerproxyv3linux.tar.gz
         if [ -f "$version.tar.gz" ]; then
             tar -zxvf $version.tar.gz
             cd $pkgname-$version/
@@ -180,7 +180,7 @@ update_app() {
         before_show_menu
     fi
     echo && echo -n -e "${yellow}确定更新吗,按回车确定,CTRL+C退出: ${plain}" && read temp
-    wget https://cdn.jsdelivr.net/gh/$authorname/$pkgname/archive@$version/fxminerproxyv3linux.tar.gz
+    wget https://cdn.jsdelivr.net/gh/$authorname/$pkgname@$version/fxminerproxyv3linux.tar.gz
     if [ ! -f "$version.tar.gz" ]; then
         echo -e "${red}下载安装包失败，请输入一键安装脚本重新更新"
         retutn
