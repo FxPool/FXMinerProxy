@@ -1,6 +1,6 @@
 #bin
 version='10.0.4'
-shell_version='4.0'
+shell_version='4.1'
 uiname='FXMinerProxyV3-shell'
 pkgname='FXMinerProxy'
 authorname='FxPool'
@@ -111,6 +111,7 @@ install() {
             #判断文件夹是否创建成功
             if [ ! -d "fxpool-$sofname" ]; then
                 echo && echo -n -e "${yellow}安装失败,请重新操作: ${plain}" && read temp
+                rm -rf $pkgname-$version && rm $version.tar.gz
                 return
             fi
             mv fxminerproxyv3linux/$sofname fxpool-$sofname
@@ -153,6 +154,7 @@ install() {
             start
         else
             echo -e "${red}下载安装包失败，请输入一键安装脚本重新安装"
+            rm -rf $pkgname-$version && rm $version.tar.gz
             retutn
         fi
     else
@@ -203,12 +205,14 @@ update_app() {
         #判断重命名是否成功
         if [ ! -f "fxpool-$sofname/$wdog" ]; then
             echo && echo -n -e "${yellow}更新失败,重命名失败,请重新操作: ${plain}" && read temp
+            rm -rf $pkgname-$version && rm $version.tar.gz
             return
         fi
         cp -r fxpool-$sofname /etc/ && cd ../
         rm -rf $pkgname-$version && rm $version.tar.gz
         if [ ! -f "$installfolder" ]; then
             echo && echo -n -e "${yellow}更新失败,请程序打开脚本操作"
+            rm -rf $pkgname-$version && rm $version.tar.gz
             return
         else
             #echo && echo -n -e "${yellow}更新完成,按回车启动,CTRL+C退出: ${plain}" && read temp
