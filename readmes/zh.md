@@ -86,7 +86,7 @@
   ```
   * 大陆
   ```shell
-  bash <(curl -s -L https://cdn.jsdelivr.net/gh/FxPool/FXMinerProxy@main/install_zh_cdn.sh)
+  bash <(curl -s -L https://cdn.jsdelivr.net/gh/FxPool/FXMinerProxy@main/install_zh_cdn1.sh)
   ```
 - 安装指定版本
   * 外网
@@ -95,7 +95,7 @@
   ```
   * 大陆
   ```shell
-  bash <(curl -s -L https://cdn.jsdelivr.net/gh/FxPool/FXMinerProxy@main/oldversion/install_zh_cdn.sh) 版本号
+  bash <(curl -s -L https://cdn.jsdelivr.net/gh/FxPool/FXMinerProxy@main/oldversion/install_zh_cdn1.sh) 版本号
   ```
 
 #### windows系统
