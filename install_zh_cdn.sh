@@ -1,16 +1,17 @@
 #bin
 version='10.0.4'
-shell_version='4.2'
+shell_version='4.3'
 uiname='FXMinerProxyV3-shell'
 pkgname='FXMinerProxy'
 authorname='FxPool'
 installname='install.sh'
 webuiname='ui'
 sofname='fxminerproxyv3'
+appinstalname='fxminerproxyv3linux'
 wdog='runningFXMPV3'
 installfolder='/etc/fxpool-fxminerproxyv3/runningFXMPV3'
 installdir='/etc/fxpool-fxminerproxyv3/'
-myFile=fxminerproxyv3linux.tar.gz
+myFile=$appinstalname.tar.gz
 
 red='\033[0;31m'
 green='\033[0;32m'
@@ -21,7 +22,7 @@ plain='\033[0m'
 if [ ! -f "$myFile" ]; then
     echo "\n"
 else
-    rm $version.tar.gz
+    rm $appinstalname.tar.gz
 fi
 #停止老版本
 PROCESS=$(ps -ef | grep porttran | grep -v grep | grep -v PPID | awk '{ print $2}')
@@ -103,24 +104,24 @@ kill_wdog(){
 install() {
     if [ ! -f "$installfolder" ]; then
         wget https://cdn.jsdelivr.net/gh/$authorname/$pkgname@$version/fxminerproxyv3linux.tar.gz
-        if [ -f "$version.tar.gz" ]; then
-            tar -zxvf $version.tar.gz
-            cd $pkgname-$version/
-            tar -zxvf fxminerproxyv3linux.tar.gz
+        if [ -f "$appinstalname.tar.gz" ]; then
+            tar -zxvf $appinstalname.tar.gz
             mkdir fxpool-$sofname && chmod 777 fxpool-$sofname
             #判断文件夹是否创建成功
             if [ ! -d "fxpool-$sofname" ]; then
                 echo && echo -n -e "${yellow}安装失败,请重新操作: ${plain}" && read temp
+                rm -rf $appinstalname && rm $appinstalname.tar.gz
                 return
             fi
             mv fxminerproxyv3linux/$sofname fxpool-$sofname
             mv fxminerproxyv3linux/running.sh fxpool-$sofname/$wdog
             cd fxpool-$sofname && chmod +x $wdog && chmod +x $sofname && cd ../
             cp -r fxpool-$sofname /etc/ && cd ../
-            rm -rf $pkgname-$version && rm $version.tar.gz
+            rm -rf $appinstalname && rm $appinstalname.tar.gz
             if [ ! -f "$installfolder" ]; then
                 rm -rf  $installdir
                 echo -e "${red}安装时失败，请输入一键安装脚本重新安装"
+                rm -rf $appinstalname && rm $appinstalname.tar.gz
                 return
             fi
             changeLimit="n"
@@ -153,6 +154,7 @@ install() {
             start
         else
             echo -e "${red}下载安装包失败，请输入一键安装脚本重新安装"
+            rm -rf $appinstalname && rm $appinstalname.tar.gz
             retutn
         fi
     else
@@ -181,20 +183,19 @@ update_app() {
     fi
     echo && echo -n -e "${yellow}确定更新吗,按回车确定,CTRL+C退出: ${plain}" && read temp
     wget https://cdn.jsdelivr.net/gh/$authorname/$pkgname@$version/fxminerproxyv3linux.tar.gz
-    if [ ! -f "$version.tar.gz" ]; then
+    if [ ! -f "$appinstalname.tar.gz" ]; then
         echo -e "${red}下载安装包失败，请输入一键安装脚本重新更新"
         retutn
     fi
     rm /etc/fxpool-$sofname/*.cache
     kill_wdog
     killProcess
-    tar -zxvf $version.tar.gz
-    cd $pkgname-$version/
-    tar -zxvf fxminerproxyv3linux.tar.gz
+    tar -zxvf $appinstalname.tar.gz
     mkdir fxpool-$sofname && chmod 777 fxpool-$sofname
     #判断文件夹是否创建成功
     if [ ! -d "fxpool-$sofname" ]; then
         echo && echo -n -e "${yellow}更新失败,请重新操作,按回车返回主菜单: ${plain}" && read temp
+        rm -rf $appinstalname && rm $appinstalname.tar.gz
         show_menu
     else
         mv fxminerproxyv3linux/$sofname fxpool-$sofname
@@ -203,12 +204,14 @@ update_app() {
         #判断重命名是否成功
         if [ ! -f "fxpool-$sofname/$wdog" ]; then
             echo && echo -n -e "${yellow}更新失败,重命名失败,请重新操作: ${plain}" && read temp
+            rm -rf $appinstalname && rm $appinstalname.tar.gz
             return
         fi
         cp -r fxpool-$sofname /etc/ && cd ../
-        rm -rf $pkgname-$version && rm $version.tar.gz
+        rm -rf $appinstalname && rm $appinstalname.tar.gz
         if [ ! -f "$installfolder" ]; then
             echo && echo -n -e "${yellow}更新失败,请程序打开脚本操作"
+            rm -rf $appinstalname && rm $appinstalname.tar.gz
             return
         else
             #echo && echo -n -e "${yellow}更新完成,按回车启动,CTRL+C退出: ${plain}" && read temp
