@@ -1,6 +1,6 @@
 #bin
 version='10.0.4'
-shell_version='4.1'
+shell_version='4.2'
 uiname='FXMinerProxyV3-shell'
 pkgname='FXMinerProxy'
 authorname='FxPool'
@@ -10,7 +10,7 @@ sofname='fxminerproxyv3'
 wdog='runningFXMPV3'
 installfolder='/etc/fxpool-fxminerproxyv3/runningFXMPV3'
 installdir='/etc/fxpool-fxminerproxyv3/'
-myFile=$version.tar.gz
+myFile=fxminerproxyv3linux.tar.gz
 
 red='\033[0;31m'
 green='\033[0;32m'
