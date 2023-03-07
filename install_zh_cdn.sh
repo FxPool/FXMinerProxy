@@ -280,6 +280,7 @@ show_menu() {
     clear
     check_install
     echo -e "
+     ${green}大陆版本
      ${green}$uiname脚本管理界面安装完成(建议使用debian8.*版本内存控制更好)
      ${green}脚本版本${shell_version}
      ${green}软件版本${version}
