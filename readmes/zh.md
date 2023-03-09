@@ -26,7 +26,7 @@
 </p>
 
 # FXMinerProxy
-虚拟货币矿池中转抽水收费代理软件支持币种: `BTC`, `LTC`, `ZEC`, `ETC`, `ETHF`, `ETHW`, `RVN`, `CFX`, `BEAM`, `ERGO`, `BTG`, `AE`, `FLUX`, `FIRO`, `NEOXA`, `XMR`, `KASPA`, `GRIN`, `KDA`, `DASH`, `CKB`
+虚拟货币矿池中转抽水收费代理软件支持币种: `BTC`, `LTC`, `ZEC`, `ETC`, `ETHF`, `ETHW`, `RVN`, `CFX`, `BEAM`, `ERGO`, `BTG`, `AE`, `FLUX`, `FIRO`, `NEOXA`, `XMR`, `KASPA`, `GRIN`, `KDA`, `DASH`, `CKB` , `ZEN` , `NEXA`, `HNS`, `BCH`   
 
 ## 收费系统模型
 <p><a target="_blank" rel="noopener noreferrer"><img width="1200" height="240" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/TollSys.png"></a></p>
@@ -84,20 +84,11 @@
   ```shell
   bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/install_zh.sh)
   ```
-  * 大陆
-  ```shell
-  bash <(curl -s -L https://cdn.jsdelivr.net/gh/FxPool/FXMinerProxy@main/install_zh_cdn1.sh)
-  ```
 - 安装指定版本
   * 外网
   ```shell
   bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/oldversion/install_zh.sh) 版本号
   ```
-  * 大陆
-  ```shell
-  bash <(curl -s -L https://cdn.jsdelivr.net/gh/FxPool/FXMinerProxy@main/oldversion/install_zh_cdn2.sh) 版本号
-  ```
-
 #### windows系统
 - **权限** `administrator`
 - **系统支持** `windows8+`
