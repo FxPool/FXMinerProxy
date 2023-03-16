@@ -1,15 +1,15 @@
 [homeicon]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/home-en.png
 [rtlogicon]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/rt-log.png
-[fxminerproxyv3.zip]:https://github.com/FxPool/FXMinerProxy/releases/download/10.2.1/fxminerproxyv3windows.zip
+[fxminerproxyv3.zip]:https://github.com/FxPool/FXMinerProxy/releases/download/10.2.0/fxminerproxyv3windows.zip
 [简体中文]:https://github.com/FxPool/FXMinerProxy/blob/main/readmes/zh.md
 [randlogin]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/randlogin.png
 <p align="center"><a  target="_blank" rel="noopener noreferrer"><img width="300" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/logo.png" alt="Vue logo"></a></p>
 <p align="center">
   <a>
-    <img src="https://img.shields.io/badge/Release-10.2.1-orgin.svg" alt="travis">
+    <img src="https://img.shields.io/badge/Release-10.2.0-orgin.svg" alt="travis">
   </a>
   <a>
-    <img src="https://img.shields.io/badge/Last_Update-2023 03 09-orgin.svg" alt="travis">
+    <img src="https://img.shields.io/badge/Last_Update-2023 03 16-orgin.svg" alt="travis">
   </a>
   <a>
     <img src="https://img.shields.io/badge/Language-GoLang-green.svg" alt="travis">
