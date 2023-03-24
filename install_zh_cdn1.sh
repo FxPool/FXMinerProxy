@@ -1,4 +1,4 @@
-#bin
+﻿#bin
 version='10.2.1'
 shell_version='4.3'
 uiname='FXMinerProxyV3-shell'
@@ -18,7 +18,7 @@ green='\033[0;32m'
 yellow='\033[0;33m'
 plain='\033[0m'
 
-#检查当前下载的文件收有记录
+#检查当前下载的文件收有记录1
 if [ ! -f "$myFile" ]; then
     echo "\n"
 else
