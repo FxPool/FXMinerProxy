@@ -18,6 +18,10 @@
     <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="travis">
   </a>
 </p>
+
+<p align="center">
+  <a href="https://fxpool.github.io/cn/" target="_blank">使用教程-中文</a> •
+</p>
 <p align="center">
   <a href="https://github.com/FxPool/FXMinerProxy/blob/main/readmes/zh.md" target="_blank">简体中文</a> •
 </p>
