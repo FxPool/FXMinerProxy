@@ -150,7 +150,7 @@
 * windows使用: **run.exe**
 
 ## 使用说明书
-[User guide](https://www.fxpool.org)
+[User guide](https://fxpool.github.io/cn/)
 
 ## API 开发文档
 [API Reference](https://www.fxpool.org)
