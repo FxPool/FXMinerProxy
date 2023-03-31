@@ -52,7 +52,8 @@ Custom charging proxy software for mining pool. Coin support `BTC`, `LTC`, `ZEC`
 
 ## Contact Us
 - Email: hansenloveyou520@gmail.com
-- [Telegram](https://t.me/FxminerChat)
+- [Telegram老群(建议大家都加新群老群将慢慢转移过来)](https://t.me/FxminerChat)
+- [Telegram新群](https://t.me/fxminerproxy_chat_cn)
 
 ## Deploy
 
