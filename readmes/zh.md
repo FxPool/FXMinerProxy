@@ -51,7 +51,7 @@
 - [飞机新群](https://t.me/fxminerproxy_chat_cn)
 
 ## 手机APP
-- 安卓已经上线 苹果正在提交审核中...(如二维码失效可到电报群下载)
+- 安卓已经上线 苹果正在提交审核中...(如二维码失效可到电报群下载)，最新版本已经不支持APP，新版app在设计中。。。尽情期待
 <p align="center">
 <img width="200" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/app_android_download.png" alt="Vue logo">
 <img width="400" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/phone1.jpg" alt="Vue logo">
