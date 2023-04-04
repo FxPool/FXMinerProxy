@@ -47,7 +47,8 @@
 
 ## 联系我们
 - 邮件: hansenloveyou520@gmail.com
-- [飞机群](https://t.me/FxminerChat)
+- [飞机老群，不在维护](https://t.me/FxminerChat)
+- [飞机新群](https://t.me/fxminerproxy_chat_cn)
 
 ## 手机APP
 - 安卓已经上线 苹果正在提交审核中...(如二维码失效可到电报群下载)
