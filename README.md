@@ -149,10 +149,10 @@ Prevent a program from crashing while running. Use a watchdog program to keep it
 * windows use: **run.exe**
 
 ## Explanatory Document
-[User guide](https://www.fxpool.org)
+[User guide](https://fxpool.github.io/cn/)
 
 ## API Documentation
-[API Reference](https://www.fxpool.org)
+[API Reference](https://fxpool.github.io/cn/)
 
 ## Stable charge curve
 - **BTC F2POOL Fee example**
