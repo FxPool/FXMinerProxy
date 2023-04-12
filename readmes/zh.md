@@ -154,7 +154,7 @@
 [User guide](https://fxpool.github.io/cn/)
 
 ## API 开发文档
-[API Reference](https://www.fxpool.org)
+[API Reference](https://fxpool.github.io/cn/)
 
 ## 稳定的抽水算力曲线
 - **鱼池 BTC 例子**
