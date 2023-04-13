@@ -1,15 +1,15 @@
 [homeicon]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/home-en.png
 [rtlogicon]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/rt-log.png
-[fxminerproxyv3.zip]:https://github.com/FxPool/FXMinerProxy/releases/download/10.2.1/fxminerproxyv3windows.zip
+[fxminerproxyv3.zip]:https://github.com/FxPool/FXMinerProxy/releases/download/10.2.2/fxminerproxyv3windows.zip
 [简体中文]:https://github.com/FxPool/FXMinerProxy/blob/main/readmes/zh.md
 [randlogin]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/randlogin_en.png
 <p align="center"><a  target="_blank" rel="noopener noreferrer"><img width="300" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/logo.png" alt="Vue logo"></a></p>
 <p align="center">
   <a>
-    <img src="https://img.shields.io/badge/Release-10.2.1-orgin.svg" alt="travis">
+    <img src="https://img.shields.io/badge/Release-10.2.2-orgin.svg" alt="travis">
   </a>
   <a>
-    <img src="https://img.shields.io/badge/Last_Update-2023 03 22-orgin.svg" alt="travis">
+    <img src="https://img.shields.io/badge/Last_Update-2023 04 14-orgin.svg" alt="travis">
   </a>
   <a>
     <img src="https://img.shields.io/badge/Language-GoLang-green.svg" alt="travis">
@@ -77,6 +77,7 @@ Custom charging proxy software for mining pool. Coin support `BTC`, `LTC`, `ZEC`
 - **recommend** `debian`
 - **curl** tool is required **debian ubuntu download:** `apt-get install curl`
 - **wget** tool is required **debian ubuntu download:** `apt-get install wget`
+
 - install new versions
   
   ```shell
@@ -86,6 +87,12 @@ Custom charging proxy software for mining pool. Coin support `BTC`, `LTC`, `ZEC`
 
   ```shell
   bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/oldversion/install_en.sh) verNumber
+  ```
+
+- Stable version
+
+  ```shell
+  bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/oldversion/install_en.sh) 10.2.1
   ```
 
 #### windows
