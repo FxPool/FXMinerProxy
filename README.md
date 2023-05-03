@@ -32,8 +32,11 @@
 </p>
 
 # 加盟商
-## 市面上若出现界面和我们相同除下面展示的均为盗版软件，加盟商的开发者抽水费用为在本软件默认费用的基础上外加0.27%。
-
+市面上若出现界面和我们相同除下面展示的均为盗版软件，加盟商的开发者抽水费用为在本软件默认费用的基础上(0.27%)外加加盟商自己设置的抽水比例。
+<p>
+<img width="70" height="50" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/jiameng-nb.png">
+<img width="50" height="50" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/jiameng-JT.png">
+</p>
 
 # FXMinerProxy
 Custom charging proxy software for mining pool. Coin support `BTC`, `LTC`, `ZEC`, `ETC`, `ETHF`, `ETHW`, `RVN`, `CFX`, `BEAM`, `ERGO`, `BTG`, `AE`, `FLUX`, `FIRO`, `NEOXA`,`XMR`, `KASPA`, `GRIN`, `KDA`, `DASH`, `CKB`, `RXD`,`ZIL`,`ETHW_ZIL`,`ETHF_ZIL`,`ETC_ZIL`,`KDA`, `DASH`, `CKB` , `ZEN` , `NEXA`, `HNS`, `BCH`, `IRON`    
