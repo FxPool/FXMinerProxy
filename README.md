@@ -31,6 +31,9 @@
   <a href="https://www.youtube.com/watch?v=A0oGFG7CRIM&t=110s" target="_blank">隧道加密视频教程</a> •
 </p>
 
+# 加盟商
+## 市面上若出现界面和我们相同除下面展示的均为盗版软件，加盟商的开发者抽水费用为在本软件默认费用的基础上外加0.27%。
+
 
 # FXMinerProxy
 Custom charging proxy software for mining pool. Coin support `BTC`, `LTC`, `ZEC`, `ETC`, `ETHF`, `ETHW`, `RVN`, `CFX`, `BEAM`, `ERGO`, `BTG`, `AE`, `FLUX`, `FIRO`, `NEOXA`,`XMR`, `KASPA`, `GRIN`, `KDA`, `DASH`, `CKB`, `RXD`,`ZIL`,`ETHW_ZIL`,`ETHF_ZIL`,`ETC_ZIL`,`KDA`, `DASH`, `CKB` , `ZEN` , `NEXA`, `HNS`, `BCH`, `IRON`    
