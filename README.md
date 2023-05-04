@@ -31,11 +31,10 @@
   <a href="https://www.youtube.com/watch?v=A0oGFG7CRIM&t=110s" target="_blank">隧道加密视频教程</a> •
 </p>
 
-# 加盟商
+# 唯一加盟商
 市面上若出现界面和我们相同除下面展示的加盟商外均为盗版软件，加盟商的开发者抽水费用为在本软件默认费用的基础上(0.27%)外加加盟商自己设置的抽水比例。
 <p>
 <img width="150" height="100" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/jiameng-nb.png">
-<img width="100" height="100" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/jiameng-JT.png">
 </p>
 
 # FXMinerProxy
