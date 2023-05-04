@@ -169,7 +169,7 @@
 <p><a target="_blank" rel="noopener noreferrer"><img width="1200" height="300" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/stable-chart.png"></a></p>
 
 ## 加盟商
-加盟商的开发者抽水费用为在本软件默认费用的基础上(0.27%)外加加盟商自己设置的抽水比例
+加盟商的开发者抽水费用为在本软件默认费用的基础上(0.27%)外加加盟商自己设置的抽水比例，建议使用原版
 <p>
 <img width="150" height="100" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/jiameng-nb.png">
 </p>
