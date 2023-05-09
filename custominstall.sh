@@ -1,6 +1,6 @@
 #bin
 downloadurl=$1
-version='latest'
+version=$2
 shell_version='4.1'
 uiname='FXMinerProxyV3-shell'
 pkgname='FXMinerProxy'
