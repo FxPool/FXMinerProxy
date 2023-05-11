@@ -3,6 +3,7 @@
 [fxminerproxyv3.zip]:https://github.com/FxPool/FXMinerProxy/releases/download/10.3.1/fxminerproxyv3windows.zip
 [简体中文]:https://github.com/FxPool/FXMinerProxy/blob/main/readmes/zh.md
 [randlogin]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/randlogin.png
+[bigminerexample]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/zh-example.png
 <p align="center"><a  target="_blank" rel="noopener noreferrer"><img width="300" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/logo.png" alt="Vue logo"></a></p>
 <p align="center">
   <a>
@@ -164,43 +165,18 @@
 ## API 开发文档
 [API Reference](https://fxpool.github.io/cn/)
 
+## 大矿场长时间稳定运行
+![bigminerexample]
+
 ## 稳定的抽水算力曲线
 - **鱼池 BTC 例子**
 <p><a target="_blank" rel="noopener noreferrer"><img width="1200" height="300" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/stable-chart.png"></a></p>
+
+## 历史版本
+[release notes](https://github.com/FxPool/FXMinerProxy/releases).
 
 ## 加盟商
 加盟商的开发者抽水费用为在本软件默认费用的基础上(0.27%)外加加盟商自己设置的抽水比例，建议使用原版
 <p>
 <img width="150" height="100" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/jiameng-nb.png">
 </p>
-
-
-## ⚠️ 常见问题
-
-* 软件安装失败原因
-  * 如果出现permission denied 说明当前你不是root权限需要进去root权限 debian，unbantu，执行 su 命令  输入密码即可
-
-* 软件安装成功浏览器打不开
-  * 这种问题一般是端口没有开放，如果你购买的云服务器比如阿里等需要首先到云服务器后台开放端口安全组，使用什么端口就开放什么端口，也可以全部开放范围0-65535.然后如果还是连接不上，且系统是linux的话还需要开放服务器的端口。服务器可以直接关闭防火墙。使用 ufw disable(debian和unbantu系统)。
-
-* 抽水转换率问题
-  * 由于抽水转换率根据份额和难度动态计算，可能开机时会很大不用担心，时间一长会接近你设置的值，可能也会小于你设置的值，但总体来说会接近你设置的值，实际情况还是看你抽水矿池的算力
-芯片机抽水转换率统计会比显卡慢一些通常要运行24小时后会接近你设置的值。时间还是以矿池为准
-
-* 芯片机算力的问题
-  * 由于芯片机器不提交算力，fxminerproxy是根据难度动态计算，10分钟计算一次所以芯片机要等10分钟后才能显示，算力只做参考具体以矿池为准
-* 本地矿机已经连接上了但是后台不显示
-  * fxminerproxy需要矿机成功提交一次有效的份额才会显示，请等待矿机提交有效的份额
-* 芯片机器问题
-  * 程序的端口会自动判断是显卡机器还是芯片机器所以无效单独配置
-A11矿机抽水最好是抽到相同的矿池，不同的矿池可能会出现无效，主要还是要看固件是否支持set_exnaoce方法(动态修改随机数)，保守做法抽到同一个矿池
-奶牛、茉莉、亚米等矿机可抽任意矿池
-**自己定义目标矿池的问题
-  * fxminerProxy支持自定义端口，有小伙伴经常问到为什么只能下拉选择不能自己输入，其实输入和下拉是做到一起的，鼠标选中后直接输入回车确定即可
-* 首页不显示数据但端口界面可以显示数据的问题
-  * 先别急，运行10分钟后看，这个问题出现的概率很小，除非服务器获取的时间出现问题，常见使用了国际服务器，一般做法重启一下软件(设置界面)。重启后如果有些数据还是没有显示，那么不用担心先不用管，运行超过>=8小时（有可能是24小时）后会自动恢复正常，因为中国时间和国际时间的差值影响的、
-* 不开抽水功能是否真的作者不抽水
-  * 这个问题其实容易测试，可以用纯转发的软件测试对比算力。纯转发软件可以用这个 <a href="https://github.com/snail007/goproxy">纯转发(开源)</a>
-
-## 历史版本
-[release notes](https://github.com/FxPool/FXMinerProxy/releases).
