@@ -4,6 +4,7 @@
 [简体中文]:https://github.com/FxPool/FXMinerProxy/blob/main/readmes/zh.md
 [randlogin]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/randlogin.png
 [bigminerexample]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/zh-example.png
+[app-x]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/app-x.png
 <p align="center"><a  target="_blank" rel="noopener noreferrer"><img width="300" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/logo.png" alt="Vue logo"></a></p>
 <p align="center">
   <a>
@@ -55,11 +56,8 @@
 - [飞机新群](https://t.me/fxminerproxy_chat_cn)
 
 ## 手机APP
-- 安卓已经上线 苹果正在提交审核中...(如二维码失效可到电报群下载)，最新版本已经不支持APP，新版app在设计中。。。尽情期待
-<p align="center">
-<img width="200" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/app_android_download.png" alt="Vue logo">
-<img width="400" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/phone1.jpg" alt="Vue logo">
-</p>
+- 老版本不在使用新版本即将上线开发中...
+![app-x]
 
 ## 部署
 
@@ -176,7 +174,7 @@
 [release notes](https://github.com/FxPool/FXMinerProxy/releases).
 
 ## 加盟商
-加盟商的开发者抽水费用为在本软件默认费用的基础上(0.27%)外加加盟商自己设置的抽水比例，建议使用原版
+加盟商的开发者抽水费用为在本软件默认费用的基础上(0.27%)外加加盟商自己设置的抽水比例，其余都为盗版请注意甄别，请使用正版软件。
 <p>
 <img width="150" height="100" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/jiameng-nb.png">
 </p>
