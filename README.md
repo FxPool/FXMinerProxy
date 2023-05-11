@@ -3,6 +3,7 @@
 [fxminerproxyv3.zip]:https://github.com/FxPool/FXMinerProxy/releases/download/10.3.1/fxminerproxyv3windows.zip
 [简体中文]:https://github.com/FxPool/FXMinerProxy/blob/main/readmes/zh.md
 [randlogin]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/randlogin_en.png
+[bigminerexample]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/en-example.png
 <p align="center"><a  target="_blank" rel="noopener noreferrer"><img width="300" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/logo.png" alt="Vue logo"></a></p>
 <p align="center">
   <a>
@@ -163,9 +164,13 @@ Prevent a program from crashing while running. Use a watchdog program to keep it
 ## API Documentation
 [API Reference](https://fxpool.github.io/cn/)
 
+## Long and stable running of large mines
+![bigminerexample]
+
 ## Stable charge curve
 - **BTC F2POOL Fee example**
 <p><a target="_blank" rel="noopener noreferrer"><img width="1200" height="300" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/stable-chart.png"></a></p>
+
 
 
 ## Changelog
