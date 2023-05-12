@@ -1,6 +1,6 @@
 #bin
 version='10.3.1'
-shell_version='5.0.0'
+shell_version='5.0.1'
 uiname='FXMinerProxyV3-shell'
 pkgname='FXMinerProxy'
 authorname='FxPool'
@@ -70,7 +70,7 @@ OsSupport()
     else
        # echo not support this os system pls use CentOS,Ubuntu,Debian
        echo -e "${red}不支持的操作系统，请使用CentOS或Ubuntu或Debian"
-       return
+       before_show_menu
     fi
 }
 
