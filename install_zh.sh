@@ -1,6 +1,6 @@
 #bin
 version='10.3.1'
-shell_version='5.0.2'
+shell_version='5.0.3'
 uiname='FXMinerProxyV3-shell'
 pkgname='FXMinerProxy'
 authorname='FxPool'
@@ -342,6 +342,9 @@ closeWhiteList(){
     sed -i 's/"is_open_white_list_mode": true/"is_open_white_list_mode": false/g' localconfig.json
     echo -e "${green}关闭成功"
 }
+checkConfigFile(){
+    cat /etc/fxpool-fxminerproxyv3/localconfig.json
+}
 show_menu() {
     clear
     check_install
@@ -362,6 +365,7 @@ show_menu() {
      ${green}7.${plain} linux大连接数改为65535(需重启服务器生效)
      ${green}8.${plain} 手动设置开机启动
      ${green}9.${plain} 关闭IP白名单功能(关闭后重新登录即可)
+     ${green}10.${plain} 查看配置文件(登录信息等)
     
    "
     echo && read -p "请输入选择 [0-8]: " num
@@ -396,6 +400,9 @@ show_menu() {
         ;;
     9)
         closeWhiteList
+        ;;
+    10)
+        checkConfigFile
         ;;
     *)
         echo -e "${red}请输入正确的数字 [0-9]${plain}"
