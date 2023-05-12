@@ -1,6 +1,6 @@
 #bin
 version='10.3.1'
-shell_version='5.1.0'
+shell_version='5.1.1'
 uiname='FXMinerProxyV3-shell'
 pkgname='FXMinerProxy'
 authorname='FxPool'
@@ -339,7 +339,7 @@ autorun() {
         echo "cd $installdir && setsid ./$wdog &" >>rc.local
         echo "exit 0" >>rc.local
         cd /root
-        echo -e "${green}开机启动设置成功"
+        echo -e "${green}开机启动设置成功，linux发布类型:$DISTRO"
     else
         cd /etc/rc.d/
         rm rc.local
@@ -349,7 +349,7 @@ autorun() {
         echo "cd $installdir && setsid ./$wdog &" >>rc.local
         echo "exit 0" >>rc.local
         cd /root
-        echo -e "${green}开机启动设置成功"
+        echo -e "${green}开机启动设置成功，linux发布类型:$DISTRO"
     fi
 }
 closeWhiteList(){
@@ -383,7 +383,7 @@ show_menu() {
      ${green}10.${plain} 查看配置文件(登录信息等)
     
    "
-    echo && read -p "请输入选择 [0-8]: " num
+    echo && read -p "请输入选择 [0-10]: " num
 
     case "${num}" in
     0)
@@ -420,7 +420,7 @@ show_menu() {
         checkConfigFile
         ;;
     *)
-        echo -e "${red}请输入正确的数字 [0-9]${plain}"
+        echo -e "${red}请输入正确的数字 [0-10]${plain}"
         ;;
     esac
 }
