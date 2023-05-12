@@ -1,6 +1,6 @@
 #bin
 version='10.3.1'
-shell_version='5.0.1'
+shell_version='5.0.2'
 uiname='FXMinerProxyV3-shell'
 pkgname='FXMinerProxy'
 authorname='FxPool'
@@ -62,14 +62,14 @@ OsSupport()
         DISTRO='unknow'
     fi
     echo $DISTRO;
-    str1="CentOS,Ubuntu,Debian"
+    str1="CentOS,Ubuntu,Debian,Aliyun"
     if [[ $str1 =~ $DISTRO ]]
     then
        # echo support this os system 
        return
     else
        # echo not support this os system pls use CentOS,Ubuntu,Debian
-       echo -e "${red}不支持的操作系统，请使用CentOS或Ubuntu或Debian"
+       echo -e "${red}不支持的操作系统，请使用CentOS或Ubuntu或Debian或Aliyun"
        before_show_menu
     fi
 }
@@ -294,6 +294,16 @@ stop() {
 }
 autorun() {
     if grep -Eqii "CentOS" /etc/issue || grep -Eq "CentOS" /etc/*-release; then
+        cd /etc/rc.d/
+        rm rc.local
+        touch rc.local
+        chmod 777 rc.local
+        echo "#!/bin/bash" >>rc.local
+        echo "cd $installdir && setsid ./$wdog &" >>rc.local
+        echo "exit 0" >>rc.local
+        cd /root
+        echo -e "${green}开机启动设置成功"
+    elif grep -Eqi "Aliyun" /etc/issue || grep -Eq "Aliyun" /etc/*-release; then
         cd /etc/rc.d/
         rm rc.local
         touch rc.local
