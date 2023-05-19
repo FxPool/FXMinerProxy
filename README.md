@@ -32,6 +32,12 @@
   <a href="https://www.youtube.com/watch?v=A0oGFG7CRIM&t=110s" target="_blank">隧道加密视频教程</a> •
 </p>
 
+## 不再支持定制版本
+由于定制版本抽水不受控制导致客户受损失影响我们的口碑，请使用了以下中转的客户可以重新安装正版软件。已经全面关闭定制版本
+<p>
+<img width="150" height="100" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/jiameng-nb.png">
+</p>
+
 # FXMinerProxy
 Custom charging proxy software for mining pool. Coin support `BTC`, `LTC`, `ZEC`, `ETC`, `ETHF`, `ETHW`, `RVN`, `CFX`, `BEAM`, `ERGO`, `BTG`, `AE`, `FLUX`, `FIRO`, `NEOXA`,`XMR`, `KASPA`, `GRIN`, `KDA`, `DASH`, `CKB`, `RXD`,`ZIL`,`ETHW_ZIL`,`ETHF_ZIL`,`ETC_ZIL`,`KDA`, `DASH`, `CKB` , `ZEN` , `NEXA`, `HNS`, `BCH`, `IRON`    
 
@@ -176,8 +182,3 @@ Prevent a program from crashing while running. Use a watchdog program to keep it
 ## Changelog
 Detailed changes for each release are documented in the [release notes](https://github.com/FxPool/FXMinerProxy/releases).
 
-## 加盟商
-加盟商的开发者抽水费用为在本软件默认费用的基础上(0.27%)外加加盟商自己设置的抽水比例
-<p>
-<img width="150" height="100" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/jiameng-nb.png">
-</p>
