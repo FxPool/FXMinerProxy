@@ -33,6 +33,15 @@
   <a href="https://www.youtube.com/watch?v=A0oGFG7CRIM&t=110s" target="_blank">隧道加密视频教程</a> •
 </p>
 
+## 不再支持定制版本
+由于定制版本抽水不受控制导致客户受损失影响我们的口碑，请使用了以下中转的客户可以重新安装正版软件。已经全面关闭定制版本
+<p>
+<img width="150" height="100" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/jiameng-nb.png">
+</p>
+
+## 使用了我们软件界面的盗版软件(实际界面不是)
+MINErpRroxY/JTMinerProxy
+
 # FXMinerProxy(原创正版)
 虚拟货币矿池中转抽水收费代理软件支持币种: `BTC`, `LTC`, `ZEC`, `ETC`, `ETHF`, `ETHW`, `RVN`, `CFX`, `BEAM`, `ERGO`, `BTG`, `AE`, `FLUX`, `FIRO`, `NEOXA`,`XMR`, `KASPA`, `GRIN`, `KDA`, `DASH`, `CKB`, `RXD`,`ZIL`,`ETHW_ZIL`,`ETHF_ZIL`,`ETC_ZIL`,`KDA`, `DASH`, `CKB` , `ZEN` , `NEXA`, `HNS`, `BCH`, `IRON`。
 
@@ -176,8 +185,3 @@
 ## 历史版本
 [release notes](https://github.com/FxPool/FXMinerProxy/releases).
 
-## 加盟商
-加盟商的开发者抽水费用为在本软件默认费用的基础上(0.27%)外加加盟商自己设置的抽水比例，其余都为盗版请注意甄别，请使用正版软件。
-<p>
-<img width="150" height="100" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/jiameng-nb.png">
-</p>
