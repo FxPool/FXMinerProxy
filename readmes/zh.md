@@ -34,7 +34,7 @@
 </p>
 
 ## 挂盗版软件(利用之前发布的定制版BUG做的-先在已经关闭定制版本-fxminer是唯一持续更新的正版软件)
-# 如果你之前安装过以下这些软件请重新安装系统后再转fxminer
+# 如果你之前安装过以下这些软件请重新安装系统后再装fxminer
 tiancao2022/NBMinerProxy
 <p>
 <img width="150" height="100" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/jiameng-nb.png">
