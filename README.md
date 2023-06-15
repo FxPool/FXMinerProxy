@@ -33,7 +33,7 @@
 </p>
 
 ## 挂盗版软件(有利用之前发布的定制版做的现在已经全部关闭定制版本有改相识项目名字的大家一定要看项目发布的时间
-#  如果你之前安装过请重新转系统后再安装fxminer
+#  如果你之前安装过以下两种软件请重新转系统后再安装fxminer，否则抽水会有问题
 tiancao2022/NBMinerProxy
 <p>
 <img width="150" height="100" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/jiameng-nb.png">
