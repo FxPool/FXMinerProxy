@@ -37,6 +37,7 @@
 tiancao2022/NBMinerProxy
 <p>
 <img width="150" height="100" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/jiameng-nb.png">
+<img width="150" height="100" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/nb-xxx.png">
 </p>
 
 MINErpRroxY/JTMinerProxy 
