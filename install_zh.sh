@@ -364,6 +364,7 @@ show_menu() {
     clear
     check_install
     echo -e "
+     ${yellow}注意:之前安装过盗版软件的(nbminerproxy)请先重新安装操作系统否则会影响抽水
      ${green}$uiname脚本管理界面安装完成(建议使用debian8.*版本内存控制更好)
      ${green}脚本版本${shell_version}
      ${green}软件版本${version}
