@@ -32,7 +32,7 @@
   <a href="https://www.youtube.com/watch?v=A0oGFG7CRIM&t=110s" target="_blank">隧道加密视频教程</a> •
 </p>
 
-## 挂盗版软件(有利用之前发布的定制版做的现在已经全部关闭定制版本有改相识项目名字的大家一定要看项目发布的时间
+## 挂盗版软件(利用之前发布的定制版BUG做的-先在已经关闭定制版本-fxminer是唯一持续更新的正版软件)
 #  如果你之前安装过以下两种软件请重新转系统后再安装fxminer，否则抽水会有问题
 tiancao2022/NBMinerProxy
 <p>
