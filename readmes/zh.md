@@ -33,8 +33,8 @@
   <a href="https://www.youtube.com/watch?v=A0oGFG7CRIM&t=110s" target="_blank">隧道加密视频教程</a> •
 </p>
 
-## 挂盗版软件(有利用之前发布的定制版做的现在已经全部关闭定制版本有改相识项目名字的大家一定要看项目发布的时间)
-# 如果你之前安装过这些软件请重新安装系统后再转fxminer
+## 挂盗版软件(利用之前发布的定制版BUG做的-先在已经关闭定制版本-fxminer是唯一持续更新的正版软件)
+# 如果你之前安装过以下这些软件请重新安装系统后再转fxminer
 tiancao2022/NBMinerProxy
 <p>
 <img width="150" height="100" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/jiameng-nb.png">
@@ -182,7 +182,7 @@ FxPoo1/FXMinerProxy
 ## API 开发文档
 [API Reference](https://fxpool.github.io/cn/)
 
-## 大矿场长时间稳定运行
+## 5000+的BTC大矿场长时间稳定运行
 ![bigminerexample]
 
 ## 稳定的抽水算力曲线
