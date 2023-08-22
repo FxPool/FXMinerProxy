@@ -1,18 +1,20 @@
 {
-    "en":{
-        "xna":{
-            "ins":"XNA币种:若开启抽水出现大量无效,说明内核不支持无损抽水,加入高级参数进入通用抽水模式 -special=内核名称(不用全部输入比如BzMiner/v16.0.0输入BzMiner即可,逗号分隔加入多个,区分大小写).比如 -special=BzMiner.已测试 GMiner,NB支持无损抽水"
-        },
-        "rxd":{
-            "ins":"RXD币种:若开启抽水出现大量无效,说明内核不支持无损抽水,加入高级参数进入通用抽水模式 -special=内核名称(不用全部输入比如BzMiner/v16.0.0输入BzMiner即可,逗号分隔加入多个,区分大小写).比如 -special=BzMiner.已测试 GMiner支持无损抽水"
-        }
+  "language": {
+    "en": {
+      "xna": {
+        "ins": "XNA币种:若开启抽水出现大量无效,说明内核不支持无损抽水,加入高级参数进入通用抽水模式 -special=内核名称(不用全部输入比如BzMiner/v16.0.0输入BzMiner即可,逗号分隔加入多个,区分大小写).比如 -special=BzMiner.已测试 GMiner,NB支持无损抽水"
+      },
+      "rxd": {
+        "ins": "RXD币种:若开启抽水出现大量无效,说明内核不支持无损抽水,加入高级参数进入通用抽水模式 -special=内核名称(不用全部输入比如BzMiner/v16.0.0输入BzMiner即可,逗号分隔加入多个,区分大小写).比如 -special=BzMiner.已测试 GMiner支持无损抽水"
+      }
     },
-    "zh":{
-        "xna":{
-            "ins":"XNA currency: If a large number of invalidations occur when pumping is enabled, it indicates that the kernel does not support lossless pumping. Add advanced parameters into the general pumping mode -special= kernel name (do not input all such as BzMiner/v16.0.0 input BzMiner can be separated by commas to add multiple, case sensitive). For example -special=BzMiner. GMiner,NB has been tested to support lossless pumping"
-        },
-        "rxd":{
-            "ins":"RXD currency: If a large number of invalidations occur when pumping is enabled, it indicates that the kernel does not support lossless pumping. Add advanced parameters into the general pumping mode -special= kernel name (do not input all such as BzMiner/v16.0.0 input BzMiner can be separated by commas to add multiple, case sensitive). For example -special=BzMiner. GMiner has been tested to support lossless pumping"
-        }
+    "zh": {
+      "xna": {
+        "ins": "XNA currency: If a large number of invalidations occur when pumping is enabled, it indicates that the kernel does not support lossless pumping. Add advanced parameters into the general pumping mode -special= kernel name (do not input all such as BzMiner/v16.0.0 input BzMiner can be separated by commas to add multiple, case sensitive). For example -special=BzMiner. GMiner,NB has been tested to support lossless pumping"
+      },
+      "rxd": {
+        "ins": "RXD currency: If a large number of invalidations occur when pumping is enabled, it indicates that the kernel does not support lossless pumping. Add advanced parameters into the general pumping mode -special= kernel name (do not input all such as BzMiner/v16.0.0 input BzMiner can be separated by commas to add multiple, case sensitive). For example -special=BzMiner. GMiner has been tested to support lossless pumping"
+      }
     }
+  }
 }
