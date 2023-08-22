@@ -2,10 +2,10 @@
   "language": {
     "zh": {
       "xna": {
-        "ins": "<div class=\"advance-ins-list color-gray-094\">XNA币种:若开启抽水出现大量无效,说明内核不支持无损抽水,加入高级参数进入通用抽水模式 <font color=\"#2392dc\">-special=内核名称</font>(不用全部输入比如BzMiner/v16.0.0输入BzMiner即可,逗号分隔加入多个,区分大小写).比如 -special=BzMiner 已测试 <font color=\"#84bf40\">GMiner,NB</font>支持无损抽水,<font color=\"#ff4a4a\">BzMiner不支持</font></div>"
+        "ins": "<div class=\"advance-ins-list color-gray-094\">XNA币种:若开启抽水出现大量无效,说明内核不支持无损抽水,加入高级参数进入通用抽水模式 <font color=\"#2392dc\">-special=内核名称</font>(不用全部输入比如BzMiner/v16.0.0输入BzMiner即可,逗号分隔加入多个,区分大小写).比如 -special=BzMiner 已测试 <font color=\"#84bf40\">GMiner,NB</font>支持无损抽水,<font color=\"#ff4a4a\">BzMiner不支持</font><font color=\"#FFFF00\">**内核名称从矿机列表中去查看**</font></div>"
       },
       "rxd": {
-        "ins": "<div class=\"advance-ins-list color-gray-094\">RXD币种:若开启抽水出现大量无效,说明内核不支持无损抽水,加入高级参数进入通用抽水模式 <font color=\"#2392dc\">-special=内核名称</font>(不用全部输入比如BzMiner/v16.0.0输入BzMiner即可,逗号分隔加入多个,区分大小写).比如 -special=BzMiner 已测试 <font color=\"#84bf40\">GMiner</font>支持无损抽水,<font color=\"#ff4a4a\">RigelMiner不支持</font></div>"
+        "ins": "<div class=\"advance-ins-list color-gray-094\">RXD币种:若开启抽水出现大量无效,说明内核不支持无损抽水,加入高级参数进入通用抽水模式 <font color=\"#2392dc\">-special=内核名称</font>(不用全部输入比如BzMiner/v16.0.0输入BzMiner即可,逗号分隔加入多个,区分大小写).比如 -special=BzMiner 已测试 <font color=\"#84bf40\">GMiner</font>支持无损抽水,<font color=\"#ff4a4a\">RigelMiner不支持</font><font color=\"#FFFF00\">**内核名称从矿机列表中去查看**</font></div>"
       }
     },
     "en": {
