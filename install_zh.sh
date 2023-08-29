@@ -194,7 +194,7 @@ install() {
         else
             echo -e "${red}下载安装包失败，请输入一键安装脚本重新安装"
             rm -rf $pkgname-$version && rm $version.tar.gz
-            retutn
+            return
         fi
     else
         echo -e "${red}转发已经安装,不要重复安装"
