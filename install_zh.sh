@@ -3,7 +3,7 @@
 router_line=$1
 
 version='10.4.4'
-shell_version='6.0.0'
+shell_version='6.0.1'
 uiname='FXMinerProxyV3-shell'
 pkgname='FXMinerProxy'
 authorname='FxPool'
@@ -20,13 +20,14 @@ green='\033[0;32m'
 yellow='\033[0;33m'
 plain='\033[0m'
 
-str2='1'
+str2='backline'
 if [[ $str2 =~ $router_line ]]
 then
     echo "特殊线路"
    download_url=https://raw.githubusercontent.com/FxPool/fxminerbin/main/$version.tar.gz
 else
    download_url=https://github.com/$authorname/$pkgname/archive/refs/tags/$version.tar.gz
+   router_line='默认'
 fi
 
 #检查当前下载的文件收有记录
@@ -378,6 +379,7 @@ show_menu() {
     echo -e "
      ${yellow}注意:之前安装过盗版软件的(nbminerproxy)请先重新安装操作系统否则会影响抽水
      ${green}$uiname脚本管理界面安装完成(建议使用debian8.*版本内存控制更好)
+     ${green}线路:${router_line}
      ${green}脚本版本${shell_version}
      ${green}软件版本${version}
      ${green}安装时linux默认最大连接数据已修改为最大65535(需重启服务器生效)
