@@ -206,6 +206,7 @@ install() {
             start
         else
             echo -e "${red}下载安装包失败，请输入一键安装脚本重新安装"
+            echo -e "${yellow}请使用备用脚本试试: >> bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/install_zh.sh) backline <<"
             rm -rf $pkgname-$version && rm $version.tar.gz
             return
         fi
@@ -237,7 +238,8 @@ update_app() {
     wget $download_url
     if [ ! -f "$version.tar.gz" ]; then
         echo -e "${red}下载安装包失败，请输入一键安装脚本重新更新"
-        retutn
+        echo -e "${yellow}请使用备用脚本试试: >> bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/install_zh.sh) backline <<"
+        return
     fi
     rm /etc/fxpool-$sofname/*.cache
     kill_wdog
