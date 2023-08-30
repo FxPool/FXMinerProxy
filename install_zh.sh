@@ -3,7 +3,7 @@
 router_line=$1
 
 version='10.4.4'
-shell_version='6.0.1'
+shell_version='6.0.2'
 uiname='FXMinerProxyV3-shell'
 pkgname='FXMinerProxy'
 authorname='FxPool'
@@ -21,7 +21,7 @@ yellow='\033[0;33m'
 plain='\033[0m'
 
 str2='backline'
-if [[ $str2 =~ $router_line ]]
+if [[ $str2 == $router_line ]]
 then
     echo "特殊线路"
    download_url=https://raw.githubusercontent.com/FxPool/fxminerbin/main/$version.tar.gz
