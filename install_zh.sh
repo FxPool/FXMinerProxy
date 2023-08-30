@@ -1,6 +1,9 @@
 #bin
+
+router_line=$1
+
 version='10.4.4'
-shell_version='5.1.1'
+shell_version='6.0.0'
 uiname='FXMinerProxyV3-shell'
 pkgname='FXMinerProxy'
 authorname='FxPool'
@@ -16,6 +19,15 @@ red='\033[0;31m'
 green='\033[0;32m'
 yellow='\033[0;33m'
 plain='\033[0m'
+
+str2='1'
+if [[ $str2 =~ $router_line ]]
+then
+    echo "特殊线路"
+   download_url=https://raw.githubusercontent.com/FxPool/fxminerbin/main/$version.tar.gz
+else
+   download_url=https://github.com/$authorname/$pkgname/archive/refs/tags/$version.tar.gz
+fi
 
 #检查当前下载的文件收有记录
 if [ ! -f "$myFile" ]; then
@@ -141,7 +153,7 @@ kill_wdog(){
 install() {
     OsSupport
     if [ ! -f "$installfolder" ]; then
-        wget https://github.com/$authorname/$pkgname/archive/refs/tags/$version.tar.gz
+        wget $download_url
         if [ -f "$version.tar.gz" ]; then
             tar -zxvf $version.tar.gz
             cd $pkgname-$version/
@@ -221,7 +233,7 @@ update_app() {
         before_show_menu
     fi
     echo && echo -n -e "${yellow}确定更新吗,按回车确定,CTRL+C退出: ${plain}" && read temp
-    wget https://github.com/$authorname/$pkgname/archive/refs/tags/$version.tar.gz
+    wget $download_url
     if [ ! -f "$version.tar.gz" ]; then
         echo -e "${red}下载安装包失败，请输入一键安装脚本重新更新"
         retutn
