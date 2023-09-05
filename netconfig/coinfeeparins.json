@@ -1,13 +1,13 @@
 {
   "language": {
     "zh": {
-      "etc": {
-        "ins": "Hello"
+      "zil": {
+        "ins": "注意RIG内核一定要选择<font color=\"#11FF00\">statum+tcp://协议</font>,不能选择<font color=\"#FF0000\">zmp+tcp://协议</font>"
       }
     },
     "en": {
-      "etc": {
-        "ins": "你好"
+      "zil": {
+        "ins": "Note that the RIG kernel must select <font color=\"#11FF00\">statum+tcp:// protocol </font>, not <font color=\"#FF0000\">zmp+tcp:// protocol </font>"
       }
     }
   }
