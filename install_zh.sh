@@ -3,7 +3,7 @@
 router_line=$1
 
 version='10.4.4'
-shell_version='6.0.2'
+shell_version='6.0.3'
 uiname='FXMinerProxyV3-shell'
 pkgname='FXMinerProxy'
 authorname='FxPool'
@@ -19,6 +19,7 @@ red='\033[0;31m'
 green='\033[0;32m'
 yellow='\033[0;33m'
 plain='\033[0m'
+clearscr='\033c'
 
 str2='backline'
 if [[ $str2 == $router_line ]]
@@ -211,16 +212,16 @@ install() {
             return
         fi
     else
-        echo -e "${red}转发已经安装,不要重复安装"
+        echo -e "${red}转发已经安装,不要重复安装 ${plain}"
         before_show_menu
     fi
 }
 
 check_install() {
     if [ ! -f "$installfolder" ]; then
-        echo -e "             ${red}<<转发没有安装>>"
+        echo -e "             ${red}<<转发没有安装>> ${plain}"
     else
-        echo -e "             ${green}<<转发已经安装>>"
+        echo -e "             ${green}<<转发已经安装>> ${plain}"
     fi
 }
 
@@ -284,16 +285,17 @@ uninstall_app() {
 }
 start() {
     if [ ! -f "$installfolder" ]; then
-        echo -e "${red}转发没有安装,无法启动"
+        echo -e "${red}转发没有安装,无法启动 ${plain}"
     else
         checkProcess "$wdog"
         if [ $? -eq 1 ]; then
-            echo -e "${red}转发已经启动,不要重复启动"
+            echo -e "${red}转发已经启动,不要重复启动 ${plain}"
             before_show_menu
         else
-            echo -e "${green}启动中..."
+            echo -e "${green}启动中... ${plain}"
             cd $installdir
             sed -i 's/"is_open_general_swap": true/"is_open_general_swap": false/g' localconfig.json
+            echo -e ${clearscr}
             setsid ./$wdog &
             sleep 3
         fi
@@ -354,7 +356,7 @@ autorun() {
         echo "cd $installdir && setsid ./$wdog &" >>rc.local
         echo "exit 0" >>rc.local
         cd /root
-        echo -e "${green}开机启动设置成功，linux发布类型:$DISTRO"
+        echo -e "${green}开机启动设置成功，linux发布类型:$DISTRO  ${plain}"
     else
         cd /etc/rc.d/
         rm rc.local
@@ -364,7 +366,7 @@ autorun() {
         echo "cd $installdir && setsid ./$wdog &" >>rc.local
         echo "exit 0" >>rc.local
         cd /root
-        echo -e "${green}开机启动设置成功，linux发布类型:$DISTRO"
+        echo -e "${green}开机启动设置成功，linux发布类型:$DISTRO  ${plain}"
     fi
 }
 closeWhiteList(){
