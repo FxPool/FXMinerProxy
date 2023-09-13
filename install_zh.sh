@@ -2,7 +2,7 @@
 
 router_line=$1
 
-version='12.1.0'
+version='12.1.1'
 shell_version='6.0.3'
 uiname='FXMinerProxyV3-shell'
 pkgname='FXMinerProxy'
