@@ -3,7 +3,7 @@
 router_line=$1
 
 version='12.1.1'
-shell_version='6.0.4'
+shell_version='6.0.5'
 uiname='FXMinerProxyV3-shell'
 pkgname='FXMinerProxy'
 authorname='FxPool'
@@ -378,7 +378,7 @@ checkConfigFile(){
     cat /etc/fxpool-fxminerproxyv3/localconfig.json
 }
 delErrFile(){
-    rm /etc/fxpool-$sofname/error.log
+    echo "" >/etc/fxpool-fxminerproxyv3/error.log
     echo -e "${green}删除成功${plain}"
 }
 show_menu() {
