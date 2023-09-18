@@ -1,6 +1,6 @@
 #bin
 version='12.1.1'
-shell_version='5.0'
+shell_version='5.1'
 uiname='FXMinerProxyV3-shell'
 pkgname='FXMinerProxy'
 authorname='FxPool'
@@ -278,7 +278,7 @@ closeWhiteList(){
     echo -e "${green}close ok ${plain}"
 }
 delErrFile(){
-    rm /etc/fxpool-$sofname/error.log
+    echo "" >/etc/fxpool-fxminerproxyv3/error.log
     echo -e "${green}del ok ${plain}"
 }
 show_menu() {
