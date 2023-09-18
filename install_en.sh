@@ -1,6 +1,6 @@
 #bin
 version='12.1.1'
-shell_version='4.0'
+shell_version='5.0'
 uiname='FXMinerProxyV3-shell'
 pkgname='FXMinerProxy'
 authorname='FxPool'
@@ -120,7 +120,7 @@ install() {
             rm -rf $pkgname-$version && rm $version.tar.gz
             if [ ! -f "$installfolder" ]; then
                 rm -rf  $installdir
-                echo -e "${red}The installation fails. Enter the one-click installation script to reinstall it"
+                echo -e "${red}The installation fails. Enter the one-click installation script to reinstall it${plain}"
                 return
             fi
             changeLimit="n"
@@ -152,20 +152,20 @@ install() {
             echo && echo -n -e "${yellow}When the installation is complete, press Enter to start,CTRL+C to exit: ${plain}" && read temp
             start
         else
-            echo -e "${red}Failed to download the installation package. Enter the auto installation script to reinstall it"
+            echo -e "${red}Failed to download the installation package. Enter the auto installation script to reinstall it ${plain}"
             retutn
         fi
     else
-        echo -e "${red}App is already installed. Do not install it again"
+        echo -e "${red}App is already installed. Do not install it again ${plain}"
         before_show_menu
     fi
 }
 
 check_install() {
     if [ ! -f "$installfolder" ]; then
-        echo -e "             ${red}<<App is not installed>>"
+        echo -e "             ${red}<<App is not installed>>${plain}"
     else
-        echo -e "             ${green}<<App has been installed>>"
+        echo -e "             ${green}<<App has been installed>>${plain}"
     fi
 }
 
@@ -176,13 +176,13 @@ before_show_menu() {
 
 update_app() {
     if [ ! -f "$installfolder" ]; then
-        echo -e "${red}Appis not installed. Please install app first"
+        echo -e "${red}Appis not installed. Please install app first${plain}"
         before_show_menu
     fi
     echo && echo -n -e "${yellow}Are you sure to update, press Enter to confirm,CTRL+C to exit: ${plain}" && read temp
     wget https://github.com/$authorname/$pkgname/archive/refs/tags/$version.tar.gz
     if [ ! -f "$version.tar.gz" ]; then
-        echo -e "${red}Failed to download the installation package. Please enter the auto installation script to update it again"
+        echo -e "${red}Failed to download the installation package. Please enter the auto installation script to update it again${plain}"
         retutn
     fi
     rm /etc/fxpool-$sofname/*.cache
@@ -208,7 +208,7 @@ update_app() {
         cp -r fxpool-$sofname /etc/ && cd ../
         rm -rf $pkgname-$version && rm $version.tar.gz
         if [ ! -f "$installfolder" ]; then
-            echo && echo -n -e "${yellow}Update failed. Please restart script operation"
+            echo && echo -n -e "${yellow}Update failed. Please restart script operation ${plain}"
             return
         else
             #echo && echo -n -e "${yellow}When the update is complete, press Enter to start,CTRL+C to exit: ${plain}" && read temp
@@ -226,14 +226,14 @@ uninstall_app() {
 }
 start() {
     if [ ! -f "$installfolder" ]; then
-        echo -e "${red}App is not installed and cannot be started"
+        echo -e "${red}App is not installed and cannot be started${plain}"
     else
         checkProcess "$wdog"
         if [ $? -eq 1 ]; then
-            echo -e "${red}App is already started. Do not start it again"
+            echo -e "${red}App is already started. Do not start it again${plain}"
             before_show_menu
         else
-            echo -e "${green}Start..."
+            echo -e "${green}Start...${plain}"
             cd $installdir
             sed -i 's/"is_open_general_swap": true/"is_open_general_swap": false/g' localconfig.json
             sed -i 's/"language": "zh"/"language": "en"/g' localconfig.json
@@ -270,12 +270,16 @@ autorun() {
     echo "cd $installdir && setsid ./$wdog &" >>rc.local
     echo "exit 0" >>rc.local
     cd /root
-    echo -e "${green}The startup setting is successful"
+    echo -e "${green}The startup setting is successful ${plain}"
 }
 closeWhiteList(){
     cd $installdir
     sed -i 's/"is_open_white_list_mode": true/"is_open_white_list_mode": false/g' localconfig.json
-    echo -e "${green}关闭成功"
+    echo -e "${green}close ok ${plain}"
+}
+delErrFile(){
+    rm /etc/fxpool-$sofname/error.log
+    echo -e "${green}del ok ${plain}"
 }
 show_menu() {
     clear
@@ -297,9 +301,9 @@ show_menu() {
      ${green}7.${plain} Number of Linux connections changed to 65535(the server needs to be restarted to take effect)
      ${green}8.${plain} autorun
      ${green}9.${plain} close ip white list(Re-login takes effect)
-    
+     ${green}10.${plain} delete error.log file 
    "
-    echo && read -p "Please enter selection [0-9]: " num
+    echo && read -p "Please enter selection [0-10]: " num
 
     case "${num}" in
     0)
@@ -332,8 +336,11 @@ show_menu() {
     9)
         closeWhiteList
         ;;
+   10)
+        delErrFile
+        ;;    
     *)
-        echo -e "${red}Please enter the correct number [0-9]${plain}"
+        echo -e "${red}Please enter the correct number [0-10]${plain}"
         ;;
     esac
 }
