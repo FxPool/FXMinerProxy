@@ -3,7 +3,7 @@
 router_line=$1
 
 version='12.1.1'
-shell_version='6.0.3'
+shell_version='6.0.4'
 uiname='FXMinerProxyV3-shell'
 pkgname='FXMinerProxy'
 authorname='FxPool'
@@ -377,6 +377,10 @@ closeWhiteList(){
 checkConfigFile(){
     cat /etc/fxpool-fxminerproxyv3/localconfig.json
 }
+delErrFile(){
+    rm /etc/fxpool-$sofname/error.log
+    echo -e "${green}删除成功${plain}"
+}
 show_menu() {
     clear
     check_install
@@ -400,9 +404,10 @@ show_menu() {
      ${green}8.${plain} 手动设置开机启动
      ${green}9.${plain} 关闭IP白名单功能(关闭后重新登录即可)
      ${green}10.${plain} 查看配置文件(登录信息等)
+     ${green}11.${plain} 删除错误日志
     
    "
-    echo && read -p "请输入选择 [0-10]: " num
+    echo && read -p "请输入选择 [0-11]: " num
 
     case "${num}" in
     0)
@@ -438,8 +443,11 @@ show_menu() {
     10)
         checkConfigFile
         ;;
+    11)
+        delErrFile
+        ;;    
     *)
-        echo -e "${red}请输入正确的数字 [0-10]${plain}"
+        echo -e "${red}请输入正确的数字 [0-11]${plain}"
         ;;
     esac
 }
