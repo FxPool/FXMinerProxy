@@ -3,11 +3,17 @@
     "zh": {
       "zil": {
         "ins": "ZIL币种: 注意RIG内核一定要选择<font color=\"#11FF00\">statum+tcp://协议</font>,不能选择<font color=\"#FF0000\">zmp+tcp://协议</font>"
+      },
+      "kaspa": {
+        "ins": "KASPA币种: 抽水不要抽到鱼池，一定要抽到鱼池的话必须指定固定难度，通过密码的方式具体查看鱼池官网说明"
       }
     },
     "en": {
       "zil": {
         "ins": "ZIL: Note that the RIG kernel must select <font color=\"#11FF00\">statum+tcp:// protocol </font>, not <font color=\"#FF0000\">zmp+tcp:// protocol </font>"
+      },
+      "kaspa": {
+        "ins": "KASPA currency: Do not fee to the f2 pool, must be fee to the f2 pool must specify a fixed difficulty, through the way of password to see the specific description of the f2 pool official website"
       }
     }
   }
