@@ -5,7 +5,7 @@
         "ins": "ZIL币种: 注意RIG内核一定要选择<font color=\"#11FF00\">statum+tcp://协议</font>,不能选择<font color=\"#FF0000\">zmp+tcp://协议</font>"
       },
       "kaspa": {
-        "ins": "KASPA币种: 抽水不要抽到鱼池，一定要抽到鱼池的话必须指定固定难度，通过密码的方式具体查看鱼池官网说明"
+        "ins": "KASPA币种: 抽水不要抽到鱼池，一定要抽到鱼池的话必须指定固定难度，通过密码的方式具体查看鱼池官网说明,或者使用鱼池KAS芯片机挖矿地址比如:<font color=\"#11FF00\">stratum+tcp://kas-asia.f2pool.com:1430</font>"
       }
     },
     "en": {
