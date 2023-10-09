@@ -114,7 +114,7 @@ FxPoo1/FXMinerProxy
 - 稳定的版本
   * 外网
   ```shell
-  bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/oldversion/install_zh.sh) 10.2.1
+  bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/oldversion/install_zh.sh) 12.1.1
   ```
 #### windows系统
 - **权限** `administrator`
