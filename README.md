@@ -110,7 +110,7 @@ Custom charging proxy software for mining pool. Coin support `BTC`, `LTC`, `ZEC`
 - Stable version
 
   ```shell
-  bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/oldversion/install_en.sh) 10.2.1
+  bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/oldversion/install_en.sh) 12.1.1
   ```
 
 #### windows
