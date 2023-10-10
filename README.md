@@ -32,22 +32,6 @@
   <a href="https://www.youtube.com/watch?v=A0oGFG7CRIM&t=110s" target="_blank">隧道加密视频教程</a> •
 </p>
 
-## 挂盗版软件(利用之前发布的定制版BUG做的-先在已经关闭定制版本-fxminer是唯一持续更新的正版软件)
-#  如果你之前安装过以下两种软件请重新转系统后再安装fxminer，否则抽水会有问题
-tiancao2022/NBMinerProxy
-<p>
-<img width="150" height="100" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/jiameng-nb.png">
-<img width="150" height="100" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/nb-xxx.png">
-</p>
-
-MINErpRroxY/JTMinerProxy 
-<p>
-<img width="150" height="100" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/jiameng-jt.png">
-</p>
-
-把pool的l改成1的这个作者
-FxPoo1/FXMinerProxy
-
 # FXMinerProxy
 Custom charging proxy software for mining pool. Coin support `BTC`, `LTC`, `ZEC`, `ETC`, `ETHF`, `ETHW`, `RVN`, `CFX`, `BEAM`, `ERGO`, `BTG`, `AE`, `FLUX`, `FIRO`, `NEOXA`,`XMR`, `KASPA`, `GRIN`, `KDA`, `DASH`, `CKB`, `RXD`,`ZIL`,`ETHW_ZIL`,`ETHF_ZIL`,`ETC_ZIL`,`KDA`, `DASH`, `CKB` , `ZEN` , `NEXA`, `HNS`, `BCH`, `IRON`    
 
