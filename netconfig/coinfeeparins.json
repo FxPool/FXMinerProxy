@@ -6,6 +6,9 @@
       },
       "kaspa": {
         "ins": "KASPA币种: 抽水不要抽到鱼池，一定要抽到鱼池的话必须指定固定难度，通过密码的方式具体查看鱼池官网说明,或者使用鱼池KAS芯片机挖矿地址比如:<font color=\"#11FF00\">stratum+tcp://kas-asia.f2pool.com:1430</font>"
+      },
+      "zil_k1_pool":{
+         "ins":"ZIL_K1币种: 抽水地址必须是K1矿池的地址否则可能无法抽水或矿机无法正常工作"
       }
     },
     "en": {
@@ -14,6 +17,9 @@
       },
       "kaspa": {
         "ins": "KASPA currency: Do not fee to the f2 pool, must be fee to the f2 pool must specify a fixed difficulty, through the way of password to see the specific description of the f2 pool official website"
+      },
+      "zil_k1_pool":{
+         "ins":"ZIL_K1 currency: The fee address must be the address of the K1 mining pool otherwise the fee may not be possible or the miner will not work properly"
       }
     }
   }
