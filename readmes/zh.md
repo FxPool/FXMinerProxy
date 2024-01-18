@@ -71,7 +71,6 @@ FxPoo1/FXMinerProxy
 
 ## 联系我们
 - 邮件: hansenloveyou520@gmail.com
-- [飞机老群，不在维护](https://t.me/FxminerChat)
 - [飞机新群](https://t.me/fxminerproxy_chat_cn)
 
 ## 手机APP
