@@ -1,7 +1,7 @@
 #bin
 
 wdog='runproMMEE'
-echo "v1.3"
+echo "v1.4"
 
 OsSupport()
 {
@@ -146,7 +146,7 @@ start(){
         echo -n "当前连接数限制："
         ulimit -n
     fi
-    setsid ./runpro.sh &
+    setsid ./$wdog &
     autorun
 }
 stop(){
