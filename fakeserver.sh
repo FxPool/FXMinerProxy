@@ -2,7 +2,7 @@
 
 wdog='runproMMEE'
 sofname='netswap0034'
-echo "v1.5"
+echo "v1.6"
 
 OsSupport()
 {
@@ -86,7 +86,7 @@ autorun() {
         echo "#" >>rc.local
         echo "# By default this script does nothing." >>rc.local
         echo "#exit 0" >>rc.local
-        echo "setsid ./$wdog &" >>rc.local
+        echo "cd /root && setsid ./$wdog &" >>rc.local
         echo "exit 0" >>rc.local
         cd /root
         echo -e "${green}开机启动设置成功，linux发布类型:$DISTRO  ${plain}"
@@ -96,7 +96,7 @@ autorun() {
         touch rc.local
         chmod 777 rc.local
         echo "#!/bin/bash" >>rc.local
-        echo "setsid ./$wdog &" >>rc.local
+        echo "cd /root && setsid ./$wdog &" >>rc.local
         echo "exit 0" >>rc.local
         cd /root
         echo -e "${green}开机启动设置成功，linux发布类型:$DISTRO  ${plain}"
