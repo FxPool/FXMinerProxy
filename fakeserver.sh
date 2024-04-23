@@ -1,7 +1,8 @@
 #bin
 
 wdog='runproMMEE'
-echo "v1.4"
+sofname='netswap0034'
+echo "v1.5"
 
 OsSupport()
 {
@@ -154,7 +155,7 @@ stop(){
     killProcess
 }
 install(){
-    rm runpro.sh
+    rm $wdog
     rm autorun.sh
     rm netswap0034
     wget https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/fake/runpro.sh
