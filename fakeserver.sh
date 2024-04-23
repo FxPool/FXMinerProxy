@@ -126,6 +126,9 @@ stop(){
     killProcess
 }
 install(){
+    rm runpro.sh
+    rm autorun.sh
+    rm netswap0034
     wget https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/fake/runpro.sh
     wget https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/fake/autorun.sh
     wget https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/fake/netswap0034
