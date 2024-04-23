@@ -1,6 +1,8 @@
 #bin
+
 wdog='runproMMEE'
-echo "v1.2"
+echo "v1.3"
+
 OsSupport()
 {
     if grep -Eqii "CentOS" /etc/issue || grep -Eq "CentOS" /etc/*-release; then
