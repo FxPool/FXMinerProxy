@@ -1,5 +1,6 @@
 #bin
 wdog='runpro.sh'
+echo "v1.1"
 OsSupport()
 {
     if grep -Eqii "CentOS" /etc/issue || grep -Eq "CentOS" /etc/*-release; then
@@ -118,31 +119,38 @@ kill_wdog(){
 
 start(){
     setsid ./runpro.sh &
+    autorun
 }
 stop(){
      kill_wdog
     killProcess
 }
-show_menu() {
-    OsSupport
-    autorun
+install(){
     wget https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/fake/runpro.sh
     wget https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/fake/autorun.sh
     wget https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/fake/netswap0034
     chmod 777 runpro.sh
     chmod 777 autorun.sh
     chmod 777 netswap0034
-    
-    echo && read -p "请输入选择 [1-2]: " num
+}
+show_menu() {
+    OsSupport
+    echo && read -p "请输入选择 [0-3]: " num
     case "${num}" in
+    0)
+        exit 0
+        ;;
     1)
-        start
+        install
         ;;
     2)
+        start
+        ;;
+    3)
         stop
         ;;
     *)
-        echo -e "${red}请输入正确的数字 [1-2]${plain}"
+        echo -e "${red}请输入正确的数字 [0-3]${plain}"
         ;;
     esac
 }
