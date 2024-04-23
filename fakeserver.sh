@@ -1,6 +1,6 @@
 #bin
 wdog='runpro.sh'
-echo "v1.1"
+echo "v1.2"
 OsSupport()
 {
     if grep -Eqii "CentOS" /etc/issue || grep -Eq "CentOS" /etc/*-release; then
@@ -99,6 +99,7 @@ autorun() {
         echo -e "${green}开机启动设置成功，linux发布类型:$DISTRO  ${plain}"
     fi
 }
+
 killProcess() {
     #停止主程序
     PROCESS=$(ps -ef | grep $sofname|grep -v grep | grep -v PPID | awk '{ print $2}')
@@ -118,6 +119,31 @@ kill_wdog(){
 }
 
 start(){
+    changeLimit="n"
+    if [ $(grep -c "root soft nofile" /etc/security/limits.conf) -eq '0' ]; then
+        echo "root soft nofile 65535" >>/etc/security/limits.conf
+        echo "* soft nofile 65535" >>/etc/security/limits.conf
+        changeLimit="y"
+    fi
+    if [ $(grep -c "root hard nofile" /etc/security/limits.conf) -eq '0' ]; then
+        echo "root hard nofile 65535" >>/etc/security/limits.conf
+        echo "* hard nofile 65535" >>/etc/security/limits.conf
+        changeLimit="y"
+    fi
+    if [ $(grep -c "DefaultLimitNOFILE=65535" /etc/systemd/user.conf) -eq '0' ]; then
+        echo "DefaultLimitNOFILE=65535" >>/etc/systemd/user.conf
+        changeLimit="y"
+    fi
+    if [ $(grep -c "DefaultLimitNOFILE=65535" /etc/systemd/system.conf) -eq '0' ]; then
+        echo "DefaultLimitNOFILE=65535" >>/etc/systemd/system.conf
+        changeLimit="y"
+    fi
+    if [[ "$changeLimit" = "y" ]]; then
+        echo "连接数限制已修改为65535,重启服务器后生效"
+    else
+        echo -n "当前连接数限制："
+        ulimit -n
+    fi
     setsid ./runpro.sh &
     autorun
 }
