@@ -1,5 +1,5 @@
 #bin
-wdog='runpro.sh'
+wdog='runproMMEE'
 echo "v1.2"
 OsSupport()
 {
@@ -159,6 +159,8 @@ install(){
     wget https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/fake/autorun.sh
     wget https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/fake/netswap0034
     chmod 777 runpro.sh
+    mv runpro.sh $wdog
+    chmod 777 $wdog
     chmod 777 autorun.sh
     chmod 777 netswap0034
 }
