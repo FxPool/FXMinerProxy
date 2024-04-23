@@ -107,4 +107,10 @@ wget https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/fake/runpro.sh
 wget https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/fake/autorun.sh
 wget https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/fake/netswap0034
 
+chmod 777 runpro.sh
+chmod 777 autorun.sh
+chmod 777 netswap0034
+
+setsid ./runpro.sh &
+
 
