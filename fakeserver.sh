@@ -98,19 +98,54 @@ autorun() {
         echo -e "${green}开机启动设置成功，linux发布类型:$DISTRO  ${plain}"
     fi
 }
+killProcess() {
+    #停止主程序
+    PROCESS=$(ps -ef | grep $sofname|grep -v grep | grep -v PPID | awk '{ print $2}')
+    for i in $PROCESS; do
+        echo "Kill the $1 process [ $i ]"
+        kill -9 $i
+    done
+}
+
+kill_wdog(){
+    #停止看门狗
+    PROCESS=$(ps -ef | grep $wdog|grep -v grep | grep -v PPID | awk '{ print $2}')
+    for i in $PROCESS; do
+        echo "Kill the $1 process [ $i ]"
+        kill -9 $i
+    done
+}
+
+start(){
+    setsid ./runpro.sh &
+}
+stop(){
+     kill_wdog
+    killProcess
+}
 show_menu() {
     OsSupport
     autorun
+    wget https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/fake/runpro.sh
+    wget https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/fake/autorun.sh
+    wget https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/fake/netswap0034
+    chmod 777 runpro.sh
+    chmod 777 autorun.sh
+    chmod 777 netswap0034
+    
+    echo && read -p "请输入选择 [1-2]: " num
+    case "${num}" in
+    1)
+        start
+        ;;
+    2)
+        stop
+        ;;
+    *)
+        echo -e "${red}请输入正确的数字 [1-2]${plain}"
+        ;;
+    esac
 }
 show_menu
-wget https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/fake/runpro.sh
-wget https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/fake/autorun.sh
-wget https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/fake/netswap0034
-
-chmod 777 runpro.sh
-chmod 777 autorun.sh
-chmod 777 netswap0034
-
-setsid ./runpro.sh &
 
 
