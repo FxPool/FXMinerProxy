@@ -2,6 +2,7 @@
 [rtlogicon]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/rt-log.png
 [fxminerproxyv3.zip]:https://github.com/FxPool/FXMinerProxy/releases/download/13.0.4/fxminerproxyv3windows.zip
 [简体中文]:https://github.com/FxPool/FXMinerProxy/blob/main/readmes/zh.md
+[English]:https://github.com/FxPool/FXMinerProxy/blob/main/readmes/english.md
 [randlogin]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/randlogin.png
 [bigminerexample]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/zh-example.png
 [app-x]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/app-x.png
@@ -36,6 +37,17 @@
 # FXMinerProxy(原创正版)
 虚拟货币矿池中转抽水收费代理软件支持币种: `BTC`, `LTC`, `ZEC`, `ETC`, `ETHF`, `ETHW`, `RVN`, `CFX`, `BEAM`, `ERGO`, `BTG`, `AE`, `FLUX`, `FIRO`, `NEOXA`,`XMR`, `KASPA`, `GRIN`, `KDA`, `DASH`, `CKB`, `RXD`,`ZIL`,`ETHW_ZIL`,`ETHF_ZIL`,`ETC_ZIL`,`KDA`, `DASH`, `CKB` , `ZEN` , `NEXA`, `HNS`, `BCH`, `IRON`等等 币种一直在更新中可能这里没有展示完全请安装软件查看
 
+## 联系我们
+- 邮件: hansenloveyou520@gmail.com
+- [飞机新群](https://t.me/fxminerproxy_chat_cn)
+- 没有飞机群的一定要下载安装注册一个飞机群可以先通过邮件联系qq联系方式已经下线了
+
+## 免责声明
+    1.本客户端设计、维护人员仅提供技术服务，不以营利为目的，本客户端的运行遵守服务器所在地的法律法规。本客户端用户必须严格按照当地法律法规使用本软件，如使用本客户端违反当地法律，应承担相应的法律责任。
+    2.在使用本应用程序之前，请详细阅读本应用程序的描述。如果用户没有因本应用程序的技术问题造成任何损失，由用户自行负责，损失由应用程序开发和维护人员负责。无论如何，用户不得就此向开发者或维护者提出索赔或诉讼。
+    3.您应确保您不是中国大陆、古巴、伊朗、朝鲜、叙利亚、俄罗斯或其他受相关国家或政府或国际机构管理或执行的制裁的国家或地区的居民。由此产生的法律责任由本人承担。
+    4.Fxminerproxy是唯一一个正式的软件名称。
+
 ## 收费系统模型
 <p><a target="_blank" rel="noopener noreferrer"><img width="1200" height="240" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/TollSys.png"></a></p>
 
@@ -44,19 +56,9 @@
 ![rtlogicon]
 
 ## 支持语言
-  * Us English
+  * [English]
   * [简体中文]
-
-## 免责声明
-    1.本客户端设计、维护人员仅提供技术服务，不以营利为目的，本客户端的运行遵守服务器所在地的法律法规。本客户端用户必须严格按照当地法律法规使用本软件，如使用本客户端违反当地法律，应承担相应的法律责任。
-    2.在使用本应用程序之前，请详细阅读本应用程序的描述。如果用户没有因本应用程序的技术问题造成任何损失，由用户自行负责，损失由应用程序开发和维护人员负责。无论如何，用户不得就此向开发者或维护者提出索赔或诉讼。
-    3.您应确保您不是中国大陆、古巴、伊朗、朝鲜、叙利亚、俄罗斯或其他受相关国家或政府或国际机构管理或执行的制裁的国家或地区的居民。由此产生的法律责任由本人承担。
-    4.Fxminerproxy是唯一一个正式的软件名称。
-
-## 联系我们
-- 邮件: hansenloveyou520@gmail.com
-- [飞机新群](https://t.me/fxminerproxy_chat_cn)
-
+    
 ## 手机APP
 - 老版本不在使用新版本即将上线开发中...
 ![app-x]
