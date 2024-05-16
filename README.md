@@ -2,7 +2,7 @@
 [rtlogicon]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/rt-log.png
 [fxminerproxyv3.zip]:https://github.com/FxPool/FXMinerProxy/releases/download/13.0.4/fxminerproxyv3windows.zip
 [简体中文]:https://github.com/FxPool/FXMinerProxy/blob/main/readmes/zh.md
-[English]:https://github.com/FxPool/FXMinerProxy/blob/main/readmes/english.md
+[English]:https://github.com/FxPool/FXMinerProxy/blob/main/readmes/English.md
 [randlogin]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/randlogin.png
 [bigminerexample]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/zh-example.png
 [app-x]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/app-x.png
