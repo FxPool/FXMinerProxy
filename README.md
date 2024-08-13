@@ -35,6 +35,12 @@
 </p>
 
 # FXMinerProxy(原创正版)
+```shell
+新用户注意（老用户是神马也可以更新）：
+BTC矿机是神马矿机的先用这个内测地址(现在神马矿机可以支持无损耗抽水比正式版本好)
+https://github.com/FxPool/FXMinerProxyBetaTest
+正式版本还有些东西要修改最近会上
+```
 虚拟货币矿池中转抽水收费代理软件支持币种: `BTC`, `LTC`, `ZEC`, `ETC`, `ETHF`, `ETHW`, `RVN`, `CFX`, `BEAM`, `ERGO`, `BTG`, `AE`, `FLUX`, `FIRO`, `NEOXA`,`XMR`, `KASPA`, `GRIN`, `KDA`, `DASH`, `CKB`, `RXD`,`ZIL`,`ETHW_ZIL`,`ETHF_ZIL`,`ETC_ZIL`,`KDA`, `DASH`, `CKB` , `ZEN` , `NEXA`, `HNS`, `BCH`, `IRON`等等 币种一直在更新中可能这里没有展示完全请安装软件查看
 
 ## 联系我们
