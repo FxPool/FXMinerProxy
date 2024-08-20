@@ -99,7 +99,7 @@
 - 稳定的版本
   * 外网
   ```shell
-  bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/oldversion/install_zh.sh) 13.0.4
+  bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/oldversion/install_zh.sh) 13.1.5
   ```
 #### windows系统
 - **权限** `administrator`
