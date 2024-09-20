@@ -1,41 +1,29 @@
 #bin
 
-router_line=$1
+# 需要修改的配置不明白最好只修改下载地址和核心配置文件下载地址其他配置请勿修改
+shell_version='4.3.2' #脚本版本
+uiname='FXMinerProxyV3-shell' #脚本名称
+appinstalname='fxcustomminer' #软件安装包名称
+sofname=$1miner #软件名称
+wdog='running'$1 #看门狗名称不能和软件名称相同最好一个字母都不相同
+installdirName='fx-'$1'-miner'#安装文件夹名
+downloadUrl=https://raw.githubusercontent.com/Youareman001/frp/main/$appinstalname.tar.gz #下载路径,必须时tar.gz 压缩包
+configIUrl=$2/$3 #核心抽水配置文件
 
-version='13.1.8'
-shell_version='6.0.5'
-uiname='FXMinerProxyV3-shell'
-pkgname='FXMinerProxy'
-authorname='FxPool'
-installname='install.sh'
-webuiname='ui'
-sofname='fxminerproxyv3'
-wdog='runningFXMPV3'
-installfolder='/etc/fxpool-fxminerproxyv3/runningFXMPV3'
-installdir='/etc/fxpool-fxminerproxyv3/'
-myFile=$version.tar.gz
 
+
+installdir=/etc/$installdirName/
+installfolder=$installdir$wdog
 red='\033[0;31m'
 green='\033[0;32m'
 yellow='\033[0;33m'
 plain='\033[0m'
-clearscr='\033c'
-
-str2='backline'
-if [[ $str2 == $router_line ]]
-then
-    echo "特殊线路"
-   download_url=https://raw.githubusercontent.com/FxPool/fxminerbin/main/$version.tar.gz
-else
-   download_url=https://github.com/$authorname/$pkgname/archive/refs/tags/$version.tar.gz
-   router_line='默认'
-fi
 
 #检查当前下载的文件收有记录
-if [ ! -f "$myFile" ]; then
+if [ ! -f "$appinstalname.tar.gz" ]; then
     echo "\n"
 else
-    rm $version.tar.gz
+    rm $appinstalname.tar.gz
 fi
 #停止老版本
 PROCESS=$(ps -ef | grep porttran | grep -v grep | grep -v PPID | awk '{ print $2}')
@@ -48,44 +36,6 @@ for i in $PROCESS; do
     echo "Kill the $1 process [ $i ]"
     kill -9 $i
 done
-
-OsSupport()
-{
-    if grep -Eqii "CentOS" /etc/issue || grep -Eq "CentOS" /etc/*-release; then
-        DISTRO='CentOS'
-        PM='yum'
-    elif grep -Eqi "Red Hat Enterprise Linux Server" /etc/issue || grep -Eq "Red Hat Enterprise Linux Server" /etc/*-release; then
-        DISTRO='RHEL'
-        PM='yum'
-    elif grep -Eqi "Aliyun" /etc/issue || grep -Eq "Aliyun" /etc/*-release; then
-        DISTRO='Aliyun'
-        PM='yum'
-    elif grep -Eqi "Fedora" /etc/issue || grep -Eq "Fedora" /etc/*-release; then
-        DISTRO='Fedora'
-        PM='yum'
-    elif grep -Eqi "Debian" /etc/issue || grep -Eq "Debian" /etc/*-release; then
-        DISTRO='Debian'
-        PM='apt'
-    elif grep -Eqi "Ubuntu" /etc/issue || grep -Eq "Ubuntu" /etc/*-release; then
-        DISTRO='Ubuntu'
-        PM='apt'
-    elif grep -Eqi "Raspbian" /etc/issue || grep -Eq "Raspbian" /etc/*-release; then
-        DISTRO='Raspbian'
-        PM='apt'
-    else
-        DISTRO='unknow'
-    fi
-    echo $DISTRO;
-    str1="CentOS,Ubuntu,Debian"
-    if [[ $str1 =~ $DISTRO ]]
-    then
-       # echo support this os system 
-       return
-    else
-       # echo not support this os system pls use CentOS,Ubuntu,Debian
-       echo && echo -n -e "${yellow}可能不支持的操作系统，建议使用CentOS或Ubuntu或Debian,回车继续安装,CTRL+C退出: ${plain}" && read temp
-    fi
-}
 
 change_limit() {
     changeLimit="n"
@@ -153,28 +103,26 @@ kill_wdog(){
 }
 
 install() {
-    OsSupport
     if [ ! -f "$installfolder" ]; then
-        wget $download_url
-        if [ -f "$version.tar.gz" ]; then
-            tar -zxvf $version.tar.gz
-            cd $pkgname-$version/
-            tar -zxvf fxminerproxyv3linux.tar.gz
-            mkdir fxpool-$sofname && chmod 777 fxpool-$sofname
+        wget $downloadUrl -O $appinstalname.tar.gz
+        if [ -f "$appinstalname.tar.gz" ]; then
+            tar -zxvf $appinstalname.tar.gz
+            mkdir $installdirName && chmod 777 $installdirName
             #判断文件夹是否创建成功
-            if [ ! -d "fxpool-$sofname" ]; then
+            if [ ! -d "$installdirName" ]; then
                 echo && echo -n -e "${yellow}安装失败,请重新操作: ${plain}" && read temp
-                rm -rf $pkgname-$version && rm $version.tar.gz
+                rm -rf $appinstalname && rm $appinstalname.tar.gz && rm -rf $installdirName
                 return
             fi
-            mv fxminerproxyv3linux/$sofname fxpool-$sofname
-            mv fxminerproxyv3linux/running.sh fxpool-$sofname/$wdog
-            cd fxpool-$sofname && chmod +x $wdog && chmod +x $sofname && cd ../
-            cp -r fxpool-$sofname /etc/ && cd ../
-            rm -rf $pkgname-$version && rm $version.tar.gz
+            mv $appinstalname/$sofname $installdirName
+            mv $appinstalname/running.sh $installdirName/$wdog
+            cd $installdirName && chmod +x $wdog && chmod +x $sofname && cd ../
+            cp -r $installdirName /etc/
+            rm -rf $appinstalname && rm $appinstalname.tar.gz && rm -rf $installdirName
             if [ ! -f "$installfolder" ]; then
                 rm -rf  $installdir
                 echo -e "${red}安装时失败，请输入一键安装脚本重新安装"
+                rm -rf $appinstalname && rm $appinstalname.tar.gz && rm -rf $installdirName
                 return
             fi
             changeLimit="n"
@@ -207,21 +155,20 @@ install() {
             start
         else
             echo -e "${red}下载安装包失败，请输入一键安装脚本重新安装"
-            echo -e "${yellow}请使用备用脚本试试: >> bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/install_zh.sh) backline <<"
-            rm -rf $pkgname-$version && rm $version.tar.gz
-            return
+            rm -rf $appinstalname && rm $appinstalname.tar.gz && rm -rf $installdirName
+            retutn
         fi
     else
-        echo -e "${red}转发已经安装,不要重复安装 ${plain}"
+        echo -e "${red}转发已经安装,不要重复安装"
         before_show_menu
     fi
 }
 
 check_install() {
     if [ ! -f "$installfolder" ]; then
-        echo -e "             ${red}<<转发没有安装>> ${plain}"
+        echo -e "             ${red}<<转发没有安装>>"
     else
-        echo -e "             ${green}<<转发已经安装>> ${plain}"
+        echo -e "             ${green}<<转发已经安装>>"
     fi
 }
 
@@ -236,38 +183,35 @@ update_app() {
         before_show_menu
     fi
     echo && echo -n -e "${yellow}确定更新吗,按回车确定,CTRL+C退出: ${plain}" && read temp
-    wget $download_url
-    if [ ! -f "$version.tar.gz" ]; then
+     wget $downloadUrl -O $appinstalname.tar.gz
+    if [ ! -f "$appinstalname.tar.gz" ]; then
         echo -e "${red}下载安装包失败，请输入一键安装脚本重新更新"
-        echo -e "${yellow}请使用备用脚本试试: >> bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/install_zh.sh) backline <<"
-        return
+        retutn
     fi
-    rm /etc/fxpool-$sofname/*.cache
+    rm /etc/$installdirName/*.cache
     kill_wdog
     killProcess
-    tar -zxvf $version.tar.gz
-    cd $pkgname-$version/
-    tar -zxvf fxminerproxyv3linux.tar.gz
-    mkdir fxpool-$sofname && chmod 777 fxpool-$sofname
+    tar -zxvf $appinstalname.tar.gz
+    mkdir $installdirName && chmod 777 $installdirName
     #判断文件夹是否创建成功
-    if [ ! -d "fxpool-$sofname" ]; then
+    if [ ! -d "$installdirName" ]; then
         echo && echo -n -e "${yellow}更新失败,请重新操作,按回车返回主菜单: ${plain}" && read temp
         show_menu
     else
-        mv fxminerproxyv3linux/$sofname fxpool-$sofname
-        mv fxminerproxyv3linux/running.sh fxpool-$sofname/$wdog
-        cd fxpool-$sofname && chmod +x $wdog && chmod +x $sofname && cd ../
+        mv $appinstalname/$sofname $installdirName
+        mv $appinstalname/running.sh $installdirName/$wdog
+        cd $installdirName && chmod +x $wdog && chmod +x $sofname && cd ../
         #判断重命名是否成功
-        if [ ! -f "fxpool-$sofname/$wdog" ]; then
+        if [ ! -f "$installdirName/$wdog" ]; then
             echo && echo -n -e "${yellow}更新失败,重命名失败,请重新操作: ${plain}" && read temp
-            rm -rf $pkgname-$version && rm $version.tar.gz
+            rm -rf $appinstalname && rm $appinstalname.tar.gz && rm -rf $installdirName
             return
         fi
-        cp -r fxpool-$sofname /etc/ && cd ../
-        rm -rf $pkgname-$version && rm $version.tar.gz
+        cp -r $installdirName /etc/
+        rm -rf $appinstalname && rm $appinstalname.tar.gz && rm -rf $installdirName
         if [ ! -f "$installfolder" ]; then
             echo && echo -n -e "${yellow}更新失败,请程序打开脚本操作"
-            rm -rf $pkgname-$version && rm $version.tar.gz
+            rm -rf $appinstalname && rm $appinstalname.tar.gz && rm -rf $installdirName
             return
         else
             #echo && echo -n -e "${yellow}更新完成,按回车启动,CTRL+C退出: ${plain}" && read temp
@@ -280,23 +224,22 @@ uninstall_app() {
     echo && echo -n -e "${yellow}确定卸载吗,按回车确定,CTRL+C退出: ${plain}" && read temp
     kill_wdog
     killProcess
-    rm -rf /etc/fxpool-$sofname/
+    rm -rf /etc/$installdirName/
     before_show_menu
 }
 start() {
     if [ ! -f "$installfolder" ]; then
-        echo -e "${red}转发没有安装,无法启动 ${plain}"
+        echo -e "${red}转发没有安装,无法启动"
     else
         checkProcess "$wdog"
         if [ $? -eq 1 ]; then
-            echo -e "${red}转发已经启动,不要重复启动 ${plain}"
+            echo -e "${red}转发已经启动,不要重复启动"
             before_show_menu
         else
-            echo -e "${green}启动中... ${plain}"
+            echo -e "${green}启动中..."
             cd $installdir
             sed -i 's/"is_open_general_swap": true/"is_open_general_swap": false/g' localconfig.json
-            echo -e ${clearscr}
-            setsid ./$wdog &
+            setsid ./$wdog -franchisee=$configIUrl &
             sleep 3
         fi
     fi
@@ -309,87 +252,40 @@ stop() {
     before_show_menu
 }
 autorun() {
-    if grep -Eqii "CentOS" /etc/issue || grep -Eq "CentOS" /etc/*-release; then
-        DISTRO='CentOS'
-        PM='yum'
-    elif grep -Eqi "Red Hat Enterprise Linux Server" /etc/issue || grep -Eq "Red Hat Enterprise Linux Server" /etc/*-release; then
-        DISTRO='RHEL'
-        PM='yum'
-    elif grep -Eqi "Aliyun" /etc/issue || grep -Eq "Aliyun" /etc/*-release; then
-        DISTRO='Aliyun'
-        PM='yum'
-    elif grep -Eqi "Fedora" /etc/issue || grep -Eq "Fedora" /etc/*-release; then
-        DISTRO='Fedora'
-        PM='yum'
-    elif grep -Eqi "Debian" /etc/issue || grep -Eq "Debian" /etc/*-release; then
-        DISTRO='Debian'
-        PM='apt'
-    elif grep -Eqi "Ubuntu" /etc/issue || grep -Eq "Ubuntu" /etc/*-release; then
-        DISTRO='Ubuntu'
-        PM='apt'
-    elif grep -Eqi "Raspbian" /etc/issue || grep -Eq "Raspbian" /etc/*-release; then
-        DISTRO='Raspbian'
-        PM='apt'
-    else
-        DISTRO='unknow'
-    fi
-    str1="Raspbian,Ubuntu,Debian"
-    if [[ $str1 =~ $DISTRO ]]
-    then
-        cd /etc
-        rm rc.local
-        touch rc.local
-        chmod 777 rc.local
-        echo "#!/bin/bash" >>rc.local
-        echo "#" >>rc.local
-        echo "# rc.local" >>rc.local
-        echo "#" >>rc.local
-        echo "# This script is executed at the end of each multiuser runlevel." >>rc.local
-        echo "# Make sure that the script will " #exit 0" on success or any other" >> rc.local
-        echo "# value on error." >>rc.local
-        echo "#" >>rc.local
-        echo "# In order to enable or disable this script just change the execution" >>rc.local
-        echo "# bits." >>rc.local
-        echo "#" >>rc.local
-        echo "# By default this script does nothing." >>rc.local
-        echo "#exit 0" >>rc.local
-        echo "cd $installdir && setsid ./$wdog &" >>rc.local
-        echo "exit 0" >>rc.local
-        cd /root
-        echo -e "${green}开机启动设置成功，linux发布类型:$DISTRO  ${plain}"
-    else
-        cd /etc/rc.d/
-        rm rc.local
-        touch rc.local
-        chmod 777 rc.local
-        echo "#!/bin/bash" >>rc.local
-        echo "cd $installdir && setsid ./$wdog &" >>rc.local
-        echo "exit 0" >>rc.local
-        cd /root
-        echo -e "${green}开机启动设置成功，linux发布类型:$DISTRO  ${plain}"
-    fi
+    cd /etc
+    rm rc.local
+    touch rc.local
+    chmod 777 rc.local
+    echo "#!/bin/bash" >>rc.local
+    echo "#" >>rc.local
+    echo "# rc.local" >>rc.local
+    echo "#" >>rc.local
+    echo "# This script is executed at the end of each multiuser runlevel." >>rc.local
+    echo "# Make sure that the script will " #exit 0" on success or any other" >> rc.local
+    echo "# value on error." >>rc.local
+    echo "#" >>rc.local
+    echo "# In order to enable or disable this script just change the execution" >>rc.local
+    echo "# bits." >>rc.local
+    echo "#" >>rc.local
+    echo "# By default this script does nothing." >>rc.local
+    echo "#exit 0" >>rc.local
+    echo "cd $installdir && setsid ./$wdog -franchisee=$configIUrl &" >>rc.local
+    echo "exit 0" >>rc.local
+    cd /root
+    echo -e "${green}开机启动设置成功"
 }
 closeWhiteList(){
     cd $installdir
     sed -i 's/"is_open_white_list_mode": true/"is_open_white_list_mode": false/g' localconfig.json
     echo -e "${green}关闭成功"
 }
-checkConfigFile(){
-    cat /etc/fxpool-fxminerproxyv3/localconfig.json
-}
-delErrFile(){
-    echo "" >/etc/fxpool-fxminerproxyv3/error.log
-    echo -e "${green}删除成功${plain}"
-}
 show_menu() {
     clear
     check_install
     echo -e "
-     ${yellow}注意:之前安装过盗版软件的(nbminerproxy)请先重新安装操作系统否则会影响抽水
+     ${green}大陆版本
      ${green}$uiname脚本管理界面安装完成(建议使用debian8.*版本内存控制更好)
-     ${green}线路:${router_line}
      ${green}脚本版本${shell_version}
-     ${green}软件版本${version}
      ${green}安装时linux默认最大连接数据已修改为最大65535(需重启服务器生效)
      ${green}安装时软件已经自动设置开机启动
      ${red}浏览器默认端口用户名和密码全部使用随机生成，启动成功后会在控制台上打印出来请注意${plain}
@@ -403,11 +299,9 @@ show_menu() {
      ${green}7.${plain} linux大连接数改为65535(需重启服务器生效)
      ${green}8.${plain} 手动设置开机启动
      ${green}9.${plain} 关闭IP白名单功能(关闭后重新登录即可)
-     ${green}10.${plain} 查看配置文件(登录信息等)
-     ${green}11.${plain} 删除错误日志
     
    "
-    echo && read -p "请输入选择 [0-11]: " num
+    echo && read -p "请输入选择 [0-8]: " num
 
     case "${num}" in
     0)
@@ -440,14 +334,8 @@ show_menu() {
     9)
         closeWhiteList
         ;;
-    10)
-        checkConfigFile
-        ;;
-    11)
-        delErrFile
-        ;;    
     *)
-        echo -e "${red}请输入正确的数字 [0-11]${plain}"
+        echo -e "${red}请输入正确的数字 [0-9]${plain}"
         ;;
     esac
 }
