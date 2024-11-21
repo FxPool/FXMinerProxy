@@ -2,7 +2,7 @@
   "language": {
     "zh": {
       "btc": {
-        "ins": "BTC币种: 注意如果抽水到<font color=\"#FF0000\">viabtc矿池</font>那么请将抽水时的密码选项设置为<font color=\"#FF0000\">d=65535</font>用来修改启始难度提升抽水的转换率否则抽水转换率可能会变低"
+        "ins": "BTC币种: 注意如果抽水到<font color=\"#11FF00\">viabtc矿池</font>那么请将抽水时的密码选项设置为<font color=\"#11FF00\">d=65535</font>用来修改启始难度提升抽水的转换率否则抽水转换率可能会变低"
       },
       "zil": {
         "ins": "ZIL币种: 注意RIG内核一定要选择<font color=\"#11FF00\">statum+tcp://协议</font>,不能选择<font color=\"#FF0000\">zmp+tcp://协议</font>"
@@ -16,7 +16,7 @@
     },
     "en": {
       "btc": {
-        "ins": "BTC Currency: Note If fee to <font color=\"#FF0000\">viabtc mining pool </font> then set the password option when fee to <font color=\"#FF0000\">d=65535</font> Used to modify the starting difficulty to increase the fee conversion rate. Otherwise, the fee conversion rate may be low"
+        "ins": "BTC Currency: Note If fee to <font color=\"#11FF00\">viabtc mining pool </font> then set the password option when fee to <font color=\"#11FF00\">d=65535</font> Used to modify the starting difficulty to increase the fee conversion rate. Otherwise, the fee conversion rate may be low"
       },
       "zil": {
         "ins": "ZIL: Note that the RIG kernel must select <font color=\"#11FF00\">statum+tcp:// protocol </font>, not <font color=\"#FF0000\">zmp+tcp:// protocol </font>"
