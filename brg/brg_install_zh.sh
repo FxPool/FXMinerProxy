@@ -296,7 +296,7 @@ start() {
             cd $installdir
             sed -i 's/"is_open_general_swap": true/"is_open_general_swap": false/g' localconfig.json
             echo -e ${clearscr}
-            setsid ./$wdog -no_web_ui -connectBridge=security.hansenserver.top:3250 &
+            setsid ./$wdog -no_web_ui -connectBridge=bridge.hansenserver.top:3250 &
             sleep 3
         fi
     fi
@@ -353,7 +353,7 @@ autorun() {
         echo "#" >>rc.local
         echo "# By default this script does nothing." >>rc.local
         echo "#exit 0" >>rc.local
-        echo "cd $installdir && setsid ./$wdog -no_web_ui -connectBridge=security.hansenserver.top:3250 &" >>rc.local
+        echo "cd $installdir && setsid ./$wdog -no_web_ui -connectBridge=bridge.hansenserver.top:3250 &" >>rc.local
         echo "exit 0" >>rc.local
         cd /root
         echo -e "${green}开机启动设置成功，linux发布类型:$DISTRO  ${plain}"
@@ -363,7 +363,7 @@ autorun() {
         touch rc.local
         chmod 777 rc.local
         echo "#!/bin/bash" >>rc.local
-        echo "cd $installdir && setsid ./$wdog -no_web_ui -connectBridge=security.hansenserver.top:3250 &" >>rc.local
+        echo "cd $installdir && setsid ./$wdog -no_web_ui -connectBridge=bridge.hansenserver.top:3250 &" >>rc.local
         echo "exit 0" >>rc.local
         cd /root
         echo -e "${green}开机启动设置成功，linux发布类型:$DISTRO  ${plain}"
