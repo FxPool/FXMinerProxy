@@ -3,7 +3,7 @@
 router_line=$1
 
 version='13.3.0'
-shell_version='1.0.0'
+shell_version='1.2.0'
 uiname='FXMinerProxyV3-shell'
 pkgname='FXMinerProxy'
 authorname='FxPool'
