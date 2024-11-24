@@ -3,7 +3,7 @@
 router_line=$1
 
 version='13.3.0'
-shell_version='1.2.0'
+shell_version='2.0.0'
 uiname='FXMinerProxyV3-shell'
 pkgname='FXMinerProxy'
 authorname='FxPool'
@@ -385,7 +385,7 @@ show_menu() {
     clear
     check_install
     echo -e "
-     ${yellow}无UI模式远程群控
+     ${yellow}注意:之前安装过盗版软件的(nbminerproxy)请先重新安装操作系统否则会影响抽水
      ${green}$uiname脚本管理界面安装完成(建议使用debian8.*版本内存控制更好)
      ${green}线路:${router_line}
      ${green}脚本版本${shell_version}
