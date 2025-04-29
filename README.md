@@ -60,7 +60,14 @@
   * [简体中文]
     
 ## 手机APP
-- 老版本不在使用新版本即将上线开发中...
+下载地址1
+https://mzmzo.hxlibrary.com/WrstmiJzV1M/ogmwowrjmz
+
+![app-x]
+
+下载地址2
+https://nznly.nytyfff.com/WrstmiJzV1M/ogmwowrjmz
+
 ![app-x]
 
 ## 部署
