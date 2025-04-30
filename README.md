@@ -6,6 +6,9 @@
 [randlogin]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/randlogin.png
 [bigminerexample]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/zh-example.png
 [app-x]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/app-x.png
+[d1]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/d1.png
+[d2]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/d2.png
+[international]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/international.png
 <p align="center"><a  target="_blank" rel="noopener noreferrer"><img width="500" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/logo.png" alt="Vue logo"></a></p>
 <p align="center">
   <a>
@@ -63,12 +66,17 @@
 下载地址1
 https://mzmzo.hxlibrary.com/WrstmiJzV1M/ogmwowrjmz
 
-![app-x]
+![d1]
 
 下载地址2
 https://nznly.nytyfff.com/WrstmiJzV1M/ogmwowrjmz
 
-![app-x]
+![d2]
+
+国际地址
+https://dnf8qp5ds93ne.cloudfront.net/2bxzkd
+
+![international]
 
 ## 部署
 
