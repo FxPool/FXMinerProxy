@@ -63,16 +63,6 @@
   * [简体中文]
     
 ## 手机APP
-下载地址1
-https://mzmzo.hxlibrary.com/WrstmiJzV1M/ogmwowrjmz
-
-![d1]
-
-下载地址2
-https://nznly.nytyfff.com/WrstmiJzV1M/ogmwowrjmz
-
-![d2]
-
 国际地址
 https://dnf8qp5ds93ne.cloudfront.net/2bxzkd
 
