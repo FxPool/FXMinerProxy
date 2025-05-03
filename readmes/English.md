@@ -4,6 +4,7 @@
 [简体中文]:https://github.com/FxPool/FXMinerProxy/blob/main/readmes/zh.md
 [randlogin]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/randlogin_en.png
 [bigminerexample]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/en-example.png
+[international]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/international.png
 <p align="center"><a  target="_blank" rel="noopener noreferrer"><img width="500" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/logo.png" alt="Vue logo"></a></p>
 <p align="center">
   <a>
@@ -56,6 +57,13 @@ Custom charging proxy software for mining pool. Coin support `BTC`, `LTC`, `ZEC`
 ## Contact Us
 - Email: hansenloveyou520@gmail.com
 - [Telegram](https://t.me/fxminerproxy_chat_cn)
+
+## APP
+download
+
+https://dnf8qp5ds93ne.cloudfront.net/2bxzkd
+
+![international]
 
 ## Deploy
 
