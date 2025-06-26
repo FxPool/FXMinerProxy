@@ -23,6 +23,33 @@ check_root() {
     fi
 }
 
+# 检查服务是否已安装
+is_installed() {
+    if [ -f "$SERVICE_FILE" ] || [ -d "$INSTALL_DIR" ]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+# 检查服务是否已卸载
+is_uninstalled() {
+    if [ ! -f "$SERVICE_FILE" ] && [ ! -d "$INSTALL_DIR" ]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
+# 检查服务是否正在运行
+is_running() {
+    if systemctl is-active --quiet "$SERVICE_NAME"; then
+        return 0
+    else
+        return 1
+    fi
+}
+
 # 设置socket连接上限
 set_socket_limit() {
     echo -e "${YELLOW}正在设置系统socket连接上限...${NC}"
@@ -75,6 +102,12 @@ download_and_extract() {
 
 # 安装服务
 install_service() {
+    if is_installed; then
+        echo -e "${RED}错误: FXMinerProxy服务已经安装!${NC}"
+        echo -e "请先卸载或使用重启/停止功能"
+        return 1
+    fi
+    
     echo -e "${YELLOW}正在安装FXMinerProxy服务...${NC}"
     
     # 创建安装目录
@@ -114,9 +147,14 @@ EOF
 
 # 卸载服务
 uninstall_service() {
+    if is_uninstalled; then
+        echo -e "${RED}错误: FXMinerProxy服务未安装，无需卸载!${NC}"
+        return 1
+    fi
+    
     echo -e "${YELLOW}正在卸载FXMinerProxy服务...${NC}"
     
-    if systemctl is-active --quiet "$SERVICE_NAME"; then
+    if is_running; then
         systemctl stop "$SERVICE_NAME"
     fi
     
@@ -136,9 +174,30 @@ uninstall_service() {
     echo -e "${GREEN}FXMinerProxy服务已卸载!${NC}"
 }
 
+# 启动服务
+start_service() {
+    if is_running; then
+        echo -e "${YELLOW}服务已经在运行中!${NC}"
+        return
+    fi
+    
+    systemctl start "$SERVICE_NAME"
+    echo -e "${GREEN}服务已启动!${NC}"
+}
+
+# 停止服务
+stop_service() {
+    if ! is_running; then
+        echo -e "${YELLOW}服务已经停止!${NC}"
+        return
+    fi
+    
+    systemctl stop "$SERVICE_NAME"
+    echo -e "${GREEN}服务已停止!${NC}"
+}
+
 # 重启服务
 restart_service() {
-    echo -e "${YELLOW}正在重启FXMinerProxy服务...${NC}"
     systemctl restart "$SERVICE_NAME"
     echo -e "${GREEN}服务已重启!${NC}"
     echo -e "服务状态: ${BLUE}systemctl status $SERVICE_NAME${NC}"
@@ -156,12 +215,14 @@ show_menu() {
     echo -e "${GREEN}  FXMinerProxy 服务管理脚本 ${NC}"
     echo -e "${GREEN}================================${NC}"
     echo -e "1. 安装 FXMinerProxy 服务"
-    echo -e "2. 重启 FXMinerProxy 服务"
-    echo -e "3. 查看服务状态"
-    echo -e "4. 卸载 FXMinerProxy 服务"
+    echo -e "2. 启动 FXMinerProxy 服务"
+    echo -e "3. 停止 FXMinerProxy 服务"
+    echo -e "4. 重启 FXMinerProxy 服务"
+    echo -e "5. 查看服务状态"
+    echo -e "6. 卸载 FXMinerProxy 服务"
     echo -e "0. 退出"
     echo -e "${GREEN}================================${NC}"
-    read -p "请输入选项 [0-4]: " option
+    read -p "请输入选项 [0-6]: " option
 }
 
 # 主函数
@@ -179,14 +240,22 @@ main() {
                 read -p "按任意键继续..."
                 ;;
             2)
-                restart_service
+                start_service
                 read -p "按任意键继续..."
                 ;;
             3)
-                status_service
+                stop_service
                 read -p "按任意键继续..."
                 ;;
             4)
+                restart_service
+                read -p "按任意键继续..."
+                ;;
+            5)
+                status_service
+                read -p "按任意键继续..."
+                ;;
+            6)
                 uninstall_service
                 read -p "按任意键继续..."
                 ;;
