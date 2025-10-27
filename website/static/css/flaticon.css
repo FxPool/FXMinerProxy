@@ -1,0 +1,49 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 19/11/2019 10:21
+  	*/
+
+@font-face {
+      font-family: "Flaticon";
+      src: url("../fonts/Flaticon.eot");
+      src: url("../fonts/Flaticon.eot?#iefix") format("embedded-opentype"), url("../fonts/Flaticon.woff2") format("woff2"), url("../fonts/Flaticon.woff") format("woff"), url("../fonts/Flaticon.ttf") format("truetype"), url("../fonts/Flaticon.svg#Flaticon") format("svg");
+      font-weight: normal;
+      font-style: normal;
+  }
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+  font-family: Flaticon;
+        font-size: 20px;
+font-style: normal;
+}
+
+.flaticon-address:before { content: "\f100"; }
+.flaticon-alarm-clock:before { content: "\f101"; }
+.flaticon-cloud-computing:before { content: "\f102"; }
+.flaticon-application:before { content: "\f103"; }
+.flaticon-customer:before { content: "\f104"; }
+.flaticon-hard-drive:before { content: "\f105"; }
+.flaticon-healthcare-and-medical:before { content: "\f106"; }
+.flaticon-import:before { content: "\f107"; }
+.flaticon-ui:before { content: "\f108"; }
+.flaticon-speech-bubble:before { content: "\f109"; }
+.flaticon-project-management:before { content: "\f10a"; }
+.flaticon-startup:before { content: "\f10b"; }
+.flaticon-support:before { content: "\f10c"; }
+.flaticon-cloud-computing-1:before { content: "\f10d"; }
+.flaticon-tap:before { content: "\f10e"; }
+.flaticon-app:before { content: "\f10f"; }
+.flaticon-laugh:before { content: "\f110"; }
+.flaticon-search:before { content: "\f111"; }
+.flaticon-adaptive:before { content: "\f112"; }
+.flaticon-sketch:before { content: "\f113"; }
+.flaticon-heart-frequency:before { content: "\f114"; }
+.flaticon-vision:before { content: "\f115"; }
