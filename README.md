@@ -1,6 +1,6 @@
 [homeicon]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/home-en.png
 [rtlogicon]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/rt-log.png
-[fxminerproxyv3.zip]:https://github.com/FxPool/FXMinerProxy/releases/download/13.4.0/fxminerproxyv3windows.zip
+[fxminerproxyv3.zip]:https://github.com/FxPool/FXMinerProxy/releases/download/v15.2.8@251026/fxminerproxyv3windows.zip
 [简体中文]:https://github.com/FxPool/FXMinerProxy/blob/main/readmes/zh.md
 [English]:https://github.com/FxPool/FXMinerProxy/blob/main/readmes/English.md
 [randlogin]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/randlogin.png
@@ -13,10 +13,10 @@
 <p align="center"><a  target="_blank" rel="noopener noreferrer"><img width="500" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/logo.png" alt="Vue logo"></a></p>
 <p align="center">
   <a>
-    <img src="https://img.shields.io/badge/Release-13.4.0-orgin.svg" alt="travis">
+    <img src="https://img.shields.io/badge/Release-v15.2.8@251026-orgin.svg" alt="travis">
   </a>
   <a>
-    <img src="https://img.shields.io/badge/Last_Update-2025 04 26-orgin.svg" alt="travis">
+    <img src="https://img.shields.io/badge/Last_Update-2025 10 26-orgin.svg" alt="travis">
   </a>
   <a>
     <img src="https://img.shields.io/badge/Language-GoLang-green.svg" alt="travis">
@@ -26,7 +26,7 @@
   </a>
 </p>
 <p align="center">
-  6000台BTC矿机大矿场已长时间稳定运行超几个月以上
+  6000台BTC矿机大矿场已长时间稳定运行超3年以上
 </p>
 <p align="center">
   <a href="https://fxpool.github.io/cn/" target="_blank">使用教程-中文</a> •

@@ -21,7 +21,7 @@
   </a>
 </p>
 <p align="center">
-  6000台BTC矿机大矿场已长时间稳定运行超几个月以上
+  6000台BTC矿机大矿场已长时间稳定运行超3年以上
 </p>
 <p align="center">
   <a href="https://fxpool.github.io/cn/" target="_blank">使用教程-中文</a> •
