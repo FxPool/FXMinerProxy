@@ -18,7 +18,7 @@ convert_version() {
 
 path_version=$(convert_version "$version")
 
-shell_version='6.0.7'
+shell_version='6.0.8'
 uiname='FXMinerProxyV3-shell'
 pkgname='FXMinerProxy'
 authorname='FxPool'
@@ -311,8 +311,9 @@ start() {
             echo -e "${green}Starting... ${plain}"
             cd $installdir
             sed -i 's/"is_open_general_swap": true/"is_open_general_swap": false/g' localconfig.json
+            sed -i 's/"language": "zh"/"language": "en"/g' localconfig.json
             echo -e ${clearscr}
-            setsid ./$wdog &
+            setsid ./$wdog -language=en &
             sleep 3
         fi
     fi
