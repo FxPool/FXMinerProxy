@@ -2,7 +2,6 @@
 
 # Language selection
 select_language() {
-    echo "FxMinerProxy"
     echo "Please select language / 请选择语言:"
     echo "1. English"
     echo "2. 中文"
