@@ -2,7 +2,7 @@
 
 router_line=$1
 
-set_version='v15.2.8@251026'
+version='v15.2.8@251026'
 
 convert_version() {
     local version="$1"
@@ -16,9 +16,9 @@ convert_version() {
     echo "$version"
 }
 
-version=$(convert_version "$set_version")
+path_version=$(convert_version "$version")
 
-shell_version='6.0.6'
+shell_version='6.0.7'
 uiname='FXMinerProxyV3-shell'
 pkgname='FXMinerProxy'
 authorname='FxPool'
@@ -173,20 +173,20 @@ install() {
         wget $download_url
         if [ -f "$version.tar.gz" ]; then
             tar -zxvf $version.tar.gz
-            cd $pkgname-$version/
+            cd $pkgname-$path_version/
             tar -zxvf fxminerproxyv3linux.tar.gz
             mkdir fxpool-$sofname && chmod 777 fxpool-$sofname
             #判断文件夹是否创建成功
             if [ ! -d "fxpool-$sofname" ]; then
                 echo && echo -n -e "${yellow}安装失败,请重新操作: ${plain}" && read temp
-                rm -rf $pkgname-$version && rm $version.tar.gz
+                rm -rf $pkgname-$path_version && rm $version.tar.gz
                 return
             fi
             mv fxminerproxyv3linux/$sofname fxpool-$sofname
             mv fxminerproxyv3linux/running.sh fxpool-$sofname/$wdog
             cd fxpool-$sofname && chmod +x $wdog && chmod +x $sofname && cd ../
             cp -r fxpool-$sofname /etc/ && cd ../
-            rm -rf $pkgname-$version && rm $version.tar.gz
+            rm -rf $pkgname-$path_version && rm $version.tar.gz
             if [ ! -f "$installfolder" ]; then
                 rm -rf  $installdir
                 echo -e "${red}安装时失败，请输入一键安装脚本重新安装"
@@ -223,7 +223,7 @@ install() {
         else
             echo -e "${red}下载安装包失败，请输入一键安装脚本重新安装"
             echo -e "${yellow}请使用备用脚本试试: >> bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/install_zh.sh) backline <<"
-            rm -rf $pkgname-$version && rm $version.tar.gz
+            rm -rf $pkgname-$path_version && rm $version.tar.gz
             return
         fi
     else
@@ -261,7 +261,7 @@ update_app() {
     kill_wdog
     killProcess
     tar -zxvf $version.tar.gz
-    cd $pkgname-$version/
+    cd $pkgname-$path_version/
     tar -zxvf fxminerproxyv3linux.tar.gz
     mkdir fxpool-$sofname && chmod 777 fxpool-$sofname
     #判断文件夹是否创建成功
@@ -275,14 +275,14 @@ update_app() {
         #判断重命名是否成功
         if [ ! -f "fxpool-$sofname/$wdog" ]; then
             echo && echo -n -e "${yellow}更新失败,重命名失败,请重新操作: ${plain}" && read temp
-            rm -rf $pkgname-$version && rm $version.tar.gz
+            rm -rf $pkgname-$path_version && rm $version.tar.gz
             return
         fi
         cp -r fxpool-$sofname /etc/ && cd ../
-        rm -rf $pkgname-$version && rm $version.tar.gz
+        rm -rf $pkgname-$path_version && rm $version.tar.gz
         if [ ! -f "$installfolder" ]; then
             echo && echo -n -e "${yellow}更新失败,请程序打开脚本操作"
-            rm -rf $pkgname-$version && rm $version.tar.gz
+            rm -rf $pkgname-$path_version && rm $version.tar.gz
             return
         else
             #echo && echo -n -e "${yellow}更新完成,按回车启动,CTRL+C退出: ${plain}" && read temp
