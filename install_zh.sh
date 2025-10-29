@@ -2,8 +2,23 @@
 
 router_line=$1
 
-version='v15.2.8@251026'
-shell_version='6.0.5'
+set_version='v15.2.8@251026'
+
+convert_version() {
+    local version="$1"
+    
+    # 移除开头的 'v'
+    version="${version#v}"
+    
+    # 替换 '@' 为 '-'
+    version="${version//@/-}"
+    
+    echo "$version"
+}
+
+version=$(convert_version "$set_version")
+
+shell_version='6.0.6'
 uiname='FXMinerProxyV3-shell'
 pkgname='FXMinerProxy'
 authorname='FxPool'
