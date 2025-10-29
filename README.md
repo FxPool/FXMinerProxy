@@ -97,10 +97,7 @@
 ## 使用说明书
 [User guide](https://fxpool.github.io/cn/)
 
-## API 开发文档
-[API Reference](https://fxpool.github.io/cn/)
-
-## 5000+的BTC大矿场长时间稳定运行
+## 6000+的BTC大矿场长时间稳定运行
 ![bigminerexample]
 
 ## 稳定的抽水算力曲线
