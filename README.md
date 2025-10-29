@@ -4,7 +4,7 @@
 [简体中文]:https://github.com/FxPool/FXMinerProxy/blob/main/readmes/zh.md
 [English]:https://github.com/FxPool/FXMinerProxy/blob/main/readmes/English.md
 [randlogin]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/randlogin.png
-[bigminerexample]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/zh-example.png
+[bigminerexample]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/zh-example-01.png
 [app-x]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/app-x.png
 [d1]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/d1.png
 [d2]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/d2.png
