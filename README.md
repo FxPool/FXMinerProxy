@@ -65,11 +65,11 @@
 - **需要wget** 工具 **debian ubuntu 下载:** `apt-get install wget`
 - 最新的版本
   ```shell
-  bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/install_zh.sh)
+  bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/install.sh)
   ```
 - 安装指定版本
   ```shell
-  bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/oldversion/install_zh.sh) 版本号
+  bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/install.sh) 版本号
   ```
 #### windows系统
 - **权限** `administrator`
