@@ -121,9 +121,11 @@ init_strings() {
     fi
 }
 
-router_line=$1
-
 version='v15.2.8@251026'
+
+if [ -n "$1" ]; then
+    version=$1
+fi
 
 convert_version() {
     local version="$1"
@@ -139,7 +141,7 @@ convert_version() {
 
 path_version=$(convert_version "$version")
 
-shell_version='6.0.9'
+shell_version='6.1.0'
 uiname='FXMinerProxyV3-shell'
 pkgname='FXMinerProxy'
 authorname='FxPool'
@@ -157,15 +159,8 @@ yellow='\033[0;33m'
 plain='\033[0m'
 clearscr='\033c'
 
-str2='backline'
-if [[ $str2 == $router_line ]]
-then
-    echo "Special Line"
-   download_url=https://raw.githubusercontent.com/FxPool/fxminerbin/main/$version.tar.gz
-else
-   download_url=https://github.com/$authorname/$pkgname/archive/refs/tags/$version.tar.gz
-   router_line='Default'
-fi
+download_url=https://github.com/$authorname/$pkgname/archive/refs/tags/$version.tar.gz
+router_line='Default'
 
 # Check if current download file exists
 if [ ! -f "$myFile" ]; then
