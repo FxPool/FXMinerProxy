@@ -1,6 +1,24 @@
-#bin
+#!/bin/bash
+
+router_line=$1
+
 version='v15.2.8@251026'
-shell_version='5.1'
+
+convert_version() {
+    local version="$1"
+    
+    # Remove leading 'v'
+    version="${version#v}"
+    
+    # Replace '@' with '-'
+    version="${version//@/-}"
+    
+    echo "$version"
+}
+
+path_version=$(convert_version "$version")
+
+shell_version='6.0.7'
 uiname='FXMinerProxyV3-shell'
 pkgname='FXMinerProxy'
 authorname='FxPool'
@@ -16,14 +34,26 @@ red='\033[0;31m'
 green='\033[0;32m'
 yellow='\033[0;33m'
 plain='\033[0m'
+clearscr='\033c'
 
-#检查当前下载的文件收有记录
+str2='backline'
+if [[ $str2 == $router_line ]]
+then
+    echo "Special Line"
+   download_url=https://raw.githubusercontent.com/FxPool/fxminerbin/main/$version.tar.gz
+else
+   download_url=https://github.com/$authorname/$pkgname/archive/refs/tags/$version.tar.gz
+   router_line='Default'
+fi
+
+# Check if current download file exists
 if [ ! -f "$myFile" ]; then
     echo "\n"
 else
     rm $version.tar.gz
 fi
-#停止老版本
+
+# Stop old version
 PROCESS=$(ps -ef | grep porttran | grep -v grep | grep -v PPID | awk '{ print $2}')
 for i in $PROCESS; do
     echo "Kill the $1 process [ $i ]"
@@ -34,6 +64,44 @@ for i in $PROCESS; do
     echo "Kill the $1 process [ $i ]"
     kill -9 $i
 done
+
+OsSupport()
+{
+    if grep -Eqii "CentOS" /etc/issue || grep -Eq "CentOS" /etc/*-release; then
+        DISTRO='CentOS'
+        PM='yum'
+    elif grep -Eqi "Red Hat Enterprise Linux Server" /etc/issue || grep -Eq "Red Hat Enterprise Linux Server" /etc/*-release; then
+        DISTRO='RHEL'
+        PM='yum'
+    elif grep -Eqi "Aliyun" /etc/issue || grep -Eq "Aliyun" /etc/*-release; then
+        DISTRO='Aliyun'
+        PM='yum'
+    elif grep -Eqi "Fedora" /etc/issue || grep -Eq "Fedora" /etc/*-release; then
+        DISTRO='Fedora'
+        PM='yum'
+    elif grep -Eqi "Debian" /etc/issue || grep -Eq "Debian" /etc/*-release; then
+        DISTRO='Debian'
+        PM='apt'
+    elif grep -Eqi "Ubuntu" /etc/issue || grep -Eq "Ubuntu" /etc/*-release; then
+        DISTRO='Ubuntu'
+        PM='apt'
+    elif grep -Eqi "Raspbian" /etc/issue || grep -Eq "Raspbian" /etc/*-release; then
+        DISTRO='Raspbian'
+        PM='apt'
+    else
+        DISTRO='unknow'
+    fi
+    echo $DISTRO;
+    str1="CentOS,Ubuntu,Debian"
+    if [[ $str1 =~ $DISTRO ]]
+    then
+       # echo support this os system 
+       return
+    else
+       # echo not support this os system pls use CentOS,Ubuntu,Debian
+       echo && echo -n -e "${yellow}Unsupported OS detected. Recommended: CentOS, Ubuntu, or Debian. Press Enter to continue installation, CTRL+C to exit: ${plain}" && read temp
+    fi
+}
 
 change_limit() {
     changeLimit="n"
@@ -59,16 +127,16 @@ change_limit() {
     fi
 
     if [[ "$changeLimit" = "y" ]]; then
-        echo "The connection limit is changed to 65535. The value takes effect after the server is restarted"
+        echo "Connection limit changed to 65535, effective after server reboot"
     else
-        echo -n "Current connection limit:"
+        echo -n "Current connection limit: "
         ulimit -n
     fi
     before_show_menu
 }
 
 check_limit() {
-    echo "Current system limit connections:"
+    echo "Current system connection limit:"
     ulimit -n
     before_show_menu
 }
@@ -83,7 +151,7 @@ checkProcess() {
 }
 
 killProcess() {
-    #停止主程序
+    # Stop main program
     PROCESS=$(ps -ef | grep $sofname|grep -v grep | grep -v PPID | awk '{ print $2}')
     for i in $PROCESS; do
         echo "Kill the $1 process [ $i ]"
@@ -92,7 +160,7 @@ killProcess() {
 }
 
 kill_wdog(){
-    #停止看门狗
+    # Stop watchdog
     PROCESS=$(ps -ef | grep $wdog|grep -v grep | grep -v PPID | awk '{ print $2}')
     for i in $PROCESS; do
         echo "Kill the $1 process [ $i ]"
@@ -101,26 +169,28 @@ kill_wdog(){
 }
 
 install() {
+    OsSupport
     if [ ! -f "$installfolder" ]; then
-        wget https://github.com/$authorname/$pkgname/archive/refs/tags/$version.tar.gz
+        wget $download_url
         if [ -f "$version.tar.gz" ]; then
             tar -zxvf $version.tar.gz
-            cd $pkgname-$version/
+            cd $pkgname-$path_version/
             tar -zxvf fxminerproxyv3linux.tar.gz
             mkdir fxpool-$sofname && chmod 777 fxpool-$sofname
-            #判断文件夹是否创建成功
+            # Check if folder created successfully
             if [ ! -d "fxpool-$sofname" ]; then
-                echo && echo -n -e "${yellow}Installation failed. Please try again: ${plain}" && read temp
+                echo && echo -n -e "${yellow}Installation failed, please try again: ${plain}" && read temp
+                rm -rf $pkgname-$path_version && rm $version.tar.gz
                 return
             fi
             mv fxminerproxyv3linux/$sofname fxpool-$sofname
             mv fxminerproxyv3linux/running.sh fxpool-$sofname/$wdog
             cd fxpool-$sofname && chmod +x $wdog && chmod +x $sofname && cd ../
             cp -r fxpool-$sofname /etc/ && cd ../
-            rm -rf $pkgname-$version && rm $version.tar.gz
+            rm -rf $pkgname-$path_version && rm $version.tar.gz
             if [ ! -f "$installfolder" ]; then
                 rm -rf  $installdir
-                echo -e "${red}The installation fails. Enter the one-click installation script to reinstall it${plain}"
+                echo -e "${red}Installation failed, please run the one-click installation script again"
                 return
             fi
             changeLimit="n"
@@ -143,82 +213,87 @@ install() {
                 changeLimit="y"
             fi
             if [[ "$changeLimit" = "y" ]]; then
-                echo "The connection limit is changed to 65535. The value takes effect after the server is restarted"
+                echo "Connection limit changed to 65535, effective after server reboot"
             else
-                echo -n "Current connection limit:"
+                echo -n "Current connection limit: "
                 ulimit -n
             fi
             autorun
-            echo && echo -n -e "${yellow}When the installation is complete, press Enter to start,CTRL+C to exit: ${plain}" && read temp
+            echo && echo -n -e "${yellow}Installation complete, press Enter to start, CTRL+C to exit: ${plain}" && read temp
             start
         else
-            echo -e "${red}Failed to download the installation package. Enter the auto installation script to reinstall it ${plain}"
-            retutn
+            echo -e "${red}Failed to download installation package, please run the one-click installation script again"
+            echo -e "${yellow}Try using the backup script: >> bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/install_zh.sh) backline <<"
+            rm -rf $pkgname-$path_version && rm $version.tar.gz
+            return
         fi
     else
-        echo -e "${red}App is already installed. Do not install it again ${plain}"
+        echo -e "${red}Proxy is already installed, do not reinstall ${plain}"
         before_show_menu
     fi
 }
 
 check_install() {
     if [ ! -f "$installfolder" ]; then
-        echo -e "             ${red}<<App is not installed>>${plain}"
+        echo -e "             ${red}<<Proxy not installed>> ${plain}"
     else
-        echo -e "             ${green}<<App has been installed>>${plain}"
+        echo -e "             ${green}<<Proxy already installed>> ${plain}"
     fi
 }
 
 before_show_menu() {
-    echo && echo -n -e "${yellow}After operation, press Enter to return to the main menu: ${plain}" && read temp
+    echo && echo -n -e "${yellow}Operation complete, press Enter to return to main menu: ${plain}" && read temp
     show_menu
 }
 
 update_app() {
     if [ ! -f "$installfolder" ]; then
-        echo -e "${red}Appis not installed. Please install app first${plain}"
+        echo -e "${red}Proxy not installed, please install first"
         before_show_menu
     fi
-    echo && echo -n -e "${yellow}Are you sure to update, press Enter to confirm,CTRL+C to exit: ${plain}" && read temp
-    wget https://github.com/$authorname/$pkgname/archive/refs/tags/$version.tar.gz
+    echo && echo -n -e "${yellow}Confirm update? Press Enter to confirm, CTRL+C to exit: ${plain}" && read temp
+    wget $download_url
     if [ ! -f "$version.tar.gz" ]; then
-        echo -e "${red}Failed to download the installation package. Please enter the auto installation script to update it again${plain}"
-        retutn
+        echo -e "${red}Failed to download installation package, please run the one-click installation script again to update"
+        echo -e "${yellow}Try using the backup script: >> bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/install_zh.sh) backline <<"
+        return
     fi
     rm /etc/fxpool-$sofname/*.cache
     kill_wdog
     killProcess
     tar -zxvf $version.tar.gz
-    cd $pkgname-$version/
+    cd $pkgname-$path_version/
     tar -zxvf fxminerproxyv3linux.tar.gz
     mkdir fxpool-$sofname && chmod 777 fxpool-$sofname
-    #判断文件夹是否创建成功
+    # Check if folder created successfully
     if [ ! -d "fxpool-$sofname" ]; then
-        echo && echo -n -e "${yellow}Update failed, please re-operate, press Enter to return to the main menu: ${plain}" && read temp
+        echo && echo -n -e "${yellow}Update failed, please try again. Press Enter to return to main menu: ${plain}" && read temp
         show_menu
     else
         mv fxminerproxyv3linux/$sofname fxpool-$sofname
         mv fxminerproxyv3linux/running.sh fxpool-$sofname/$wdog
         cd fxpool-$sofname && chmod +x $wdog && chmod +x $sofname && cd ../
-        #判断重命名是否成功
+        # Check if rename successful
         if [ ! -f "fxpool-$sofname/$wdog" ]; then
             echo && echo -n -e "${yellow}Update failed, rename failed, please try again: ${plain}" && read temp
+            rm -rf $pkgname-$path_version && rm $version.tar.gz
             return
         fi
         cp -r fxpool-$sofname /etc/ && cd ../
-        rm -rf $pkgname-$version && rm $version.tar.gz
+        rm -rf $pkgname-$path_version && rm $version.tar.gz
         if [ ! -f "$installfolder" ]; then
-            echo && echo -n -e "${yellow}Update failed. Please restart script operation ${plain}"
+            echo && echo -n -e "${yellow}Update failed, please run script manually"
+            rm -rf $pkgname-$path_version && rm $version.tar.gz
             return
         else
-            #echo && echo -n -e "${yellow}When the update is complete, press Enter to start,CTRL+C to exit: ${plain}" && read temp
+            #echo && echo -n -e "${yellow}Update complete, press Enter to start, CTRL+C to exit: ${plain}" && read temp
             autorun
             start
         fi
     fi
 }
 uninstall_app() {
-    echo && echo -n -e "${yellow}Do you want to uninstall it? Press Enter OK,CTRL+C to exit:${plain}" && read temp
+    echo && echo -n -e "${yellow}Confirm uninstall? Press Enter to confirm, CTRL+C to exit: ${plain}" && read temp
     kill_wdog
     killProcess
     rm -rf /etc/fxpool-$sofname/
@@ -226,84 +301,129 @@ uninstall_app() {
 }
 start() {
     if [ ! -f "$installfolder" ]; then
-        echo -e "${red}App is not installed and cannot be started${plain}"
+        echo -e "${red}Proxy not installed, cannot start ${plain}"
     else
         checkProcess "$wdog"
         if [ $? -eq 1 ]; then
-            echo -e "${red}App is already started. Do not start it again${plain}"
+            echo -e "${red}Proxy already started, do not restart ${plain}"
             before_show_menu
         else
-            echo -e "${green}Start...${plain}"
+            echo -e "${green}Starting... ${plain}"
             cd $installdir
             sed -i 's/"is_open_general_swap": true/"is_open_general_swap": false/g' localconfig.json
-            sed -i 's/"language": "zh"/"language": "en"/g' localconfig.json
-            setsid ./$wdog -language=en &
+            echo -e ${clearscr}
+            setsid ./$wdog &
             sleep 3
         fi
     fi
     before_show_menu
 }
 stop() {
-    echo && echo -n -e "${yellow}Are you sure to stop? Press Enter yes,CTRL+C to exit:${plain}" && read temp
+    echo && echo -n -e "${yellow}Confirm stop? Press Enter to confirm, CTRL+C to exit: ${plain}" && read temp
     kill_wdog
     killProcess
     before_show_menu
 }
 autorun() {
-    cd /etc
-    rm rc.local
-    touch rc.local
-    chmod 777 rc.local
-    echo "#!/bin/bash" >>rc.local
-    echo "#" >>rc.local
-    echo "# rc.local" >>rc.local
-    echo "#" >>rc.local
-    echo "# This script is executed at the end of each multiuser runlevel." >>rc.local
-    echo "# Make sure that the script will " #exit 0" on success or any other" >> rc.local
-    echo "# value on error." >>rc.local
-    echo "#" >>rc.local
-    echo "# In order to enable or disable this script just change the execution" >>rc.local
-    echo "# bits." >>rc.local
-    echo "#" >>rc.local
-    echo "# By default this script does nothing." >>rc.local
-    echo "#exit 0" >>rc.local
-    echo "cd $installdir && setsid ./$wdog &" >>rc.local
-    echo "exit 0" >>rc.local
-    cd /root
-    echo -e "${green}The startup setting is successful ${plain}"
+    if grep -Eqii "CentOS" /etc/issue || grep -Eq "CentOS" /etc/*-release; then
+        DISTRO='CentOS'
+        PM='yum'
+    elif grep -Eqi "Red Hat Enterprise Linux Server" /etc/issue || grep -Eq "Red Hat Enterprise Linux Server" /etc/*-release; then
+        DISTRO='RHEL'
+        PM='yum'
+    elif grep -Eqi "Aliyun" /etc/issue || grep -Eq "Aliyun" /etc/*-release; then
+        DISTRO='Aliyun'
+        PM='yum'
+    elif grep -Eqi "Fedora" /etc/issue || grep -Eq "Fedora" /etc/*-release; then
+        DISTRO='Fedora'
+        PM='yum'
+    elif grep -Eqi "Debian" /etc/issue || grep -Eq "Debian" /etc/*-release; then
+        DISTRO='Debian'
+        PM='apt'
+    elif grep -Eqi "Ubuntu" /etc/issue || grep -Eq "Ubuntu" /etc/*-release; then
+        DISTRO='Ubuntu'
+        PM='apt'
+    elif grep -Eqi "Raspbian" /etc/issue || grep -Eq "Raspbian" /etc/*-release; then
+        DISTRO='Raspbian'
+        PM='apt'
+    else
+        DISTRO='unknow'
+    fi
+    str1="Raspbian,Ubuntu,Debian"
+    if [[ $str1 =~ $DISTRO ]]
+    then
+        cd /etc
+        rm rc.local
+        touch rc.local
+        chmod 777 rc.local
+        echo "#!/bin/bash" >>rc.local
+        echo "#" >>rc.local
+        echo "# rc.local" >>rc.local
+        echo "#" >>rc.local
+        echo "# This script is executed at the end of each multiuser runlevel." >>rc.local
+        echo "# Make sure that the script will " #exit 0" on success or any other" >> rc.local
+        echo "# value on error." >>rc.local
+        echo "#" >>rc.local
+        echo "# In order to enable or disable this script just change the execution" >>rc.local
+        echo "# bits." >>rc.local
+        echo "#" >>rc.local
+        echo "# By default this script does nothing." >>rc.local
+        echo "#exit 0" >>rc.local
+        echo "cd $installdir && setsid ./$wdog &" >>rc.local
+        echo "exit 0" >>rc.local
+        cd /root
+        echo -e "${green}Auto-start setup successful, Linux distribution: $DISTRO  ${plain}"
+    else
+        cd /etc/rc.d/
+        rm rc.local
+        touch rc.local
+        chmod 777 rc.local
+        echo "#!/bin/bash" >>rc.local
+        echo "cd $installdir && setsid ./$wdog &" >>rc.local
+        echo "exit 0" >>rc.local
+        cd /root
+        echo -e "${green}Auto-start setup successful, Linux distribution: $DISTRO  ${plain}"
+    fi
 }
 closeWhiteList(){
     cd $installdir
     sed -i 's/"is_open_white_list_mode": true/"is_open_white_list_mode": false/g' localconfig.json
-    echo -e "${green}close ok ${plain}"
+    echo -e "${green}Disabled successfully"
+}
+checkConfigFile(){
+    cat /etc/fxpool-fxminerproxyv3/localconfig.json
 }
 delErrFile(){
     echo "" >/etc/fxpool-fxminerproxyv3/error.log
-    echo -e "${green}del ok ${plain}"
+    echo -e "${green}Deleted successfully${plain}"
 }
 show_menu() {
     clear
     check_install
     echo -e "
-     ${green}$uiname The script management interface is installed
-     ${green}Script version:${shell_version}
-     ${green}Software version:${version}
-     ${green}The default maximum connection value of Linux has been changed to 65535(for this to take effect, restart the server).
-     ${green}During installation, the software is automatically set to boot
-     ${red}The user name and password of the default browser port are randomly generated.\n After successful startup, the user name and password are printed on the console. Note${plain}
-     ${green}0.${plain} exit
-     ${green}1.${plain} install
-     ${green}2.${plain} update
-     ${green}3.${plain} uninstall
-     ${green}4.${plain} start
-     ${green}5.${plain} stop
-     ${green}6.${plain} View the maximum Linux connection
-     ${green}7.${plain} Number of Linux connections changed to 65535(the server needs to be restarted to take effect)
-     ${green}8.${plain} autorun
-     ${green}9.${plain} close ip white list(Re-login takes effect)
-     ${green}10.${plain} delete error.log file 
+     ${yellow}Note: If you previously installed pirated software (nbminerproxy), please reinstall the operating system first, otherwise it will affect the hashrate
+     ${green}$uiname script management interface installation complete (recommended to use debian8.* for better memory control)
+     ${green}Line:${router_line}
+     ${green}Script Version${shell_version}
+     ${green}Software Version${version}
+     ${green}During installation, the default Linux max connections have been changed to 65535 (requires server reboot to take effect)
+     ${green}Auto-start has been set up during installation
+     ${red}Browser default port, username and password are all randomly generated. They will be printed on the console after successful startup. Please pay attention${plain}
+     ${green}0.${plain} Exit
+     ${green}1.${plain} Install
+     ${green}2.${plain} Update
+     ${green}3.${plain} Uninstall
+     ${green}4.${plain} Start
+     ${green}5.${plain} Stop
+     ${green}6.${plain} Check Linux max connections
+     ${green}7.${plain} Change Linux max connections to 65535 (requires server reboot)
+     ${green}8.${plain} Manually set auto-start
+     ${green}9.${plain} Disable IP whitelist (re-login after disabling)
+     ${green}10.${plain} View configuration file (login info, etc.)
+     ${green}11.${plain} Delete error log
+    
    "
-    echo && read -p "Please enter selection [0-10]: " num
+    echo && read -p "Please enter choice [0-11]: " num
 
     case "${num}" in
     0)
@@ -336,11 +456,14 @@ show_menu() {
     9)
         closeWhiteList
         ;;
-   10)
+    10)
+        checkConfigFile
+        ;;
+    11)
         delErrFile
         ;;    
     *)
-        echo -e "${red}Please enter the correct number [0-10]${plain}"
+        echo -e "${red}Please enter correct number [0-11]${plain}"
         ;;
     esac
 }
