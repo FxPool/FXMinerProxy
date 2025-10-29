@@ -94,9 +94,6 @@
   | 最新   | [fxminerproxyv3.zip]|
   | 老板本 | [github releases](https://github.com/FxPool/FXMinerProxy/releases) |
   
-## 使用说明书
-[User guide](https://fxpool.github.io/cn/)
-
 ## 6000+的BTC大矿场长时间稳定运行
 ![bigminerexample]
 
