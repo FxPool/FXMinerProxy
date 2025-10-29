@@ -52,6 +52,25 @@ init_strings() {
         INVALID_CHOICE="请输入正确的数字 [0-11]"
         PIRATED_WARNING="注意：如果您之前安装过盗版软件（nbminerproxy），请先重装操作系统，否则会影响算力"
         BROWSER_WARNING="浏览器默认端口、用户名和密码均为随机生成。成功启动后会打印在控制台，请注意"
+        # 新增菜单翻译
+        MENU_TITLE="脚本管理界面安装完成（推荐使用debian8.*以获得更好的内存控制）"
+        MENU_LINE="线路："
+        MENU_SCRIPT_VERSION="脚本版本"
+        MENU_SOFTWARE_VERSION="软件版本"
+        MENU_CONNECTION_INFO="安装过程中已将Linux最大连接数默认改为65535（需要服务器重启生效）"
+        MENU_AUTOSTART_INFO="安装过程中已设置开机自启"
+        MENU_EXIT="退出"
+        MENU_INSTALL="安装"
+        MENU_UPDATE="更新"
+        MENU_UNINSTALL="卸载"
+        MENU_START="启动"
+        MENU_STOP="停止"
+        MENU_CHECK_CONNECTIONS="检查Linux最大连接数"
+        MENU_CHANGE_CONNECTIONS="修改Linux最大连接数为65535（需要服务器重启）"
+        MENU_SET_AUTOSTART="手动设置开机自启"
+        MENU_DISABLE_WHITELIST="禁用IP白名单（禁用后需重新登录）"
+        MENU_VIEW_CONFIG="查看配置文件（登录信息等）"
+        MENU_DELETE_LOG="删除错误日志"
     else
         # English strings (default)
         NOT_INSTALLED="<<Proxy not installed>>"
@@ -80,6 +99,25 @@ init_strings() {
         INVALID_CHOICE="Please enter correct number [0-11]"
         PIRATED_WARNING="Note: If you previously installed pirated software (nbminerproxy), please reinstall the operating system first, otherwise it will affect the hashrate"
         BROWSER_WARNING="Browser default port, username and password are all randomly generated. They will be printed on the console after successful startup. Please pay attention"
+        # New menu translations
+        MENU_TITLE="script management interface installation complete (recommended to use debian8.* for better memory control)"
+        MENU_LINE="Line:"
+        MENU_SCRIPT_VERSION="Script Version"
+        MENU_SOFTWARE_VERSION="Software Version"
+        MENU_CONNECTION_INFO="During installation, the default Linux max connections have been changed to 65535 (requires server reboot to take effect)"
+        MENU_AUTOSTART_INFO="Auto-start has been set up during installation"
+        MENU_EXIT="Exit"
+        MENU_INSTALL="Install"
+        MENU_UPDATE="Update"
+        MENU_UNINSTALL="Uninstall"
+        MENU_START="Start"
+        MENU_STOP="Stop"
+        MENU_CHECK_CONNECTIONS="Check Linux max connections"
+        MENU_CHANGE_CONNECTIONS="Change Linux max connections to 65535 (requires server reboot)"
+        MENU_SET_AUTOSTART="Manually set auto-start"
+        MENU_DISABLE_WHITELIST="Disable IP whitelist (re-login after disabling)"
+        MENU_VIEW_CONFIG="View configuration file (login info, etc.)"
+        MENU_DELETE_LOG="Delete error log"
     fi
 }
 
@@ -496,25 +534,25 @@ show_menu() {
     check_install
     echo -e "
      ${yellow}${PIRATED_WARNING}
-     ${green}$uiname script management interface installation complete (recommended to use debian8.* for better memory control)
-     ${green}Line:${router_line}
-     ${green}Script Version${shell_version}
-     ${green}Software Version${version}
-     ${green}During installation, the default Linux max connections have been changed to 65535 (requires server reboot to take effect)
-     ${green}Auto-start has been set up during installation
+     ${green}${MENU_TITLE}
+     ${green}${MENU_LINE}${router_line}
+     ${green}${MENU_SCRIPT_VERSION}${shell_version}
+     ${green}${MENU_SOFTWARE_VERSION}${version}
+     ${green}${MENU_CONNECTION_INFO}
+     ${green}${MENU_AUTOSTART_INFO}
      ${red}${BROWSER_WARNING}${plain}
-     ${green}0.${plain} Exit
-     ${green}1.${plain} Install
-     ${green}2.${plain} Update
-     ${green}3.${plain} Uninstall
-     ${green}4.${plain} Start
-     ${green}5.${plain} Stop
-     ${green}6.${plain} Check Linux max connections
-     ${green}7.${plain} Change Linux max connections to 65535 (requires server reboot)
-     ${green}8.${plain} Manually set auto-start
-     ${green}9.${plain} Disable IP whitelist (re-login after disabling)
-     ${green}10.${plain} View configuration file (login info, etc.)
-     ${green}11.${plain} Delete error log
+     ${green}0.${plain} ${MENU_EXIT}
+     ${green}1.${plain} ${MENU_INSTALL}
+     ${green}2.${plain} ${MENU_UPDATE}
+     ${green}3.${plain} ${MENU_UNINSTALL}
+     ${green}4.${plain} ${MENU_START}
+     ${green}5.${plain} ${MENU_STOP}
+     ${green}6.${plain} ${MENU_CHECK_CONNECTIONS}
+     ${green}7.${plain} ${MENU_CHANGE_CONNECTIONS}
+     ${green}8.${plain} ${MENU_SET_AUTOSTART}
+     ${green}9.${plain} ${MENU_DISABLE_WHITELIST}
+     ${green}10.${plain} ${MENU_VIEW_CONFIG}
+     ${green}11.${plain} ${MENU_DELETE_LOG}
     
    "
     echo && read -p "${ENTER_CHOICE}" num
