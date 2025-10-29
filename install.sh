@@ -2,6 +2,7 @@
 
 # Language selection
 select_language() {
+    echo "FxMinerProxy"
     echo "Please select language / 请选择语言:"
     echo "1. English"
     echo "2. 中文"
@@ -100,7 +101,7 @@ convert_version() {
 
 path_version=$(convert_version "$version")
 
-shell_version='6.0.8'
+shell_version='6.0.9'
 uiname='FXMinerProxyV3-shell'
 pkgname='FXMinerProxy'
 authorname='FxPool'
@@ -392,9 +393,14 @@ start() {
             echo -e "${green}${STARTING} ${plain}"
             cd $installdir
             sed -i 's/"is_open_general_swap": true/"is_open_general_swap": false/g' localconfig.json
-            sed -i 's/"language": "zh"/"language": "en"/g' localconfig.json
+            if [ "$LANGUAGE" = "en" ]; then
+                sed -i 's/"language": "zh"/"language": "en"/g' localconfig.json
+                 setsid ./$wdog -language=en &
+            else
+                 sed -i 's/"language": "en"/"language": "zh"/g' localconfig.json
+                  setsid ./$wdog -language=zh &
+            fi
             echo -e ${clearscr}
-            setsid ./$wdog -language=en &
             sleep 3
         fi
     fi
