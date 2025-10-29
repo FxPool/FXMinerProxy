@@ -182,5 +182,5 @@ https://dnf8qp5ds93ne.cloudfront.net/2bxzkd
 - 邮件: hansenloveyou520@gmail.com
 - [飞机群](https://t.me/fxminerproxy_chat_cn)
 - 企鹅
-<p><a  target="_blank" rel="noopener noreferrer"><img width="500" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/QQfx2025.png" alt="Vue logo"></a></p>
+<p><a  target="_blank" rel="noopener noreferrer"><img width="390" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/QQfx2025.png" alt="Vue logo"></a></p>
 
