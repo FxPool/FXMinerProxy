@@ -104,6 +104,6 @@
 ## 联系我们
 - 邮件: hansenloveyou520@gmail.com
 - [飞机群](https://t.me/fxminerproxy_chat_cn)
-- 企鹅
+- 企鹅 <a target="_blank" href="https://qm.qq.com/cgi-bin/qm/qr?k=rxUt_mukm5EdrE5SGY7pnyU4VNnKSx3V&jump_from=webapi&authKey=h+p674FGJ9WiG3XO1Elhu+vOIzn+fP9r+pHcJcQmyVbyy/PBM8oXvLAyj3j07e6r"><img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="fxminerproxy2025" title="fxminerproxy2025"></a>
 <p><a  target="_blank" rel="noopener noreferrer"><img width="390" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/QQfx2025.png" alt="Vue logo"></a></p>
 
