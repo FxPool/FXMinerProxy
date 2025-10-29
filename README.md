@@ -9,6 +9,7 @@
 [d1]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/d1.png
 [d2]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/d2.png
 [international]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/international.png
+[qq_group]:https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/QQfx2025.png
 <p align="center"><a  target="_blank" rel="noopener noreferrer"><img width="500" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/logo.png" alt="Vue logo"></a></p>
 <p align="center">
   <a>
@@ -39,11 +40,6 @@
 
 # FXMinerProxy(原创正版)
 虚拟货币矿池中转抽水收费代理软件支持币种: `BTC`, `LTC`, `ZEC`, `ETC`, `ETHF`, `ETHW`, `RVN`, `CFX`, `BEAM`, `ERGO`, `BTG`, `AE`, `FLUX`, `FIRO`, `NEOXA`,`XMR`, `KASPA`, `GRIN`, `KDA`, `DASH`, `CKB`, `RXD`,`ZIL`,`ETHW_ZIL`,`ETHF_ZIL`,`ETC_ZIL`,`KDA`, `DASH`, `CKB` , `ZEN` , `NEXA`, `HNS`, `BCH`, `IRON`等等 币种一直在更新中可能这里没有展示完全请安装软件查看
-
-## 联系我们
-- 邮件: hansenloveyou520@gmail.com
-- [飞机新群](https://t.me/fxminerproxy_chat_cn)
-- 没有飞机群的一定要下载安装注册一个飞机群,可以先通过邮件联系,qq联系方式已经下线了
 
 ## 免责声明
     1.本客户端设计、维护人员仅提供技术服务，不以营利为目的，本客户端的运行遵守服务器所在地的法律法规。本客户端用户必须严格按照当地法律法规使用本软件，如使用本客户端违反当地法律，应承担相应的法律责任。
@@ -181,4 +177,10 @@ https://dnf8qp5ds93ne.cloudfront.net/2bxzkd
 
 ## 历史版本
 [release notes](https://github.com/FxPool/FXMinerProxy/releases).
+
+## 联系我们
+- 邮件: hansenloveyou520@gmail.com
+- [飞机群](https://t.me/fxminerproxy_chat_cn)
+- 企鹅
+<p><a  target="_blank" rel="noopener noreferrer"><img width="500" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/QQfx2025.png" alt="Vue logo"></a></p>
 
