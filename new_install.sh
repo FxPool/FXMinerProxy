@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 脚本配置
-version='v15.2.9@251030'
+version='v15.3.0@251106'
 shell_version='7.0.0'
 pkgname='FXMinerProxy'
 authorname='FxPool'
