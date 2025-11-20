@@ -120,7 +120,7 @@ init_strings() {
     fi
 }
 
-version='v15.3.0@251106'
+version='v15.3.1@251120'
 
 if [ -n "$1" ]; then
     version=$1

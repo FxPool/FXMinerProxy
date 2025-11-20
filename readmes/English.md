@@ -1,6 +1,6 @@
 [homeicon]: https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/home-en.png
 [rtlogicon]: https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/rt-log.png
-[fxminerproxyv3.zip]: https://github.com/FxPool/FXMinerProxy/releases/download/v15.3.0@251106/fxminerproxyv3windows.zip
+[fxminerproxyv3.zip]: https://github.com/FxPool/FXMinerProxy/releases/download/v15.3.1@251120/fxminerproxyv3windows.zip
 [Simplified Chinese]: https://github.com/FxPool/FXMinerProxy/blob/main/readmes/zh.md
 [English]: https://github.com/FxPool/FXMinerProxy/blob/main/readmes/English.md
 [中文]: https://github.com/FxPool/FXMinerProxy/blob/main/README.md
@@ -11,7 +11,7 @@
 [d2]: https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/d2.png
 [international]: https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/international.png
 [qq_group]: https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/QQfx2025.png
-<p align="center"><a target="_blank" rel="noopener noreferrer"><img width="500" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/logo.svg" alt="Vue logo"></a></p> <p align="center"> <a> <img src="https://img.shields.io/badge/Release-v15.3.0@251106-orgin.svg" alt="travis"> </a> <a> <img src="https://img.shields.io/badge/Last_Update-2025 11 06-orgin.svg" alt="travis"> </a> <a> <img src="https://img.shields.io/badge/Language-GoLang-green.svg" alt="travis"> </a> <a> <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="travis"> </a> </p> <p align="center"> <a href="https://fxpool.github.io/cn/" target="_blank">Tutorial-Chinese</a> • </p> <p align="center"> <a href="https://www.youtube.com/watch?v=fAce-zatHqA" target="_blank">YouTube Demo Video</a> • </p> <p align="center"> <a href="https://www.youtube.com/watch?v=A0oGFG7CRIM&t=110s" target="_blank">Tunnel Encryption Video Tutorial</a> • </p>
+<p align="center"><a target="_blank" rel="noopener noreferrer"><img width="500" src="https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/image/logo.svg" alt="Vue logo"></a></p> <p align="center"> <a> <img src="https://img.shields.io/badge/Release-v15.3.1@251120-orgin.svg" alt="travis"> </a> <a> <img src="https://img.shields.io/badge/Last_Update-2025 11 20-orgin.svg" alt="travis"> </a> <a> <img src="https://img.shields.io/badge/Language-GoLang-green.svg" alt="travis"> </a> <a> <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="travis"> </a> </p> <p align="center"> <a href="https://fxpool.github.io/cn/" target="_blank">Tutorial-Chinese</a> • </p> <p align="center"> <a href="https://www.youtube.com/watch?v=fAce-zatHqA" target="_blank">YouTube Demo Video</a> • </p> <p align="center"> <a href="https://www.youtube.com/watch?v=A0oGFG7CRIM&t=110s" target="_blank">Tunnel Encryption Video Tutorial</a> • </p>
 
 ## Supported Languages
   * [English]
