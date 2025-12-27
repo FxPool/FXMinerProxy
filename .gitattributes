@@ -1,2 +1,3 @@
 *.tar.gz linguist-language=GO
 *.zip linguist-language=GO
+.DS_Store
