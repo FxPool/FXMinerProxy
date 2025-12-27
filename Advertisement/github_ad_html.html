@@ -3,59 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>滚动广告效果</title>
+    <title>滚动广告</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Arial, sans-serif;
         }
         
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            padding: 20px;
-        }
-        
-        .container {
-            width: 100%;
-            max-width: 800px;
-            padding: 30px;
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        h1 {
-            color: #333;
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        
-        .description {
-            text-align: center;
-            color: #666;
-            margin-bottom: 30px;
-        }
-        
-        /* 广告容器样式 */
         .ad-container {
             width: 600px;
             height: 40px;
-            margin: 0 auto;
             overflow: hidden;
-            position: relative;
             background-color: #f8f9fa;
-            border-radius: 6px;
-            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
-            border: 1px solid #eaeaea;
         }
         
-        /* 滚动内容 */
         .scrolling-content {
             display: flex;
             height: 100%;
@@ -63,12 +25,10 @@
             white-space: nowrap;
         }
         
-        /* 暂停动画效果 */
         .ad-container:hover .scrolling-content {
             animation-play-state: paused;
         }
         
-        /* 广告项目样式 */
         .ad-item {
             height: 100%;
             display: flex;
@@ -80,150 +40,39 @@
             font-size: 14px;
         }
         
-        /* 不同广告样式 */
-        .ad-item:nth-child(1) {
-            background-color: #ff6b6b;
-            color: white;
-        }
+        .ad-item:nth-child(1) { background-color: #ff6b6b; color: white; }
+        .ad-item:nth-child(2) { background-color: #4ecdc4; color: white; }
+        .ad-item:nth-child(3) { background-color: #ffd166; color: #333; }
+        .ad-item:nth-child(4) { background-color: #06d6a0; color: white; }
+        .ad-item:nth-child(5) { background-color: #118ab2; color: white; }
+        .ad-item:nth-child(6) { background-color: #ef476f; color: white; }
+        .ad-item:nth-child(7) { background-color: #073b4c; color: white; }
+        .ad-item:nth-child(8) { background-color: #7209b7; color: white; }
+        .ad-item:nth-child(9) { background-color: #ff9e00; color: white; }
+        .ad-item:nth-child(10) { background-color: #9d4edd; color: white; }
         
-        .ad-item:nth-child(2) {
-            background-color: #4ecdc4;
-            color: white;
-        }
-        
-        .ad-item:nth-child(3) {
-            background-color: #ffd166;
-            color: #333;
-        }
-        
-        .ad-item:nth-child(4) {
-            background-color: #06d6a0;
-            color: white;
-        }
-        
-        .ad-item:nth-child(5) {
-            background-color: #118ab2;
-            color: white;
-        }
-        
-        .ad-item:nth-child(6) {
-            background-color: #ef476f;
-            color: white;
-        }
-        
-        .ad-item:nth-child(7) {
-            background-color: #073b4c;
-            color: white;
-        }
-        
-        .ad-item:nth-child(8) {
-            background-color: #7209b7;
-            color: white;
-        }
-        
-        /* 广告图片样式 */
         .ad-icon {
             width: 24px;
             height: 24px;
             margin-right: 10px;
-            border-radius: 4px;
-            object-fit: cover;
-        }
-        
-        /* 控制按钮 */
-        .controls {
             display: flex;
+            align-items: center;
             justify-content: center;
-            gap: 15px;
-            margin-top: 25px;
+            background-color: rgba(255,255,255,0.2);
         }
         
-        button {
-            padding: 8px 18px;
-            background-color: #4a6fa5;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: background-color 0.3s;
-        }
-        
-        button:hover {
-            background-color: #3a5a8c;
-        }
-        
-        /* 动画定义 */
         @keyframes scroll {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-100%);
-            }
-        }
-        
-        /* 示例说明 */
-        .example-info {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px dashed #ddd;
-        }
-        
-        .example-info h3 {
-            color: #444;
-            margin-bottom: 10px;
-        }
-        
-        .example-info p {
-            color: #666;
-            line-height: 1.6;
-            font-size: 15px;
-        }
-        
-        /* 响应式设计 */
-        @media (max-width: 650px) {
-            .container {
-                padding: 20px 15px;
-            }
-            
-            .ad-container {
-                width: 100%;
-                max-width: 600px;
-            }
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>滚动广告效果展示</h1>
-        <p class="description">高度40px，宽度600px的滚动广告区域，包含多种颜色和图片内容</p>
-        
-        <div class="ad-container" id="adContainer">
-            <div class="scrolling-content" id="scrollingContent">
-                <!-- 广告内容将通过JavaScript动态生成 -->
-            </div>
-        </div>
-        
-        <div class="controls">
-            <button id="pauseBtn">暂停滚动</button>
-            <button id="resumeBtn">继续滚动</button>
-            <button id="speedUpBtn">加速</button>
-            <button id="slowDownBtn">减速</button>
-        </div>
-        
-        <div class="example-info">
-            <h3>使用说明</h3>
-            <p>1. 这是一个模拟的滚动广告区域，尺寸为600px × 40px</p>
-            <p>2. 广告内容包含文字、颜色和图标，模拟真实广告场景</p>
-            <p>3. 鼠标悬停在广告区域上可以暂停滚动</p>
-            <p>4. 使用下方按钮可以控制广告的滚动行为</p>
-            <p>5. 实际应用中可将图片替换为真实广告图片</p>
-        </div>
+    <div class="ad-container">
+        <div class="scrolling-content" id="scrollingContent"></div>
     </div>
 
     <script>
-        // 广告数据
         const ads = [
             { text: "🔥 限时特惠！全场商品5折起", color: "#ff6b6b", icon: "🔥" },
             { text: "🚚 免费配送！订单满99元免运费", color: "#4ecdc4", icon: "🚚" },
@@ -237,70 +86,15 @@
             { text: "🎬 娱乐盛宴！视频会员年度特惠", color: "#9d4edd", icon: "🎬" }
         ];
         
-        // 获取滚动内容容器
         const scrollingContent = document.getElementById('scrollingContent');
+        const adsCopy = [...ads, ...ads];
         
-        // 生成广告内容
-        function generateAds() {
-            // 为了创建无缝滚动效果，我们将广告内容复制一份
-            const adsCopy = [...ads, ...ads];
-            
-            adsCopy.forEach((ad, index) => {
-                const adItem = document.createElement('div');
-                adItem.className = 'ad-item';
-                adItem.style.backgroundColor = ad.color;
-                
-                // 创建图标和文本
-                adItem.innerHTML = `
-                    <span class="ad-icon" style="background-color: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center;">${ad.icon}</span>
-                    <span>${ad.text}</span>
-                `;
-                
-                scrollingContent.appendChild(adItem);
-            });
-        }
-        
-        // 初始化广告
-        generateAds();
-        
-        // 控制功能
-        const pauseBtn = document.getElementById('pauseBtn');
-        const resumeBtn = document.getElementById('resumeBtn');
-        const speedUpBtn = document.getElementById('speedUpBtn');
-        const slowDownBtn = document.getElementById('slowDownBtn');
-        const scrollingElement = document.querySelector('.scrolling-content');
-        
-        // 获取当前动画持续时间
-        let animationDuration = 30;
-        
-        // 暂停动画
-        pauseBtn.addEventListener('click', () => {
-            scrollingElement.style.animationPlayState = 'paused';
-        });
-        
-        // 继续动画
-        resumeBtn.addEventListener('click', () => {
-            scrollingElement.style.animationPlayState = 'running';
-        });
-        
-        // 加速动画
-        speedUpBtn.addEventListener('click', () => {
-            animationDuration = Math.max(10, animationDuration - 5);
-            scrollingElement.style.animationDuration = `${animationDuration}s`;
-        });
-        
-        // 减速动画
-        slowDownBtn.addEventListener('click', () => {
-            animationDuration = Math.min(60, animationDuration + 5);
-            scrollingElement.style.animationDuration = `${animationDuration}s`;
-        });
-        
-        // 添加点击广告项的事件
-        document.querySelectorAll('.ad-item').forEach(item => {
-            item.addEventListener('click', function() {
-                const adText = this.textContent.trim();
-                alert(`您点击了广告: ${adText}\n在实际应用中，这里会跳转到对应的广告页面。`);
-            });
+        adsCopy.forEach((ad, index) => {
+            const adItem = document.createElement('div');
+            adItem.className = 'ad-item';
+            adItem.style.backgroundColor = ad.color;
+            adItem.innerHTML = `<span class="ad-icon">${ad.icon}</span><span>${ad.text}</span>`;
+            scrollingContent.appendChild(adItem);
         });
     </script>
 </body>
