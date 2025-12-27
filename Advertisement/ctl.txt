@@ -1,1 +1,3 @@
-
+#this is ctl for html dis
+#when OPEN=true dis is open
+OPEN_ENABLE=true
