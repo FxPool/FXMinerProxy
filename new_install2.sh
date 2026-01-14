@@ -12,7 +12,7 @@ SERVICE_NAME="fxminerproxy"
 INSTALL_DIR="/opt/fxminerproxy"
 BIN_NAME="fxminerproxyv3"
 SERVICE_FILE="/etc/systemd/system/${SERVICE_NAME}.service"
-DOWNLOAD_URL="https://github.com/FxPool/FXMinerProxy/archive/refs/tags/v15.3.6@251227.tar.gz"
+DOWNLOAD_URL="https://github.com/FxPool/FXMinerProxy/archive/refs/tags/v15.4.0@260114.tar.gz"
 TEMP_DIR="/tmp/fxminerproxy_install"
 
 # 检查是否root用户

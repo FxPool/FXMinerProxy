@@ -2,7 +2,7 @@
 
 router_line=$1
 
-version='v15.3.6@251227'
+version='v15.4.0@260114'
 
 convert_version() {
     local version="$1"
