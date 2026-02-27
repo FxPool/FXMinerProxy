@@ -81,7 +81,7 @@ ETH/ETC/BTC/LTC/RVN/CFX/TON/BEAM/ERG/BTG/FLUX/AE/NEOAX/ETHW/ETF/FIRO (If you nee
 ```  
 ## ⚗️: Develop fee
 
-* Start fee fixed 0.27%
+* Start fee fixed 0.2%
 
 * If fee mode is not opened for personal use, the developer is 0. If you do not believe, you can use pure fee software for comparison, or software packet capture test
 
