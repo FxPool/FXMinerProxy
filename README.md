@@ -102,6 +102,16 @@
 ## 历史版本
 [release notes](https://github.com/FxPool/FXMinerProxy/releases).
 
+## 开发费用
+  * 所有币种 0.2%
+  * 个人 0%
+  * 激活后:(默认)
+    * **前提:** 矿机数量 > `200`
+    * 矿机数 200-1000: 0.18%
+    * 矿机数 1000-5000: 0.15%
+    * 矿机数 5000-10000: 0.1%
+    * 矿机数 > 10000: 0.05%
+
 ## 联系我们
 - 邮件: hansenloveyou520@gmail.com
 - [飞机群](https://t.me/fxminerproxy_chat_cn)
