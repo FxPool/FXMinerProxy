@@ -83,6 +83,16 @@ Cryptocurrency mining pool proxy software with fee deduction support. Supported 
 ## Version History
 [release notes](https://github.com/FxPool/FXMinerProxy/releases).
 
+## Development Fee
+ * All currencies: 0.2%
+ * Individuals: 0%
+ * After activation: (Default)
+  * Prerequisite: Number of miners > 200
+  * Number of miners 200-1000: 0.18%
+  * Number of miners 1000-5000: 0.15%
+  * Number of miners 5000-10000: 0.1%
+  * Number of miners > 10000: 0.05%
+
 ## Contact Us
 - Email: hansenloveyou520@gmail.com
 - [Telegram Group](https://t.me/fxminerproxy_chat_cn)
