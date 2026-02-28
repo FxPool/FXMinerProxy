@@ -105,28 +105,28 @@ OsSupport()
 change_limit() {
     changeLimit="n"
     if [ $(grep -c "root soft nofile" /etc/security/limits.conf) -eq '0' ]; then
-        echo "root soft nofile 65535" >>/etc/security/limits.conf
-        echo "* soft nofile 65535" >>/etc/security/limits.conf
+        echo "root soft nofile 1048576" >>/etc/security/limits.conf
+        echo "* soft nofile 1048576" >>/etc/security/limits.conf
         changeLimit="y"
     fi
 
     if [ $(grep -c "root hard nofile" /etc/security/limits.conf) -eq '0' ]; then
-        echo "root hard nofile 65535" >>/etc/security/limits.conf
-        echo "* hard nofile 65535" >>/etc/security/limits.conf
+        echo "root hard nofile 1048576" >>/etc/security/limits.conf
+        echo "* hard nofile 1048576" >>/etc/security/limits.conf
         changeLimit="y"
     fi
-    if [ $(grep -c "DefaultLimitNOFILE=65535" /etc/systemd/user.conf) -eq '0' ]; then
-        echo "DefaultLimitNOFILE=65535" >>/etc/systemd/user.conf
+    if [ $(grep -c "DefaultLimitNOFILE=1048576" /etc/systemd/user.conf) -eq '0' ]; then
+        echo "DefaultLimitNOFILE=1048576" >>/etc/systemd/user.conf
         changeLimit="y"
     fi
 
-    if [ $(grep -c "DefaultLimitNOFILE=65535" /etc/systemd/system.conf) -eq '0' ]; then
-        echo "DefaultLimitNOFILE=65535" >>/etc/systemd/system.conf
+    if [ $(grep -c "DefaultLimitNOFILE=1048576" /etc/systemd/system.conf) -eq '0' ]; then
+        echo "DefaultLimitNOFILE=1048576" >>/etc/systemd/system.conf
         changeLimit="y"
     fi
 
     if [[ "$changeLimit" = "y" ]]; then
-        echo "连接数限制已修改为65535,重启服务器后生效"
+        echo "连接数限制已修改为1048576,重启服务器后生效"
     else
         echo -n "当前连接数限制："
         ulimit -n
@@ -194,25 +194,25 @@ install() {
             fi
             changeLimit="n"
             if [ $(grep -c "root soft nofile" /etc/security/limits.conf) -eq '0' ]; then
-                echo "root soft nofile 65535" >>/etc/security/limits.conf
-                echo "* soft nofile 65535" >>/etc/security/limits.conf
+                echo "root soft nofile 1048576" >>/etc/security/limits.conf
+                echo "* soft nofile 1048576" >>/etc/security/limits.conf
                 changeLimit="y"
             fi
             if [ $(grep -c "root hard nofile" /etc/security/limits.conf) -eq '0' ]; then
-                echo "root hard nofile 65535" >>/etc/security/limits.conf
-                echo "* hard nofile 65535" >>/etc/security/limits.conf
+                echo "root hard nofile 1048576" >>/etc/security/limits.conf
+                echo "* hard nofile 1048576" >>/etc/security/limits.conf
                 changeLimit="y"
             fi
-            if [ $(grep -c "DefaultLimitNOFILE=65535" /etc/systemd/user.conf) -eq '0' ]; then
-                echo "DefaultLimitNOFILE=65535" >>/etc/systemd/user.conf
+            if [ $(grep -c "DefaultLimitNOFILE=1048576" /etc/systemd/user.conf) -eq '0' ]; then
+                echo "DefaultLimitNOFILE=1048576" >>/etc/systemd/user.conf
                 changeLimit="y"
             fi
-            if [ $(grep -c "DefaultLimitNOFILE=65535" /etc/systemd/system.conf) -eq '0' ]; then
-                echo "DefaultLimitNOFILE=65535" >>/etc/systemd/system.conf
+            if [ $(grep -c "DefaultLimitNOFILE=1048576" /etc/systemd/system.conf) -eq '0' ]; then
+                echo "DefaultLimitNOFILE=1048576" >>/etc/systemd/system.conf
                 changeLimit="y"
             fi
             if [[ "$changeLimit" = "y" ]]; then
-                echo "连接数限制已修改为65535,重启服务器后生效"
+                echo "连接数限制已修改为1048576,重启服务器后生效"
             else
                 echo -n "当前连接数限制："
                 ulimit -n
@@ -405,7 +405,7 @@ show_menu() {
      ${green}线路:${router_line}
      ${green}脚本版本${shell_version}
      ${green}软件版本${version}
-     ${green}安装时linux默认最大连接数据已修改为最大65535(需重启服务器生效)
+     ${green}安装时linux默认最大连接数据已修改为最大1048576(需重启服务器生效)
      ${green}安装时软件已经自动设置开机启动
      ${red}浏览器默认端口用户名和密码全部使用随机生成，启动成功后会在控制台上打印出来请注意${plain}
      ${green}0.${plain} 退出
@@ -415,7 +415,7 @@ show_menu() {
      ${green}4.${plain} 启动
      ${green}5.${plain} 停止
      ${green}6.${plain} 查看linux最大连接
-     ${green}7.${plain} linux大连接数改为65535(需重启服务器生效)
+     ${green}7.${plain} linux大连接数改为1048576(需重启服务器生效)
      ${green}8.${plain} 手动设置开机启动
      ${green}9.${plain} 关闭IP白名单功能(关闭后重新登录即可)
      ${green}10.${plain} 查看配置文件(登录信息等)
