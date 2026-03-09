@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DNS Hijack Mining Solution - FXMinerProxy</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --bg: #0b0e13;
+  --card: #131720;
+  --border: #1e2636;
+  --accent: #00d4aa;
+  --accent2: #00b4d8;
+  --warn: #f59e0b;
+  --text: #c8d1dc;
+  --text2: #7a8599;
+  --glow: rgba(0, 212, 170, 0.15);
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+.grid-bg {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(0,212,170,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,212,170,.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.grid-bg::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 0%, var(--glow), transparent 70%);
+}
+.container { max-width: 1000px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+/* Language toggle */
+.lang-toggle {
+  position: fixed; top: 20px; right: 24px; z-index: 100;
+  display: flex; border-radius: 8px; overflow: hidden;
+  border: 1px solid var(--border); background: var(--card);
+}
+.lang-btn {
+  padding: 6px 14px; font-size: 13px; font-weight: 600;
+  color: var(--text2); cursor: pointer; transition: all .2s;
+  border: none; background: transparent; outline: none;
+}
+.lang-btn.active {
+  background: var(--accent); color: var(--bg);
+}
+
+/* Hero */
+.hero { text-align: center; padding: 100px 0 60px; }
+.hero-badge {
+  display: inline-block; padding: 6px 18px; border-radius: 20px;
+  border: 1px solid var(--accent); color: var(--accent);
+  font-size: 13px; letter-spacing: .5px; margin-bottom: 28px;
+  background: rgba(0,212,170,.06);
+}
+.hero h1 {
+  font-size: clamp(32px, 5.5vw, 56px); font-weight: 800;
+  line-height: 1.2; color: #fff; margin-bottom: 10px;
+}
+.hero h1 .gradient {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hero-sub {
+  font-size: clamp(16px, 2.2vw, 20px); color: var(--text2);
+  max-width: 620px; margin: 0 auto 40px;
+}
+.hero-cta {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 36px; border-radius: 8px;
+  background: linear-gradient(135deg, var(--accent), #00c4b8);
+  color: #0b0e13; font-weight: 700; font-size: 16px;
+  text-decoration: none; transition: transform .2s, box-shadow .3s;
+  box-shadow: 0 0 30px rgba(0,212,170,.25);
+}
+.hero-cta:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(0,212,170,.4); }
+.hero-cta svg { width: 18px; height: 18px; }
+
+/* Section */
+section { padding: 60px 0; }
+.section-label {
+  display: inline-block; font-size: 12px; text-transform: uppercase;
+  letter-spacing: 2px; color: var(--accent); margin-bottom: 12px;
+}
+.section-title { font-size: clamp(24px, 3.5vw, 36px); font-weight: 700; color: #fff; margin-bottom: 16px; }
+.section-desc { color: var(--text2); max-width: 640px; font-size: 15px; margin-bottom: 44px; }
+
+/* Diagram */
+.diagram {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 16px; padding: 48px 32px; margin-bottom: 60px;
+  text-align: center; overflow-x: auto;
+}
+.diagram-title { font-size: 14px; color: var(--text2); margin-bottom: 32px; text-transform: uppercase; letter-spacing: 1.5px; }
+.flow { display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: wrap; }
+.flow-node { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 20px 16px; min-width: 120px; }
+.flow-icon {
+  width: 56px; height: 56px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px; flex-shrink: 0;
+}
+.flow-icon.miner { background: linear-gradient(135deg, #334155, #1e293b); border: 1px solid #475569; }
+.flow-icon.dns { background: linear-gradient(135deg, rgba(0,212,170,.2), rgba(0,180,216,.15)); border: 1px solid var(--accent); }
+.flow-icon.proxy { background: linear-gradient(135deg, rgba(245,158,11,.2), rgba(245,158,11,.1)); border: 1px solid var(--warn); }
+.flow-icon.pool { background: linear-gradient(135deg, rgba(99,102,241,.2), rgba(99,102,241,.1)); border: 1px solid #6366f1; }
+.flow-name { font-size: 13px; font-weight: 600; color: #fff; }
+.flow-desc { font-size: 11px; color: var(--text2); }
+.flow-arrow { font-size: 20px; color: var(--accent); flex-shrink: 0; padding: 0 4px; opacity: .6; }
+
+/* Feature cards */
+.features { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 20px; }
+.feat-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 14px; padding: 32px 28px;
+  transition: border-color .3s, box-shadow .3s;
+}
+.feat-card:hover { border-color: rgba(0,212,170,.3); box-shadow: 0 0 30px var(--glow); }
+.feat-icon {
+  width: 44px; height: 44px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; margin-bottom: 18px; background: rgba(0,212,170,.1);
+}
+.feat-card h3 { font-size: 17px; color: #fff; margin-bottom: 8px; }
+.feat-card p { font-size: 14px; color: var(--text2); line-height: 1.7; }
+
+/* Steps */
+.steps { counter-reset: step; }
+.step-item { display: flex; gap: 24px; margin-bottom: 36px; align-items: flex-start; }
+.step-num {
+  counter-increment: step; width: 48px; height: 48px; border-radius: 12px;
+  background: var(--card); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 800; color: var(--accent); flex-shrink: 0;
+}
+.step-num::after { content: counter(step); }
+.step-body h3 { font-size: 17px; color: #fff; margin-bottom: 4px; }
+.step-body p { font-size: 14px; color: var(--text2); }
+
+/* Requirement banner */
+.req-banner {
+  background: linear-gradient(135deg, rgba(245,158,11,.08), rgba(245,158,11,.03));
+  border: 1px solid rgba(245,158,11,.25); border-radius: 14px;
+  padding: 32px; display: flex; gap: 20px;
+  align-items: flex-start; margin-bottom: 60px;
+}
+.req-icon { font-size: 32px; flex-shrink: 0; line-height: 1; }
+.req-banner h3 { font-size: 17px; color: var(--warn); margin-bottom: 6px; }
+.req-banner p { font-size: 14px; color: var(--text2); line-height: 1.8; }
+
+/* Stats */
+.stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 16px; margin-bottom: 60px; }
+.stat-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; text-align: center; }
+.stat-val {
+  font-size: clamp(28px, 4vw, 38px); font-weight: 800;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.stat-label { font-size: 13px; color: var(--text2); margin-top: 4px; }
+
+/* Coin tags */
+.coin-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 40px; }
+.coin-tag { padding: 5px 14px; border-radius: 6px; font-size: 12px; font-weight: 600; color: var(--text); background: rgba(255,255,255,.04); border: 1px solid var(--border); letter-spacing: .5px; }
+.coin-tag.hot { border-color: rgba(0,212,170,.3); background: rgba(0,212,170,.06); color: var(--accent); }
+
+/* CTA */
+.cta-section { text-align: center; padding: 80px 0 100px; }
+.cta-section h2 { font-size: clamp(24px, 4vw, 40px); font-weight: 800; color: #fff; margin-bottom: 12px; }
+.cta-section p { color: var(--text2); font-size: 16px; margin-bottom: 36px; }
+.cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 32px; border-radius: 8px;
+  background: linear-gradient(135deg, var(--accent), #00c4b8);
+  color: #0b0e13; font-weight: 700; font-size: 15px;
+  text-decoration: none; transition: transform .2s, box-shadow .3s;
+  box-shadow: 0 0 30px rgba(0,212,170,.2);
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(0,212,170,.35); }
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 32px; border-radius: 8px; border: 1px solid var(--border);
+  background: transparent; color: var(--text); font-weight: 600;
+  font-size: 15px; text-decoration: none; transition: border-color .3s, background .3s;
+}
+.btn-outline:hover { border-color: var(--accent); background: rgba(0,212,170,.05); }
+
+/* Contact */
+.contact-cards { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 36px; }
+.contact-item { display: flex; align-items: center; gap: 10px; background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 12px 20px; }
+.contact-icon { font-size: 18px; flex-shrink: 0; }
+.contact-label { font-size: 12px; color: var(--text2); white-space: nowrap; }
+.contact-value { font-size: 14px; color: #fff; font-weight: 600; text-decoration: none; white-space: nowrap; }
+.contact-value:hover { color: var(--accent); }
+.qq-trigger { cursor: pointer; transition: border-color .3s; }
+.qq-trigger:hover { border-color: rgba(0,212,170,.4); }
+
+footer { border-top: 1px solid var(--border); padding: 32px 0; text-align: center; font-size: 13px; color: var(--text2); }
+footer a { color: var(--accent); text-decoration: none; }
+
+@media (max-width: 640px) {
+  .hero { padding: 70px 0 40px; }
+  .flow { flex-direction: column; }
+  .flow-arrow { transform: rotate(90deg); }
+  .diagram { padding: 32px 16px; }
+  .req-banner { flex-direction: column; }
+  .step-item { gap: 16px; }
+  .lang-toggle { top: 12px; right: 12px; }
+}
+</style>
+</head>
+<body>
+
+<div class="grid-bg"></div>
+
+<!-- Language Toggle -->
+<div class="lang-toggle">
+  <button class="lang-btn active" onclick="setLang('cn')">中文</button>
+  <button class="lang-btn" onclick="setLang('en')">EN</button>
+</div>
+
+<!-- Hero -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-badge" data-i18n="badge">⚡ 矿场运维专属方案</div>
+    <h1><span data-i18n="h1_pre">DNS劫持</span> <span class="gradient" data-i18n="h1_highlight">无感抽水</span></h1>
+    <p class="hero-sub" data-i18n="hero_sub">零修改矿机配置，零感知运行。只需路由器权限，即可在矿场级别实现全自动、高隐蔽的算力抽水部署。</p>
+    <a href="https://github.com/FxPool/FXMinerProxy" target="_blank" class="hero-cta">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 00-3.8 23.38c.6.11.82-.26.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 016.02 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18a4.65 4.65 0 011.24 3.22c0 4.61-2.8 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58A12 12 0 0012 .3"/></svg>
+      <span data-i18n="github_btn">GitHub 获取软件</span>
+    </a>
+  </div>
+</header>
+
+<!-- Diagram -->
+<section>
+  <div class="container">
+    <div class="diagram">
+      <div class="diagram-title" data-i18n="diagram_title">工作原理示意</div>
+      <div class="flow">
+        <div class="flow-node">
+          <div class="flow-icon miner">⛏</div>
+          <div class="flow-name" data-i18n="flow_miner">矿机</div>
+          <div class="flow-desc" data-i18n="flow_miner_desc">正常挖矿请求</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node">
+          <div class="flow-icon dns">🌐</div>
+          <div class="flow-name" data-i18n="flow_dns">路由器 DNS</div>
+          <div class="flow-desc" data-i18n="flow_dns_desc">劫持矿池域名解析</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node">
+          <div class="flow-icon proxy">🔀</div>
+          <div class="flow-name">FXMinerProxy</div>
+          <div class="flow-desc" data-i18n="flow_proxy_desc">中转 + 智能抽水</div>
+        </div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-node">
+          <div class="flow-icon pool">🏦</div>
+          <div class="flow-name" data-i18n="flow_pool">目标矿池</div>
+          <div class="flow-desc" data-i18n="flow_pool_desc">正常提交份额</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Requirement -->
+<section>
+  <div class="container">
+    <div class="req-banner">
+      <div class="req-icon">🔑</div>
+      <div>
+        <h3 data-i18n="req_title">前置条件：路由器管理权限</h3>
+        <p data-i18n="req_desc">本方案通过修改矿场路由器的 DNS 解析记录，将矿池域名指向 FXMinerProxy 中转服务器。<br>运维人员需要拥有矿场路由器的管理员权限，才能配置自定义 DNS 规则。<br>整个过程不需要修改任何矿机配置，矿工端完全无感知。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section>
+  <div class="container">
+    <div class="section-label" data-i18n="feat_label">核心优势</div>
+    <h2 class="section-title" data-i18n="feat_title">为什么选择 DNS 劫持方案？</h2>
+    <p class="section-desc" data-i18n="feat_desc">相比传统中转抽水，DNS 劫持方案在隐蔽性和部署便捷性上具有不可替代的优势。</p>
+    <div class="features">
+      <div class="feat-card"><div class="feat-icon">👻</div><h3 data-i18n="f1_t">完全无感知</h3><p data-i18n="f1_d">矿机配置零改动，矿工看到的矿池地址不变，连接状态正常，从矿工视角一切如常。</p></div>
+      <div class="feat-card"><div class="feat-icon">⚡</div><h3 data-i18n="f2_t">一键全场覆盖</h3><p data-i18n="f2_d">只需在路由器配置一次 DNS 规则，矿场内所有矿机自动生效，无需逐台修改。</p></div>
+      <div class="feat-card"><div class="feat-icon">🔒</div><h3 data-i18n="f3_t">高隐蔽性</h3><p data-i18n="f3_d">流量走正常的矿池协议通道，不引入额外端口或进程，常规检测手段难以发现。</p></div>
+      <div class="feat-card"><div class="feat-icon">📊</div><h3 data-i18n="f4_t">精准控制抽水比例</h3><p data-i18n="f4_d">FXMinerProxy 后台可精确设置抽水比例，支持分币种、分矿工灵活配置，曲线稳定平滑。</p></div>
+      <div class="feat-card"><div class="feat-icon">🛡</div><h3 data-i18n="f5_t">稳定运行 不丢算力</h3><p data-i18n="f5_d">经过数千台矿机大矿场实战验证，长期稳定运行，断线自动重连，份额不丢失。</p></div>
+      <div class="feat-card"><div class="feat-icon">🌍</div><h3 data-i18n="f6_t">支持 50+ 币种</h3><p data-i18n="f6_d">BTC、LTC、ETC、ETHW、KAS、RVN、CFX、BEAM、ZEC 等主流币种全覆盖，持续更新。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats -->
+<section>
+  <div class="container">
+    <div class="stats-row">
+      <div class="stat-card"><div class="stat-val">6000+</div><div class="stat-label" data-i18n="s1">已验证矿机规模</div></div>
+      <div class="stat-card"><div class="stat-val">50+</div><div class="stat-label" data-i18n="s2">支持币种数量</div></div>
+      <div class="stat-card"><div class="stat-val">0.2%</div><div class="stat-label" data-i18n="s3">极低开发费率</div></div>
+      <div class="stat-card"><div class="stat-val">99.9%</div><div class="stat-label" data-i18n="s4">服务稳定性</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Coins -->
+<section>
+  <div class="container">
+    <div class="section-label" data-i18n="coin_label">支持币种</div>
+    <h2 class="section-title" data-i18n="coin_title">全币种覆盖</h2>
+    <div class="coin-tags">
+      <span class="coin-tag hot">BTC</span><span class="coin-tag hot">LTC</span><span class="coin-tag hot">ETC</span><span class="coin-tag hot">ETHW</span><span class="coin-tag hot">KAS</span>
+      <span class="coin-tag">ZEC</span><span class="coin-tag">RVN</span><span class="coin-tag">CFX</span><span class="coin-tag">BEAM</span><span class="coin-tag">ERGO</span>
+      <span class="coin-tag">BTG</span><span class="coin-tag">AE</span><span class="coin-tag">FLUX</span><span class="coin-tag">FIRO</span><span class="coin-tag">NEOXA</span>
+      <span class="coin-tag">XMR</span><span class="coin-tag">GRIN</span><span class="coin-tag">KDA</span><span class="coin-tag">DASH</span><span class="coin-tag">CKB</span>
+      <span class="coin-tag">RXD</span><span class="coin-tag">ZIL</span><span class="coin-tag">ZEN</span><span class="coin-tag">NEXA</span><span class="coin-tag">HNS</span>
+      <span class="coin-tag">BCH</span><span class="coin-tag">IRON</span><span class="coin-tag">ETHF</span><span class="coin-tag">ALPH</span><span class="coin-tag">DNX</span>
+      <span class="coin-tag" style="border-style:dashed;color:var(--text2)" data-i18n="coin_more">更多持续更新...</span>
+    </div>
+  </div>
+</section>
+
+<!-- Steps -->
+<section>
+  <div class="container">
+    <div class="section-label" data-i18n="step_label">部署流程</div>
+    <h2 class="section-title" data-i18n="step_title">三步完成部署</h2>
+    <p class="section-desc" data-i18n="step_desc">整个过程最快 10 分钟即可完成，无需复杂的网络知识。</p>
+    <div class="steps">
+      <div class="step-item"><div class="step-num"></div><div class="step-body"><h3 data-i18n="st1_t">部署 FXMinerProxy 中转服务</h3><p data-i18n="st1_d">在一台 Linux 服务器上一键安装 FXMinerProxy，配置好目标矿池地址和抽水钱包，设定抽水比例。</p></div></div>
+      <div class="step-item"><div class="step-num"></div><div class="step-body"><h3 data-i18n="st2_t">配置路由器 DNS 劫持规则</h3><p data-i18n="st2_d">登录矿场路由器管理后台，将目标矿池的域名 DNS 解析指向 FXMinerProxy 服务器 IP，所有经过该路由器的矿机流量将自动被中转。</p></div></div>
+      <div class="step-item"><div class="step-num"></div><div class="step-body"><h3 data-i18n="st3_t">后台监控 稳定运行</h3><p data-i18n="st3_d">通过 FXMinerProxy 可视化后台实时查看算力曲线、矿机在线数、抽水状态等数据，全程可控。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="container">
+    <h2><span data-i18n="cta_pre">开始部署你的</span><span class="gradient" data-i18n="cta_hl"> 无感抽水 </span><span data-i18n="cta_post">方案</span></h2>
+    <p data-i18n="cta_desc">如果你是矿场运维，拥有路由器权限，现在就可以开始。</p>
+    <div class="cta-buttons">
+      <a href="https://github.com/FxPool/FXMinerProxy" target="_blank" class="btn-primary">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 .3a12 12 0 00-3.8 23.38c.6.11.82-.26.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 016.02 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18a4.65 4.65 0 011.24 3.22c0 4.61-2.8 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58A12 12 0 0012 .3"/></svg>
+        <span data-i18n="cta_github">GitHub 下载</span>
+      </a>
+      <a href="https://t.me/fxminerproxy_chat_cn" target="_blank" class="btn-outline">
+        <span data-i18n="cta_tg">✈ Telegram 交流群</span>
+      </a>
+    </div>
+    <div class="contact-cards">
+      <div class="contact-item qq-trigger" onclick="document.getElementById('qq-modal').style.display='flex'">
+        <span class="contact-icon">💬</span>
+        <span class="contact-label" data-i18n="c_qq">QQ群</span>
+        <span class="contact-value">933494627</span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-icon">📧</span>
+        <span class="contact-label" data-i18n="c_email">邮件</span>
+        <a class="contact-value" href="mailto:hansenloveyou520@gmail.com">hansenloveyou520@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <span class="contact-icon">✈</span>
+        <span class="contact-label">Telegram</span>
+        <a class="contact-value" href="https://t.me/fxminerproxy_chat_cn" target="_blank">@fxminerproxy_chat_cn</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>FXMinerProxy &copy; 2026 &nbsp;·&nbsp; <a href="https://github.com/FxPool/FXMinerProxy" target="_blank">GitHub</a> &nbsp;·&nbsp; <a href="https://www.fxminerproxy.com" target="_blank" data-i18n="footer_site">官网</a></p>
+  </div>
+</footer>
+
+<!-- QQ QR Code Modal -->
+<div id="qq-modal" style="display:none;position:fixed;inset:0;z-index:999;align-items:center;justify-content:center;background:rgba(0,0,0,.7);backdrop-filter:blur(4px)" onclick="if(event.target===this)this.style.display='none'">
+  <div style="background:#1a1e27;border:1px solid #2a3040;border-radius:16px;padding:32px;text-align:center;max-width:340px;width:90%;position:relative">
+    <div style="position:absolute;top:12px;right:16px;font-size:22px;color:#7a8599;cursor:pointer;line-height:1" onclick="document.getElementById('qq-modal').style.display='none'">&times;</div>
+    <p style="color:#fff;font-size:16px;font-weight:700;margin-bottom:4px" data-i18n="qq_title">QQ群：933494627</p>
+    <p style="color:#7a8599;font-size:13px;margin-bottom:20px" data-i18n="qq_scan">扫码加入交流群</p>
+    <img src="qq-qrcode.png" alt="QQ群二维码" style="width:240px;height:240px;border-radius:12px;display:block;margin:0 auto">
+  </div>
+</div>
+
+<script>
+var I18N = {
+  cn: {
+    badge: "⚡ 矿场运维专属方案",
+    h1_pre: "DNS劫持", h1_highlight: "无感抽水",
+    hero_sub: "零修改矿机配置，零感知运行。只需路由器权限，即可在矿场级别实现全自动、高隐蔽的算力抽水部署。",
+    github_btn: "GitHub 获取软件",
+    diagram_title: "工作原理示意",
+    flow_miner: "矿机", flow_miner_desc: "正常挖矿请求",
+    flow_dns: "路由器 DNS", flow_dns_desc: "劫持矿池域名解析",
+    flow_proxy_desc: "中转 + 智能抽水",
+    flow_pool: "目标矿池", flow_pool_desc: "正常提交份额",
+    req_title: "前置条件：路由器管理权限",
+    req_desc: "本方案通过修改矿场路由器的 DNS 解析记录，将矿池域名指向 FXMinerProxy 中转服务器。<br>运维人员需要拥有矿场路由器的管理员权限，才能配置自定义 DNS 规则。<br>整个过程不需要修改任何矿机配置，矿工端完全无感知。",
+    feat_label: "核心优势", feat_title: "为什么选择 DNS 劫持方案？",
+    feat_desc: "相比传统中转抽水，DNS 劫持方案在隐蔽性和部署便捷性上具有不可替代的优势。",
+    f1_t: "完全无感知", f1_d: "矿机配置零改动，矿工看到的矿池地址不变，连接状态正常，从矿工视角一切如常。",
+    f2_t: "一键全场覆盖", f2_d: "只需在路由器配置一次 DNS 规则，矿场内所有矿机自动生效，无需逐台修改。",
+    f3_t: "高隐蔽性", f3_d: "流量走正常的矿池协议通道，不引入额外端口或进程，常规检测手段难以发现。",
+    f4_t: "精准控制抽水比例", f4_d: "FXMinerProxy 后台可精确设置抽水比例，支持分币种、分矿工灵活配置，曲线稳定平滑。",
+    f5_t: "稳定运行 不丢算力", f5_d: "经过数千台矿机大矿场实战验证，长期稳定运行，断线自动重连，份额不丢失。",
+    f6_t: "支持 50+ 币种", f6_d: "BTC、LTC、ETC、ETHW、KAS、RVN、CFX、BEAM、ZEC 等主流币种全覆盖，持续更新。",
+    s1: "已验证矿机规模", s2: "支持币种数量", s3: "极低开发费率", s4: "服务稳定性",
+    coin_label: "支持币种", coin_title: "全币种覆盖", coin_more: "更多持续更新...",
+    step_label: "部署流程", step_title: "三步完成部署",
+    step_desc: "整个过程最快 10 分钟即可完成，无需复杂的网络知识。",
+    st1_t: "部署 FXMinerProxy 中转服务", st1_d: "在一台 Linux 服务器上一键安装 FXMinerProxy，配置好目标矿池地址和抽水钱包，设定抽水比例。",
+    st2_t: "配置路由器 DNS 劫持规则", st2_d: "登录矿场路由器管理后台，将目标矿池的域名 DNS 解析指向 FXMinerProxy 服务器 IP，所有经过该路由器的矿机流量将自动被中转。",
+    st3_t: "后台监控 稳定运行", st3_d: "通过 FXMinerProxy 可视化后台实时查看算力曲线、矿机在线数、抽水状态等数据，全程可控。",
+    cta_pre: "开始部署你的", cta_hl: " 无感抽水 ", cta_post: "方案",
+    cta_desc: "如果你是矿场运维，拥有路由器权限，现在就可以开始。",
+    cta_github: "GitHub 下载", cta_tg: "✈ Telegram 交流群",
+    c_qq: "QQ群", c_email: "邮件",
+    qq_title: "QQ群：933494627", qq_scan: "扫码加入交流群",
+    footer_site: "官网"
+  },
+  en: {
+    badge: "⚡ For Mining Farm Operators",
+    h1_pre: "DNS Hijack", h1_highlight: "Stealth Fee",
+    hero_sub: "Zero config changes on miners, zero awareness. With just router access, deploy fully automatic and covert hashrate fee collection at farm scale.",
+    github_btn: "Get on GitHub",
+    diagram_title: "HOW IT WORKS",
+    flow_miner: "Miners", flow_miner_desc: "Normal mining requests",
+    flow_dns: "Router DNS", flow_dns_desc: "Hijack pool domain",
+    flow_proxy_desc: "Relay + Smart Fee",
+    flow_pool: "Target Pool", flow_pool_desc: "Submit shares normally",
+    req_title: "Prerequisite: Router Admin Access",
+    req_desc: "This solution modifies the DNS records on the mining farm's router, pointing pool domains to the FXMinerProxy relay server.<br>The operator must have admin access to the farm router to configure custom DNS rules.<br>No changes to any miner configuration are needed — workers are completely unaware.",
+    feat_label: "KEY ADVANTAGES", feat_title: "Why DNS Hijack?",
+    feat_desc: "Compared to traditional relay-based fee collection, the DNS hijack approach offers unmatched stealth and deployment convenience.",
+    f1_t: "Completely Undetectable", f1_d: "Zero changes to miner config. Pool addresses stay the same, connection status normal — everything looks unchanged from the worker's perspective.",
+    f2_t: "One-Click Farm Coverage", f2_d: "Configure DNS rules once on the router, and all miners in the farm are automatically covered. No per-machine changes needed.",
+    f3_t: "Highly Covert", f3_d: "Traffic flows through standard pool protocol channels with no extra ports or processes, making it extremely hard to detect.",
+    f4_t: "Precise Fee Control", f4_d: "FXMinerProxy dashboard lets you set exact fee rates per coin or per worker, with smooth and stable hashrate curves.",
+    f5_t: "Stable & Lossless", f5_d: "Battle-tested on farms with thousands of miners. Long-term stable operation with auto-reconnect — no shares lost.",
+    f6_t: "50+ Coins Supported", f6_d: "Full coverage of BTC, LTC, ETC, ETHW, KAS, RVN, CFX, BEAM, ZEC and more. Continuously updated.",
+    s1: "Verified Miner Scale", s2: "Supported Coins", s3: "Ultra-Low Dev Fee", s4: "Service Uptime",
+    coin_label: "SUPPORTED COINS", coin_title: "Full Coin Coverage", coin_more: "More coming...",
+    step_label: "DEPLOYMENT", step_title: "Deploy in 3 Steps",
+    step_desc: "The entire process takes as little as 10 minutes. No complex networking knowledge required.",
+    st1_t: "Deploy FXMinerProxy Relay", st1_d: "One-click install FXMinerProxy on a Linux server. Configure target pool address, fee wallet, and fee percentage.",
+    st2_t: "Configure Router DNS Hijack", st2_d: "Log in to the farm router admin panel. Point the target pool's domain DNS resolution to the FXMinerProxy server IP. All miner traffic through this router will be automatically relayed.",
+    st3_t: "Monitor & Run Stable", st3_d: "Use the FXMinerProxy visual dashboard to monitor hashrate curves, online miners, fee status and more in real-time.",
+    cta_pre: "Start Your", cta_hl: " Stealth Fee ", cta_post: "Deployment",
+    cta_desc: "If you're a farm operator with router access, you can start right now.",
+    cta_github: "GitHub Download", cta_tg: "✈ Telegram Group",
+    c_qq: "QQ Group", c_email: "Email",
+    qq_title: "QQ Group: 933494627", qq_scan: "Scan to join",
+    footer_site: "Website"
+  }
+};
+
+function setLang(lang) {
+  var dict = I18N[lang] || I18N.cn;
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n');
+    if (dict[key] !== undefined) { el.innerHTML = dict[key]; }
+  });
+  document.querySelectorAll('.lang-btn').forEach(function(btn) {
+    btn.classList.toggle('active', btn.textContent.trim() === (lang === 'cn' ? '中文' : 'EN'));
+  });
+  document.documentElement.lang = lang === 'cn' ? 'zh-CN' : 'en';
+  try { sessionStorage.setItem('dns_lang', lang); } catch(e) {}
+}
+
+(function() {
+  var saved = null;
+  try { saved = sessionStorage.getItem('dns_lang'); } catch(e) {}
+  if (!saved) {
+    var nav = (navigator.language || '').toLowerCase();
+    saved = nav.indexOf('zh') === 0 ? 'cn' : 'en';
+  }
+  setLang(saved);
+})();
+</script>
+
+</body>
+</html>
