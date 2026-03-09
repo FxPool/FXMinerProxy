@@ -36,6 +36,9 @@
   <a href="https://www.youtube.com/watch?v=A0oGFG7CRIM&t=110s" target="_blank">隧道加密视频教程</a> •
 </p>
 
+## DNS劫持方案
+#### *如果你是运维或者有矿厂路由器权限，可以联系我们，我们为你搭建无感知DNS劫持抽水方案。*
+
 ## 支持语言
   * [English]
   * [简体中文]
