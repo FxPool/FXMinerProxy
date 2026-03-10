@@ -86,5 +86,7 @@
     "i18n_links": "友情链接",
     "i18n_pool": "鱼池 F2Pool",
     "i18n_price": "加密货币价格",
-    "i18n_exchange": "交易所"
+    "i18n_exchange": "交易所",
+    "i18n.api_docs": "API文档",
+    "i18n_api_docs": "API 文档"
 }

@@ -86,5 +86,7 @@
     "i18n_links": "Links",
     "i18n_pool": "F2Pool",
     "i18n_price": "Cryptocurrency prices",
-    "i18n_exchange": "OKX"
+    "i18n_exchange": "OKX",
+    "i18n.api_docs": "API Docs",
+    "i18n_api_docs": "API Docs"
 }
