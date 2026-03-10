@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FXMinerProxy API Documentation</title>
+<style>
+:root{--bg:#0d1117;--card:#161b22;--card2:#1c2333;--border:#30363d;--accent:#58a6ff;--text:#e6edf3;--dim:#8b949e;--dim2:#6e7681;--get:#3fb950;--post:#58a6ff;--del:#f85149;--get-bg:rgba(63,185,80,.08);--post-bg:rgba(88,166,255,.08);--del-bg:rgba(248,81,73,.08);--radius:8px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans SC','Noto Sans',Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+code,pre{font-family:'SF Mono','Fira Code',Consolas,'Courier New',monospace}
+.topbar{position:sticky;top:0;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:12px 24px;background:rgba(13,17,23,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.topbar h1{font-size:16px;font-weight:600}.topbar h1 em{font-style:normal;color:var(--accent)}
+.topbar .ctrls{display:flex;gap:8px;align-items:center}
+.topbar input{background:var(--card);border:1px solid var(--border);color:var(--text);border-radius:6px;padding:6px 12px;width:220px;font-size:13px;outline:none;transition:border .2s}
+.topbar input:focus{border-color:var(--accent)}
+.topbar button{background:var(--card);border:1px solid var(--border);color:var(--text);border-radius:6px;padding:6px 12px;font-size:12px;cursor:pointer;font-weight:600;transition:border .2s}
+.topbar button:hover{border-color:var(--accent)}
+.layout{display:flex;min-height:calc(100vh - 49px)}
+.sidebar{position:sticky;top:49px;width:280px;min-width:280px;height:calc(100vh - 49px);overflow-y:auto;padding:16px 12px;border-right:1px solid var(--border);background:var(--bg);font-size:13px}
+.sidebar::-webkit-scrollbar{width:4px}.sidebar::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
+.sidebar .sg{font-size:11px;text-transform:uppercase;letter-spacing:.6px;color:var(--dim2);margin:16px 0 6px 8px;font-weight:600}.sidebar .sg:first-child{margin-top:4px}
+.sidebar a{display:flex;align-items:center;gap:6px;padding:4px 8px;margin:1px 0;color:var(--dim);border-radius:5px;transition:all .15s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sidebar a:hover{background:var(--card);color:var(--text)}
+.sidebar .dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.dot-get{background:var(--get)}.dot-post{background:var(--post)}.dot-del,.dot-delete{background:var(--del)}
+.main{flex:1;padding:28px 36px;max-width:1060px}
+.stats{display:flex;gap:20px;padding-bottom:20px;margin-bottom:8px;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.stat{font-size:12px;color:var(--dim)}.stat b{font-size:18px;color:var(--text);display:block;margin-bottom:1px}
+.grp-title{font-size:20px;font-weight:600;margin:40px 0 4px;padding-bottom:8px;border-bottom:1px solid var(--border)}.grp-title:first-of-type{margin-top:12px}
+.grp-desc{color:var(--dim);font-size:13px;margin-bottom:16px}
+.grp-badge{font-size:11px;color:var(--dim);background:var(--card);border:1px solid var(--border);padding:1px 8px;border-radius:10px;margin-left:6px;vertical-align:middle}
+.no-res{text-align:center;padding:60px;color:var(--dim);display:none}
+.api{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:10px;overflow:hidden;transition:border .2s}
+.api:hover{border-color:var(--accent)}
+.api-head{display:flex;align-items:center;gap:10px;padding:14px 18px;cursor:pointer;user-select:none}
+.api-head .mtag{padding:3px 10px;border-radius:4px;font-size:10px;font-weight:700;letter-spacing:.5px;flex-shrink:0}
+.mtag-GET{color:var(--get);background:var(--get-bg)}.mtag-POST{color:var(--post);background:var(--post-bg)}.mtag-DELETE{color:var(--del);background:var(--del-bg)}
+.api-head .path{font-size:13px;font-weight:500;font-family:'SF Mono','Fira Code',Consolas,monospace;word-break:break-all}
+.api-head .desc{margin-left:auto;font-size:12px;color:var(--dim);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:340px;flex-shrink:0}
+.api-head .arrow{color:var(--dim2);font-size:14px;margin-left:8px;transition:transform .2s;flex-shrink:0}
+.api.open .arrow{transform:rotate(90deg)}
+.api-body{display:none;padding:0 18px 16px;border-top:1px solid var(--border)}.api.open .api-body{display:block}
+.ds{margin-top:14px}.ds h4{font-size:12px;font-weight:600;color:var(--dim);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.detail-desc{font-size:13px;color:var(--dim);margin-bottom:10px;line-height:1.5;padding-top:12px}
+.ab{display:inline-block;font-size:11px;padding:2px 8px;border-radius:4px;font-weight:600;margin-right:6px}
+.ab-admin{color:#d29922;background:rgba(210,153,34,.1);border:1px solid rgba(210,153,34,.2)}
+.ab-login{color:var(--accent);background:rgba(88,166,255,.08);border:1px solid rgba(88,166,255,.15)}
+.ab-2nd{color:#f85149;background:rgba(248,81,73,.06);border:1px solid rgba(248,81,73,.15)}
+.ab-none{color:var(--get);background:rgba(63,185,80,.08);border:1px solid rgba(63,185,80,.15)}
+.ab-ws{color:#bc8cff;background:rgba(188,140,255,.08);border:1px solid rgba(188,140,255,.15)}
+table.pt{width:100%;border-collapse:collapse;font-size:12.5px}
+table.pt th{text-align:left;color:var(--dim);font-weight:600;padding:6px 10px;border-bottom:1px solid var(--border);font-size:11px;text-transform:uppercase;letter-spacing:.3px}
+table.pt td{padding:6px 10px;border-bottom:1px solid rgba(48,54,61,.5);vertical-align:top}
+.pn{color:var(--accent);font-family:'SF Mono','Fira Code',Consolas,monospace;font-size:12px;white-space:nowrap}
+.pn-nested{color:#bc8cff}
+.pt-type{color:var(--dim2);font-size:11px;white-space:nowrap}
+.pt-y{color:#d29922;font-size:11px}.pt-n{color:var(--dim2);font-size:11px}
+pre.cb{background:var(--card2);border:1px solid var(--border);border-radius:6px;padding:12px 14px;font-size:12px;line-height:1.5;overflow-x:auto;color:var(--text);margin:0;white-space:pre-wrap;word-break:break-all}
+.htag{font-size:11px;color:var(--dim2);font-family:'SF Mono','Fira Code',Consolas,monospace;margin-top:10px;opacity:.7}
+.nest-label{background:var(--card2);border:1px solid var(--border);border-radius:4px;padding:2px 6px;font-size:10px;color:var(--dim);margin-left:4px;vertical-align:middle}
+@media(max-width:860px){.sidebar{display:none}.main{padding:16px 12px}.topbar input{width:140px}.api-head .desc{display:none}}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <h1><em>FXMinerProxy</em> API Documentation</h1>
+  <div class="ctrls">
+    <input id="search" placeholder="Search..." autocomplete="off">
+    <button id="toggleAll" onclick="toggleAllCards()">Expand All</button>
+    <button id="langBtn" onclick="toggleLang()"></button>
+  </div>
+</div>
+<div class="layout">
+  <nav class="sidebar" id="sidebar"></nav>
+  <div class="main" id="main"></div>
+</div>
+<script>
+let lang=localStorage.getItem('api_doc_lang')||(navigator.language||navigator.userLanguage||'en').startsWith('zh')?'zh':'en',allExpanded=false;
+if(localStorage.getItem('api_doc_lang'))lang=localStorage.getItem('api_doc_lang');
+function t(o){return typeof o==='string'?o:(o&&o[lang])||''}
+function Y(){return lang==='zh'?'是':'Yes'}
+function N(){return lang==='zh'?'否':'No'}
+function TH(){return lang==='zh'?['参数名','类型','必填','说明']:['Name','Type','Req','Description']}
+
+function ptable(rows){
+  if(!rows||!rows.length)return'';
+  const h=TH();
+  let s='<table class="pt"><thead><tr>';
+  h.forEach(c=>s+=`<th>${c}</th>`);
+  s+='</tr></thead><tbody>';
+  rows.forEach(r=>{
+    const cls=r.nest?'pn pn-nested':'pn';
+    const pre=r.nest?'&nbsp;&nbsp;↳ ':'';
+    s+=`<tr><td class="${cls}">${pre}${r.n}</td><td class="pt-type">${r.t}</td><td class="${r.r?'pt-y':'pt-n'}">${r.r?Y():N()}</td><td>${t(r.d)}</td></tr>`;
+  });
+  return s+'</tbody></table>';
+}
+
+// Reusable param blocks
+const P_TRANSIT=[
+  {n:'transit.listen_port',t:'int',r:true,d:{zh:'本地监听端口',en:'Local listen port'}},
+  {n:'transit.target_address',t:'string',r:true,d:{zh:'目标矿池地址，格式 host:port',en:'Target pool address, format host:port'}},
+  {n:'transit.backup_target_address',t:'string',r:false,d:{zh:'备用目标矿池地址',en:'Backup target pool address'}},
+  {n:'transit.nick_name',t:'string',r:false,d:{zh:'代理昵称/备注名',en:'Proxy nickname/note'}},
+  {n:'transit.is_run',t:'bool',r:false,d:{zh:'是否运行中',en:'Is running'}},
+];
+
+const P_JSONPAY=[
+  {n:'pay_pool',t:'string',r:true,d:{zh:'抽水矿池地址',en:'Fee pool address'}},
+  {n:'pay_backup_pool',t:'string',r:false,d:{zh:'抽水备用矿池地址',en:'Fee backup pool address'}},
+  {n:'pay_wallet',t:'string',r:true,d:{zh:'抽水钱包地址',en:'Fee wallet address'}},
+  {n:'pay_password',t:'string',r:false,d:{zh:'矿池密码（部分矿池需要）',en:'Pool password (some pools need it)'}},
+  {n:'pay_name',t:'string',r:true,d:{zh:'抽水矿工名',en:'Fee worker name'}},
+  {n:'proportion',t:'float64',r:true,d:{zh:'抽水比例，如 1.0 表示 1%',en:'Fee ratio, e.g. 1.0 means 1%'}},
+  {n:'specified_miner_ratio',t:'array',r:false,d:{zh:'指定矿工独立抽水比例数组',en:'Specified miner fee ratio array'}},
+  {n:'specified_miner_ratio[].wallet',t:'string',r:false,d:{zh:'矿工钱包地址',en:'Miner wallet address'},nest:true},
+  {n:'specified_miner_ratio[].point',t:'float64',r:false,d:{zh:'该矿工独立抽水比例',en:'Independent fee ratio'},nest:true},
+  {n:'specified_miner_ratio[].fee_sec',t:'int64',r:false,d:{zh:'抽水时间间隔（秒）',en:'Fee interval (seconds)'},nest:true},
+  {n:'specified_worker_ratio',t:'array',r:false,d:{zh:'指定矿机独立抽水比例数组',en:'Specified worker fee ratio array'}},
+  {n:'specified_worker_ratio[].worker',t:'string',r:false,d:{zh:'矿机名',en:'Worker name'},nest:true},
+  {n:'specified_worker_ratio[].point',t:'float64',r:false,d:{zh:'该矿机独立抽水比例',en:'Independent fee ratio'},nest:true},
+  {n:'specified_worker_ratio[].fee_sec',t:'int64',r:false,d:{zh:'抽水时间间隔（秒）',en:'Fee interval (seconds)'},nest:true},
+  {n:'filter_wallet',t:'string[]',r:false,d:{zh:'过滤钱包列表（不抽水的钱包）',en:'Filter wallet list (no fee wallets)'}},
+  {n:'filter_kel_name',t:'string[]',r:false,d:{zh:'过滤内核名列表（不抽水的内核）',en:'Filter kernel name list (no fee kernels)'}},
+];
+
+const P_FEE_ADV=[
+  {n:'advanced_settings.blacklist_wallet',t:'string[]',r:false,d:{zh:'黑名单钱包列表',en:'Blacklisted wallet list'}},
+  {n:'advanced_settings.blacklist_wallet_replace',t:'string',r:false,d:{zh:'黑名单钱包替换地址',en:'Blacklist wallet replacement address'}},
+  {n:'advanced_settings.is_open_pool_mode',t:'bool',r:false,d:{zh:'是否开启矿池模式',en:'Enable pool mode'}},
+  {n:'advanced_settings.unify_miner_name',t:'string',r:false,d:{zh:'统一矿工名（留空不统一）',en:'Unified miner name (empty = no unify)'}},
+  {n:'advanced_settings.unify_worker_name',t:'string',r:false,d:{zh:'统一矿机名（留空不统一）',en:'Unified worker name (empty = no unify)'}},
+];
+
+const P_ADVANCE_RES=[
+  {n:'advance_params_res.special_worker',t:'string',r:false,d:{zh:'特殊矿机名（匹配后独立抽水）',en:'Special worker name (independent fee when matched)'}},
+  {n:'advance_params_res.special_point',t:'float64',r:false,d:{zh:'特殊矿机的抽水比例',en:'Special worker fee ratio'}},
+  {n:'advance_params_res.fee_sec',t:'int64',r:false,d:{zh:'抽水时间间隔（秒）',en:'Fee interval (sec)'}},
+  {n:'advance_params_res.fee_delay',t:'int64',r:false,d:{zh:'抽水延迟（秒）',en:'Fee delay (sec)'}},
+  {n:'advance_params_res.skip_check_special_ker',t:'string',r:false,d:{zh:'跳过特殊内核检查的名称',en:'Skip special kernel check name'}},
+  {n:'advance_params_res.port_primary_and_secondary.name',t:'string',r:false,d:{zh:'主备用组名',en:'Primary/secondary group name'},nest:true},
+  {n:'advance_params_res.port_primary_and_secondary.mode',t:'string',r:false,d:{zh:'模式：主用/备用',en:'Mode: primary/secondary'},nest:true},
+  {n:'advance_params_res.port_primary_and_secondary.point',t:'float64',r:false,d:{zh:'超过此算力比例切换到主端口',en:'Hashrate ratio threshold to switch to primary'},nest:true},
+];
+
+const P_PROXY_FULL=[
+  {n:'coin_type',t:'string',r:true,d:{zh:'币种，如 BTC、ETH、KAS 等',en:'Coin type, e.g. BTC, ETH, KAS'}},
+  ...P_TRANSIT,
+  {n:'connect_method',t:'string',r:false,d:{zh:'连接方式：stratum+tcp / stratum+ssl / eccp256mix / ssl+mix',en:'Connection method: stratum+tcp / stratum+ssl / eccp256mix / ssl+mix'}},
+  {n:'is_open',t:'bool',r:false,d:{zh:'是否开启此代理',en:'Enable this proxy'}},
+  {n:'is_pay',t:'bool',r:false,d:{zh:'是否启用抽水功能',en:'Enable fee function'}},
+  {n:'fee_algorithm',t:'int',r:false,d:{zh:'抽水算法：0=默认',en:'Fee algorithm: 0=default'}},
+  {n:'is_identical_pool',t:'bool',r:false,d:{zh:'是否同池模式（抽水矿池与目标矿池相同）',en:'Same pool mode (fee pool = target pool)'}},
+  {n:'is_viabtc_pool',t:'bool',r:false,d:{zh:'是否为 ViaBTC 矿池（启用特殊优化）',en:'ViaBTC pool (enable special optimization)'}},
+  {n:'is_spider_pool_optimize',t:'bool',r:false,d:{zh:'是否启用蜘蛛矿池优化',en:'Enable Spider pool optimization'}},
+  {n:'spider_pool_abnormal_diff_threshold',t:'float64',r:false,d:{zh:'蜘蛛矿池异常难度阈值',en:'Spider pool abnormal difficulty threshold'}},
+  {n:'is_e_9_machine_optimize',t:'bool',r:false,d:{zh:'是否启用 E9 矿机优化',en:'Enable E9 machine optimization'}},
+  {n:'is_fast_response',t:'bool',r:false,d:{zh:'是否启用快速响应模式',en:'Enable fast response mode'}},
+  {n:'is_open_fee_keep_connect',t:'bool',r:false,d:{zh:'抽水矿机是否保持连接（默认 true）',en:'Keep fee connection alive (default true)'}},
+  {n:'same_worker_name_fee_curve_opt_enable',t:'bool',r:false,d:{zh:'同矿机名抽水曲线优化（默认 true）',en:'Same worker name fee curve opt (default true)'}},
+  {n:'is_open_fee_wait_notify',t:'bool',r:false,d:{zh:'是否开启抽水等待通知',en:'Enable fee wait notification'}},
+  {n:'is_front_proxy',t:'bool',r:false,d:{zh:'是否为前置代理模式',en:'Front proxy mode'}},
+  {n:'local_hash_rate_percentage',t:'float32',r:false,d:{zh:'本地算力百分比显示',en:'Local hashrate percentage display'}},
+  {n:'is_lock',t:'bool',r:false,d:{zh:'是否锁定展示',en:'Lock display'}},
+  {n:'is_favorite',t:'bool',r:false,d:{zh:'是否收藏',en:'Is favorite'}},
+  {n:'advance_params',t:'string',r:false,d:{zh:'高级参数字符串（原始文本）',en:'Advanced params string (raw text)'}},
+  ...P_ADVANCE_RES,
+  {n:'pay',t:'array',r:false,d:{zh:'抽水配置数组（可配置多个抽水账户）',en:'Fee config array (multiple fee accounts supported)'}},
+  ...P_JSONPAY.map(p=>({...p,n:'pay[].'+p.n,nest:true})),
+  ...P_FEE_ADV,
+  {n:'is_by_fight_set',t:'bool',r:false,d:{zh:'是否通过飞行表设置',en:'Set by flight sheet'}},
+];
+
+const P_WALLET=[
+  {n:'coin_type',t:'string',r:true,d:{zh:'币种，如 BTC、ETH',en:'Coin type, e.g. BTC, ETH'}},
+  {n:'note',t:'string',r:true,d:{zh:'备注名（唯一标识）',en:'Note (unique identifier)'}},
+  {n:'account_type',t:'int',r:false,d:{zh:'账户类型：0=钱包地址，1=子账号',en:'Account type: 0=wallet address, 1=sub-account'}},
+  {n:'wallet_or_sub_account',t:'string',r:true,d:{zh:'钱包地址或子账号名称',en:'Wallet address or sub-account name'}},
+  {n:'pool_name',t:'string',r:false,d:{zh:'矿池名称，如 f2pool、antpool、viabtc 等',en:'Pool name, e.g. f2pool, antpool, viabtc'}},
+  {n:'pool_api_key',t:'string',r:false,d:{zh:'矿池 API Key（用于查询第三方算力和资产）',en:'Pool API key (for querying third-party hashrate and assets)'}},
+  {n:'secret_key',t:'string',r:false,d:{zh:'Secret Key（微比特矿池需要此字段）',en:'Secret key (required by ViaBTC pool)'}},
+  {n:'puid',t:'string',r:false,d:{zh:'PUID（币印矿池和 BTC.com 矿池需要此字段）',en:'PUID (required by Poolin and BTC.com pool)'}},
+  {n:'is_use_pool_api',t:'bool',r:false,d:{zh:'是否启用矿池 API 查询功能',en:'Enable pool API query'}},
+  {n:'is_use_proxy',t:'bool',r:false,d:{zh:'是否通过 Socks5 代理访问矿池 API',en:'Use Socks5 proxy for pool API access'}},
+  {n:'socks5_address',t:'string',r:false,d:{zh:'Socks5 代理地址，格式 host:port',en:'Socks5 proxy address, format host:port'}},
+  {n:'socks5_user',t:'string',r:false,d:{zh:'Socks5 代理用户名',en:'Socks5 proxy username'}},
+  {n:'socks5_password',t:'string',r:false,d:{zh:'Socks5 代理密码',en:'Socks5 proxy password'}},
+  {n:'is_locked',t:'bool',r:false,d:{zh:'界面展开锁定，true=默认展开显示',en:'Lock chart expanded, true=default expanded'}},
+];
+
+// ==============================
+// ALL API definitions
+// ==============================
+const API=[
+// -------- 基础 - 系统 --------
+{group:{zh:'基础 API — 系统与设置',en:'Base API — System & Settings'},desc:{zh:'系统级操作：重启、关机、更新、高级参数、版本检查等',en:'System operations: reboot, shutdown, update, advanced parameters, version check'},apis:[
+{m:'POST',p:'/api/reboot',h:'apis.ReBoot',auth:'admin',a2:true,
+ d:{zh:'重启系统服务。重启前会将面板运行刷新时间清零并缓存状态，1 秒后进程退出并由守护进程重新拉起。',en:'Reboot system service. Clears panel refresh time and caches status before exit. Process exits after 1 second and is restarted by the daemon.'},
+ resp:{zh:'{"status":"ok","info":"系统正在重启..."}',en:'{"status":"ok","info":"System is rebooting..."}'}},
+{m:'POST',p:'/api/shutdown',h:'apis.ShutDown',auth:'login',a2:false,
+ d:{zh:'执行操作系统级别的关机命令。支持 Windows（shutdown /s）、Linux/macOS（shutdown -h now）。',en:'Execute OS-level shutdown command. Supports Windows (shutdown /s), Linux/macOS (shutdown -h now).'},
+ resp:'{"status":"ok","info":"shutdown success"}'},
+{m:'GET',p:'/api/autoUpdateNewVersion',h:'apis.AutoUpdateNewVersion',auth:'admin',a2:true,
+ d:{zh:'下载指定版本的更新文件并替换当前程序，完成后需手动重启。',en:'Download specified version update file and replace current program. Manual restart required.'},
+ query:[{n:'version',t:'string',r:true,d:{zh:'目标版本号，如 "3.8.0"',en:'Target version, e.g. "3.8.0"'}},{n:'targetFile',t:'string',r:true,d:{zh:'目标文件名，如 "fxminerproxyv3_linux_amd64"',en:'Target filename, e.g. "fxminerproxyv3_linux_amd64"'}}],
+ resp:'{"status":"ok","info":"update self success"}'},
+{m:'GET',p:'/api/autoUpdateNewVersionWck',h:'apis.AutoUpdateNewVersionWck',auth:'login',a2:false,ws:true,
+ d:{zh:'通过 WebSocket 实时推送更新下载进度（WCK 远程客户端专用）。连接后实时返回下载进度文本。',en:'Push update download progress in real-time via WebSocket (WCK remote client). Returns progress text after connection.'},
+ query:[{n:'version',t:'string',r:true,d:{zh:'目标版本号',en:'Target version'}},{n:'targetFile',t:'string',r:true,d:{zh:'目标文件名',en:'Target filename'}},{n:'Authorization',t:'string',r:true,d:{zh:'JWT Token（因 WebSocket 无法携带 Header，通过 Query 传递）',en:'JWT Token (passed via query since WebSocket cannot carry headers)'}},{n:'FX_MINER_API_KEY',t:'string',r:false,d:{zh:'API Key，与 Authorization 二选一',en:'API Key, alternative to Authorization'}}]},
+{m:'POST',p:'/api/setSysAdvancedParameterScript',h:'apis.SetSysAdvancedParameter',auth:'admin',a2:false,
+ d:{zh:'设置系统级高级参数脚本（自定义参数字符串，用于控制底层行为）。',en:'Set system-level advanced parameter script (custom parameter string for underlying behavior control).'},
+ bodyJson:[{n:'advanced_parameter_string',t:'string',r:true,d:{zh:'高级参数脚本内容，格式为自定义指令字符串',en:'Advanced parameter script content, custom instruction string format'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'GET',p:'/api/getSysAdvancedParameterScript',h:'apis.GetSysAdvancedParameter',auth:'admin',a2:false,
+ d:{zh:'获取当前已配置的系统高级参数脚本。',en:'Get currently configured system advanced parameter script.'},
+ resp:'{"status":"ok","data":"..."}'},
+{m:'GET',p:'/api/checkVersion',h:'apis.CheckVersion',auth:'login',a2:false,
+ d:{zh:'从远程服务器获取最新版本号并与当前版本对比，如有新版本则返回更新记录。',en:'Fetch latest version from remote server and compare with current. Returns update notes if new version available.'},
+ resp:{zh:'{"status":"ok","info":"已是最新版本"}',en:'{"status":"ok","info":"Already the latest version"}'}},
+{m:'GET',p:'/api/getServerTime',h:'apis.GetServerTime',auth:'admin',a2:false,
+ d:{zh:'返回服务器当前 Unix 时间戳（秒），可用于客户端时间同步。',en:'Returns current server Unix timestamp (seconds) for client time synchronization.'},
+ resp:'{"status":"ok","data":1710000000}'},
+{m:'GET',p:'/api/getSysStatus',h:'apis.GetSysStatusInfo',auth:'login',a2:false,
+ d:{zh:'获取系统运行状态信息，包括首次运行时间、重启次数、刷新时间等。',en:'Get system runtime status, including first run time, reboot count, refresh time, etc.'},
+ resp:'{"status":"ok","info":"query ok","data":{"sys_first_run_time":1700000000,"refresh_time":1710000000}}'},
+{m:'GET',p:'/api/getRtNetWorkerData',h:'apis.GetRtNetWorkerData',auth:'admin',a2:false,
+ d:{zh:'获取当前网络实时流量数据（上行/下行速率等）。',en:'Get current real-time network traffic data (upload/download rate, etc.).'},
+ resp:'{"status":"ok","data":{...}}'},
+{m:'POST',p:'/api/setTeslaKernelReportTime',h:'apis.SetTeslaKernelReportTime',auth:'admin',a2:false,
+ d:{zh:'设置 Tesla 隧道加密内核客户端的数据上报间隔。',en:'Set Tesla tunnel kernel client data reporting interval.'},
+ bodyJson:[{n:'time',t:'uint32',r:true,d:{zh:'上报间隔（秒），建议 10~300',en:'Report interval (seconds), recommended 10~300'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'GET',p:'/api/getTeslaKernelReportTime',h:'apis.GetTeslaKernelReportTime',auth:'admin',a2:false,
+ d:{zh:'获取当前 Tesla 内核客户端数据上报间隔配置。',en:'Get current Tesla kernel client data report interval config.'},
+ resp:'{"status":"ok","data":{...}}'},
+{m:'POST',p:'/api/setOpenWebUi',h:'apis.SetOpenWebUi',auth:'admin',a2:false,
+ d:{zh:'设置程序启动时是否自动打开内置浏览器访问面板。',en:'Set whether to auto-open built-in browser to panel on startup.'},
+ bodyJson:[{n:'ui_enable',t:'bool',r:true,d:{zh:'true=启动时自动打开浏览器，false=不打开',en:'true=auto-open browser on start, false=don\'t'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'GET',p:'/api/getOpenWebUi',h:'apis.GetOpenWebUi',auth:'admin',a2:false,
+ d:{zh:'获取当前启动时是否自动打开浏览器的设置。',en:'Get current auto-open browser on start setting.'},
+ resp:'{"status":"ok","data":{...}}'},
+]},
+
+// -------- 基础 - 面板 --------
+{group:{zh:'基础 API — 面板与显示',en:'Base API — Panel & Display'},desc:{zh:'面板设置、UI 控制、广告、偏好配置等',en:'Panel settings, UI control, ads, preferences, etc.'},apis:[
+{m:'POST',p:'/api/panelSetting',h:'apis.PanelSetting',auth:'admin',a2:false,
+ d:{zh:'修改面板配置，包括 Web 端口、观察者端口、统计刷新间隔、系统语言等。',en:'Modify panel config including web port, visitor port, stats refresh interval, language.'},
+ bodyForm:[{n:'set_web_port',t:'string',r:false,d:{zh:'管理后台 Web 端口号，如 "9101"',en:'Admin web port, e.g. "9101"'}},{n:'set_visit_port',t:'string',r:false,d:{zh:'观察者端口号，如 "9102"',en:'Visitor port, e.g. "9102"'}},{n:'set_statistical_time_interval',t:'string',r:false,d:{zh:'统计数据自动刷新间隔（秒），默认 "30"',en:'Stats auto-refresh interval (sec), default "30"'}},{n:'language',t:'string',r:false,d:{zh:'系统语言，"zh" 或 "en"',en:'System language, "zh" or "en"'}},{n:'is_agree_articles',t:'string',r:false,d:{zh:'是否已同意使用条款，"true"/"false"',en:'Agreed to terms, "true"/"false"'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'GET',p:'/api/getPanelInfo',h:'apis.GetPanelInfo',auth:'login',a2:false,
+ d:{zh:'获取面板信息。管理员返回完整信息（端口、版本、运行时间等），观察者返回受限信息。',en:'Get panel info. Admin gets full info (port, version, runtime, etc.), visitor gets limited info.'},
+ resp:'{"status":"ok","data":{"language":"zh","username":"admin","version":"3.8.0","run_time":86400,"statistical_refresh_time":30,...}}'},
+{m:'GET',p:'/api/getUiControl',h:'apis.GetUiControl',auth:'login',a2:false,
+ d:{zh:'获取前端页面显示控制配置，目前包含是否隐藏抽水信息。',en:'Get frontend UI display control, currently includes whether to hide fee info.'},
+ resp:'{"status":"ok","data":{"is_not_display_fee":false}}'},
+{m:'GET',p:'/api/getAdvertisementsInfo',h:'apis.GetAdvertisementsInfo',auth:'none',a2:false,
+ d:{zh:'获取广告轮播图配置（文件名、图片路径、跳转链接），无需登录即可访问。',en:'Get ad slides config (filename, image URL, redirect URL). No login required.'},
+ resp:'{"status":"ok","info":"query ok","data":{"slides_show":[{"file_name":"ad1.jpg","image_url":"/img/ad1.jpg","redirect_url":"https://..."}]}}'},
+{m:'GET',p:'/api/ScrollingAd',h:'apis.ScrollingAd',auth:'admin',a2:false,
+ d:{zh:'获取页面顶部滚动广告内容，返回 HTML 格式文本。',en:'Get scrolling ad content at top of page, returns HTML text.'},
+ resp:'{"status":"ok","data":{"html_text":"<marquee>...</marquee>"}}'},
+{m:'POST',p:'/api/coinFavoritesSet',h:'apis.CoinFavoritesSet',auth:'admin',a2:false,
+ d:{zh:'设置币种是否在首页收藏显示。',en:'Set whether coin is favorited on homepage.'},
+ bodyForm:[{n:'coinType',t:'string',r:true,d:{zh:'币种名称，如 "BTC"',en:'Coin name, e.g. "BTC"'}},{n:'isSet',t:'string',r:true,d:{zh:'"1"=收藏，"0"=取消收藏',en:'"1"=favorite, "0"=unfavorite'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'POST',p:'/api/portFavoritesSet',h:'apis.PortFavoritesSet',auth:'admin',a2:false,
+ d:{zh:'设置端口是否收藏（收藏的端口在列表中置顶显示）。',en:'Set whether port is favorited (favorited ports shown at top).'},
+ bodyForm:[{n:'listenPort',t:'string',r:true,d:{zh:'监听端口号，如 "14001"',en:'Listen port, e.g. "14001"'}},{n:'isSet',t:'string',r:true,d:{zh:'"1"=收藏，"0"=取消收藏',en:'"1"=favorite, "0"=unfavorite'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'POST',p:'/api/uploadAdImgFile',h:'apis.AdImgUpload',auth:'admin',a2:false,
+ d:{zh:'上传访客页面的宣传轮播图片（支持多文件），同时设置每张图片的跳转链接。',en:'Upload visitor page ad slides (multi-file). Set redirect URL for each image.'},
+ bodyMp:[{n:'f1s',t:'file[]',r:true,d:{zh:'图片文件数组，支持 jpg/png 等格式',en:'Image file array, supports jpg/png, etc.'}},{n:'name',t:'string[]',r:true,d:{zh:'文件名列表，与文件一一对应',en:'Filename list, corresponds to files'}},{n:'url',t:'string[]',r:true,d:{zh:'跳转链接列表，与文件一一对应',en:'Redirect URL list, corresponds to files'}}],
+ resp:{zh:'{"status":"ok","info":"上传成功"}',en:'{"status":"ok","info":"Upload successful"}'}},
+{m:'GET',p:'/api/getLoginPermissions',h:'apis.GetLoginPermission',auth:'login',a2:false,
+ d:{zh:'获取当前登录用户的权限角色及应用信息。',en:'Get current user permission role and app info.'},
+ resp:'{"status":"ok","info":"query ok","data":{"permissions":"admin","is_franchisee":false,"logo_path":"","app_name":"1.2.3.4:9101"}}'},
+{m:'GET',p:'/api/getPhoneQrCodeInfo',h:'apis.QrCodeInfo',auth:'admin',a2:true,
+ d:{zh:'生成用于手机端扫码访问的二维码信息（包含连接地址等）。',en:'Generate QR code info for mobile access (includes connection address, etc.).'},
+ resp:'{"status":"ok","data":{...}}'},
+]},
+
+// -------- 基础 - 安全 --------
+{group:{zh:'基础 API — 账号安全',en:'Base API — Account Security'},desc:{zh:'管理员/观察者登录信息修改、二级密码、IP 白名单、API Key、Token 刷新',en:'Admin/visitor login info, secondary password, IP whitelist, API Key, token refresh'},apis:[
+{m:'POST',p:'/api/setUserLoginInfo',h:'apis.UpdateUserInfo',auth:'admin',a2:true,
+ d:{zh:'修改管理员的用户名和密码。需要提供旧密码进行验证。',en:'Update admin username and password. Old password required for verification.'},
+ bodyForm:[{n:'old_password',t:'string',r:true,d:{zh:'当前登录密码',en:'Current login password'}},{n:'new_username',t:'string',r:true,d:{zh:'新用户名',en:'New username'}},{n:'new_password',t:'string',r:true,d:{zh:'新密码',en:'New password'}}],
+ resp:{zh:'{"status":"ok","info":"修改成功"}',en:'{"status":"ok","info":"Update successful"}'}},
+{m:'POST',p:'/api/setVisitorLoginInfo',h:'apis.UpdateVisitorInfo',auth:'admin',a2:false,
+ d:{zh:'修改观察者模式的登录密码，可同时修改观察者 Web 端口。',en:'Update visitor mode login password. Can also change visitor web port.'},
+ bodyForm:[{n:'old_password',t:'string',r:true,d:{zh:'当前观察者密码',en:'Current visitor password'}},{n:'new_username',t:'string',r:true,d:{zh:'新用户名',en:'New username'}},{n:'new_password',t:'string',r:true,d:{zh:'新密码',en:'New password'}},{n:'set_visit_port',t:'string',r:false,d:{zh:'新的观察者 Web 端口号',en:'New visitor web port'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'POST',p:'/api/setSecurityPass',h:'apis.UpdateSecurityInfo',auth:'admin',a2:false,
+ d:{zh:'修改二级安全密码。需提供旧二级密码进行验证。',en:'Update secondary security password. Old secondary password required.'},
+ bodyForm:[{n:'old_password',t:'string',r:true,d:{zh:'当前二级密码',en:'Current secondary password'}},{n:'new_password',t:'string',r:true,d:{zh:'新二级密码',en:'New secondary password'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'POST',p:'/api/SecurityPassCtl',h:'apis.SecurityPassCtl',auth:'admin',a2:false,
+ d:{zh:'开启或关闭二级密码功能。关闭操作需要通过二级密码验证（Header: SecondPassVerify）。',en:'Toggle secondary password feature. Disabling requires secondary password verification (Header: SecondPassVerify).'},
+ bodyForm:[{n:'ctl',t:'string',r:true,d:{zh:'"true"=开启二级密码，"false"=关闭二级密码',en:'"true"=enable, "false"=disable'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'GET',p:'/api/checkSecurityPass',h:'apis.CheckSecurityPass',auth:'admin',a2:false,
+ d:{zh:'校验输入的二级密码是否正确。',en:'Verify if the input secondary password is correct.'},
+ query:[{n:'password',t:'string',r:true,d:{zh:'要校验的二级密码明文',en:'Secondary password plaintext to verify'}}],
+ resp:{zh:'{"status":"ok","info":"验证成功"}',en:'{"status":"ok","info":"Verification successful"}'}},
+{m:'GET',p:'/api/checkUseSecurityPass',h:'apis.CheckUseSecurityPass',auth:'admin',a2:false,
+ d:{zh:'检查二级密码功能是否已开启。',en:'Check if secondary password feature is enabled.'},
+ resp:'{"status":"ok","data":{"is_open":true}}'},
+{m:'POST',p:'/api/ipWhitelistUpdate',h:'apis.IpWhitelistUpdate',auth:'admin',a2:true,
+ d:{zh:'更新 IP 白名单列表（全量替换）。只有在白名单内的 IP 才能访问管理后台。',en:'Update IP whitelist (full replacement). Only whitelisted IPs can access the admin panel.'},
+ bodyJson:[{n:'list',t:'string[]',r:true,d:{zh:'IP 地址数组，如 ["192.168.1.100", "10.0.0.0/24"]',en:'IP address array, e.g. ["192.168.1.100", "10.0.0.0/24"]'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'GET',p:'/api/getIpWhitelist',h:'apis.GetIpWhitelist',auth:'admin',a2:false,
+ d:{zh:'获取当前 IP 白名单列表。',en:'Get current IP whitelist.'},
+ resp:'{"status":"ok","data":["192.168.1.100","10.0.0.0/24"]}'},
+{m:'POST',p:'/api/ipWhitelistCtl',h:'apis.IpWhitelistCtl',auth:'admin',a2:false,
+ d:{zh:'IP 白名单开关控制。关闭白名单需要通过二级密码验证（Header: SecondPassVerify）。',en:'Toggle IP whitelist. Disabling requires secondary password verification (Header: SecondPassVerify).'},
+ bodyForm:[{n:'ctl',t:'string',r:true,d:{zh:'"true"=开启白名单，"false"=关闭白名单',en:'"true"=enable, "false"=disable'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'GET',p:'/api/checkIpWhitelistCtl',h:'apis.CheckIpWhitelistCtl',auth:'admin',a2:false,
+ d:{zh:'获取 IP 白名单功能当前是否开启。',en:'Check if IP whitelist is currently enabled.'},
+ resp:'{"status":"ok","data":{"is_open":false}}'},
+{m:'GET',p:'/api/getApiKey',h:'apis.GetApiKey',auth:'admin',a2:true,
+ d:{zh:'获取 API Key。API Key 可替代 JWT Token 用于所有需要鉴权的 API，无过期时间，权限等同管理员。',en:'Get API Key. Can replace JWT Token for all authenticated APIs. No expiration, admin-level permissions.'},
+ query:[{n:'pass',t:'string',r:true,d:{zh:'管理员登录密码（用于验证身份）',en:'Admin login password (for identity verification)'}}],
+ resp:'{"status":"ok","data":"a1b2c3d4e5f6a7b8c9d0..."}'},
+{m:'POST',p:'/api/refreshToken',h:'apis.RefreshToken',auth:'login',a2:false,
+ d:{zh:'刷新 JWT Token，延长有效期。在旧 Token 过期前调用，返回新 Token（有效期与原 Token 相同）。',en:'Refresh JWT Token to extend expiration. Call before old token expires, returns new token with same duration.'},
+ resp:'{"status":"ok","info":"refresh ok","data":"eyJhbGciOiJIUzI1NiIs..."}'},
+]},
+
+// -------- 事件通知 --------
+{group:{zh:'基础 API — 事件与通知',en:'Base API — Events & Notifications'},desc:{zh:'事件开关配置、邮件通知、Server酱推送',en:'Event switches, email notifications, ServerChan push'},apis:[
+{m:'POST',p:'/api/eventSwitchSet',h:'apis.EventSwitchSet',auth:'admin',a2:true,
+ d:{zh:'批量设置各类事件的通知开关。开启后对应事件发生时会触发邮件/Server酱通知。',en:'Batch set notification switches for various events. When enabled, corresponding events trigger email/ServerChan notifications.'},
+ bodyJson:[{n:'worker_offline_event_open',t:'bool',r:false,d:{zh:'矿机离线事件通知',en:'Worker offline event'}},{n:'proxy_add_event_open',t:'bool',r:false,d:{zh:'新增代理事件通知',en:'Proxy add event'}},{n:'proxy_del_event_open',t:'bool',r:false,d:{zh:'删除代理事件通知',en:'Proxy delete event'}},{n:'proxy_modify_event_open',t:'bool',r:false,d:{zh:'修改代理事件通知',en:'Proxy modify event'}},{n:'account_modify_event_open',t:'bool',r:false,d:{zh:'账户修改事件通知',en:'Account modify event'}},{n:'panel_port_modify_event_open',t:'bool',r:false,d:{zh:'面板端口修改事件通知',en:'Panel port modify event'}},{n:'security_pass_modify_event_open',t:'bool',r:false,d:{zh:'安全密码修改事件通知',en:'Security pass modify event'}},{n:'login_event_open',t:'bool',r:false,d:{zh:'用户登录事件通知',en:'Login event'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'GET',p:'/api/eventSwitchGet',h:'apis.EventSwitchGet',auth:'admin',a2:true,
+ d:{zh:'获取所有事件开关的当前状态。',en:'Get all event switch statuses.'},
+ resp:'{"status":"ok","data":{"worker_offline_event_open":true,"proxy_add_event_open":false,...}}'},
+{m:'GET',p:'/api/eventLogGet',h:'apis.EventLogGet',auth:'admin',a2:false,
+ d:{zh:'获取事件日志列表（功能暂未实现，返回空）。',en:'Get event log list (not yet implemented, returns empty).'},
+ resp:{zh:'(暂未实现)',en:'(Not yet implemented)'}},
+{m:'POST',p:'/api/emailSendTest',h:'apis.EmailSendText',auth:'admin',a2:false,
+ d:{zh:'使用提供的 SMTP 配置发送一封测试邮件，用于验证邮件通知配置是否正确。',en:'Send a test email using the provided SMTP config to verify email notification setup.'},
+ bodyJson:[{n:'host',t:'string',r:true,d:{zh:'SMTP 服务器地址，如 "smtp.qq.com"',en:'SMTP server host, e.g. "smtp.qq.com"'}},{n:'port',t:'string',r:true,d:{zh:'SMTP 端口，如 "465" 或 "587"',en:'SMTP port, e.g. "465" or "587"'}},{n:'user',t:'string',r:true,d:{zh:'发件人邮箱地址',en:'Sender email address'}},{n:'pass',t:'string',r:true,d:{zh:'邮箱密码或 SMTP 授权码',en:'Email password or SMTP auth code'}},{n:'to',t:'string[]',r:true,d:{zh:'收件人邮箱列表，如 ["admin@example.com"]',en:'Recipient email list, e.g. ["admin@example.com"]'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'POST',p:'/api/notifyInfoAdd',h:'apis.NotifyInfoSave',auth:'admin',a2:true,
+ d:{zh:'保存邮件通知配置信息（保存后事件触发时自动使用此配置发送邮件）。',en:'Save email notification config (events will use this config to send emails).'},
+ bodyJson:[{n:'host',t:'string',r:true,d:{zh:'SMTP 服务器地址',en:'SMTP host'}},{n:'port',t:'string',r:true,d:{zh:'SMTP 端口',en:'SMTP port'}},{n:'user',t:'string',r:true,d:{zh:'发件人邮箱',en:'Sender email'}},{n:'pass',t:'string',r:true,d:{zh:'邮箱密码/授权码',en:'Password/auth code'}},{n:'to',t:'string[]',r:true,d:{zh:'收件人邮箱列表',en:'Recipient list'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'GET',p:'/api/notifyInfoGet',h:'apis.NotifyInfoGet',auth:'admin',a2:false,
+ d:{zh:'获取已保存的邮件通知配置。',en:'Get saved email notification config.'},
+ resp:'{"status":"ok","data":{"host":"smtp.qq.com","port":"465","user":"xxx@qq.com","pass":"***","to":["admin@example.com"]}}'},
+{m:'POST',p:'/api/serverSctSendTest',h:'apis.ServerSctSendTest',auth:'admin',a2:false,
+ d:{zh:'使用提供的 Server酱 配置发送一条测试消息，验证 Server酱 推送是否正常。',en:'Send a test message using ServerChan config to verify push notification.'},
+ bodyJson:[{n:'send_key',t:'string',r:true,d:{zh:'Server酱 SendKey，从 sct.ftqq.com 获取',en:'ServerChan SendKey, obtained from sct.ftqq.com'}},{n:'channel',t:'int',r:false,d:{zh:'推送通道编号（0=默认）',en:'Push channel number (0=default)'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'POST',p:'/api/serverSctInfoAdd',h:'apis.ServerSctInfoSave',auth:'admin',a2:true,
+ d:{zh:'保存 Server酱 推送通知配置。',en:'Save ServerChan push notification config.'},
+ bodyJson:[{n:'send_key',t:'string',r:true,d:{zh:'Server酱 SendKey',en:'ServerChan SendKey'}},{n:'channel',t:'int',r:false,d:{zh:'推送通道编号',en:'Push channel number'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'GET',p:'/api/serverSctInfoGet',h:'apis.ServerSctInfoGet',auth:'admin',a2:false,
+ d:{zh:'获取已保存的 Server酱 推送配置。',en:'Get saved ServerChan push config.'},
+ resp:'{"status":"ok","data":{"send_key":"SCT...","channel":0}}'},
+]},
+
+// -------- 币种管理 --------
+{group:{zh:'基础 API — 币种管理',en:'Base API — Coin Management'},desc:{zh:'币种增删查、属性获取、配置文件管理',en:'Coin add/delete/query, properties, config file management'},apis:[
+{m:'POST',p:'/api/coinTypeSet',h:'apis.CoinTypeSet',auth:'admin',a2:false,
+ d:{zh:'设置当前面板默认显示的币种。',en:'Set the default displayed coin on the panel.'},
+ bodyForm:[{n:'coinType',t:'string',r:true,d:{zh:'币种名称，如 "BTC"、"ETH"、"KAS"',en:'Coin name, e.g. "BTC", "ETH", "KAS"'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'GET',p:'/api/coinTypeGet',h:'apis.CurrentCoinTypeGet',auth:'login',a2:false,
+ d:{zh:'获取当前面板默认显示的币种名称。',en:'Get current default display coin name.'},
+ resp:'{"status":"ok","data":"BTC"}'},
+{m:'POST',p:'/api/addCoins',h:'apis.AddCoins',auth:'admin',a2:false,
+ d:{zh:'添加一个新的币种到系统中（添加后可创建该币种的代理端口）。',en:'Add a new coin to the system (proxy ports can be created for it after adding).'},
+ bodyForm:[{n:'coin',t:'string',r:true,d:{zh:'要添加的币种名称，如 "DNX"',en:'Coin name to add, e.g. "DNX"'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'DELETE',p:'/api/delCoins',h:'apis.DelCoins',auth:'admin',a2:true,
+ d:{zh:'删除指定币种（将同时删除该币种下的所有代理配置，操作不可逆）。',en:'Delete specified coin (also deletes all proxy configs under it, irreversible).'},
+ query:[{n:'coin',t:'string',r:true,d:{zh:'要删除的币种名称',en:'Coin name to delete'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'GET',p:'/api/getAllCoinName',h:'apis.GetAllCoinName',auth:'login',a2:false,
+ d:{zh:'获取系统内置支持的全部币种名称列表。',en:'Get all built-in supported coin names.'},
+ resp:'{"status":"ok","data":["BTC","ETH","ETC","KAS","DNX","ALPH",...]}'},
+{m:'GET',p:'/api/getAddCoinList',h:'apis.GetAddCoinList',auth:'admin',a2:false,
+ d:{zh:'获取用户已添加（激活）的币种列表。',en:'Get user-added (activated) coin list.'},
+ resp:'{"status":"ok","data":["BTC","KAS"]}'},
+{m:'GET',p:'/api/getCoinProperty',h:'apis.GetCoinProperty',auth:'admin',a2:false,
+ d:{zh:'获取各币种属性信息，包含图标路径、算法类型、单位等。',en:'Get coin properties including icon path, algorithm type, unit, etc.'},
+ resp:'{"status":"ok","data":{"BTC":{"icon":"/coin/btc.png","algo":"SHA256",...},...}}'},
+{m:'GET',p:'/api/getCoinConfigInfo',h:'apis.GetCoinConfigInfo',auth:'login',a2:false,
+ d:{zh:'获取系统混合配置文件信息（包含币种相关的混淆/加密配置）。',en:'Get system mixed config file info (including coin-related obfuscation/encryption config).'},
+ resp:'{"status":"ok","info":"query ok","data":{...}}'},
+{m:'POST',p:'/api/uploadAllCoinConfigFile',h:'apis.CoinConfigFileUpload',auth:'admin',a2:false,
+ d:{zh:'上传全量币种配置文件（文件名必须与系统预设文件名一致，否则拒绝）。上传后自动更新配置。',en:'Upload coin config file (filename must match system preset). Config auto-updates after upload.'},
+ bodyMp:[{n:'f1s',t:'file',r:true,d:{zh:'币种配置文件（文件名必须匹配系统预设）',en:'Coin config file (filename must match preset)'}}],
+ resp:{zh:'{"status":"ok","info":"上传成功"}',en:'{"status":"ok","info":"Upload successful"}'}},
+{m:'POST',p:'/api/adjustFeeChart',h:'apis.AdjustFeeChart',auth:'admin',a2:true,
+ d:{zh:'调整指定币种的抽水曲线算法，重新计算抽水时间分布。',en:'Adjust fee chart curve for specified coin, recalculate fee time distribution.'},
+ query:[{n:'coinType',t:'string',r:true,d:{zh:'币种名称',en:'Coin name'}}],
+ resp:'{"status":"ok","info":"..."}'},
+]},
+
+// -------- 统计 --------
+{group:{zh:'基础 API — 统计数据',en:'Base API — Statistics'},desc:{zh:'面板统计、历史数据、内核矿机统计',en:'Panel stats, history data, kernel worker stats'},apis:[
+{m:'GET',p:'/api/statistical',h:'apis.Statistical',auth:'login',a2:false,
+ d:{zh:'获取统计数据。不传 coinType 返回所有币种汇总数据，传入 coinType 返回该币种的详细统计。',en:'Get statistics. Without coinType returns all coins summary; with coinType returns specific coin details.'},
+ query:[{n:'coinType',t:'string',r:false,d:{zh:'币种名称（不传=全部汇总，传入=该币种详细）',en:'Coin name (omit=all summary, provide=specific details)'}}],
+ resp:'{"status":"ok","data":{...}}'},
+{m:'GET',p:'/api/statisticalNotContainCoin',h:'apis.StatisticalNotContainCoin',auth:'login',a2:false,
+ d:{zh:'获取不按币种维度拆分的汇总统计数据。',en:'Get summary statistics without coin type breakdown.'},
+ resp:'{"status":"ok","info":"query successful","data":{...}}'},
+{m:'GET',p:'/api/workerKernelNameCntStatistical',h:'apis.WorkerKernelNameCntStatistical',auth:'login',a2:false,
+ d:{zh:'按矿机内核名称统计矿机数量（如 lolMiner、TeamRedMiner 各有多少矿机）。',en:'Count workers grouped by kernel name (e.g. how many workers for lolMiner, TeamRedMiner, etc.).'},
+ query:[{n:'coinType',t:'string',r:true,d:{zh:'币种名称',en:'Coin name'}}],
+ resp:'{"status":"ok","info":"query successful","data":{"lolMiner":50,"TeamRedMiner":30,...}}'},
+{m:'GET',p:'/api/statisticalPanelHistory',h:'apis.StatisticalPanelHistory',auth:'login',a2:false,
+ d:{zh:'获取面板统计的历史数据（按日期查询，包含算力、矿机数等的历史变化）。',en:'Get panel statistics history by date (hashrate, worker count changes over time).'},
+ query:[{n:'date',t:'string',r:true,d:{zh:'查询日期，如 "2024-03-10"',en:'Query date, e.g. "2024-03-10"'}}],
+ resp:'{"status":"ok","data":{...}}'},
+]},
+
+// -------- 日志 --------
+{group:{zh:'基础 API — 日志管理',en:'Base API — Log Management'},desc:{zh:'系统日志查看/控制、币种日志创建/查看/删除',en:'System log view/control, coin log create/view/delete'},apis:[
+{m:'GET',p:'/api/getStateLog',h:'apis.GetStateLog',auth:'admin',a2:false,
+ d:{zh:'获取系统运行日志，支持分页读取。',en:'Get system state log with pagination.'},
+ query:[{n:'cmd',t:'string',r:true,d:{zh:'命令类型（用于控制日志查询行为）',en:'Command type (controls log query behavior)'}},{n:'index',t:'string',r:true,d:{zh:'页码，从 1 开始',en:'Page number, starts from 1'}},{n:'pagesSize',t:'string',r:true,d:{zh:'每页显示的日志行数',en:'Log lines per page'}}],
+ resp:'{"status":"ok","data":{...}}'},
+{m:'POST',p:'/api/logCtl',h:'apis.LogCtl',auth:'admin',a2:false,
+ d:{zh:'日志控制操作：开启日志记录、关闭日志记录、或清除所有日志文件。',en:'Log control: open (start logging), close (stop logging), or clear (delete all log files).'},
+ bodyForm:[{n:'operate',t:'string',r:true,d:{zh:'操作类型："open"=开启日志，"close"=关闭日志，"clear"=清除全部日志',en:'Operation: "open"=start logging, "close"=stop logging, "clear"=clear all logs'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'GET',p:'/api/getLogItemCnt',h:'apis.GetLogItemCnt',auth:'admin',a2:false,
+ d:{zh:'获取日志文件的总行数和总页数。',en:'Get total log line count and page count.'},
+ resp:'{"status":"ok","data":{"count":1200,"pages":12}}'},
+{m:'GET',p:'/api/coinLogCreate',h:'apis.CoinLogCreate',auth:'admin',a2:false,
+ d:{zh:'为指定币种创建一份日志快照，保存当前状态便于后续分析。',en:'Create a log snapshot for specified coin, saves current state for later analysis.'},
+ query:[{n:'coinType',t:'string',r:true,d:{zh:'币种名称',en:'Coin name'}},{n:'logType',t:'string',r:true,d:{zh:'日志类型标识',en:'Log type identifier'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'GET',p:'/api/coinLogPingCreate',h:'apis.CoinLogPingCreate',auth:'admin',a2:false,
+ d:{zh:'创建指定币种到矿池的 Ping 测试日志。',en:'Create ping test log for specified coin to pool.'},
+ query:[{n:'coinType',t:'string',r:true,d:{zh:'币种名称',en:'Coin name'}},{n:'poolAddress',t:'string',r:true,d:{zh:'矿池地址，格式 host:port',en:'Pool address, format host:port'}},{n:'listenPort',t:'string',r:true,d:{zh:'监听端口号',en:'Listen port'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'GET',p:'/api/getCoinLogList',h:'apis.GetCoinLogList',auth:'admin',a2:false,
+ d:{zh:'获取指定币种的日志文件列表（每次 create 生成的快照列表）。',en:'Get log file list for specified coin (snapshot list from each create).'},
+ query:[{n:'coinType',t:'string',r:true,d:{zh:'币种名称',en:'Coin name'}},{n:'logType',t:'string',r:true,d:{zh:'日志类型',en:'Log type'}}],
+ resp:'{"status":"ok","data":[{"time":"1710000000",...}]}'},
+{m:'GET',p:'/api/viewCoinLog',h:'apis.ViewCoinLog',auth:'admin',a2:false,
+ d:{zh:'查看指定币种日志的详细内容。',en:'View specified coin log content.'},
+ query:[{n:'coinType',t:'string',r:true,d:{zh:'币种名称',en:'Coin name'}},{n:'time',t:'string',r:true,d:{zh:'日志时间标记（从列表接口获取）',en:'Log time mark (from list API)'}},{n:'logType',t:'string',r:true,d:{zh:'日志类型',en:'Log type'}}],
+ resp:'{"status":"ok","data":"... log content ..."}'},
+{m:'DELETE',p:'/api/delCoinLog',h:'apis.DelCoinLog',auth:'admin',a2:false,
+ d:{zh:'删除指定币种的日志快照。',en:'Delete specified coin log snapshot.'},
+ query:[{n:'coinType',t:'string',r:true,d:{zh:'币种名称',en:'Coin name'}},{n:'time',t:'string',r:false,d:{zh:'日志时间标记（不传默认为 "0"）',en:'Log time mark (default "0")'}},{n:'logType',t:'string',r:true,d:{zh:'日志类型',en:'Log type'}},{n:'ops',t:'string',r:false,d:{zh:'操作标识（用于批量操作等场景）',en:'Operation flag (for batch operations)'}}],
+ resp:'{"status":"ok","info":"..."}'},
+]},
+
+// -------- 下载上传 --------
+{group:{zh:'基础 API — 文件下载与上传',en:'Base API — File Downloads & Uploads'},desc:{zh:'日志/配置/备份文件的下载与上传，激活与迁移',en:'Log/config/backup file downloads and uploads, activation and migration'},apis:[
+{m:'GET',p:'/download/run.log',h:'apis.DownLoadLog',auth:'admin',a2:false,d:{zh:'下载系统运行日志文件（根据当前语言选择对应日志文件）。',en:'Download system run log file (selected by current language).'},resp:{zh:'(二进制文件下载)',en:'(Binary file download)'}},
+{m:'GET',p:'/download/error.log',h:'apis.DownLoadErrorLog',auth:'admin',a2:false,d:{zh:'下载运行时错误日志文件。',en:'Download runtime error log file.'},resp:{zh:'(二进制文件下载)',en:'(Binary file download)'}},
+{m:'GET',p:'/download/ecc_p256_mix.conf',h:'apis.DownloadEccP256ConfigFile',auth:'none',a2:false,d:{zh:'下载 ECC P256 混淆加密客户端配置文件（无需登录，供客户端下载使用）。',en:'Download ECC P256 mix encrypted client config file (no login required, for client download).'},resp:{zh:'(二进制文件下载)',en:'(Binary file download)'}},
+{m:'GET',p:'/download/ssl_mix.conf',h:'apis.DownloadSslConfigFile',auth:'none',a2:false,d:{zh:'下载 SSL 混淆加密客户端配置文件。文件不存在时根据当前加密配置自动生成。',en:'Download SSL mix encrypted client config file. Auto-generated from current config if not exist.'},resp:{zh:'(二进制文件下载)',en:'(Binary file download)'}},
+{m:'GET',p:'/download/coin_config',h:'apis.DownLoadCoinConfigFile',auth:'admin',a2:false,d:{zh:'下载币种配置文件。',en:'Download coin config file.'},resp:{zh:'(二进制文件下载)',en:'(Binary file download)'}},
+{m:'GET',p:'/download/backup_server',h:'apis.DownLoadLocalConfigFile',auth:'admin',a2:false,d:{zh:'下载后台配置文件的 AES 加密备份。用于服务器迁移或灾难恢复。',en:'Download AES-encrypted backup of server config. For server migration or disaster recovery.'},resp:{zh:'(二进制文件下载)',en:'(Binary file download)'}},
+{m:'POST',p:'/api/uploadCertificate',h:'apis.CertificateUpload',auth:'admin',a2:true,d:{zh:'上传 SSL/TLS 证书文件，用于 HTTPS 或加密隧道。',en:'Upload SSL/TLS certificate file for HTTPS or encrypted tunnel.'},resp:'{"status":"ok","info":"..."}'},
+{m:'POST',p:'/api/uploadServerBackupFile',h:'apis.UploadServerBackupFile',auth:'admin',a2:false,
+ d:{zh:'上传服务器配置备份文件进行恢复。文件经 AES 解密后写入系统配置，重启后生效。',en:'Upload server config backup file for restore. Decrypted and written to system config, effective after restart.'},
+ bodyMp:[{n:'f1s',t:'file',r:true,d:{zh:'备份文件（通过"下载配置备份"接口获得的 .backup 文件）',en:'Backup file (.backup file from config backup download API)'}}],
+ resp:{zh:'{"status":"ok","info":"上传成功，重启后生效"}',en:'{"status":"ok","info":"Upload successful, effective after restart"}'}},
+{m:'POST',p:'/api/activation',h:'apis.Activation',auth:'admin',a2:false,
+ d:{zh:'使用激活码激活系统。系统会验证激活码与机器码的匹配关系、过期时间等。',en:'Activate system with activation code. Validates code-machine match, expiration, etc.'},
+ bodyForm:[{n:'activation_code',t:'string',r:true,d:{zh:'激活码（从官方渠道获取）',en:'Activation code (from official channel)'}},{n:'machine_code',t:'string',r:true,d:{zh:'当前机器的机器码',en:'Current machine code'}}],
+ resp:{zh:'{"status":"ok","info":"验证成功"}',en:'{"status":"ok","info":"Activation successful"}'}},
+{m:'POST',p:'/api/migration',h:'apis.Migration',auth:'admin',a2:false,
+ d:{zh:'激活迁移操作：将当前机器的激活信息释放，以便在新机器上重新激活。操作后当前机器激活失效。',en:'Migration: release current machine activation, allowing re-activation on a new machine. Current machine activation becomes invalid.'},
+ bodyForm:[{n:'opctl',t:'string',r:true,d:{zh:'"yes"=确认执行迁移操作',en:'"yes"=confirm migration operation'}}],
+ resp:{zh:'{"status":"ok","info":"迁移成功"}',en:'{"status":"ok","info":"Migration successful"}'}},
+]},
+
+// -------- 隧道加密 --------
+{group:{zh:'基础 API — 隧道加密',en:'Base API — Tunnel Encryption'},desc:{zh:'隧道加密 API 端口管理及远程客户端控制',en:'Tunnel encrypted API port management and remote client control'},apis:[
+{m:'POST',p:'/api/addTunnelEncryptedApi',h:'apis.AddEncApiPort',auth:'admin',a2:false,
+ d:{zh:'添加一个隧道加密 API 端口。客户端通过此端口以加密方式连接到服务器。',en:'Add a tunnel encrypted API port. Clients connect to server via this encrypted port.'},
+ bodyForm:[{n:'listenPort',t:'string',r:true,d:{zh:'隧道监听端口号，如 "15000"',en:'Tunnel listen port, e.g. "15000"'}},{n:'ApiAddress',t:'string',r:true,d:{zh:'API 服务器地址（客户端连接此地址），如 "1.2.3.4"',en:'API server address (client connects to this), e.g. "1.2.3.4"'}},{n:'EncType',t:'string',r:true,d:{zh:'加密类型："eccp256mix" 或 "sslmix"',en:'Encryption type: "eccp256mix" or "sslmix"'}},{n:'MixClientAppName',t:'string',r:false,d:{zh:'客户端应用名称（显示用）',en:'Client app name (for display)'}},{n:'customLocalAddress',t:'string',r:false,d:{zh:'自定义本地代理地址（默认自动）',en:'Custom local proxy address (default auto)'}},{n:'notifyText',t:'string',r:false,d:{zh:'通知客户端的文本消息',en:'Notification text for client'}},{n:'Domain',t:'string',r:false,d:{zh:'TLS 域名（sslmix 模式需要），如 "pool.example.com"',en:'TLS domain (required for sslmix), e.g. "pool.example.com"'}},{n:'CertPEM',t:'string',r:false,d:{zh:'TLS 证书 PEM 内容（手动模式）',en:'TLS certificate PEM content (manual mode)'}},{n:'KeyPEM',t:'string',r:false,d:{zh:'TLS 私钥 PEM 内容（手动模式）',en:'TLS private key PEM content (manual mode)'}},{n:'CertMode',t:'string',r:false,d:{zh:'证书模式："auto"=自动申请，"manual"=手动上传',en:'Cert mode: "auto"=auto apply, "manual"=manual upload'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'DELETE',p:'/api/delTunnelEncryptedApi',h:'apis.DelEncApiPort',auth:'admin',a2:false,
+ d:{zh:'删除指定的隧道加密 API 端口。',en:'Delete specified tunnel encrypted API port.'},
+ query:[{n:'DelPort',t:'string',r:true,d:{zh:'要删除的端口号',en:'Port number to delete'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'POST',p:'/api/modifyTunnelEncryptedApi',h:'apis.ModifyEncApiPort',auth:'admin',a2:false,
+ d:{zh:'修改已有的隧道加密端口配置（支持修改端口号、地址、加密类型等全部参数）。',en:'Modify existing tunnel encrypted port config (supports changing port, address, enc type, and all parameters).'},
+ bodyForm:[{n:'oldPort',t:'string',r:true,d:{zh:'当前端口号（用于定位要修改的配置）',en:'Current port (to locate the config to modify)'}},{n:'newPort',t:'string',r:true,d:{zh:'新端口号（可与旧端口相同）',en:'New port (can be same as old)'}},{n:'ApiAddress',t:'string',r:true,d:{zh:'API 服务器地址',en:'API server address'}},{n:'EncType',t:'string',r:true,d:{zh:'加密类型',en:'Encryption type'}},{n:'MixClientAppName',t:'string',r:false,d:{zh:'客户端应用名称',en:'Client app name'}},{n:'customLocalAddress',t:'string',r:false,d:{zh:'自定义本地地址',en:'Custom local address'}},{n:'notifyText',t:'string',r:false,d:{zh:'通知文本',en:'Notify text'}},{n:'Domain',t:'string',r:false,d:{zh:'TLS 域名',en:'TLS domain'}},{n:'CertPEM',t:'string',r:false,d:{zh:'证书 PEM',en:'Cert PEM'}},{n:'KeyPEM',t:'string',r:false,d:{zh:'私钥 PEM',en:'Key PEM'}},{n:'CertMode',t:'string',r:false,d:{zh:'证书模式',en:'Cert mode'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'GET',p:'/api/getTunnelEncryptedApi',h:'apis.GetEncApiPort',auth:'login',a2:false,
+ d:{zh:'获取所有隧道加密端口的列表及配置信息。',en:'Get all tunnel encrypted port list and config info.'},
+ resp:'{"status":"ok","data":[{"listen_port":15000,"api_address":"1.2.3.4","enc_type":"eccp256mix",...}]}'},
+{m:'POST',p:'/api/notifyTunnelEncryptedApi',h:'apis.NotifyEncClientUpdateConnectInfo',auth:'admin',a2:false,
+ d:{zh:'向指定端口的所有已连接隧道客户端发送更新连接信息的通知。',en:'Notify all connected tunnel clients on specified port to update connection info.'},
+ bodyForm:[{n:'listenPort',t:'string',r:true,d:{zh:'目标端口号',en:'Target port'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'POST',p:'/api/execTunnelEncryptedCmd',h:'apis.ExecTunnelEncryptedCmd',auth:'admin',a2:false,
+ d:{zh:'向指定的隧道客户端远程执行命令。通过客户端 UUID 定位目标。',en:'Execute command remotely on specified tunnel client. Target identified by client UUID.'},
+ bodyForm:[{n:'UUID',t:'string',r:true,d:{zh:'目标客户端的 UUID（从隧道列表获取）',en:'Target client UUID (from tunnel list)'}},{n:'Cmd',t:'string',r:true,d:{zh:'要执行的命令字符串',en:'Command string to execute'}}],
+ resp:'{"status":"ok","info":"..."}'},
+]},
+
+// -------- 第三方 --------
+{group:{zh:'基础 API — 第三方数据',en:'Base API — Third-party Data'},desc:{zh:'从第三方矿池 API 获取钱包算力、资产信息',en:'Get wallet hashrate and asset info from third-party pool APIs'},apis:[
+{m:'GET',p:'/api/ThirdPartyHashHistoryChartGet',h:'apis.ThirdPartyHashHistoryChart',auth:'admin',a2:false,
+ d:{zh:'通过第三方矿池 API 获取指定钱包的算力历史曲线数据。需要先在钱包管理中配置矿池 API Key。',en:'Get hashrate history chart data via third-party pool API. Pool API Key must be configured in wallet management first.'},
+ query:[{n:'coinType',t:'string',r:true,d:{zh:'币种名称',en:'Coin name'}},{n:'walletName',t:'string',r:true,d:{zh:'钱包名称（钱包管理中的备注名）',en:'Wallet name (note name in wallet management)'}},{n:'poolName',t:'string',r:true,d:{zh:'矿池名称，如 "f2pool"、"antpool"',en:'Pool name, e.g. "f2pool", "antpool"'}}],
+ resp:'{"status":"ok","data":{...}}'},
+{m:'GET',p:'/api/ThirdPartyAccountInfoGet',h:'apis.ThirdPartyAccountInfoGet',auth:'admin',a2:false,
+ d:{zh:'通过第三方矿池 API 获取钱包的资产信息（余额、已支付等）。',en:'Get wallet asset info (balance, paid, etc.) via third-party pool API.'},
+ query:[{n:'coinType',t:'string',r:true,d:{zh:'币种名称',en:'Coin name'}},{n:'walletName',t:'string',r:true,d:{zh:'钱包名称',en:'Wallet name'}},{n:'poolName',t:'string',r:true,d:{zh:'矿池名称',en:'Pool name'}}],
+ resp:'{"status":"ok","data":{...}}'},
+{m:'GET',p:'/api/ThirdPartyHashInfoGet',h:'apis.ThirdPartyHashInfoGet',auth:'admin',a2:false,
+ d:{zh:'通过第三方矿池 API 获取钱包的当前实时算力信息。',en:'Get current real-time hashrate info via third-party pool API.'},
+ query:[{n:'coinType',t:'string',r:true,d:{zh:'币种名称',en:'Coin name'}},{n:'walletName',t:'string',r:true,d:{zh:'钱包名称',en:'Wallet name'}},{n:'poolName',t:'string',r:true,d:{zh:'矿池名称',en:'Pool name'}}],
+ resp:'{"status":"ok","data":{...}}'},
+]},
+
+// ============= 矿机 API =============
+{group:{zh:'矿机 API',en:'Worker API'},desc:{zh:'矿机信息查询、历史曲线、实时日志、挖矿记录',en:'Worker info query, history charts, real-time logs, mining records'},apis:[
+{m:'GET',p:'/api/workerInfo/:coinType',h:'apis.WorkerInfo',auth:'login',a2:false,
+ d:{zh:'查询矿机列表。支持按币种、矿工名、矿机名、IP地址、在线状态筛选，支持分页和排序。coinType 路径参数传 "ALL_COIN" 表示查询所有币种。',en:'Query worker list. Supports filtering by coin, miner name, worker name, IP, state. Supports pagination and sorting. Path param coinType = "ALL_COIN" for all coins.'},
+ query:[{n:':coinType',t:'path',r:true,d:{zh:'币种名称，传 "ALL_COIN" 查询全部',en:'Coin name, use "ALL_COIN" for all'}},{n:'workerName',t:'string',r:false,d:{zh:'矿机名模糊搜索',en:'Worker name fuzzy search'}},{n:'minerName',t:'string',r:false,d:{zh:'矿工名模糊搜索',en:'Miner name fuzzy search'}},{n:'queryPort',t:'string',r:false,d:{zh:'按监听端口筛选（"0"=不筛选）',en:'Filter by listen port ("0"=no filter)'}},{n:'ipAddress',t:'string',r:false,d:{zh:'按 IP 地址筛选',en:'Filter by IP address'}},{n:'state',t:'string',r:false,d:{zh:'按状态筛选，如 "online"/"offline"',en:'Filter by state, e.g. "online"/"offline"'}},{n:'pageMaxSize',t:'string',r:true,d:{zh:'每页显示条数，如 "20"',en:'Items per page, e.g. "20"'}},{n:'pageIndex',t:'string',r:true,d:{zh:'页码，从 "1" 开始',en:'Page number, starts from "1"'}},{n:'sortType',t:'string',r:false,d:{zh:'排序字段名称',en:'Sort field name'}},{n:'sortValue',t:'string',r:false,d:{zh:'排序方向',en:'Sort direction'}}],
+ resp:'{"status":"ok","data":{"total":100,"list":[...]}}'},
+{m:'GET',p:'/api/workerInfoHistory',h:'apis.WorkerInfoHistory',auth:'login',a2:false,
+ d:{zh:'获取矿机历史统计信息（按日期和统计项查询）。',en:'Get worker history statistics by date and item.'},
+ query:[{n:'coinType',t:'string',r:true,d:{zh:'币种名称',en:'Coin name'}},{n:'date',t:'string',r:true,d:{zh:'查询日期，如 "2024-03-10"',en:'Date, e.g. "2024-03-10"'}},{n:'item',t:'string',r:true,d:{zh:'查询项目标识',en:'Query item identifier'}}],
+ resp:'{"status":"ok","data":{...}}'},
+{m:'GET',p:'/api/workerChartHistory',h:'apis.WorkerChartHistory',auth:'login',a2:false,
+ d:{zh:'获取单个矿机的历史算力曲线数据，用于绘制算力走势图。',en:'Get single worker hashrate history chart data for trend graph.'},
+ query:[{n:'coinType',t:'string',r:true,d:{zh:'币种名称',en:'Coin name'}},{n:'listenPort',t:'string',r:true,d:{zh:'矿机所在的监听端口号',en:'Worker listen port number'}},{n:'wallet',t:'string',r:true,d:{zh:'矿机关联的钱包地址',en:'Worker associated wallet address'}},{n:'workerName',t:'string',r:true,d:{zh:'矿机名称',en:'Worker name'}}],
+ resp:'{"status":"ok","data":{...}}'},
+{m:'POST',p:'/api/feeModifyWorker/:coinType',h:'apis.FeeModifyWorker',auth:'admin',a2:false,
+ d:{zh:'修改指定矿机的独立抽水配置（接口已定义但功能尚未完整实现）。',en:'Modify independent fee config for specified worker (endpoint defined but not fully implemented).'},
+ resp:'{"status":"ok","info":"test"}'},
+{m:'GET',p:'/api/workerWckLog',h:'apis.WorkerWckLog',auth:'login',a2:false,ws:true,
+ d:{zh:'矿机实时日志 WebSocket 连接（WCK 远程客户端专用）。连接后需先发送签名字符串 "signature:<md5_hex>" 进行身份验证，验证通过后进入双向通信状态。',en:'Worker real-time log WebSocket (WCK client). After connection, send "signature:<md5_hex>" for auth, then enter bidirectional communication.'}},
+{m:'GET',p:'/api/workerLogGet',h:'apis.WorkerLogGet',auth:'admin',a2:false,
+ d:{zh:'获取矿机日志，需要同时指定币种、端口、钱包、矿机名来精确定位。',en:'Get worker log. Must specify coin, port, wallet, and worker name for exact location.'},
+ query:[{n:'coinType',t:'string',r:true,d:{zh:'币种名称',en:'Coin name'}},{n:'listenPort',t:'string',r:true,d:{zh:'监听端口号',en:'Listen port'}},{n:'wallet',t:'string',r:true,d:{zh:'钱包地址',en:'Wallet address'}},{n:'workerName',t:'string',r:true,d:{zh:'矿机名称',en:'Worker name'}}],
+ resp:'{"status":"ok","data":{...}}'},
+{m:'GET',p:'/api/getWorkerMiningRecord',h:'apis.GetWorkerMiningRecord',auth:'admin',a2:false,
+ d:{zh:'获取矿机的挖矿提交记录（份额提交等），按日志类型区分。',en:'Get worker mining submission records (share submissions, etc.), categorized by log type.'},
+ query:[{n:'logType',t:'string',r:true,d:{zh:'日志类型（区分不同记录类型）',en:'Log type (distinguishes record types)'}},{n:'coinType',t:'string',r:true,d:{zh:'币种名称',en:'Coin name'}},{n:'listenPort',t:'string',r:true,d:{zh:'监听端口号',en:'Listen port'}},{n:'wallet',t:'string',r:true,d:{zh:'钱包地址',en:'Wallet address'}},{n:'workerName',t:'string',r:true,d:{zh:'矿机名称',en:'Worker name'}}],
+ resp:'{"status":"ok","data":{...}}'},
+{m:'DELETE',p:'/api/clearOfflineWorker',h:'apis.ClearOfflineWorker',auth:'admin',a2:true,
+ d:{zh:'清空指定币种下所有已离线的矿机记录（已在线的矿机不受影响）。',en:'Clear all offline worker records under specified coin (online workers not affected).'},
+ query:[{n:'coinType',t:'string',r:true,d:{zh:'币种名称',en:'Coin name'}}],
+ resp:'{"status":"ok","info":"..."}'},
+]},
+
+// ============= 矿工 API =============
+{group:{zh:'矿工 API',en:'Miner API'},desc:{zh:'矿工信息查询、详情下钻、6小时历史、抽水修改',en:'Miner info query, detail drill-down, 6-hour history, fee modification'},apis:[
+{m:'GET',p:'/api/minerBaseInfo/:coinType',h:'apis.MinerInfo',auth:'login',a2:false,
+ d:{zh:'查询矿工基础信息列表。矿工是钱包维度的聚合，一个矿工下可包含多个矿机。支持搜索、排序、分页。',en:'Query miner base info list. A miner is a wallet-level aggregation containing multiple workers. Supports search, sort, pagination.'},
+ query:[{n:':coinType',t:'path',r:true,d:{zh:'币种名称，传 "ALL_COIN" 查询全部',en:'Coin name, "ALL_COIN" for all'}},{n:'minerName',t:'string',r:false,d:{zh:'矿工名模糊搜索',en:'Miner name fuzzy search'}},{n:'queryPort',t:'string',r:false,d:{zh:'按端口筛选',en:'Filter by port'}},{n:'ascend',t:'string',r:false,d:{zh:'升序排序的字段名',en:'Ascending sort field'}},{n:'descend',t:'string',r:false,d:{zh:'降序排序的字段名',en:'Descending sort field'}},{n:'pageMaxSize',t:'string',r:false,d:{zh:'每页条数，默认 20',en:'Items per page, default 20'}},{n:'pageIndex',t:'string',r:false,d:{zh:'页码，默认 1',en:'Page number, default 1'}}],
+ resp:'{"status":"ok","data":{"total":10,"list":[...]}}'},
+{m:'GET',p:'/api/minerDetailInfo/:coinType',h:'apis.MinerDetailInfo',auth:'login',a2:false,
+ d:{zh:'查询单个矿工的详细信息，包含其下属的所有矿机列表，支持分页。',en:'Query single miner details including all workers under it, with pagination.'},
+ query:[{n:':coinType',t:'path',r:true,d:{zh:'币种名称',en:'Coin name'}},{n:'minerName',t:'string',r:true,d:{zh:'矿工名称（精确匹配）',en:'Miner name (exact match)'}},{n:'queryPort',t:'string',r:false,d:{zh:'按端口筛选（不传=全部端口）',en:'Filter by port (omit=all ports)'}},{n:'pageMaxSize',t:'string',r:true,d:{zh:'每页显示矿机数',en:'Workers per page'}},{n:'pageIndex',t:'string',r:true,d:{zh:'页码',en:'Page number'}}],
+ resp:'{"status":"ok","data":{"miner_info":{...},"workers":[...]}}'},
+{m:'GET',p:'/api/minerInfoHistory/:coinType',h:'apis.MinerInfoHistoryByMinerName',auth:'login',a2:false,
+ d:{zh:'获取指定矿工近 6 小时的算力历史数据曲线。',en:'Get specified miner hashrate history chart for the last 6 hours.'},
+ query:[{n:':coinType',t:'path',r:true,d:{zh:'币种名称',en:'Coin name'}},{n:'minerName',t:'string',r:true,d:{zh:'矿工名称',en:'Miner name'}},{n:'queryPort',t:'string',r:false,d:{zh:'端口筛选',en:'Port filter'}}],
+ resp:'{"status":"ok","data":{...}}'},
+{m:'POST',p:'/api/feeModifyByMiner/:coinType',h:'apis.FeeModifyMiner',auth:'admin',a2:false,
+ d:{zh:'修改指定矿工的独立抽水配置（接口已定义但功能尚未完整实现）。',en:'Modify independent fee config for specified miner (endpoint defined but not fully implemented).'},
+ resp:'{"status":"ok","info":"test"}'},
+]},
+
+// ============= 钱包 API =============
+{group:{zh:'钱包 API',en:'Wallet API'},desc:{zh:'全局钱包和普通钱包的增删改查',en:'Global and regular wallet CRUD operations'},apis:[
+{m:'POST',p:'/api/globalWalletAdd',h:'apis.GlobalWalletListInfoAdd',auth:'admin',a2:false,
+ d:{zh:'添加全局钱包地址。全局钱包不限定币种，可在多个代理中复用。',en:'Add global wallet. Global wallets are not coin-specific and can be reused across proxies.'},
+ bodyJson:P_WALLET,resp:'{"status":"ok","info":"..."}'},
+{m:'POST',p:'/api/globalWalletDel',h:'apis.GlobalWalletListInfoDel',auth:'admin',a2:false,
+ d:{zh:'删除指定全局钱包（按备注名匹配）。',en:'Delete global wallet by note.'},
+ query:[{n:'Note',t:'string',r:true,d:{zh:'钱包备注名（创建时设定的唯一标识）',en:'Wallet note (unique identifier set at creation)'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'POST',p:'/api/globalWalletUpdate',h:'apis.GlobalWalletListInfoUpdate',auth:'admin',a2:false,
+ d:{zh:'更新全局钱包信息。通过 query_note 定位要修改的钱包，new_info 为完整的新配置。',en:'Update global wallet. Locate by query_note, new_info is the complete new config.'},
+ bodyJson:[{n:'query_note',t:'string',r:true,d:{zh:'要修改的钱包的备注名',en:'Note of the wallet to modify'}},
+   ...P_WALLET.map(p=>({...p,n:'new_info.'+p.n,nest:true}))],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'POST',p:'/api/globalWalletGet',h:'apis.GlobalWalletListInfoGet',auth:'admin',a2:false,
+ d:{zh:'获取所有全局钱包列表。',en:'Get all global wallets.'},
+ resp:{zh:'{"status":"ok","data":[{"coin_type":"BTC","note":"主钱包","wallet_or_sub_account":"bc1q...","pool_name":"f2pool",...}]}',en:'{"status":"ok","data":[{"coin_type":"BTC","note":"Main Wallet","wallet_or_sub_account":"bc1q...","pool_name":"f2pool",...}]}'}},
+{m:'POST',p:'/api/walletAdd',h:'apis.WalletListInfoAdd',auth:'admin',a2:false,
+ d:{zh:'添加普通钱包地址（属于特定币种的钱包）。参数结构同全局钱包。',en:'Add regular wallet (coin-specific). Same parameter structure as global wallet.'},
+ bodyJson:P_WALLET,resp:'{"status":"ok","info":"..."}'},
+{m:'DELETE',p:'/api/walletDel',h:'apis.WalletListInfoDel',auth:'admin',a2:false,
+ d:{zh:'删除指定的普通钱包（需同时指定备注名和币种来精确定位）。',en:'Delete regular wallet (must specify both note and coin type for exact match).'},
+ query:[{n:'Note',t:'string',r:true,d:{zh:'钱包备注名',en:'Wallet note'}},{n:'CoinType',t:'string',r:true,d:{zh:'币种名称',en:'Coin name'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'POST',p:'/api/walletModify',h:'apis.WalletListInfoModify',auth:'admin',a2:false,
+ d:{zh:'修改普通钱包信息。通过 query_note + coin_type 定位，new_info 为完整新配置。',en:'Modify regular wallet. Locate by query_note + coin_type, new_info is full new config.'},
+ bodyJson:[{n:'query_note',t:'string',r:true,d:{zh:'要修改的钱包备注名',en:'Note of wallet to modify'}},{n:'coin_type',t:'string',r:true,d:{zh:'币种名称',en:'Coin name'}},
+   ...P_WALLET.map(p=>({...p,n:'new_info.'+p.n,nest:true}))],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'POST',p:'/api/walletChartLock',h:'apis.WalletChartLock',auth:'admin',a2:false,
+ d:{zh:'设置钱包在面板上的图表默认展开/折叠状态。锁定后每次进入页面该钱包自动展开。',en:'Set wallet chart default expanded/collapsed state on panel. When locked, wallet auto-expands on page load.'},
+ bodyJson:[{n:'query_note',t:'string',r:true,d:{zh:'钱包备注名',en:'Wallet note'}},{n:'coin_type',t:'string',r:true,d:{zh:'币种名称',en:'Coin name'}},{n:'is_locked',t:'bool',r:true,d:{zh:'true=锁定为展开状态，false=默认折叠',en:'true=lock expanded, false=default collapsed'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'GET',p:'/api/walletInfoGet',h:'apis.WalletListInfoGet',auth:'admin',a2:false,
+ d:{zh:'查询钱包列表信息（普通钱包）。可按币种筛选。',en:'Get wallet list info (regular wallets). Can filter by coin type.'},
+ query:[{n:'CoinType',t:'string',r:false,d:{zh:'币种名称筛选（不传=返回全部币种的钱包）',en:'Coin filter (omit=return all coins wallets)'}}],
+ resp:{zh:'{"status":"ok","data":[{"coin_type":"BTC","note":"我的钱包","wallet_or_sub_account":"bc1q...","is_locked":true,...}]}',en:'{"status":"ok","data":[{"coin_type":"BTC","note":"My Wallet","wallet_or_sub_account":"bc1q...","is_locked":true,...}]}'}},
+]},
+
+// ============= 矿池地址 API =============
+{group:{zh:'矿池地址 API',en:'Pool Address API'},desc:{zh:'全局/用户目标矿池管理，连接测试',en:'Global/user target pool management, connection test'},apis:[
+{m:'POST',p:'/api/globalTargetPoolInfoAdd',h:'apis.GlobalTargetPoolInfoAdd',auth:'admin',a2:false,
+ d:{zh:'添加全局目标矿池地址。全局矿池在所有用户间共享，添加后在目标矿池下拉菜单中可见。',en:'Add global target pool. Shared across all users, visible in target pool dropdown after adding.'},
+ bodyForm:[{n:'Address',t:'string',r:true,d:{zh:'矿池地址，格式 "stratum+tcp://pool.example.com:3333"',en:'Pool address, format "stratum+tcp://pool.example.com:3333"'}},{n:'Note',t:'string',r:true,d:{zh:'备注名（同币种下唯一）',en:'Note (unique within same coin)'}},{n:'CoinType',t:'string',r:true,d:{zh:'所属币种，如 "BTC"',en:'Coin type, e.g. "BTC"'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'POST',p:'/api/globalTargetPoolInfoDel',h:'apis.GlobalTargetPoolInfoDel',auth:'admin',a2:false,
+ d:{zh:'删除全局目标矿池。',en:'Delete global target pool.'},
+ query:[{n:'Note',t:'string',r:true,d:{zh:'备注名',en:'Note'}},{n:'CoinType',t:'string',r:true,d:{zh:'币种名称',en:'Coin name'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'POST',p:'/api/globalTargetPoolInfoUpdate',h:'apis.GlobalTargetPoolInfoUpdate',auth:'admin',a2:false,
+ d:{zh:'更新全局目标矿池信息（通过原备注名+币种定位，修改地址和备注）。',en:'Update global target pool (locate by original note + coin, modify address and note).'},
+ bodyForm:[{n:'Note',t:'string',r:true,d:{zh:'原备注名',en:'Original note'}},{n:'CoinType',t:'string',r:true,d:{zh:'币种名称',en:'Coin name'}},{n:'NewAddress',t:'string',r:true,d:{zh:'新矿池地址',en:'New pool address'}},{n:'NewNote',t:'string',r:true,d:{zh:'新备注名',en:'New note'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'POST',p:'/api/globalTargetPoolInfoGet',h:'apis.GlobalTargetPoolInfoGet',auth:'login',a2:false,
+ d:{zh:'获取全局目标矿池列表。',en:'Get global target pool list.'},
+ query:[{n:'coinType',t:'string',r:false,d:{zh:'按币种筛选（不传=全部）',en:'Filter by coin (omit=all)'}}],
+ resp:{zh:'{"status":"ok","data":[{"address":"stratum+tcp://...","note":"鱼池","coin_type":"BTC"},...]}',en:'{"status":"ok","data":[{"address":"stratum+tcp://...","note":"F2Pool","coin_type":"BTC"},...]}'}},
+{m:'POST',p:'/api/targetPoolInfoAdd',h:'apis.TargetPoolInfoAdd',auth:'admin',a2:false,
+ d:{zh:'添加用户自定义的目标矿池地址。',en:'Add user-defined target pool address.'},
+ bodyForm:[{n:'Address',t:'string',r:true,d:{zh:'矿池地址',en:'Pool address'}},{n:'Note',t:'string',r:true,d:{zh:'备注名',en:'Note'}},{n:'CoinType',t:'string',r:true,d:{zh:'币种',en:'Coin type'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'DELETE',p:'/api/targetPoolInfoDelete',h:'apis.TargetPoolInfoDelete',auth:'admin',a2:false,
+ d:{zh:'删除用户自定义的目标矿池。',en:'Delete user target pool.'},
+ query:[{n:'Note',t:'string',r:true,d:{zh:'备注名',en:'Note'}},{n:'CoinType',t:'string',r:true,d:{zh:'币种',en:'Coin'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'POST',p:'/api/targetPoolInfoModify',h:'apis.TargetPoolInfoModify',auth:'admin',a2:false,
+ d:{zh:'修改用户目标矿池地址和备注。',en:'Modify user target pool address and note.'},
+ bodyForm:[{n:'Note',t:'string',r:true,d:{zh:'原备注名',en:'Original note'}},{n:'CoinType',t:'string',r:true,d:{zh:'币种',en:'Coin'}},{n:'NewAddress',t:'string',r:true,d:{zh:'新地址',en:'New address'}},{n:'NewNote',t:'string',r:true,d:{zh:'新备注',en:'New note'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'GET',p:'/api/userTargetPoolInfo',h:'apis.UserTargetPoolInfo',auth:'login',a2:false,
+ d:{zh:'获取用户自定义的目标矿池列表。',en:'Get user target pool list.'},
+ query:[{n:'coinType',t:'string',r:false,d:{zh:'币种筛选',en:'Coin filter'}}],resp:'{"status":"ok","data":[...]}'},
+{m:'GET',p:'/api/targetPoolInfo',h:'apis.TargetPoolInfo',auth:'login',a2:false,
+ d:{zh:'获取所有可用的目标矿池（合并用户自定义 + 系统预设 + 全局矿池的结果）。',en:'Get all available target pools (merged user + system + global pools).'},
+ query:[{n:'coinType',t:'string',r:false,d:{zh:'币种筛选',en:'Coin filter'}}],resp:'{"status":"ok","data":[...]}'},
+{m:'GET',p:'/api/targetConnTest',h:'apis.TargetConnTest',auth:'login',a2:false,
+ d:{zh:'测试到目标矿池的网络连通性，建立实际的 TCP 连接并返回延迟时间。',en:'Test connectivity to target pool by establishing actual TCP connection. Returns latency.'},
+ query:[{n:'Address',t:'string',r:true,d:{zh:'矿池地址，格式 "host:port"',en:'Pool address, format "host:port"'}},{n:'Coin',t:'string',r:true,d:{zh:'币种名称（用于选择连接协议）',en:'Coin name (for protocol selection)'}}],
+ resp:{zh:'{"status":"ok","info":"连接成功","latency":45}',en:'{"status":"ok","info":"Connection successful","latency":45}'}},
+]},
+
+// ============= 代理 API =============
+{group:{zh:'代理 API — 代理管理',en:'Proxy API — Proxy Management'},desc:{zh:'代理矿池的添加、删除、修改、开关、端口变更',en:'Proxy pool add, delete, modify, toggle, port change'},apis:[
+{m:'POST',p:'/api/proxyInfoAdd',h:'apis.ProxyInfoAdd',auth:'admin',a2:true,
+ d:{zh:'添加一个新的代理矿池端口。创建后矿机可以连接此端口进行挖矿，系统将流量转发到目标矿池。默认开启抽水保持连接和同名矿机曲线优化。',en:'Add a new proxy pool port. Workers can connect to this port for mining after creation. Traffic is forwarded to target pool. Fee keep-connect and same-name curve optimization enabled by default.'},
+ bodyJson:P_PROXY_FULL,
+ resp:{zh:'{"status":"ok","info":"添加成功"}',en:'{"status":"ok","info":"Added successfully"}'}},
+{m:'DELETE',p:'/api/proxyInfoDelete',h:'apis.ProxyInfoDelete',auth:'admin',a2:true,
+ d:{zh:'删除指定端口的代理矿池（该端口下的所有矿机将断开连接）。',en:'Delete proxy at specified port (all workers on this port will be disconnected).'},
+ query:[{n:'Port',t:'string',r:true,d:{zh:'要删除的代理端口号，如 "14001"',en:'Proxy port to delete, e.g. "14001"'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'POST',p:'/api/proxyInfoModify/:queryPort',h:'apis.ProxyInfoModify',auth:'admin',a2:true,
+ d:{zh:'修改指定端口代理的完整配置（传入完整的 JSON 配置进行覆盖）。',en:'Modify full config of proxy at specified port (pass complete JSON config for override).'},
+ query:[{n:':queryPort',t:'path',r:true,d:{zh:'要修改的代理当前端口号',en:'Current proxy port to modify'}}],
+ bodyJson:P_PROXY_FULL,
+ resp:'{"status":"ok","info":"..."}'},
+{m:'POST',p:'/api/proxyBaseInfoModify/:queryPort',h:'apis.ProxyBaseInfoModify',auth:'admin',a2:true,
+ d:{zh:'修改指定端口代理的基础配置信息（结构同完整配置，但仅更新基础字段）。',en:'Modify base config of proxy at port (same structure but only updates base fields).'},
+ query:[{n:':queryPort',t:'path',r:true,d:{zh:'端口号',en:'Port'}}],
+ bodyJson:P_PROXY_FULL,
+ resp:'{"status":"ok","info":"..."}'},
+{m:'POST',p:'/api/proxyInfoSwitch/:queryPort',h:'apis.ProxyPoolCtl',auth:'admin',a2:false,
+ d:{zh:'开启或关闭指定端口的代理。关闭操作需要通过二级密码验证。',en:'Toggle proxy at port on/off. Turning off requires secondary password verification.'},
+ query:[{n:':queryPort',t:'path',r:true,d:{zh:'端口号',en:'Port'}}],
+ bodyForm:[{n:'isOpen',t:'string',r:true,d:{zh:'"true"=开启代理，"false"=关闭代理',en:'"true"=enable, "false"=disable'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'POST',p:'/api/proxyInfoPortModify/:queryPort',h:'apis.ProxyPoolPortModify',auth:'admin',a2:true,
+ d:{zh:'修改代理的监听端口号（不影响其他配置，矿机需要重新连接到新端口）。',en:'Change proxy listen port (other config unchanged, workers need to reconnect to new port).'},
+ query:[{n:':queryPort',t:'path',r:true,d:{zh:'当前端口号',en:'Current port'}}],
+ bodyForm:[{n:'newPort',t:'string',r:true,d:{zh:'新端口号，如 "14002"',en:'New port, e.g. "14002"'}}],
+ resp:'{"status":"ok","info":"..."}'},
+]},
+{group:{zh:'代理 API — 查询与历史',en:'Proxy API — Query & History'},desc:{zh:'代理矿池信息查询、历史数据、配置信息',en:'Proxy pool info query, history data, config info'},apis:[
+{m:'GET',p:'/api/proxyPoolInfo',h:'apis.ProxyPoolInfo',auth:'login',a2:false,
+ d:{zh:'查询代理矿池信息。支持按币种、连接方式、昵称筛选。观察者账号登录时敏感信息（钱包地址等）会做脱敏处理。',en:'Get proxy pool info. Filter by coin, connection method, nickname. Sensitive info masked for visitor accounts.'},
+ query:[{n:'coinType',t:'string',r:false,d:{zh:'币种筛选',en:'Coin filter'}},{n:'connectMethod',t:'string',r:false,d:{zh:'连接方式筛选："tcp"/"ssl"/"eccp256mix"/"sslmix"',en:'Connection method: "tcp"/"ssl"/"eccp256mix"/"sslmix"'}},{n:'nickName',t:'string',r:false,d:{zh:'昵称筛选',en:'Nickname filter'}}],
+ resp:'{"status":"ok","data":{...}}'},
+{m:'GET',p:'/api/proxyPoolInfoByPort/:coinType',h:'apis.ProxyPoolInfoByPort',auth:'login',a2:false,
+ d:{zh:'根据币种和端口查询代理矿池详细信息。',en:'Get proxy pool details by coin type and port.'},
+ query:[{n:':coinType',t:'path',r:true,d:{zh:'币种名称',en:'Coin name'}},{n:'queryPort',t:'string',r:true,d:{zh:'端口号',en:'Port'}}],
+ resp:'{"status":"ok","data":{...}}'},
+{m:'GET',p:'/api/proxyPoolHistoryInfo',h:'apis.ProxyPoolHistoryInfo',auth:'login',a2:false,
+ d:{zh:'获取代理矿池近 6 小时的历史数据曲线。',en:'Get proxy pool 6-hour history data chart.'},
+ query:[{n:'coinType',t:'string',r:true,d:{zh:'币种名称',en:'Coin name'}},{n:'port',t:'string',r:true,d:{zh:'端口号',en:'Port number'}}],
+ resp:{zh:'{"status":"ok","info":"查询成功","data":{...}}',en:'{"status":"ok","info":"Query successful","data":{...}}'}},
+{m:'GET',p:'/api/proxyPoolConfigInfo',h:'apis.ProxyPoolConfigInfo',auth:'login',a2:false,
+ d:{zh:'查询代理的原始配置信息（飞行表视角），按币种和昵称查询。',en:'Get proxy raw config (flight sheet view), query by coin and nickname.'},
+ query:[{n:'coinType',t:'string',r:true,d:{zh:'币种名称',en:'Coin name'}},{n:'nickName',t:'string',r:true,d:{zh:'代理昵称',en:'Proxy nickname'}}],
+ resp:'{"status":"ok","data":{...}}'},
+{m:'GET',p:'/api/getProxyCount',h:'apis.ProxyPoolGeCount',auth:'none',a2:false,
+ d:{zh:'获取当前活跃的代理矿池数量。此接口无需任何鉴权。',en:'Get current active proxy pool count. No authentication required.'},
+ resp:'{"status":"ok","count":5}'},
+]},
+{group:{zh:'代理 API — 抽水账户',en:'Proxy API — Fee Accounts'},desc:{zh:'代理矿池的抽水账户增删改',en:'Proxy pool fee account add/delete/modify'},apis:[
+{m:'POST',p:'/api/feeAccountAdd/:queryPort',h:'apis.FeeAccountAdd',auth:'admin',a2:false,
+ d:{zh:'为指定端口的代理添加一个抽水账户。一个代理可以配置多个抽水账户。',en:'Add a fee account for proxy at port. A proxy can have multiple fee accounts.'},
+ query:[{n:':queryPort',t:'path',r:true,d:{zh:'代理端口号',en:'Proxy port'}}],
+ bodyJson:P_JSONPAY,
+ resp:'{"status":"ok","info":"..."}'},
+{m:'DELETE',p:'/api/feeAccountDel/:queryPort',h:'apis.FeeAccountDel',auth:'admin',a2:false,
+ d:{zh:'删除指定端口代理的一个抽水账户（按矿工名定位）。',en:'Delete a fee account from proxy at port (located by worker name).'},
+ query:[{n:':queryPort',t:'path',r:true,d:{zh:'代理端口号',en:'Proxy port'}},{n:'workName',t:'string',r:true,d:{zh:'要删除的抽水矿工名（创建时设定的 pay_name）',en:'Fee worker name to delete (pay_name set at creation)'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'POST',p:'/api/feeAccountModify/:queryPort',h:'apis.FeeAccountModify',auth:'admin',a2:false,
+ d:{zh:'修改指定端口代理的某个抽水账户配置。通过 workName 定位要修改的抽水账户。',en:'Modify a fee account for proxy at port. Located by workName.'},
+ query:[{n:':queryPort',t:'path',r:true,d:{zh:'代理端口号',en:'Proxy port'}},{n:'workName',t:'string',r:true,d:{zh:'要修改的抽水矿工名',en:'Fee worker name to modify'}}],
+ bodyJson:P_JSONPAY,
+ resp:'{"status":"ok","info":"..."}'},
+{m:'POST',p:'/api/lockProxyContent/:queryPort',h:'apis.LockProxyContent',auth:'admin',a2:false,
+ d:{zh:'锁定/解锁指定端口代理的面板展示内容（锁定后保持展开显示）。',en:'Lock/unlock proxy panel display at port (locked = stay expanded).'},
+ query:[{n:':queryPort',t:'path',r:true,d:{zh:'端口号',en:'Port'}},{n:'isLock',t:'string',r:true,d:{zh:'"true"=锁定展开，"false"=取消锁定',en:'"true"=lock expanded, "false"=unlock'}}],
+ resp:'{"status":"ok","info":"..."}'},
+]},
+{group:{zh:'代理 API — 批量与飞行表',en:'Proxy API — Batch & Flight Sheet'},desc:{zh:'批量更新、飞行表设置/删除',en:'Batch update, flight sheet set/delete'},apis:[
+{m:'POST',p:'/api/proxyInfoBatchUpdate',h:'apis.ProxyInfoBatchUpdate',auth:'admin',a2:true,
+ d:{zh:'批量更新指定币种下的代理配置。可选择"覆盖并新增"模式（删除旧配置并导入新配置）。',en:'Batch update proxy config for a coin. Optional "cover and add" mode (delete old and import new).'},
+ query:[{n:'coinType',t:'string',r:true,d:{zh:'币种名称',en:'Coin name'}},{n:'isCoverAndAdd',t:'string',r:false,d:{zh:'"true"=覆盖并新增（先删除该币种所有旧代理再添加），"false"=仅更新已有端口',en:'"true"=cover and add (delete all old proxies for coin then add), "false"=update existing only'}}],
+ bodyJson:[{n:'user_pool_cfg',t:'array',r:true,d:{zh:'代理配置数组，每个元素结构同添加代理接口的请求体',en:'Proxy config array, each element has same structure as add proxy API body'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'POST',p:'/api/flightSheetSetAllCoinProxyInfo',h:'apis.FlightSheetSetAllCoinProxyInfo',auth:'admin',a2:true,
+ d:{zh:'通过飞行表一次性设置所有币种的代理和通用代理配置。设置成功后系统将在 3 秒后自动重启以应用新配置。',en:'Set all coin proxy and net swap config via flight sheet at once. System auto-restarts 3 seconds after success to apply.'},
+ bodyJson:[{n:'user_pool_cfg',t:'array',r:true,d:{zh:'代理配置数组，结构同添加代理接口',en:'Proxy config array, same structure as add proxy API'}},{n:'net_swaps_cfg',t:'array',r:false,d:{zh:'通用代理配置数组',en:'Net swap config array'}},{n:'net_swaps_cfg[].method',t:'string',r:true,d:{zh:'连接方法',en:'Connection method'},nest:true},{n:'net_swaps_cfg[].note_name',t:'string',r:true,d:{zh:'备注名',en:'Note name'},nest:true},{n:'net_swaps_cfg[].port',t:'int',r:true,d:{zh:'监听端口',en:'Listen port'},nest:true},{n:'net_swaps_cfg[].address',t:'string',r:true,d:{zh:'目标地址 host:port',en:'Target address host:port'},nest:true}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'DELETE',p:'/api/flightSheetDelAllCoinProxyInfo',h:'apis.FlightSheetDelAllCoinProxyInfo',auth:'admin',a2:true,
+ d:{zh:'删除飞行表中所有币种的代理配置。成功后系统自动在 3 秒后重启。',en:'Delete all coin proxy config from flight sheet. System auto-restarts 3s after success.'},
+ resp:'{"status":"ok","info":"..."}'},
+]},
+{group:{zh:'代理 API — 通用代理（端口转发）',en:'Proxy API — Net Swap (Port Forwarding)'},desc:{zh:'通用 TCP 端口转发功能，不涉及挖矿协议',en:'General TCP port forwarding, not mining protocol specific'},apis:[
+{m:'POST',p:'/api/addNetSwap',h:'apis.AddNetSwap',auth:'admin',a2:false,
+ d:{zh:'添加一个通用代理（纯 TCP 端口转发）。可用于转发任意 TCP 流量。',en:'Add a net swap (pure TCP port forwarding). Can forward any TCP traffic.'},
+ bodyJson:[{n:'method',t:'string',r:true,d:{zh:'连接方法，如 "tcp"',en:'Connection method, e.g. "tcp"'}},{n:'note_name',t:'string',r:true,d:{zh:'备注名（便于识别用途）',en:'Note name (for identification)'}},{n:'port',t:'int',r:true,d:{zh:'本地监听端口号',en:'Local listen port'}},{n:'address',t:'string',r:true,d:{zh:'转发目标地址，格式 "host:port"',en:'Forward target address, format "host:port"'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'GET',p:'/api/getNetSwapInfo',h:'apis.GetNetSwapInfo',auth:'admin',a2:false,
+ d:{zh:'获取所有通用代理的列表及其当前连接数。',en:'Get all net swaps list with current connection count.'},
+ resp:{zh:'{"status":"ok","data":[{"method":"tcp","note_name":"测试转发","port":15000,"address":"1.2.3.4:3333","conn_cnt":10}]}',en:'{"status":"ok","data":[{"method":"tcp","note_name":"Test Forward","port":15000,"address":"1.2.3.4:3333","conn_cnt":10}]}'}},
+{m:'POST',p:'/api/modifyNetSwap/:modifyPort',h:'apis.ModifyNetSwap',auth:'admin',a2:false,
+ d:{zh:'修改通用代理的配置（通过当前端口号定位）。',en:'Modify net swap config (located by current port).'},
+ query:[{n:':modifyPort',t:'path',r:true,d:{zh:'当前端口号（用于定位要修改的转发规则）',en:'Current port (to locate the rule to modify)'}}],
+ bodyJson:[{n:'method',t:'string',r:true,d:{zh:'连接方法',en:'Method'}},{n:'note_name',t:'string',r:true,d:{zh:'备注名',en:'Note name'}},{n:'port',t:'int',r:true,d:{zh:'新端口号（可与旧端口相同）',en:'New port (can be same)'}},{n:'address',t:'string',r:true,d:{zh:'新目标地址',en:'New target address'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'DELETE',p:'/api/delNetSwap/:delPort',h:'apis.DelNetSwap',auth:'admin',a2:false,
+ d:{zh:'删除指定端口的通用代理。',en:'Delete net swap at specified port.'},
+ query:[{n:':delPort',t:'path',r:true,d:{zh:'要删除的端口号',en:'Port to delete'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'GET',p:'/download/proxy_config',h:'apis.DownLoadProxyConfigFile',auth:'admin',a2:false,
+ d:{zh:'下载指定币种的代理配置文件（JSON 格式），可用于导入到其他服务器。',en:'Download proxy config file (JSON format) for specified coin, for importing to other servers.'},
+ query:[{n:'coinType',t:'string',r:true,d:{zh:'币种名称',en:'Coin name'}}],
+ resp:{zh:'(二进制文件下载)',en:'(Binary file download)'}},
+]},
+
+// ============= 群控 API =============
+{group:{zh:'服务器群控 API',en:'Cluster Control API'},desc:{zh:'远程服务器集中管理和 WebSocket SSH',en:'Remote server centralized management and WebSocket SSH'},apis:[
+{m:'POST',p:'/api/remoteControlServerInfoAdd',h:'apis.RemoteControlServerInfoAdd',auth:'admin',a2:false,
+ d:{zh:'添加一台远程控制服务器。添加后可在面板中集中管理多台矿机代理服务器。',en:'Add a remote control server. Allows centralized management of multiple proxy servers from the panel.'},
+ bodyJson:[{n:'protocol',t:'string',r:true,d:{zh:'连接协议，如 "http" 或 "https"',en:'Connection protocol, e.g. "http" or "https"'}},{n:'ip_address',t:'string',r:true,d:{zh:'服务器 IP 地址',en:'Server IP address'}},{n:'port',t:'int',r:true,d:{zh:'服务器 Web 面板端口号',en:'Server web panel port'}},{n:'username',t:'string',r:true,d:{zh:'登录用户名',en:'Login username'}},{n:'password',t:'string',r:true,d:{zh:'登录密码',en:'Login password'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'DELETE',p:'/api/remoteControlServerInfoDel',h:'apis.RemoteControlServerInfoDel',auth:'admin',a2:false,
+ d:{zh:'删除指定的远程控制服务器。',en:'Delete specified remote control server.'},
+ query:[{n:'id',t:'string',r:true,d:{zh:'服务器记录 ID（从列表接口获取）',en:'Server record ID (from list API)'}}],
+ resp:'{"status":"ok","info":"..."}'},
+{m:'GET',p:'/api/getRemoteControlServerInfo',h:'apis.GetRemoteControlServerInfo',auth:'admin',a2:false,
+ d:{zh:'获取所有已添加的远程控制服务器列表。',en:'Get all added remote control servers.'},
+ resp:'{"status":"ok","data":[{"id":1,"protocol":"http","ip_address":"192.168.1.10","port":9101,"username":"admin"},...]}'},
+{m:'GET',p:'/api/ssh',h:'ssh.WebSshSocketHandler',auth:'admin',a2:false,ws:true,
+ d:{zh:'建立 WebSocket SSH 连接。前端通过 WebSocket 协议与服务器建立 SSH 会话，实现 Web 终端功能。',en:'Establish WebSocket SSH connection. Frontend creates SSH session via WebSocket for web terminal functionality.'}},
+]},
+];
+
+// ==============================
+// AUTH section
+// ==============================
+function renderAuth(){
+  const isZh=lang==='zh';
+  return `
+  <h2 class="grp-title" id="grp-auth">${isZh?'鉴权说明':'Authentication'}</h2>
+  <p class="grp-desc">${isZh?'所有需要鉴权的 API 支持两种认证方式（二选一），部分敏感操作需要额外的二级密码验证。':'All authenticated APIs support two auth methods (choose one). Some sensitive operations require additional secondary password verification.'}</p>
+
+  <div class="api open" style="border-left:3px solid var(--post)"><div class="api-head" onclick="this.parentElement.classList.toggle('open')"><span class="mtag mtag-POST" style="font-size:12px">1</span><span class="path" style="font-size:14px;font-family:inherit;font-weight:600">${isZh?'方式一：JWT Token 认证':'Method 1: JWT Token'}</span><span class="arrow">▸</span></div>
+  <div class="api-body">
+    <p class="detail-desc">${isZh?'通过登录接口获取 Token，在请求头中携带。Token 有效期 <b>2 小时</b>。':'Get token via login API, include in request header. Token expires in <b>2 hours</b>.'}</p>
+    <div class="ds"><h4>${isZh?'1. 登录获取 Token':'1. Login to Get Token'}</h4>
+    <pre class="cb"><b style="color:var(--post)">POST</b> /api/login
+Content-Type: application/x-www-form-urlencoded
+
+username=admin&password=your_password</pre></div>
+    <div class="ds"><h4>${isZh?'登录响应':'Login Response'}</h4>
+    <pre class="cb">{
+  "status": "ok",
+  "data": {
+    "token": "eyJhbGciOiJIUzI1NiIs...",
+    "permissions": "admin",
+    "expiry": 1710007200,
+    "security": "a1b2c3d4..."  // WebSocket ${isZh?'签名用':'signature'}
+  }
+}</pre></div>
+    <div class="ds"><h4>${isZh?'2. 携带 Token 调用接口':'2. Use Token in Requests'}</h4>
+    <pre class="cb">GET /api/statistical
+Authorization: eyJhbGciOiJIUzI1NiIs...</pre>
+    <p style="font-size:12px;color:var(--dim);margin-top:6px">${isZh?'也支持通过 Cookie 传递：Cookie 名为 <code>token_cookie</code>。优先级：Header > Cookie > API Key。':'Also supports Cookie: cookie name is <code>token_cookie</code>. Priority: Header > Cookie > API Key.'}</p></div>
+    <div class="ds"><h4>${isZh?'3. 刷新 Token':'3. Refresh Token'}</h4>
+    <p style="font-size:13px;color:var(--dim)">${isZh?'在 Token 过期前调用 <code>POST /api/refreshToken</code>（携带旧 Token），返回新 Token。':'Call <code>POST /api/refreshToken</code> before expiration (with old token) to get a new token.'}</p></div>
+  </div></div>
+
+  <div class="api open" style="border-left:3px solid var(--get)"><div class="api-head" onclick="this.parentElement.classList.toggle('open')"><span class="mtag mtag-GET" style="font-size:12px">2</span><span class="path" style="font-size:14px;font-family:inherit;font-weight:600">${isZh?'方式二：API Key 认证':'Method 2: API Key'}</span><span class="arrow">▸</span></div>
+  <div class="api-body">
+    <p class="detail-desc">${isZh?'通过 <code>GET /api/getApiKey?pass=your_password</code> 获取 API Key。<b>无过期时间</b>，权限等同管理员。':'Get API Key via <code>GET /api/getApiKey?pass=your_password</code>. <b>No expiration</b>, admin-level permissions.'}</p>
+    <div class="ds"><h4>${isZh?'携带 API Key 调用接口':'Use API Key in Requests'}</h4>
+    <pre class="cb">GET /api/statistical
+FX_MINER_API_KEY: a1b2c3d4e5f6a7b8c9d0...</pre></div>
+  </div></div>
+
+  <div class="api open" style="border-left:3px solid var(--del)"><div class="api-head" onclick="this.parentElement.classList.toggle('open')"><span class="mtag mtag-DELETE" style="font-size:12px">!</span><span class="path" style="font-size:14px;font-family:inherit;font-weight:600">${isZh?'二级密码验证':'Secondary Password'}</span><span class="arrow">▸</span></div>
+  <div class="api-body">
+    <p class="detail-desc">${isZh?'标有 <span class="ab ab-2nd">需二级密码</span> 的接口，在开启了二级密码功能后，需要额外在 Header 中携带验证信息。':'APIs marked with <span class="ab ab-2nd">2nd Password</span> require extra header verification when secondary password is enabled.'}</p>
+    <div class="ds"><h4>${isZh?'请求头格式':'Header Format'}</h4>
+    <pre class="cb">SecondPassVerify: a1b2c3d4e5f6...</pre>
+    <p style="font-size:12px;color:var(--dim);margin-top:8px">${isZh?'⚠ 值为二级密码经过 CustomMd5 哈希后的<b>十六进制字符串</b>，不是明文密码。如果二级密码功能未开启，则无需携带此 Header。':'⚠ Value must be the CustomMd5 hash <b>hex string</b> of the secondary password, NOT plaintext. If secondary password is not enabled, this header is not needed.'}</p></div>
+  </div></div>
+
+  <div class="api open" style="border-left:3px solid var(--accent)"><div class="api-head" onclick="this.parentElement.classList.toggle('open')"><span class="mtag" style="color:var(--accent);background:var(--post-bg);font-size:12px">☰</span><span class="path" style="font-size:14px;font-family:inherit;font-weight:600">${isZh?'权限角色说明':'Permission Roles'}</span><span class="arrow">▸</span></div>
+  <div class="api-body">
+    <table class="pt" style="margin-top:12px"><thead><tr><th>${isZh?'角色':'Role'}</th><th>${isZh?'说明':'Description'}</th></tr></thead><tbody>
+      <tr><td><span class="ab ab-admin">${isZh?'管理员 admin':'Admin'}</span></td><td style="font-size:13px">${isZh?'拥有全部读写权限。通过主端口（默认 9101）使用用户名+密码登录获得。':'Full read/write access. Login via main port (default 9101) with username+password.'}</td></tr>
+      <tr><td><span class="ab ab-login">${isZh?'观察者 visit':'Visitor'}</span></td><td style="font-size:13px">${isZh?'只读权限，仅可查看面板和统计数据，钱包地址等敏感信息会脱敏显示。通过观察者端口使用密码登录获得。大部分写操作会被拒绝（返回空响应）。':'Read-only access. Can only view panel and stats. Sensitive data like wallet addresses are masked. Login via visitor port with password. Most write operations are rejected.'}</td></tr>
+    </tbody></table>
+  </div></div>
+
+  <div class="api open" style="border-left:3px solid #d29922"><div class="api-head" onclick="this.parentElement.classList.toggle('open')"><span class="mtag" style="color:#d29922;background:rgba(210,153,34,.1);font-size:12px">⚡</span><span class="path" style="font-size:14px;font-family:inherit;font-weight:600">${isZh?'鉴权失败响应格式':'Auth Failure Response'}</span><span class="arrow">▸</span></div>
+  <div class="api-body">
+    <div class="ds"><h4>${isZh?'Token 失效 / 未携带认证信息':'Token Expired / Missing Auth'}</h4>
+    <pre class="cb">HTTP 400
+{ "code": 400, "message": "${isZh?'登录已过期，请重新登录':'Session expired, please re-login'}" }</pre></div>
+    <div class="ds" style="margin-top:16px"><h4>${isZh?'二级密码验证失败':'Secondary Password Failed'}</h4>
+    <pre class="cb">HTTP 200
+{ "status": "10005", "info": "${isZh?'二级密码验证失败':'Secondary password verification failed'}" }</pre></div>
+  </div></div>`;
+}
+
+// ==============================
+// Render
+// ==============================
+function renderApi(a,gi,ai){
+  const aid=`api-${gi}-${ai}`;
+  const desc=t(a.d);
+  const short=desc.length>50?desc.substring(0,50)+'...':desc;
+  let ab='';
+  if(a.auth==='admin')ab+=`<span class="ab ab-admin">${lang==='zh'?'管理员':'Admin'}</span>`;
+  else if(a.auth==='login')ab+=`<span class="ab ab-login">${lang==='zh'?'登录即可':'Login'}</span>`;
+  else ab+=`<span class="ab ab-none">${lang==='zh'?'无需鉴权':'No Auth'}</span>`;
+  if(a.a2)ab+=`<span class="ab ab-2nd">${lang==='zh'?'需二级密码':'2nd Password'}</span>`;
+  if(a.ws)ab+=`<span class="ab ab-ws">WebSocket</span>`;
+  let body=`<p class="detail-desc">${desc}</p><div class="ds"><h4>${lang==='zh'?'鉴权':'Auth'}</h4>${ab}</div>`;
+  if(a.query&&a.query.length)body+=`<div class="ds"><h4>${lang==='zh'?'请求参数':'Request Parameters'}</h4>${ptable(a.query)}</div>`;
+  if(a.bodyJson&&a.bodyJson.length)body+=`<div class="ds"><h4>${lang==='zh'?'请求体 (JSON)':'Request Body (JSON)'}</h4>${ptable(a.bodyJson)}</div>`;
+  if(a.bodyForm&&a.bodyForm.length)body+=`<div class="ds"><h4>${lang==='zh'?'请求体 (Form)':'Request Body (Form)'}</h4>${ptable(a.bodyForm)}</div>`;
+  if(a.bodyMp&&a.bodyMp.length)body+=`<div class="ds"><h4>${lang==='zh'?'请求体 (Multipart)':'Request Body (Multipart)'}</h4>${ptable(a.bodyMp)}</div>`;
+  if(a.resp){let rv=typeof a.resp==='object'?t(a.resp):a.resp;let r=rv;try{r=JSON.stringify(JSON.parse(rv),null,2)}catch(e){}body+=`<div class="ds"><h4>${lang==='zh'?'响应示例':'Response Example'}</h4><pre class="cb">${r.replace(/</g,'&lt;')}</pre></div>`;}
+  body+=`<div class="htag">Handler: ${a.h}</div>`;
+  return `<div class="api" id="${aid}" data-s="${a.m} ${a.p} ${t(a.d)} ${a.h}"><div class="api-head" onclick="this.parentElement.classList.toggle('open')"><span class="mtag mtag-${a.m}">${a.m}</span><span class="path">${a.p}</span><span class="desc">${short}</span><span class="arrow">▸</span></div><div class="api-body">${body}</div></div>`;
+}
+
+function render(){
+  let mh='',sh='',total=0,gc=0,pc=0,dc=0;
+  API.forEach(g=>g.apis.forEach(a=>{total++;if(a.m==='GET')gc++;else if(a.m==='POST')pc++;else dc++}));
+  mh+=`<div class="stats"><div class="stat"><b>${total}</b>${lang==='zh'?'接口总数':'Total'}</div><div class="stat"><b style="color:var(--get)">${gc}</b>GET</div><div class="stat"><b style="color:var(--post)">${pc}</b>POST</div><div class="stat"><b style="color:var(--del)">${dc}</b>DELETE</div></div>`;
+  mh+=renderAuth();
+  sh+=`<div class="sg">${lang==='zh'?'鉴权说明':'Auth'}</div><a href="#grp-auth"><span class="dot" style="background:#d29922"></span>${lang==='zh'?'鉴权说明':'Authentication'}</a>`;
+  API.forEach((g,gi)=>{
+    const gn=t(g.group);
+    mh+=`<h2 class="grp-title" id="grp-${gi}">${gn}<span class="grp-badge">${g.apis.length}</span></h2><p class="grp-desc">${t(g.desc)}</p>`;
+    sh+=`<div class="sg">${gn}</div>`;
+    g.apis.forEach((a,ai)=>{mh+=renderApi(a,gi,ai);sh+=`<a href="#api-${gi}-${ai}"><span class="dot dot-${a.m.toLowerCase()==='delete'?'del':a.m.toLowerCase()}"></span>${a.p.replace(/^\/api\//,'').replace(/^\/download\//,'dl/')}</a>`;});
+  });
+  mh+=`<div class="no-res" id="noRes">${lang==='zh'?'没有匹配的 API':'No matching APIs'}</div>`;
+  document.getElementById('main').innerHTML=mh;
+  document.getElementById('sidebar').innerHTML=sh;
+  document.getElementById('toggleAll').textContent=allExpanded?(lang==='zh'?'全部折叠':'Collapse All'):(lang==='zh'?'全部展开':'Expand All');
+}
+
+function toggleLang(){lang=lang==='zh'?'en':'zh';localStorage.setItem('api_doc_lang',lang);document.getElementById('langBtn').textContent=lang==='zh'?'EN':'中文';document.documentElement.lang=lang==='zh'?'zh-CN':'en';render();applySearch();}
+function toggleAllCards(){allExpanded=!allExpanded;document.querySelectorAll('.api').forEach(c=>{allExpanded?c.classList.add('open'):c.classList.remove('open')});document.getElementById('toggleAll').textContent=allExpanded?(lang==='zh'?'全部折叠':'Collapse All'):(lang==='zh'?'全部展开':'Expand All');}
+function applySearch(){const q=document.getElementById('search').value.trim().toLowerCase();let v=0;document.querySelectorAll('.api[data-s]').forEach(c=>{const s=!q||c.dataset.s.toLowerCase().includes(q);c.style.display=s?'':'none';if(s)v++});document.querySelectorAll('.grp-title').forEach((s,i)=>{const cs=document.querySelectorAll(`.api[id^="api-${i}-"]`);const any=Array.from(cs).some(c=>c.style.display!=='none');s.style.display=any?'':'none';const d=s.nextElementSibling;if(d&&d.classList.contains('grp-desc'))d.style.display=any?'':'none'});const nr=document.getElementById('noRes');if(nr)nr.style.display=v===0?'block':'none';}
+document.getElementById('search').addEventListener('input',applySearch);
+document.getElementById('langBtn').textContent=lang==='zh'?'EN':'中文';
+document.documentElement.lang=lang==='zh'?'zh-CN':'en';
+render();
+</script>
+</body>
+</html>
