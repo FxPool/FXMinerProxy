@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DNS Hijack Mining Solution - FXMinerProxy</title>
+<title>IP Hijack Manager — Router-Level Traffic Control</title>
 <style>
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
@@ -13,6 +13,7 @@
   --accent: #00d4aa;
   --accent2: #00b4d8;
   --warn: #f59e0b;
+  --purple: #a78bfa;
   --text: #c8d1dc;
   --text2: #7a8599;
   --glow: rgba(0, 212, 170, 0.15);
@@ -36,9 +37,8 @@ body {
   position: absolute; inset: 0;
   background: radial-gradient(ellipse at 50% 0%, var(--glow), transparent 70%);
 }
-.container { max-width: 1000px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+.container { max-width: 1060px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
 
-/* Language toggle */
 .lang-toggle {
   position: fixed; top: 20px; right: 24px; z-index: 100;
   display: flex; border-radius: 8px; overflow: hidden;
@@ -49,20 +49,18 @@ body {
   color: var(--text2); cursor: pointer; transition: all .2s;
   border: none; background: transparent; outline: none;
 }
-.lang-btn.active {
-  background: var(--accent); color: var(--bg);
-}
+.lang-btn.active { background: var(--accent); color: var(--bg); }
 
 /* Hero */
-.hero { text-align: center; padding: 100px 0 60px; }
+.hero { text-align: center; padding: 90px 0 20px; }
 .hero-badge {
   display: inline-block; padding: 6px 18px; border-radius: 20px;
   border: 1px solid var(--accent); color: var(--accent);
-  font-size: 13px; letter-spacing: .5px; margin-bottom: 28px;
+  font-size: 13px; letter-spacing: .5px; margin-bottom: 24px;
   background: rgba(0,212,170,.06);
 }
 .hero h1 {
-  font-size: clamp(32px, 5.5vw, 56px); font-weight: 800;
+  font-size: clamp(30px, 5vw, 52px); font-weight: 800;
   line-height: 1.2; color: #fff; margin-bottom: 10px;
 }
 .hero h1 .gradient {
@@ -70,19 +68,41 @@ body {
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
 .hero-sub {
-  font-size: clamp(16px, 2.2vw, 20px); color: var(--text2);
-  max-width: 620px; margin: 0 auto 40px;
+  font-size: clamp(15px, 2vw, 18px); color: var(--text2);
+  max-width: 680px; margin: 0 auto 32px;
 }
-.hero-cta {
-  display: inline-flex; align-items: center; gap: 10px;
-  padding: 14px 36px; border-radius: 8px;
+.hero-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 32px; border-radius: 8px;
   background: linear-gradient(135deg, var(--accent), #00c4b8);
-  color: #0b0e13; font-weight: 700; font-size: 16px;
+  color: #0b0e13; font-weight: 700; font-size: 15px;
   text-decoration: none; transition: transform .2s, box-shadow .3s;
-  box-shadow: 0 0 30px rgba(0,212,170,.25);
+  box-shadow: 0 0 30px rgba(0,212,170,.2);
 }
-.hero-cta:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(0,212,170,.4); }
-.hero-cta svg { width: 18px; height: 18px; }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(0,212,170,.35); }
+.btn-primary svg { width: 18px; height: 18px; }
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 32px; border-radius: 8px; border: 1px solid var(--border);
+  background: transparent; color: var(--text); font-weight: 600;
+  font-size: 15px; text-decoration: none; transition: border-color .3s, background .3s;
+}
+.btn-outline:hover { border-color: var(--accent); background: rgba(0,212,170,.05); }
+
+/* Hero Screenshot */
+.hero-screenshot {
+  max-width: 960px; margin: 0 auto 0; position: relative;
+}
+.hero-screenshot img {
+  width: 100%; border-radius: 16px; border: 1px solid var(--border);
+  box-shadow: 0 16px 64px rgba(0,0,0,.6), 0 0 80px rgba(0,212,170,.08);
+}
+.hero-screenshot::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 100px;
+  background: linear-gradient(transparent, var(--bg));
+  border-radius: 0 0 16px 16px; pointer-events: none;
+}
 
 /* Section */
 section { padding: 60px 0; }
@@ -91,32 +111,33 @@ section { padding: 60px 0; }
   letter-spacing: 2px; color: var(--accent); margin-bottom: 12px;
 }
 .section-title { font-size: clamp(24px, 3.5vw, 36px); font-weight: 700; color: #fff; margin-bottom: 16px; }
-.section-desc { color: var(--text2); max-width: 640px; font-size: 15px; margin-bottom: 44px; }
+.section-desc { color: var(--text2); max-width: 680px; font-size: 15px; margin-bottom: 44px; }
+.section-center { text-align: center; }
+.section-center .section-desc { margin-left: auto; margin-right: auto; }
 
-/* Diagram */
-.diagram {
+/* Architecture Diagram */
+.arch-diagram {
   background: var(--card); border: 1px solid var(--border);
-  border-radius: 16px; padding: 48px 32px; margin-bottom: 60px;
-  text-align: center; overflow-x: auto;
+  border-radius: 16px; padding: 48px 32px; text-align: center; overflow-x: auto;
 }
-.diagram-title { font-size: 14px; color: var(--text2); margin-bottom: 32px; text-transform: uppercase; letter-spacing: 1.5px; }
-.flow { display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: wrap; }
-.flow-node { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 20px 16px; min-width: 120px; }
-.flow-icon {
+.arch-title { font-size: 14px; color: var(--text2); margin-bottom: 32px; text-transform: uppercase; letter-spacing: 1.5px; }
+.arch-flow { display: flex; align-items: center; justify-content: center; gap: 0; flex-wrap: wrap; }
+.arch-node { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 20px 16px; min-width: 130px; }
+.arch-icon {
   width: 56px; height: 56px; border-radius: 14px;
   display: flex; align-items: center; justify-content: center;
   font-size: 26px; flex-shrink: 0;
 }
-.flow-icon.miner { background: linear-gradient(135deg, #334155, #1e293b); border: 1px solid #475569; }
-.flow-icon.dns { background: linear-gradient(135deg, rgba(0,212,170,.2), rgba(0,180,216,.15)); border: 1px solid var(--accent); }
-.flow-icon.proxy { background: linear-gradient(135deg, rgba(245,158,11,.2), rgba(245,158,11,.1)); border: 1px solid var(--warn); }
-.flow-icon.pool { background: linear-gradient(135deg, rgba(99,102,241,.2), rgba(99,102,241,.1)); border: 1px solid #6366f1; }
-.flow-name { font-size: 13px; font-weight: 600; color: #fff; }
-.flow-desc { font-size: 11px; color: var(--text2); }
-.flow-arrow { font-size: 20px; color: var(--accent); flex-shrink: 0; padding: 0 4px; opacity: .6; }
+.arch-icon.router { background: linear-gradient(135deg, #334155, #1e293b); border: 1px solid #475569; }
+.arch-icon.server { background: linear-gradient(135deg, rgba(0,212,170,.2), rgba(0,180,216,.15)); border: 1px solid var(--accent); }
+.arch-icon.browser { background: linear-gradient(135deg, rgba(167,139,250,.2), rgba(167,139,250,.1)); border: 1px solid var(--purple); }
+.arch-name { font-size: 13px; font-weight: 600; color: #fff; }
+.arch-desc { font-size: 11px; color: var(--text2); max-width: 130px; }
+.arch-arrow { font-size: 20px; color: var(--accent); flex-shrink: 0; padding: 0 4px; opacity: .6; }
+.arch-arrow-label { font-size: 10px; color: var(--text2); display: block; margin-top: 2px; }
 
 /* Feature cards */
-.features { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 20px; }
+.features { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
 .feat-card {
   background: var(--card); border: 1px solid var(--border);
   border-radius: 14px; padding: 32px 28px;
@@ -131,6 +152,16 @@ section { padding: 60px 0; }
 .feat-card h3 { font-size: 17px; color: #fff; margin-bottom: 8px; }
 .feat-card p { font-size: 14px; color: var(--text2); line-height: 1.7; }
 
+/* Stats */
+.stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 20px; }
+.stat-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; text-align: center; }
+.stat-val {
+  font-size: clamp(28px, 4vw, 38px); font-weight: 800;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.stat-label { font-size: 13px; color: var(--text2); margin-top: 4px; }
+
 /* Steps */
 .steps { counter-reset: step; }
 .step-item { display: flex; gap: 24px; margin-bottom: 36px; align-items: flex-start; }
@@ -143,85 +174,39 @@ section { padding: 60px 0; }
 .step-num::after { content: counter(step); }
 .step-body h3 { font-size: 17px; color: #fff; margin-bottom: 4px; }
 .step-body p { font-size: 14px; color: var(--text2); }
+.step-body code {
+  display: inline-block; margin-top: 8px; padding: 8px 14px;
+  background: #0d1117; border: 1px solid var(--border); border-radius: 6px;
+  font-family: 'SF Mono', 'Fira Code', monospace; font-size: 13px; color: var(--accent);
+  word-break: break-all;
+}
+
+/* Tech tags */
+.tech-tags { display: flex; flex-wrap: wrap; gap: 10px; margin: 24px 0 40px; justify-content: center; }
+.tech-tag {
+  padding: 8px 18px; border-radius: 8px; font-size: 13px; font-weight: 600;
+  color: var(--text); background: var(--card); border: 1px solid var(--border);
+  display: flex; align-items: center; gap: 8px;
+}
+.tech-tag .t-icon { font-size: 16px; }
+.tech-tag.highlight { border-color: rgba(0,212,170,.3); color: var(--accent); }
 
 /* Requirement banner */
 .req-banner {
-  background: linear-gradient(135deg, rgba(245,158,11,.08), rgba(245,158,11,.03));
-  border: 1px solid rgba(245,158,11,.25); border-radius: 14px;
+  background: linear-gradient(135deg, rgba(0,212,170,.06), rgba(0,180,216,.03));
+  border: 1px solid rgba(0,212,170,.2); border-radius: 14px;
   padding: 32px; display: flex; gap: 20px;
-  align-items: flex-start; margin-bottom: 60px;
+  align-items: flex-start;
 }
 .req-icon { font-size: 32px; flex-shrink: 0; line-height: 1; }
-.req-banner h3 { font-size: 17px; color: var(--warn); margin-bottom: 6px; }
+.req-banner h3 { font-size: 17px; color: var(--accent); margin-bottom: 6px; }
 .req-banner p { font-size: 14px; color: var(--text2); line-height: 1.8; }
-
-/* Stats */
-.stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 16px; margin-bottom: 60px; }
-.stat-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 24px; text-align: center; }
-.stat-val {
-  font-size: clamp(28px, 4vw, 38px); font-weight: 800;
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-}
-.stat-label { font-size: 13px; color: var(--text2); margin-top: 4px; }
-
-/* Coin tags */
-.coin-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 40px; }
-.coin-tag { padding: 5px 14px; border-radius: 6px; font-size: 12px; font-weight: 600; color: var(--text); background: rgba(255,255,255,.04); border: 1px solid var(--border); letter-spacing: .5px; }
-.coin-tag.hot { border-color: rgba(0,212,170,.3); background: rgba(0,212,170,.06); color: var(--accent); }
-
-/* IP Hijack Manager */
-.hijack-showcase { padding: 80px 0; }
-.hijack-showcase .showcase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
-.hijack-showcase .showcase-img {
-  width: 100%; border-radius: 14px; border: 1px solid var(--border);
-  box-shadow: 0 8px 40px rgba(0,0,0,.5);
-  transition: transform .3s, box-shadow .3s;
-}
-.hijack-showcase .showcase-img:hover { transform: scale(1.02); box-shadow: 0 12px 60px rgba(0,212,170,.15); }
-.hijack-showcase .showcase-text h3 { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 12px; }
-.hijack-showcase .showcase-text > p { font-size: 15px; color: var(--text2); line-height: 1.8; margin-bottom: 24px; }
-.hijack-showcase .sc-features { display: flex; flex-direction: column; gap: 14px; }
-.hijack-showcase .sc-feat {
-  display: flex; align-items: flex-start; gap: 12px;
-  background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px;
-  transition: border-color .3s;
-}
-.hijack-showcase .sc-feat:hover { border-color: rgba(0,212,170,.3); }
-.hijack-showcase .sc-feat-icon { font-size: 20px; flex-shrink: 0; line-height: 1.4; }
-.hijack-showcase .sc-feat-body strong { color: #fff; font-size: 14px; }
-.hijack-showcase .sc-feat-body span { color: var(--text2); font-size: 13px; display: block; margin-top: 2px; }
-.hijack-showcase .sc-badge {
-  display: inline-block; padding: 4px 12px; border-radius: 6px; font-size: 11px; font-weight: 700;
-  letter-spacing: .5px; margin-bottom: 16px;
-  background: rgba(0,180,216,.1); border: 1px solid rgba(0,180,216,.3); color: var(--accent2);
-}
-@media (max-width: 768px) {
-  .hijack-showcase .showcase-grid { grid-template-columns: 1fr; }
-  .hijack-showcase .showcase-img { order: -1; }
-}
 
 /* CTA */
 .cta-section { text-align: center; padding: 80px 0 100px; }
 .cta-section h2 { font-size: clamp(24px, 4vw, 40px); font-weight: 800; color: #fff; margin-bottom: 12px; }
 .cta-section p { color: var(--text2); font-size: 16px; margin-bottom: 36px; }
 .cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
-.btn-primary {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 14px 32px; border-radius: 8px;
-  background: linear-gradient(135deg, var(--accent), #00c4b8);
-  color: #0b0e13; font-weight: 700; font-size: 15px;
-  text-decoration: none; transition: transform .2s, box-shadow .3s;
-  box-shadow: 0 0 30px rgba(0,212,170,.2);
-}
-.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 0 50px rgba(0,212,170,.35); }
-.btn-outline {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 14px 32px; border-radius: 8px; border: 1px solid var(--border);
-  background: transparent; color: var(--text); font-weight: 600;
-  font-size: 15px; text-decoration: none; transition: border-color .3s, background .3s;
-}
-.btn-outline:hover { border-color: var(--accent); background: rgba(0,212,170,.05); }
 
 /* Contact */
 .contact-cards { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 36px; }
@@ -237,10 +222,10 @@ footer { border-top: 1px solid var(--border); padding: 32px 0; text-align: cente
 footer a { color: var(--accent); text-decoration: none; }
 
 @media (max-width: 640px) {
-  .hero { padding: 70px 0 40px; }
-  .flow { flex-direction: column; }
-  .flow-arrow { transform: rotate(90deg); }
-  .diagram { padding: 32px 16px; }
+  .hero { padding: 70px 0 20px; }
+  .arch-flow { flex-direction: column; }
+  .arch-arrow { transform: rotate(90deg); }
+  .arch-diagram { padding: 32px 16px; }
   .req-banner { flex-direction: column; }
   .step-item { gap: 16px; }
   .lang-toggle { top: 12px; right: 12px; }
@@ -251,7 +236,6 @@ footer a { color: var(--accent); text-decoration: none; }
 
 <div class="grid-bg"></div>
 
-<!-- Language Toggle -->
 <div class="lang-toggle">
   <button class="lang-btn active" onclick="setLang('cn')">中文</button>
   <button class="lang-btn" onclick="setLang('en')">EN</button>
@@ -260,58 +244,65 @@ footer a { color: var(--accent); text-decoration: none; }
 <!-- Hero -->
 <header class="hero">
   <div class="container">
-    <div class="hero-badge" data-i18n="badge">⚡ 矿场运维专属方案</div>
-    <h1><span data-i18n="h1_pre">DNS劫持</span> <span class="gradient" data-i18n="h1_highlight">无感抽水</span></h1>
-    <p class="hero-sub" data-i18n="hero_sub">零修改矿机配置，零感知运行。只需路由器权限，即可在矿场级别实现全自动、高隐蔽的算力抽水部署。</p>
-    <a href="https://github.com/hivecassiny/ip-hijack-bin" target="_blank" class="hero-cta">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 00-3.8 23.38c.6.11.82-.26.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 016.02 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18a4.65 4.65 0 011.24 3.22c0 4.61-2.8 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58A12 12 0 0012 .3"/></svg>
-      <span data-i18n="github_btn">GitHub 获取软件</span>
-    </a>
+    <div class="hero-badge" data-i18n="badge">IP Hijack Manager</div>
+    <h1><span data-i18n="h1_pre">路由器级</span> <span class="gradient" data-i18n="h1_hl">流量劫持管理系统</span></h1>
+    <p class="hero-sub" data-i18n="hero_sub">部署 Agent 到路由器，通过加密通道远程管理。支持 IP 劫持（DNAT）、DNS 劫持、Web Shell 远程终端、批量操作、多用户权限，一个面板管控所有路由器。</p>
+    <div class="hero-buttons">
+      <a href="https://github.com/hivecassiny/ip-hijack-bin" target="_blank" class="btn-primary">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 00-3.8 23.38c.6.11.82-.26.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 016.02 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18a4.65 4.65 0 011.24 3.22c0 4.61-2.8 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58A12 12 0 0012 .3"/></svg>
+        <span data-i18n="btn_agent">Agent 安装</span>
+      </a>
+      <a href="https://github.com/hivecassiny/ip-hijack-server-bin" target="_blank" class="btn-outline">
+        <span data-i18n="btn_server">Server 安装</span>
+      </a>
+    </div>
+    <div class="hero-screenshot">
+      <img src="dashboard-preview.png" alt="IP Hijack Manager Dashboard" loading="eager">
+    </div>
   </div>
 </header>
 
-<!-- Diagram -->
+<!-- Architecture -->
 <section>
-  <div class="container">
-    <div class="diagram">
-      <div class="diagram-title" data-i18n="diagram_title">工作原理示意</div>
-      <div class="flow">
-        <div class="flow-node">
-          <div class="flow-icon miner">⛏</div>
-          <div class="flow-name" data-i18n="flow_miner">矿机</div>
-          <div class="flow-desc" data-i18n="flow_miner_desc">正常挖矿请求</div>
+  <div class="container section-center">
+    <div class="section-label" data-i18n="arch_label">系统架构</div>
+    <h2 class="section-title" data-i18n="arch_title">Agent / Server 分布式架构</h2>
+    <p class="section-desc" data-i18n="arch_desc">Agent 部署在路由器上，通过端到端加密通道连接 Server。管理员通过 Web 面板远程操控所有路由器，无需逐台登录。</p>
+    <div class="arch-diagram">
+      <div class="arch-title" data-i18n="arch_diagram_title">数据流向</div>
+      <div class="arch-flow">
+        <div class="arch-node">
+          <div class="arch-icon router">🖧</div>
+          <div class="arch-name" data-i18n="arch_router1">路由器 A</div>
+          <div class="arch-desc" data-i18n="arch_router1_d">Agent (linux/mips)</div>
         </div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-node">
-          <div class="flow-icon dns">🌐</div>
-          <div class="flow-name" data-i18n="flow_dns">路由器 DNS</div>
-          <div class="flow-desc" data-i18n="flow_dns_desc">劫持矿池域名解析</div>
+        <div class="arch-arrow">→<span class="arch-arrow-label" data-i18n="arch_enc">加密 TCP</span></div>
+        <div class="arch-node">
+          <div class="arch-icon server">⚙</div>
+          <div class="arch-name" data-i18n="arch_server">管理服务器</div>
+          <div class="arch-desc" data-i18n="arch_server_d">Server + Web UI</div>
         </div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-node">
-          <div class="flow-icon proxy">🔀</div>
-          <div class="flow-name">FXMinerProxy</div>
-          <div class="flow-desc" data-i18n="flow_proxy_desc">中转 + 智能抽水</div>
-        </div>
-        <div class="flow-arrow">→</div>
-        <div class="flow-node">
-          <div class="flow-icon pool">🏦</div>
-          <div class="flow-name" data-i18n="flow_pool">目标矿池</div>
-          <div class="flow-desc" data-i18n="flow_pool_desc">正常提交份额</div>
+        <div class="arch-arrow">←<span class="arch-arrow-label" data-i18n="arch_enc2">加密 TCP</span></div>
+        <div class="arch-node">
+          <div class="arch-icon router">🖧</div>
+          <div class="arch-name" data-i18n="arch_router2">路由器 B</div>
+          <div class="arch-desc" data-i18n="arch_router2_d">Agent (linux/arm64)</div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- Requirement -->
-<section>
-  <div class="container">
-    <div class="req-banner">
-      <div class="req-icon">🔑</div>
-      <div>
-        <h3 data-i18n="req_title">前置条件：路由器管理权限</h3>
-        <p data-i18n="req_desc">本方案通过修改矿场路由器的 DNS 解析记录，将矿池域名指向 FXMinerProxy 中转服务器。<br>运维人员需要拥有矿场路由器的管理员权限，才能配置自定义 DNS 规则。<br>整个过程不需要修改任何矿机配置，矿工端完全无感知。</p>
+      <div style="margin-top:24px">
+        <div class="arch-flow">
+          <div class="arch-node">
+            <div class="arch-icon browser">🌐</div>
+            <div class="arch-name" data-i18n="arch_admin">管理员浏览器</div>
+            <div class="arch-desc" data-i18n="arch_admin_d">HTTP/WebSocket</div>
+          </div>
+          <div class="arch-arrow">→</div>
+          <div class="arch-node">
+            <div class="arch-icon server">⚙</div>
+            <div class="arch-name" data-i18n="arch_webui">Web 管理面板</div>
+            <div class="arch-desc" data-i18n="arch_webui_d">:8080</div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -320,16 +311,19 @@ footer a { color: var(--accent); text-decoration: none; }
 <!-- Features -->
 <section>
   <div class="container">
-    <div class="section-label" data-i18n="feat_label">核心优势</div>
-    <h2 class="section-title" data-i18n="feat_title">为什么选择 DNS 劫持方案？</h2>
-    <p class="section-desc" data-i18n="feat_desc">相比传统中转抽水，DNS 劫持方案在隐蔽性和部署便捷性上具有不可替代的优势。</p>
+    <div class="section-label" data-i18n="feat_label">核心功能</div>
+    <h2 class="section-title" data-i18n="feat_title">一个面板，管控所有路由器</h2>
+    <p class="section-desc" data-i18n="feat_desc">IP 劫持、DNS 劫持、远程终端、OTA 升级、多用户权限，覆盖路由器远程管理的全部需求。</p>
     <div class="features">
-      <div class="feat-card"><div class="feat-icon">👻</div><h3 data-i18n="f1_t">完全无感知</h3><p data-i18n="f1_d">矿机配置零改动，矿工看到的矿池地址不变，连接状态正常，从矿工视角一切如常。</p></div>
-      <div class="feat-card"><div class="feat-icon">⚡</div><h3 data-i18n="f2_t">一键全场覆盖</h3><p data-i18n="f2_d">只需在路由器配置一次 DNS 规则，矿场内所有矿机自动生效，无需逐台修改。</p></div>
-      <div class="feat-card"><div class="feat-icon">🔒</div><h3 data-i18n="f3_t">高隐蔽性</h3><p data-i18n="f3_d">流量走正常的矿池协议通道，不引入额外端口或进程，常规检测手段难以发现。</p></div>
-      <div class="feat-card"><div class="feat-icon">📊</div><h3 data-i18n="f4_t">精准控制抽水比例</h3><p data-i18n="f4_d">FXMinerProxy 后台可精确设置抽水比例，支持分币种、分矿工灵活配置，曲线稳定平滑。</p></div>
-      <div class="feat-card"><div class="feat-icon">🛡</div><h3 data-i18n="f5_t">稳定运行 不丢算力</h3><p data-i18n="f5_d">经过数千台矿机大矿场实战验证，长期稳定运行，断线自动重连，份额不丢失。</p></div>
-      <div class="feat-card"><div class="feat-icon">🌍</div><h3 data-i18n="f6_t">支持 50+ 币种</h3><p data-i18n="f6_d">BTC、LTC、ETC、ETHW、KAS、RVN、CFX、BEAM、ZEC 等主流币种全覆盖，持续更新。</p></div>
+      <div class="feat-card"><div class="feat-icon">🔀</div><h3 data-i18n="f1_t">IP 劫持 (DNAT)</h3><p data-i18n="f1_d">选择目标外网 IP，填入转发地址，通过 iptables DNAT 即时生效。支持单条和批量操作，规则持久化存储。</p></div>
+      <div class="feat-card"><div class="feat-icon">🌐</div><h3 data-i18n="f2_t">DNS 劫持</h3><p data-i18n="f2_d">批量添加域名劫持规则，修改路由器 /etc/hosts 将域名解析到指定 IP，自动刷新 DNS 缓存立即生效。</p></div>
+      <div class="feat-card"><div class="feat-icon">💻</div><h3 data-i18n="f3_t">Web Shell 远程终端</h3><p data-i18n="f3_d">浏览器内直接打开路由器终端，基于 xterm.js + WebSocket + PTY，无需 SSH 即可执行任意命令。</p></div>
+      <div class="feat-card"><div class="feat-icon">📡</div><h3 data-i18n="f4_t">实时连接监控</h3><p data-i18n="f4_d">Agent 通过 conntrack 实时采集路由器全部外部连接（IP、端口、协议、状态），管理面板即时展示。</p></div>
+      <div class="feat-card"><div class="feat-icon">🔒</div><h3 data-i18n="f5_t">端到端加密</h3><p data-i18n="f5_d">基于 umbra 库（ECDH P-256 + ChaCha20-Poly1305），每次连接使用临时密钥实现前向保密（PFS），Zstd 压缩节省带宽。</p></div>
+      <div class="feat-card"><div class="feat-icon">👥</div><h3 data-i18n="f6_t">多用户权限体系</h3><p data-i18n="f6_d">管理员创建子账号并分配 Agent 路由器，子账号仅看到被分配的设备。支持只读 / 控制 / 管理员三级权限。</p></div>
+      <div class="feat-card"><div class="feat-icon">⬆</div><h3 data-i18n="f7_t">OTA 远程升级</h3><p data-i18n="f7_d">通过面板选择版本，一键升级单个 Agent 或广播升级全部设备，Agent 自动下载新版并重启。</p></div>
+      <div class="feat-card"><div class="feat-icon">🔄</div><h3 data-i18n="f8_t">断线自动重连</h3><p data-i18n="f8_d">Agent 指数退避重连（3s → 60s），双向心跳检测，Server 上线后自动恢复连接并下发所有规则。</p></div>
+      <div class="feat-card"><div class="feat-icon">💾</div><h3 data-i18n="f9_t">SQLite 持久化</h3><p data-i18n="f9_d">用户、Agent、IP 劫持规则、DNS 劫持规则全部存入 SQLite。服务重启数据不丢失，Agent 重连自动恢复规则。</p></div>
     </div>
   </div>
 </section>
@@ -338,89 +332,90 @@ footer a { color: var(--accent); text-decoration: none; }
 <section>
   <div class="container">
     <div class="stats-row">
-      <div class="stat-card"><div class="stat-val">6000+</div><div class="stat-label" data-i18n="s1">已验证矿机规模</div></div>
-      <div class="stat-card"><div class="stat-val">50+</div><div class="stat-label" data-i18n="s2">支持币种数量</div></div>
-      <div class="stat-card"><div class="stat-val">0.2%</div><div class="stat-label" data-i18n="s3">极低开发费率</div></div>
-      <div class="stat-card"><div class="stat-val">99.9%</div><div class="stat-label" data-i18n="s4">服务稳定性</div></div>
+      <div class="stat-card"><div class="stat-val" data-i18n="sv1">7</div><div class="stat-label" data-i18n="sl1">Agent 平台支持</div></div>
+      <div class="stat-card"><div class="stat-val">E2E</div><div class="stat-label" data-i18n="sl2">端到端加密</div></div>
+      <div class="stat-card"><div class="stat-val">&lt;10min</div><div class="stat-label" data-i18n="sl3">部署时间</div></div>
+      <div class="stat-card"><div class="stat-val">24/7</div><div class="stat-label" data-i18n="sl4">永不停止重连</div></div>
     </div>
   </div>
 </section>
 
-<!-- Coins -->
+<!-- Tech Stack -->
 <section>
-  <div class="container">
-    <div class="section-label" data-i18n="coin_label">支持币种</div>
-    <h2 class="section-title" data-i18n="coin_title">全币种覆盖</h2>
-    <div class="coin-tags">
-      <span class="coin-tag hot">BTC</span><span class="coin-tag hot">LTC</span><span class="coin-tag hot">ETC</span><span class="coin-tag hot">ETHW</span><span class="coin-tag hot">KAS</span>
-      <span class="coin-tag">ZEC</span><span class="coin-tag">RVN</span><span class="coin-tag">CFX</span><span class="coin-tag">BEAM</span><span class="coin-tag">ERGO</span>
-      <span class="coin-tag">BTG</span><span class="coin-tag">AE</span><span class="coin-tag">FLUX</span><span class="coin-tag">FIRO</span><span class="coin-tag">NEOXA</span>
-      <span class="coin-tag">XMR</span><span class="coin-tag">GRIN</span><span class="coin-tag">KDA</span><span class="coin-tag">DASH</span><span class="coin-tag">CKB</span>
-      <span class="coin-tag">RXD</span><span class="coin-tag">ZIL</span><span class="coin-tag">ZEN</span><span class="coin-tag">NEXA</span><span class="coin-tag">HNS</span>
-      <span class="coin-tag">BCH</span><span class="coin-tag">IRON</span><span class="coin-tag">ETHF</span><span class="coin-tag">ALPH</span><span class="coin-tag">DNX</span>
-      <span class="coin-tag" style="border-style:dashed;color:var(--text2)" data-i18n="coin_more">更多持续更新...</span>
+  <div class="container section-center">
+    <div class="section-label" data-i18n="tech_label">技术栈</div>
+    <h2 class="section-title" data-i18n="tech_title">底层技术</h2>
+    <div class="tech-tags">
+      <span class="tech-tag highlight"><span class="t-icon">🐹</span> Go</span>
+      <span class="tech-tag"><span class="t-icon">🔥</span> iptables / DNAT</span>
+      <span class="tech-tag"><span class="t-icon">📋</span> conntrack</span>
+      <span class="tech-tag"><span class="t-icon">🔐</span> <span data-i18n="tt_umbra">umbra (ECDH + ChaCha20)</span></span>
+      <span class="tech-tag"><span class="t-icon">📦</span> Zstd</span>
+      <span class="tech-tag"><span class="t-icon">🗄</span> SQLite</span>
+      <span class="tech-tag"><span class="t-icon">🖥</span> xterm.js + WebSocket</span>
+      <span class="tech-tag"><span class="t-icon">🐧</span> systemd / procd</span>
     </div>
   </div>
 </section>
 
-<!-- Steps -->
+<!-- Supported Platforms -->
 <section>
   <div class="container">
-    <div class="section-label" data-i18n="step_label">部署流程</div>
+    <div class="section-label" data-i18n="plat_label">支持平台</div>
+    <h2 class="section-title" data-i18n="plat_title">覆盖主流路由器架构</h2>
+    <p class="section-desc" data-i18n="plat_desc">预编译二进制覆盖 x86 软路由、ARM 路由器、MIPS OpenWrt 设备，一键脚本自动检测架构。</p>
+    <div class="features" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+      <div class="feat-card" style="padding:20px 22px;"><h3>linux/amd64</h3><p data-i18n="p1">x86 软路由、服务器</p></div>
+      <div class="feat-card" style="padding:20px 22px;"><h3>linux/arm64</h3><p data-i18n="p2">树莓派 4/5、ARM 路由器</p></div>
+      <div class="feat-card" style="padding:20px 22px;"><h3>linux/arm</h3><p data-i18n="p3">树莓派 2/3、旧 ARM 设备</p></div>
+      <div class="feat-card" style="padding:20px 22px;"><h3>linux/mips</h3><p data-i18n="p4">OpenWrt (大端 MIPS)</p></div>
+      <div class="feat-card" style="padding:20px 22px;"><h3>linux/mipsle</h3><p data-i18n="p5">OpenWrt (小端 MIPS)</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Deploy Steps -->
+<section>
+  <div class="container">
+    <div class="section-label" data-i18n="step_label">快速部署</div>
     <h2 class="section-title" data-i18n="step_title">三步完成部署</h2>
-    <p class="section-desc" data-i18n="step_desc">整个过程最快 10 分钟即可完成，无需复杂的网络知识。</p>
+    <p class="section-desc" data-i18n="step_desc">一键安装脚本自动检测架构、安装依赖、配置 systemd 服务，最快 5 分钟完成全部部署。</p>
     <div class="steps">
-      <div class="step-item"><div class="step-num"></div><div class="step-body"><h3 data-i18n="st1_t">部署 FXMinerProxy 中转服务</h3><p data-i18n="st1_d">在一台 Linux 服务器上一键安装 FXMinerProxy，配置好目标矿池地址和抽水钱包，设定抽水比例。</p></div></div>
-      <div class="step-item"><div class="step-num"></div><div class="step-body"><h3 data-i18n="st2_t">配置路由器 DNS 劫持规则</h3><p data-i18n="st2_d">登录矿场路由器管理后台，将目标矿池的域名 DNS 解析指向 FXMinerProxy 服务器 IP，所有经过该路由器的矿机流量将自动被中转。</p></div></div>
-      <div class="step-item"><div class="step-num"></div><div class="step-body"><h3 data-i18n="st3_t">后台监控 稳定运行</h3><p data-i18n="st3_d">通过 FXMinerProxy 可视化后台实时查看算力曲线、矿机在线数、抽水状态等数据，全程可控。</p></div></div>
+      <div class="step-item">
+        <div class="step-num"></div>
+        <div class="step-body">
+          <h3 data-i18n="st1_t">部署 Server 管理服务</h3>
+          <p data-i18n="st1_d">在一台 Linux 服务器上一键安装 Server，启动后提供 Web 管理面板和 Agent 接入端口。</p>
+          <code>curl -fsSL https://raw.githubusercontent.com/hivecassiny/ip-hijack-server-bin/main/install.sh | sudo bash</code>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num"></div>
+        <div class="step-body">
+          <h3 data-i18n="st2_t">部署 Agent 到路由器</h3>
+          <p data-i18n="st2_d">在路由器上一键安装 Agent，脚本自动检测架构、安装 iptables / conntrack 依赖、开启 ip_forward，配置 Server 地址后自动连接。</p>
+          <code>curl -fsSL https://raw.githubusercontent.com/hivecassiny/ip-hijack-bin/main/install.sh | sudo bash</code>
+        </div>
+      </div>
+      <div class="step-item">
+        <div class="step-num"></div>
+        <div class="step-body">
+          <h3 data-i18n="st3_t">打开面板开始管理</h3>
+          <p data-i18n="st3_d">浏览器访问 Server 的 Web 面板，即可看到已连接的 Agent 路由器。实时查看连接、执行劫持、打开终端，一切尽在掌控。</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- IP Hijack Manager -->
-<section class="hijack-showcase">
+<!-- Prerequisite -->
+<section>
   <div class="container">
-    <div class="section-label" data-i18n="hijack_label">进阶方案</div>
-    <h2 class="section-title" data-i18n="hijack_title">IP Hijack Manager — 路由器级 IP 流量劫持</h2>
-    <p class="section-desc" data-i18n="hijack_desc">除了 DNS 劫持，我们还提供基于 IP 层的流量劫持管理系统，在路由器上直接对目标 IP 进行 DNAT 转发，适用于更深层次的流量控制需求。</p>
-    <div class="showcase-grid">
+    <div class="req-banner">
+      <div class="req-icon">🔑</div>
       <div>
-        <img src="ip-hijack-preview.png" alt="IP Hijack Manager" class="showcase-img" loading="lazy">
-      </div>
-      <div class="showcase-text">
-        <div class="sc-badge" data-i18n="hijack_badge">ADVANCED TOOL</div>
-        <h3 data-i18n="hijack_st">可视化管理 · 远程控制 · 多用户权限</h3>
-        <p data-i18n="hijack_sd">通过 Web 管理面板实时查看路由器上所有外部连接，选中目标 IP 一键劫持，将流量转发到指定地址。支持多台 Agent 路由器统一管理。</p>
-        <div class="sc-features">
-          <div class="sc-feat">
-            <span class="sc-feat-icon">🌐</span>
-            <div class="sc-feat-body">
-              <strong data-i18n="hf1_t">实时连接监控</strong>
-              <span data-i18n="hf1_d">Agent 实时上报路由器全部外部连接（IP、端口、协议、状态），管理面板即时展示。</span>
-            </div>
-          </div>
-          <div class="sc-feat">
-            <span class="sc-feat-icon">🔀</span>
-            <div class="sc-feat-body">
-              <strong data-i18n="hf2_t">一键 IP 劫持</strong>
-              <span data-i18n="hf2_d">选择目标外网 IP，填入转发地址，通过 iptables DNAT 即时生效，规则断电持久化。</span>
-            </div>
-          </div>
-          <div class="sc-feat">
-            <span class="sc-feat-icon">👥</span>
-            <div class="sc-feat-body">
-              <strong data-i18n="hf3_t">多用户 & 权限体系</strong>
-              <span data-i18n="hf3_d">管理员可创建子账号并分配 Agent，子账号仅能看到和操作自己被分配的路由器。</span>
-            </div>
-          </div>
-          <div class="sc-feat">
-            <span class="sc-feat-icon">💾</span>
-            <div class="sc-feat-body">
-              <strong data-i18n="hf4_t">SQLite 持久化</strong>
-              <span data-i18n="hf4_d">用户、Agent、劫持规则全部存入 SQLite 数据库，Agent 重启自动恢复规则。</span>
-            </div>
-          </div>
-        </div>
+        <h3 data-i18n="req_title">Agent 环境要求</h3>
+        <p data-i18n="req_desc">Agent 需要在 Linux 路由器上运行，要求 root 权限。安装脚本会自动检测并安装 iptables、conntrack 依赖，自动开启 ip_forward。<br>支持 systemd（主流 Linux）和 procd（OpenWrt）两种服务管理方式。</p>
       </div>
     </div>
   </div>
@@ -429,18 +424,18 @@ footer a { color: var(--accent); text-decoration: none; }
 <!-- CTA -->
 <section class="cta-section">
   <div class="container">
-    <h2><span data-i18n="cta_pre">开始部署你的</span><span class="gradient" data-i18n="cta_hl"> 无感抽水 </span><span data-i18n="cta_post">方案</span></h2>
-    <p data-i18n="cta_desc">如果你是矿场运维，拥有路由器权限，现在就可以开始。</p>
+    <h2><span data-i18n="cta_pre">开始部署你的</span> <span class="gradient" data-i18n="cta_hl">IP Hijack Manager</span></h2>
+    <p data-i18n="cta_desc">拥有路由器管理权限？现在就可以开始。</p>
     <div class="cta-buttons">
       <a href="https://github.com/hivecassiny/ip-hijack-bin" target="_blank" class="btn-primary">
         <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 .3a12 12 0 00-3.8 23.38c.6.11.82-.26.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 016.02 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18a4.65 4.65 0 011.24 3.22c0 4.61-2.8 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58A12 12 0 0012 .3"/></svg>
-        <span data-i18n="cta_github">GitHub 下载</span>
+        <span data-i18n="cta_agent">Agent 下载</span>
+      </a>
+      <a href="https://github.com/hivecassiny/ip-hijack-server-bin" target="_blank" class="btn-outline">
+        <span data-i18n="cta_server">Server 下载</span>
       </a>
       <a href="https://t.me/fxminerproxy_chat_cn" target="_blank" class="btn-outline">
-        <span data-i18n="cta_tg">✈ Telegram 交流群</span>
-      </a>
-      <a href="https://www.fxminerproxy.com/api-docs/index.html" target="_blank" class="btn-outline">
-        <span data-i18n="cta_api">📄 API 文档</span>
+        <span data-i18n="cta_tg">Telegram</span>
       </a>
     </div>
     <div class="contact-cards">
@@ -465,7 +460,7 @@ footer a { color: var(--accent); text-decoration: none; }
 
 <footer>
   <div class="container">
-    <p>FXMinerProxy &copy; 2026 &nbsp;·&nbsp; <a href="https://github.com/hivecassiny/ip-hijack-bin" target="_blank">GitHub</a> &nbsp;·&nbsp; <a href="https://www.fxminerproxy.com" target="_blank" data-i18n="footer_site">官网</a> &nbsp;·&nbsp; <a href="https://www.fxminerproxy.com/api-docs/index.html" target="_blank" data-i18n="footer_api">API 文档</a></p>
+    <p>IP Hijack Manager &copy; 2026 &nbsp;&middot;&nbsp; <a href="https://github.com/hivecassiny/ip-hijack-bin" target="_blank">GitHub</a> &nbsp;&middot;&nbsp; <a href="https://www.fxminerproxy.com" target="_blank" data-i18n="footer_site">官网</a></p>
   </div>
 </footer>
 
@@ -482,88 +477,90 @@ footer a { color: var(--accent); text-decoration: none; }
 <script>
 var I18N = {
   cn: {
-    badge: "⚡ 矿场运维专属方案",
-    h1_pre: "DNS劫持", h1_highlight: "无感抽水",
-    hero_sub: "零修改矿机配置，零感知运行。只需路由器权限，即可在矿场级别实现全自动、高隐蔽的算力抽水部署。",
-    github_btn: "GitHub 获取软件",
-    diagram_title: "工作原理示意",
-    flow_miner: "矿机", flow_miner_desc: "正常挖矿请求",
-    flow_dns: "路由器 DNS", flow_dns_desc: "劫持矿池域名解析",
-    flow_proxy_desc: "中转 + 智能抽水",
-    flow_pool: "目标矿池", flow_pool_desc: "正常提交份额",
-    req_title: "前置条件：路由器管理权限",
-    req_desc: "本方案通过修改矿场路由器的 DNS 解析记录，将矿池域名指向 FXMinerProxy 中转服务器。<br>运维人员需要拥有矿场路由器的管理员权限，才能配置自定义 DNS 规则。<br>整个过程不需要修改任何矿机配置，矿工端完全无感知。",
-    feat_label: "核心优势", feat_title: "为什么选择 DNS 劫持方案？",
-    feat_desc: "相比传统中转抽水，DNS 劫持方案在隐蔽性和部署便捷性上具有不可替代的优势。",
-    f1_t: "完全无感知", f1_d: "矿机配置零改动，矿工看到的矿池地址不变，连接状态正常，从矿工视角一切如常。",
-    f2_t: "一键全场覆盖", f2_d: "只需在路由器配置一次 DNS 规则，矿场内所有矿机自动生效，无需逐台修改。",
-    f3_t: "高隐蔽性", f3_d: "流量走正常的矿池协议通道，不引入额外端口或进程，常规检测手段难以发现。",
-    f4_t: "精准控制抽水比例", f4_d: "FXMinerProxy 后台可精确设置抽水比例，支持分币种、分矿工灵活配置，曲线稳定平滑。",
-    f5_t: "稳定运行 不丢算力", f5_d: "经过数千台矿机大矿场实战验证，长期稳定运行，断线自动重连，份额不丢失。",
-    f6_t: "支持 50+ 币种", f6_d: "BTC、LTC、ETC、ETHW、KAS、RVN、CFX、BEAM、ZEC 等主流币种全覆盖，持续更新。",
-    s1: "已验证矿机规模", s2: "支持币种数量", s3: "极低开发费率", s4: "服务稳定性",
-    coin_label: "支持币种", coin_title: "全币种覆盖", coin_more: "更多持续更新...",
-    step_label: "部署流程", step_title: "三步完成部署",
-    step_desc: "整个过程最快 10 分钟即可完成，无需复杂的网络知识。",
-    st1_t: "部署 FXMinerProxy 中转服务", st1_d: "在一台 Linux 服务器上一键安装 FXMinerProxy，配置好目标矿池地址和抽水钱包，设定抽水比例。",
-    st2_t: "配置路由器 DNS 劫持规则", st2_d: "登录矿场路由器管理后台，将目标矿池的域名 DNS 解析指向 FXMinerProxy 服务器 IP，所有经过该路由器的矿机流量将自动被中转。",
-    st3_t: "后台监控 稳定运行", st3_d: "通过 FXMinerProxy 可视化后台实时查看算力曲线、矿机在线数、抽水状态等数据，全程可控。",
-    cta_pre: "开始部署你的", cta_hl: " 无感抽水 ", cta_post: "方案",
-    cta_desc: "如果你是矿场运维，拥有路由器权限，现在就可以开始。",
-    cta_github: "GitHub 下载", cta_tg: "✈ Telegram 交流群", cta_api: "📄 API 文档",
+    badge: "IP Hijack Manager",
+    h1_pre: "路由器级", h1_hl: "流量劫持管理系统",
+    hero_sub: "部署 Agent 到路由器，通过加密通道远程管理。支持 IP 劫持（DNAT）、DNS 劫持、Web Shell 远程终端、批量操作、多用户权限，一个面板管控所有路由器。",
+    btn_agent: "Agent 安装", btn_server: "Server 安装",
+    arch_label: "系统架构", arch_title: "Agent / Server 分布式架构",
+    arch_desc: "Agent 部署在路由器上，通过端到端加密通道连接 Server。管理员通过 Web 面板远程操控所有路由器，无需逐台登录。",
+    arch_diagram_title: "数据流向",
+    arch_router1: "路由器 A", arch_router1_d: "Agent (linux/mips)",
+    arch_server: "管理服务器", arch_server_d: "Server + Web UI",
+    arch_router2: "路由器 B", arch_router2_d: "Agent (linux/arm64)",
+    arch_enc: "加密 TCP", arch_enc2: "加密 TCP",
+    arch_admin: "管理员浏览器", arch_admin_d: "HTTP / WebSocket",
+    arch_webui: "Web 管理面板", arch_webui_d: ":8080",
+    feat_label: "核心功能", feat_title: "一个面板，管控所有路由器",
+    feat_desc: "IP 劫持、DNS 劫持、远程终端、OTA 升级、多用户权限，覆盖路由器远程管理的全部需求。",
+    f1_t: "IP 劫持 (DNAT)", f1_d: "选择目标外网 IP，填入转发地址，通过 iptables DNAT 即时生效。支持单条和批量操作，规则持久化存储。",
+    f2_t: "DNS 劫持", f2_d: "批量添加域名劫持规则，修改路由器 /etc/hosts 将域名解析到指定 IP，自动刷新 DNS 缓存立即生效。",
+    f3_t: "Web Shell 远程终端", f3_d: "浏览器内直接打开路由器终端，基于 xterm.js + WebSocket + PTY，无需 SSH 即可执行任意命令。",
+    f4_t: "实时连接监控", f4_d: "Agent 通过 conntrack 实时采集路由器全部外部连接（IP、端口、协议、状态），管理面板即时展示。",
+    f5_t: "端到端加密", f5_d: "基于 umbra 库（ECDH P-256 + ChaCha20-Poly1305），每次连接临时密钥实现前向保密（PFS），Zstd 压缩节省带宽。",
+    f6_t: "多用户权限体系", f6_d: "管理员创建子账号并分配 Agent 路由器，子账号仅看到被分配的设备。支持只读 / 控制 / 管理员三级权限。",
+    f7_t: "OTA 远程升级", f7_d: "通过面板选择版本，一键升级单个 Agent 或广播升级全部设备，Agent 自动下载新版并重启。",
+    f8_t: "断线自动重连", f8_d: "Agent 指数退避重连（3s → 60s），双向心跳检测，Server 上线后自动恢复连接并下发所有规则。",
+    f9_t: "SQLite 持久化", f9_d: "用户、Agent、IP 劫持规则、DNS 劫持规则全部存入 SQLite。服务重启数据不丢失，Agent 重连自动恢复规则。",
+    sv1: "7", sl1: "Agent 平台支持", sl2: "端到端加密", sl3: "部署时间", sl4: "永不停止重连",
+    tech_label: "技术栈", tech_title: "底层技术", tt_umbra: "umbra (ECDH + ChaCha20)",
+    plat_label: "支持平台", plat_title: "覆盖主流路由器架构",
+    plat_desc: "预编译二进制覆盖 x86 软路由、ARM 路由器、MIPS OpenWrt 设备，一键脚本自动检测架构。",
+    p1: "x86 软路由、服务器", p2: "树莓派 4/5、ARM 路由器", p3: "树莓派 2/3、旧 ARM 设备", p4: "OpenWrt (大端 MIPS)", p5: "OpenWrt (小端 MIPS)",
+    step_label: "快速部署", step_title: "三步完成部署",
+    step_desc: "一键安装脚本自动检测架构、安装依赖、配置 systemd 服务，最快 5 分钟完成全部部署。",
+    st1_t: "部署 Server 管理服务", st1_d: "在一台 Linux 服务器上一键安装 Server，启动后提供 Web 管理面板和 Agent 接入端口。",
+    st2_t: "部署 Agent 到路由器", st2_d: "在路由器上一键安装 Agent，脚本自动检测架构、安装 iptables / conntrack 依赖、开启 ip_forward，配置 Server 地址后自动连接。",
+    st3_t: "打开面板开始管理", st3_d: "浏览器访问 Server 的 Web 面板，即可看到已连接的 Agent 路由器。实时查看连接、执行劫持、打开终端，一切尽在掌控。",
+    req_title: "Agent 环境要求", req_desc: "Agent 需要在 Linux 路由器上运行，要求 root 权限。安装脚本会自动检测并安装 iptables、conntrack 依赖，自动开启 ip_forward。<br>支持 systemd（主流 Linux）和 procd（OpenWrt）两种服务管理方式。",
+    cta_pre: "开始部署你的", cta_hl: "IP Hijack Manager",
+    cta_desc: "拥有路由器管理权限？现在就可以开始。",
+    cta_agent: "Agent 下载", cta_server: "Server 下载", cta_tg: "Telegram",
     c_qq: "QQ群", c_email: "邮件",
     qq_title: "QQ群：933494627", qq_scan: "扫码加入交流群",
-    footer_site: "官网", footer_api: "API 文档",
-    hijack_label: "进阶方案", hijack_title: "IP Hijack Manager — 路由器级 IP 流量劫持",
-    hijack_desc: "除了 DNS 劫持，我们还提供基于 IP 层的流量劫持管理系统，在路由器上直接对目标 IP 进行 DNAT 转发，适用于更深层次的流量控制需求。",
-    hijack_badge: "进阶工具", hijack_st: "可视化管理 · 远程控制 · 多用户权限",
-    hijack_sd: "通过 Web 管理面板实时查看路由器上所有外部连接，选中目标 IP 一键劫持，将流量转发到指定地址。支持多台 Agent 路由器统一管理。",
-    hf1_t: "实时连接监控", hf1_d: "Agent 实时上报路由器全部外部连接（IP、端口、协议、状态），管理面板即时展示。",
-    hf2_t: "一键 IP 劫持", hf2_d: "选择目标外网 IP，填入转发地址，通过 iptables DNAT 即时生效，规则断电持久化。",
-    hf3_t: "多用户 & 权限体系", hf3_d: "管理员可创建子账号并分配 Agent，子账号仅能看到和操作自己被分配的路由器。",
-    hf4_t: "SQLite 持久化", hf4_d: "用户、Agent、劫持规则全部存入 SQLite 数据库，Agent 重启自动恢复规则。"
+    footer_site: "官网"
   },
   en: {
-    badge: "⚡ For Mining Farm Operators",
-    h1_pre: "DNS Hijack", h1_highlight: "Stealth Fee",
-    hero_sub: "Zero config changes on miners, zero awareness. With just router access, deploy fully automatic and covert hashrate fee collection at farm scale.",
-    github_btn: "Get on GitHub",
-    diagram_title: "HOW IT WORKS",
-    flow_miner: "Miners", flow_miner_desc: "Normal mining requests",
-    flow_dns: "Router DNS", flow_dns_desc: "Hijack pool domain",
-    flow_proxy_desc: "Relay + Smart Fee",
-    flow_pool: "Target Pool", flow_pool_desc: "Submit shares normally",
-    req_title: "Prerequisite: Router Admin Access",
-    req_desc: "This solution modifies the DNS records on the mining farm's router, pointing pool domains to the FXMinerProxy relay server.<br>The operator must have admin access to the farm router to configure custom DNS rules.<br>No changes to any miner configuration are needed — workers are completely unaware.",
-    feat_label: "KEY ADVANTAGES", feat_title: "Why DNS Hijack?",
-    feat_desc: "Compared to traditional relay-based fee collection, the DNS hijack approach offers unmatched stealth and deployment convenience.",
-    f1_t: "Completely Undetectable", f1_d: "Zero changes to miner config. Pool addresses stay the same, connection status normal — everything looks unchanged from the worker's perspective.",
-    f2_t: "One-Click Farm Coverage", f2_d: "Configure DNS rules once on the router, and all miners in the farm are automatically covered. No per-machine changes needed.",
-    f3_t: "Highly Covert", f3_d: "Traffic flows through standard pool protocol channels with no extra ports or processes, making it extremely hard to detect.",
-    f4_t: "Precise Fee Control", f4_d: "FXMinerProxy dashboard lets you set exact fee rates per coin or per worker, with smooth and stable hashrate curves.",
-    f5_t: "Stable & Lossless", f5_d: "Battle-tested on farms with thousands of miners. Long-term stable operation with auto-reconnect — no shares lost.",
-    f6_t: "50+ Coins Supported", f6_d: "Full coverage of BTC, LTC, ETC, ETHW, KAS, RVN, CFX, BEAM, ZEC and more. Continuously updated.",
-    s1: "Verified Miner Scale", s2: "Supported Coins", s3: "Ultra-Low Dev Fee", s4: "Service Uptime",
-    coin_label: "SUPPORTED COINS", coin_title: "Full Coin Coverage", coin_more: "More coming...",
-    step_label: "DEPLOYMENT", step_title: "Deploy in 3 Steps",
-    step_desc: "The entire process takes as little as 10 minutes. No complex networking knowledge required.",
-    st1_t: "Deploy FXMinerProxy Relay", st1_d: "One-click install FXMinerProxy on a Linux server. Configure target pool address, fee wallet, and fee percentage.",
-    st2_t: "Configure Router DNS Hijack", st2_d: "Log in to the farm router admin panel. Point the target pool's domain DNS resolution to the FXMinerProxy server IP. All miner traffic through this router will be automatically relayed.",
-    st3_t: "Monitor & Run Stable", st3_d: "Use the FXMinerProxy visual dashboard to monitor hashrate curves, online miners, fee status and more in real-time.",
-    cta_pre: "Start Your", cta_hl: " Stealth Fee ", cta_post: "Deployment",
-    cta_desc: "If you're a farm operator with router access, you can start right now.",
-    cta_github: "GitHub Download", cta_tg: "✈ Telegram Group", cta_api: "📄 API Docs",
+    badge: "IP Hijack Manager",
+    h1_pre: "Router-Level", h1_hl: "Traffic Hijack Manager",
+    hero_sub: "Deploy Agent on routers, manage remotely via encrypted tunnel. IP hijacking (DNAT), DNS hijacking, Web Shell terminal, batch operations, multi-user permissions — one dashboard to control all routers.",
+    btn_agent: "Agent Install", btn_server: "Server Install",
+    arch_label: "ARCHITECTURE", arch_title: "Agent / Server Distributed Architecture",
+    arch_desc: "Agent runs on routers and connects to Server via end-to-end encrypted tunnel. Admins control all routers remotely through the Web dashboard — no need to log into each device.",
+    arch_diagram_title: "DATA FLOW",
+    arch_router1: "Router A", arch_router1_d: "Agent (linux/mips)",
+    arch_server: "Management Server", arch_server_d: "Server + Web UI",
+    arch_router2: "Router B", arch_router2_d: "Agent (linux/arm64)",
+    arch_enc: "Encrypted TCP", arch_enc2: "Encrypted TCP",
+    arch_admin: "Admin Browser", arch_admin_d: "HTTP / WebSocket",
+    arch_webui: "Web Dashboard", arch_webui_d: ":8080",
+    feat_label: "CORE FEATURES", feat_title: "One Dashboard, All Routers",
+    feat_desc: "IP hijacking, DNS hijacking, remote terminal, OTA upgrades, multi-user permissions — everything you need for remote router management.",
+    f1_t: "IP Hijacking (DNAT)", f1_d: "Select target external IP, enter forwarding address, apply iptables DNAT instantly. Supports single and batch operations with persistent rule storage.",
+    f2_t: "DNS Hijacking", f2_d: "Batch add domain hijack rules, modify router /etc/hosts to redirect domain resolution to specified IPs. Auto-flushes DNS cache for immediate effect.",
+    f3_t: "Web Shell Terminal", f3_d: "Open a router terminal directly in the browser, powered by xterm.js + WebSocket + PTY. Execute any command without SSH.",
+    f4_t: "Real-Time Connection Monitoring", f4_d: "Agent collects all external connections via conntrack (IP, port, protocol, state) in real-time, instantly displayed on the dashboard.",
+    f5_t: "End-to-End Encryption", f5_d: "Built on umbra (ECDH P-256 + ChaCha20-Poly1305) with ephemeral keys for Perfect Forward Secrecy (PFS). Zstd compression saves bandwidth.",
+    f6_t: "Multi-User Permissions", f6_d: "Admins create sub-accounts and assign Agent routers. Sub-accounts only see assigned devices. Three permission levels: readonly / control / admin.",
+    f7_t: "OTA Remote Upgrade", f7_d: "Select version from the dashboard, one-click upgrade individual Agent or broadcast to all devices. Agent auto-downloads and restarts.",
+    f8_t: "Auto Reconnection", f8_d: "Agent uses exponential backoff (3s → 60s) with bidirectional heartbeat. Server restores connection and re-sends all rules automatically.",
+    f9_t: "SQLite Persistence", f9_d: "Users, Agents, IP hijack rules, DNS hijack rules all stored in SQLite. Data survives restarts, rules auto-restored on Agent reconnect.",
+    sv1: "7", sl1: "Agent Platforms", sl2: "End-to-End Encrypted", sl3: "Deploy Time", sl4: "Always Reconnect",
+    tech_label: "TECH STACK", tech_title: "Under the Hood", tt_umbra: "umbra (ECDH + ChaCha20)",
+    plat_label: "PLATFORMS", plat_title: "All Major Router Architectures",
+    plat_desc: "Pre-built binaries for x86 software routers, ARM routers, and MIPS OpenWrt devices. Install script auto-detects architecture.",
+    p1: "x86 software routers, servers", p2: "Raspberry Pi 4/5, ARM routers", p3: "Raspberry Pi 2/3, older ARM", p4: "OpenWrt (big-endian MIPS)", p5: "OpenWrt (little-endian MIPS)",
+    step_label: "QUICK START", step_title: "Deploy in 3 Steps",
+    step_desc: "One-click install script auto-detects architecture, installs dependencies, configures systemd service. Full deployment in as little as 5 minutes.",
+    st1_t: "Deploy Server", st1_d: "One-click install Server on a Linux machine. It provides the Web dashboard and Agent connection endpoint.",
+    st2_t: "Deploy Agent on Router", st2_d: "One-click install Agent on the router. Script auto-detects architecture, installs iptables/conntrack dependencies, enables ip_forward, connects to Server.",
+    st3_t: "Open Dashboard & Manage", st3_d: "Open the Server's Web dashboard in your browser. See connected Agent routers, view connections, execute hijacks, open terminals — everything under control.",
+    req_title: "Agent Requirements", req_desc: "Agent requires a Linux router with root access. The install script automatically detects and installs iptables, conntrack dependencies and enables ip_forward.<br>Supports both systemd (mainstream Linux) and procd (OpenWrt) service management.",
+    cta_pre: "Start Deploying", cta_hl: "IP Hijack Manager",
+    cta_desc: "Have router admin access? Start right now.",
+    cta_agent: "Agent Download", cta_server: "Server Download", cta_tg: "Telegram",
     c_qq: "QQ Group", c_email: "Email",
     qq_title: "QQ Group: 933494627", qq_scan: "Scan to join",
-    footer_site: "Website", footer_api: "API Docs",
-    hijack_label: "ADVANCED", hijack_title: "IP Hijack Manager — Router-Level IP Traffic Hijacking",
-    hijack_desc: "Beyond DNS hijacking, we offer an IP-layer traffic hijacking management system that performs DNAT forwarding directly on the router for target IPs — ideal for deeper traffic control needs.",
-    hijack_badge: "ADVANCED TOOL", hijack_st: "Visual Management · Remote Control · Multi-User Permissions",
-    hijack_sd: "View all external connections on the router in real-time via a web dashboard, select a target IP and hijack it with one click, forwarding traffic to a specified address. Supports unified management of multiple Agent routers.",
-    hf1_t: "Real-Time Connection Monitoring", hf1_d: "Agent reports all external connections (IP, port, protocol, state) in real-time; the management dashboard displays them instantly.",
-    hf2_t: "One-Click IP Hijacking", hf2_d: "Select a target external IP, enter the forwarding address, and apply iptables DNAT instantly. Rules persist across reboots.",
-    hf3_t: "Multi-User & Permissions", hf3_d: "Admins can create sub-accounts and assign Agents. Sub-accounts can only view and operate routers assigned to them.",
-    hf4_t: "SQLite Persistence", hf4_d: "Users, Agents, and hijack rules are all stored in SQLite. Agent automatically restores rules on restart."
+    footer_site: "Website"
   }
 };
 
