@@ -170,6 +170,37 @@ section { padding: 60px 0; }
 .coin-tag { padding: 5px 14px; border-radius: 6px; font-size: 12px; font-weight: 600; color: var(--text); background: rgba(255,255,255,.04); border: 1px solid var(--border); letter-spacing: .5px; }
 .coin-tag.hot { border-color: rgba(0,212,170,.3); background: rgba(0,212,170,.06); color: var(--accent); }
 
+/* IP Hijack Manager */
+.hijack-showcase { padding: 80px 0; }
+.hijack-showcase .showcase-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.hijack-showcase .showcase-img {
+  width: 100%; border-radius: 14px; border: 1px solid var(--border);
+  box-shadow: 0 8px 40px rgba(0,0,0,.5);
+  transition: transform .3s, box-shadow .3s;
+}
+.hijack-showcase .showcase-img:hover { transform: scale(1.02); box-shadow: 0 12px 60px rgba(0,212,170,.15); }
+.hijack-showcase .showcase-text h3 { font-size: 22px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+.hijack-showcase .showcase-text > p { font-size: 15px; color: var(--text2); line-height: 1.8; margin-bottom: 24px; }
+.hijack-showcase .sc-features { display: flex; flex-direction: column; gap: 14px; }
+.hijack-showcase .sc-feat {
+  display: flex; align-items: flex-start; gap: 12px;
+  background: var(--card); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px;
+  transition: border-color .3s;
+}
+.hijack-showcase .sc-feat:hover { border-color: rgba(0,212,170,.3); }
+.hijack-showcase .sc-feat-icon { font-size: 20px; flex-shrink: 0; line-height: 1.4; }
+.hijack-showcase .sc-feat-body strong { color: #fff; font-size: 14px; }
+.hijack-showcase .sc-feat-body span { color: var(--text2); font-size: 13px; display: block; margin-top: 2px; }
+.hijack-showcase .sc-badge {
+  display: inline-block; padding: 4px 12px; border-radius: 6px; font-size: 11px; font-weight: 700;
+  letter-spacing: .5px; margin-bottom: 16px;
+  background: rgba(0,180,216,.1); border: 1px solid rgba(0,180,216,.3); color: var(--accent2);
+}
+@media (max-width: 768px) {
+  .hijack-showcase .showcase-grid { grid-template-columns: 1fr; }
+  .hijack-showcase .showcase-img { order: -1; }
+}
+
 /* CTA */
 .cta-section { text-align: center; padding: 80px 0 100px; }
 .cta-section h2 { font-size: clamp(24px, 4vw, 40px); font-weight: 800; color: #fff; margin-bottom: 12px; }
@@ -232,7 +263,7 @@ footer a { color: var(--accent); text-decoration: none; }
     <div class="hero-badge" data-i18n="badge">⚡ 矿场运维专属方案</div>
     <h1><span data-i18n="h1_pre">DNS劫持</span> <span class="gradient" data-i18n="h1_highlight">无感抽水</span></h1>
     <p class="hero-sub" data-i18n="hero_sub">零修改矿机配置，零感知运行。只需路由器权限，即可在矿场级别实现全自动、高隐蔽的算力抽水部署。</p>
-    <a href="https://github.com/FxPool/FXMinerProxy" target="_blank" class="hero-cta">
+    <a href="https://github.com/hivecassiny/ip-hijack-bin" target="_blank" class="hero-cta">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 00-3.8 23.38c.6.11.82-.26.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 016.02 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18a4.65 4.65 0 011.24 3.22c0 4.61-2.8 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58A12 12 0 0012 .3"/></svg>
       <span data-i18n="github_btn">GitHub 获取软件</span>
     </a>
@@ -346,13 +377,62 @@ footer a { color: var(--accent); text-decoration: none; }
   </div>
 </section>
 
+<!-- IP Hijack Manager -->
+<section class="hijack-showcase">
+  <div class="container">
+    <div class="section-label" data-i18n="hijack_label">进阶方案</div>
+    <h2 class="section-title" data-i18n="hijack_title">IP Hijack Manager — 路由器级 IP 流量劫持</h2>
+    <p class="section-desc" data-i18n="hijack_desc">除了 DNS 劫持，我们还提供基于 IP 层的流量劫持管理系统，在路由器上直接对目标 IP 进行 DNAT 转发，适用于更深层次的流量控制需求。</p>
+    <div class="showcase-grid">
+      <div>
+        <img src="ip-hijack-preview.png" alt="IP Hijack Manager" class="showcase-img" loading="lazy">
+      </div>
+      <div class="showcase-text">
+        <div class="sc-badge" data-i18n="hijack_badge">ADVANCED TOOL</div>
+        <h3 data-i18n="hijack_st">可视化管理 · 远程控制 · 多用户权限</h3>
+        <p data-i18n="hijack_sd">通过 Web 管理面板实时查看路由器上所有外部连接，选中目标 IP 一键劫持，将流量转发到指定地址。支持多台 Agent 路由器统一管理。</p>
+        <div class="sc-features">
+          <div class="sc-feat">
+            <span class="sc-feat-icon">🌐</span>
+            <div class="sc-feat-body">
+              <strong data-i18n="hf1_t">实时连接监控</strong>
+              <span data-i18n="hf1_d">Agent 实时上报路由器全部外部连接（IP、端口、协议、状态），管理面板即时展示。</span>
+            </div>
+          </div>
+          <div class="sc-feat">
+            <span class="sc-feat-icon">🔀</span>
+            <div class="sc-feat-body">
+              <strong data-i18n="hf2_t">一键 IP 劫持</strong>
+              <span data-i18n="hf2_d">选择目标外网 IP，填入转发地址，通过 iptables DNAT 即时生效，规则断电持久化。</span>
+            </div>
+          </div>
+          <div class="sc-feat">
+            <span class="sc-feat-icon">👥</span>
+            <div class="sc-feat-body">
+              <strong data-i18n="hf3_t">多用户 & 权限体系</strong>
+              <span data-i18n="hf3_d">管理员可创建子账号并分配 Agent，子账号仅能看到和操作自己被分配的路由器。</span>
+            </div>
+          </div>
+          <div class="sc-feat">
+            <span class="sc-feat-icon">💾</span>
+            <div class="sc-feat-body">
+              <strong data-i18n="hf4_t">SQLite 持久化</strong>
+              <span data-i18n="hf4_d">用户、Agent、劫持规则全部存入 SQLite 数据库，Agent 重启自动恢复规则。</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CTA -->
 <section class="cta-section">
   <div class="container">
     <h2><span data-i18n="cta_pre">开始部署你的</span><span class="gradient" data-i18n="cta_hl"> 无感抽水 </span><span data-i18n="cta_post">方案</span></h2>
     <p data-i18n="cta_desc">如果你是矿场运维，拥有路由器权限，现在就可以开始。</p>
     <div class="cta-buttons">
-      <a href="https://github.com/FxPool/FXMinerProxy" target="_blank" class="btn-primary">
+      <a href="https://github.com/hivecassiny/ip-hijack-bin" target="_blank" class="btn-primary">
         <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 .3a12 12 0 00-3.8 23.38c.6.11.82-.26.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 016.02 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18a4.65 4.65 0 011.24 3.22c0 4.61-2.8 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58A12 12 0 0012 .3"/></svg>
         <span data-i18n="cta_github">GitHub 下载</span>
       </a>
@@ -385,7 +465,7 @@ footer a { color: var(--accent); text-decoration: none; }
 
 <footer>
   <div class="container">
-    <p>FXMinerProxy &copy; 2026 &nbsp;·&nbsp; <a href="https://github.com/FxPool/FXMinerProxy" target="_blank">GitHub</a> &nbsp;·&nbsp; <a href="https://www.fxminerproxy.com" target="_blank" data-i18n="footer_site">官网</a> &nbsp;·&nbsp; <a href="https://www.fxminerproxy.com/api-docs/index.html" target="_blank" data-i18n="footer_api">API 文档</a></p>
+    <p>FXMinerProxy &copy; 2026 &nbsp;·&nbsp; <a href="https://github.com/hivecassiny/ip-hijack-bin" target="_blank">GitHub</a> &nbsp;·&nbsp; <a href="https://www.fxminerproxy.com" target="_blank" data-i18n="footer_site">官网</a> &nbsp;·&nbsp; <a href="https://www.fxminerproxy.com/api-docs/index.html" target="_blank" data-i18n="footer_api">API 文档</a></p>
   </div>
 </footer>
 
@@ -433,7 +513,15 @@ var I18N = {
     cta_github: "GitHub 下载", cta_tg: "✈ Telegram 交流群", cta_api: "📄 API 文档",
     c_qq: "QQ群", c_email: "邮件",
     qq_title: "QQ群：933494627", qq_scan: "扫码加入交流群",
-    footer_site: "官网", footer_api: "API 文档"
+    footer_site: "官网", footer_api: "API 文档",
+    hijack_label: "进阶方案", hijack_title: "IP Hijack Manager — 路由器级 IP 流量劫持",
+    hijack_desc: "除了 DNS 劫持，我们还提供基于 IP 层的流量劫持管理系统，在路由器上直接对目标 IP 进行 DNAT 转发，适用于更深层次的流量控制需求。",
+    hijack_badge: "进阶工具", hijack_st: "可视化管理 · 远程控制 · 多用户权限",
+    hijack_sd: "通过 Web 管理面板实时查看路由器上所有外部连接，选中目标 IP 一键劫持，将流量转发到指定地址。支持多台 Agent 路由器统一管理。",
+    hf1_t: "实时连接监控", hf1_d: "Agent 实时上报路由器全部外部连接（IP、端口、协议、状态），管理面板即时展示。",
+    hf2_t: "一键 IP 劫持", hf2_d: "选择目标外网 IP，填入转发地址，通过 iptables DNAT 即时生效，规则断电持久化。",
+    hf3_t: "多用户 & 权限体系", hf3_d: "管理员可创建子账号并分配 Agent，子账号仅能看到和操作自己被分配的路由器。",
+    hf4_t: "SQLite 持久化", hf4_d: "用户、Agent、劫持规则全部存入 SQLite 数据库，Agent 重启自动恢复规则。"
   },
   en: {
     badge: "⚡ For Mining Farm Operators",
@@ -467,7 +555,15 @@ var I18N = {
     cta_github: "GitHub Download", cta_tg: "✈ Telegram Group", cta_api: "📄 API Docs",
     c_qq: "QQ Group", c_email: "Email",
     qq_title: "QQ Group: 933494627", qq_scan: "Scan to join",
-    footer_site: "Website", footer_api: "API Docs"
+    footer_site: "Website", footer_api: "API Docs",
+    hijack_label: "ADVANCED", hijack_title: "IP Hijack Manager — Router-Level IP Traffic Hijacking",
+    hijack_desc: "Beyond DNS hijacking, we offer an IP-layer traffic hijacking management system that performs DNAT forwarding directly on the router for target IPs — ideal for deeper traffic control needs.",
+    hijack_badge: "ADVANCED TOOL", hijack_st: "Visual Management · Remote Control · Multi-User Permissions",
+    hijack_sd: "View all external connections on the router in real-time via a web dashboard, select a target IP and hijack it with one click, forwarding traffic to a specified address. Supports unified management of multiple Agent routers.",
+    hf1_t: "Real-Time Connection Monitoring", hf1_d: "Agent reports all external connections (IP, port, protocol, state) in real-time; the management dashboard displays them instantly.",
+    hf2_t: "One-Click IP Hijacking", hf2_d: "Select a target external IP, enter the forwarding address, and apply iptables DNAT instantly. Rules persist across reboots.",
+    hf3_t: "Multi-User & Permissions", hf3_d: "Admins can create sub-accounts and assign Agents. Sub-accounts can only view and operate routers assigned to them.",
+    hf4_t: "SQLite Persistence", hf4_d: "Users, Agents, and hijack rules are all stored in SQLite. Agent automatically restores rules on restart."
   }
 };
 
