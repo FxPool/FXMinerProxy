@@ -252,6 +252,10 @@ footer a { color: var(--accent); text-decoration: none; }
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 00-3.8 23.38c.6.11.82-.26.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 016.02 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18a4.65 4.65 0 011.24 3.22c0 4.61-2.8 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58A12 12 0 0012 .3"/></svg>
         <span data-i18n="btn_agent">Agent 安装</span>
       </a>
+      <a href="http://ipagent.hivempos.com:13556/u/login" target="_blank" class="btn-outline">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M15 3h4a2 2 0 012 2v14a2 2 0 01-2 2h-4M10 17l5-5-5-5M15 12H3"/></svg>
+        <span data-i18n="btn_login">管理登录</span>
+      </a>
     </div>
     <div class="hero-screenshot">
       <img src="dashboard-preview.png" alt="IP Hijack Manager Dashboard" loading="eager">
@@ -467,6 +471,7 @@ var I18N = {
     h1_pre: "路由器级", h1_hl: "流量劫持管理系统",
     hero_sub: "部署 Agent 到路由器，通过加密通道远程管理。支持 IP 劫持（DNAT）、DNS 劫持、Web Shell 远程终端、批量操作、多用户权限，一个面板管控所有路由器。",
     btn_agent: "Agent 安装",
+    btn_login: "管理登录",
     arch_label: "系统架构", arch_title: "Agent / Server 分布式架构",
     arch_desc: "Agent 部署在路由器上，通过端到端加密通道连接 Server。管理员通过 Web 面板远程操控所有路由器，无需逐台登录。",
     arch_diagram_title: "数据流向",
@@ -509,6 +514,7 @@ var I18N = {
     h1_pre: "Router-Level", h1_hl: "Traffic Hijack Manager",
     hero_sub: "Deploy Agent on routers, manage remotely via encrypted tunnel. IP hijacking (DNAT), DNS hijacking, Web Shell terminal, batch operations, multi-user permissions — one dashboard to control all routers.",
     btn_agent: "Agent Install",
+    btn_login: "Dashboard Login",
     arch_label: "ARCHITECTURE", arch_title: "Agent / Server Distributed Architecture",
     arch_desc: "Agent runs on routers and connects to Server via end-to-end encrypted tunnel. Admins control all routers remotely through the Web dashboard — no need to log into each device.",
     arch_diagram_title: "DATA FLOW",
