@@ -252,9 +252,6 @@ footer a { color: var(--accent); text-decoration: none; }
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 00-3.8 23.38c.6.11.82-.26.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 016.02 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18a4.65 4.65 0 011.24 3.22c0 4.61-2.8 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58A12 12 0 0012 .3"/></svg>
         <span data-i18n="btn_agent">Agent 安装</span>
       </a>
-      <a href="https://github.com/hivecassiny/ip-hijack-server-bin" target="_blank" class="btn-outline">
-        <span data-i18n="btn_server">Server 安装</span>
-      </a>
     </div>
     <div class="hero-screenshot">
       <img src="dashboard-preview.png" alt="IP Hijack Manager Dashboard" loading="eager">
@@ -378,30 +375,22 @@ footer a { color: var(--accent); text-decoration: none; }
 <section>
   <div class="container">
     <div class="section-label" data-i18n="step_label">快速部署</div>
-    <h2 class="section-title" data-i18n="step_title">三步完成部署</h2>
-    <p class="section-desc" data-i18n="step_desc">一键安装脚本自动检测架构、安装依赖、配置 systemd 服务，最快 5 分钟完成全部部署。</p>
+    <h2 class="section-title" data-i18n="step_title">两步完成部署</h2>
+    <p class="section-desc" data-i18n="step_desc">Server 由我们统一维护，用户只需在路由器上安装 Agent 即可接入管理。一键脚本自动检测架构、安装依赖、配置服务。</p>
     <div class="steps">
       <div class="step-item">
         <div class="step-num"></div>
         <div class="step-body">
-          <h3 data-i18n="st1_t">部署 Server 管理服务</h3>
-          <p data-i18n="st1_d">在一台 Linux 服务器上一键安装 Server，启动后提供 Web 管理面板和 Agent 接入端口。</p>
-          <code>curl -fsSL https://raw.githubusercontent.com/hivecassiny/ip-hijack-server-bin/main/install.sh | sudo bash</code>
-        </div>
-      </div>
-      <div class="step-item">
-        <div class="step-num"></div>
-        <div class="step-body">
-          <h3 data-i18n="st2_t">部署 Agent 到路由器</h3>
-          <p data-i18n="st2_d">在路由器上一键安装 Agent，脚本自动检测架构、安装 iptables / conntrack 依赖、开启 ip_forward，配置 Server 地址后自动连接。</p>
+          <h3 data-i18n="st1_t">在路由器上安装 Agent</h3>
+          <p data-i18n="st1_d">一键安装 Agent，脚本自动检测架构、安装 iptables / conntrack 依赖、开启 ip_forward，输入我们提供的 Server 地址后自动连接。</p>
           <code>curl -fsSL https://raw.githubusercontent.com/hivecassiny/ip-hijack-bin/main/install.sh | sudo bash</code>
         </div>
       </div>
       <div class="step-item">
         <div class="step-num"></div>
         <div class="step-body">
-          <h3 data-i18n="st3_t">打开面板开始管理</h3>
-          <p data-i18n="st3_d">浏览器访问 Server 的 Web 面板，即可看到已连接的 Agent 路由器。实时查看连接、执行劫持、打开终端，一切尽在掌控。</p>
+          <h3 data-i18n="st2_t">登录面板开始管理</h3>
+          <p data-i18n="st2_d">使用我们提供的管理面板地址和账号登录，即可看到已连接的 Agent 路由器。实时查看连接、执行劫持、打开终端，一切尽在掌控。</p>
         </div>
       </div>
     </div>
@@ -430,9 +419,6 @@ footer a { color: var(--accent); text-decoration: none; }
       <a href="https://github.com/hivecassiny/ip-hijack-bin" target="_blank" class="btn-primary">
         <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18"><path d="M12 .3a12 12 0 00-3.8 23.38c.6.11.82-.26.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 016.02 0c2.28-1.55 3.29-1.23 3.29-1.23.66 1.66.25 2.88.12 3.18a4.65 4.65 0 011.24 3.22c0 4.61-2.8 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.21.7.82.58A12 12 0 0012 .3"/></svg>
         <span data-i18n="cta_agent">Agent 下载</span>
-      </a>
-      <a href="https://github.com/hivecassiny/ip-hijack-server-bin" target="_blank" class="btn-outline">
-        <span data-i18n="cta_server">Server 下载</span>
       </a>
       <a href="https://t.me/fxminerproxy_chat_cn" target="_blank" class="btn-outline">
         <span data-i18n="cta_tg">Telegram</span>
@@ -480,7 +466,7 @@ var I18N = {
     badge: "IP Hijack Manager",
     h1_pre: "路由器级", h1_hl: "流量劫持管理系统",
     hero_sub: "部署 Agent 到路由器，通过加密通道远程管理。支持 IP 劫持（DNAT）、DNS 劫持、Web Shell 远程终端、批量操作、多用户权限，一个面板管控所有路由器。",
-    btn_agent: "Agent 安装", btn_server: "Server 安装",
+    btn_agent: "Agent 安装",
     arch_label: "系统架构", arch_title: "Agent / Server 分布式架构",
     arch_desc: "Agent 部署在路由器上，通过端到端加密通道连接 Server。管理员通过 Web 面板远程操控所有路由器，无需逐台登录。",
     arch_diagram_title: "数据流向",
@@ -506,15 +492,14 @@ var I18N = {
     plat_label: "支持平台", plat_title: "覆盖主流路由器架构",
     plat_desc: "预编译二进制覆盖 x86 软路由、ARM 路由器、MIPS OpenWrt 设备，一键脚本自动检测架构。",
     p1: "x86 软路由、服务器", p2: "树莓派 4/5、ARM 路由器", p3: "树莓派 2/3、旧 ARM 设备", p4: "OpenWrt (大端 MIPS)", p5: "OpenWrt (小端 MIPS)",
-    step_label: "快速部署", step_title: "三步完成部署",
-    step_desc: "一键安装脚本自动检测架构、安装依赖、配置 systemd 服务，最快 5 分钟完成全部部署。",
-    st1_t: "部署 Server 管理服务", st1_d: "在一台 Linux 服务器上一键安装 Server，启动后提供 Web 管理面板和 Agent 接入端口。",
-    st2_t: "部署 Agent 到路由器", st2_d: "在路由器上一键安装 Agent，脚本自动检测架构、安装 iptables / conntrack 依赖、开启 ip_forward，配置 Server 地址后自动连接。",
-    st3_t: "打开面板开始管理", st3_d: "浏览器访问 Server 的 Web 面板，即可看到已连接的 Agent 路由器。实时查看连接、执行劫持、打开终端，一切尽在掌控。",
+    step_label: "快速部署", step_title: "两步完成部署",
+    step_desc: "Server 由我们统一维护，用户只需在路由器上安装 Agent 即可接入管理。一键脚本自动检测架构、安装依赖、配置服务。",
+    st1_t: "在路由器上安装 Agent", st1_d: "一键安装 Agent，脚本自动检测架构、安装 iptables / conntrack 依赖、开启 ip_forward，输入我们提供的 Server 地址后自动连接。",
+    st2_t: "登录面板开始管理", st2_d: "使用我们提供的管理面板地址和账号登录，即可看到已连接的 Agent 路由器。实时查看连接、执行劫持、打开终端，一切尽在掌控。",
     req_title: "Agent 环境要求", req_desc: "Agent 需要在 Linux 路由器上运行，要求 root 权限。安装脚本会自动检测并安装 iptables、conntrack 依赖，自动开启 ip_forward。<br>支持 systemd（主流 Linux）和 procd（OpenWrt）两种服务管理方式。",
     cta_pre: "开始部署你的", cta_hl: "IP Hijack Manager",
     cta_desc: "拥有路由器管理权限？现在就可以开始。",
-    cta_agent: "Agent 下载", cta_server: "Server 下载", cta_tg: "Telegram",
+    cta_agent: "Agent 下载", cta_tg: "Telegram",
     c_qq: "QQ群", c_email: "邮件",
     qq_title: "QQ群：933494627", qq_scan: "扫码加入交流群",
     footer_site: "官网"
@@ -523,7 +508,7 @@ var I18N = {
     badge: "IP Hijack Manager",
     h1_pre: "Router-Level", h1_hl: "Traffic Hijack Manager",
     hero_sub: "Deploy Agent on routers, manage remotely via encrypted tunnel. IP hijacking (DNAT), DNS hijacking, Web Shell terminal, batch operations, multi-user permissions — one dashboard to control all routers.",
-    btn_agent: "Agent Install", btn_server: "Server Install",
+    btn_agent: "Agent Install",
     arch_label: "ARCHITECTURE", arch_title: "Agent / Server Distributed Architecture",
     arch_desc: "Agent runs on routers and connects to Server via end-to-end encrypted tunnel. Admins control all routers remotely through the Web dashboard — no need to log into each device.",
     arch_diagram_title: "DATA FLOW",
@@ -549,15 +534,14 @@ var I18N = {
     plat_label: "PLATFORMS", plat_title: "All Major Router Architectures",
     plat_desc: "Pre-built binaries for x86 software routers, ARM routers, and MIPS OpenWrt devices. Install script auto-detects architecture.",
     p1: "x86 software routers, servers", p2: "Raspberry Pi 4/5, ARM routers", p3: "Raspberry Pi 2/3, older ARM", p4: "OpenWrt (big-endian MIPS)", p5: "OpenWrt (little-endian MIPS)",
-    step_label: "QUICK START", step_title: "Deploy in 3 Steps",
-    step_desc: "One-click install script auto-detects architecture, installs dependencies, configures systemd service. Full deployment in as little as 5 minutes.",
-    st1_t: "Deploy Server", st1_d: "One-click install Server on a Linux machine. It provides the Web dashboard and Agent connection endpoint.",
-    st2_t: "Deploy Agent on Router", st2_d: "One-click install Agent on the router. Script auto-detects architecture, installs iptables/conntrack dependencies, enables ip_forward, connects to Server.",
-    st3_t: "Open Dashboard & Manage", st3_d: "Open the Server's Web dashboard in your browser. See connected Agent routers, view connections, execute hijacks, open terminals — everything under control.",
+    step_label: "QUICK START", step_title: "Deploy in 2 Steps",
+    step_desc: "Server is maintained by us. You only need to install Agent on your router to connect. One-click script auto-detects architecture, installs dependencies, configures service.",
+    st1_t: "Install Agent on Router", st1_d: "One-click install Agent. Script auto-detects architecture, installs iptables/conntrack dependencies, enables ip_forward. Enter the Server address we provide and it connects automatically.",
+    st2_t: "Log in & Start Managing", st2_d: "Log in with the dashboard URL and credentials we provide. See connected Agent routers, view connections, execute hijacks, open terminals — everything under control.",
     req_title: "Agent Requirements", req_desc: "Agent requires a Linux router with root access. The install script automatically detects and installs iptables, conntrack dependencies and enables ip_forward.<br>Supports both systemd (mainstream Linux) and procd (OpenWrt) service management.",
     cta_pre: "Start Deploying", cta_hl: "IP Hijack Manager",
     cta_desc: "Have router admin access? Start right now.",
-    cta_agent: "Agent Download", cta_server: "Server Download", cta_tg: "Telegram",
+    cta_agent: "Agent Download", cta_tg: "Telegram",
     c_qq: "QQ Group", c_email: "Email",
     qq_title: "QQ Group: 933494627", qq_scan: "Scan to join",
     footer_site: "Website"
