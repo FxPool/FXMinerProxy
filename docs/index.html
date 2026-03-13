@@ -2,1043 +2,697 @@
 <html lang="zxx">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>FxMinerProxy</title>
-<!--bootstrap.min.css-->
-<link rel="stylesheet" href="static/css/bootstrap.min.css">
-<!--animate.css-->
-<link rel="stylesheet" href="static/css/animate.min.css">
-<!--fontawesome 5-->
-<link rel="stylesheet" href="static/css/all.min.css">
-<!--slicknav.css-->
-<link rel="stylesheet" href="static/css/slicknav.min.css">
-<!--slickslider.css-->
-<link rel="stylesheet" href="static/css/slick-theme.css">
-<link rel="stylesheet" href="static/css/slick.css">
-<!-- lity.css -->
-<link rel="stylesheet" href="static/css/lity.min.css">
-<!-- flaticon.css -->
-<link rel="stylesheet" href="static/css/flaticon.css">
-<!--Fav-icon-->
-<link rel="shortcut icon" href="static/images/fav-icon.ico" type="image/x-icon">
-<link rel="icon" href="static/images/fav-icon.png" type="image/x-icon">
-<!-- Custom.css -->
-<link rel="stylesheet" href="static/css/style.css">
-
-<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-	<script src="https://oss.maxcdn.com/libs/respond.static/js/1.4.2/respond.min.js"></script>
-<![endif]-->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>FxMinerProxy</title>
+  
+  <!-- CSS Dependencies -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/all.min.css">
+  
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="static/images/fav-icon.ico" type="image/x-icon">
+  <link rel="icon" href="static/images/fav-icon.png" type="image/x-icon">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="static/css/style.css">
 
 </head>
 
 <body>
-<!-- Preloader -->
-<div id="preloader"></div>
-<!-- Start-Header-Section -->
-<!-- Menu-start-area -->
-<header>
-	<div class="header-fixed header-one">
-		<div class="container">
-			<nav class="navbar navbar-expand-lg navbar-light">
-				<a class="navbar-brand" href="index.html">
-					<img src="static/images/logo.png" class="logo" alt="logo">
-				</a>
-				<div class="collapse navbar-collapse my-lg-0" id="navbarNav">
-					<ul class="navbar-nav ml-auto text-center">
-						<li class="nav-item active">
-							<a class="nav-link scroll" href="#header" i18n="i18n.home">主页</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link scroll" href="#Features" i18n="i18n.features">特点</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link scroll" href="#See-demo" i18n="i18n.cases">视频11</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link scroll" href="#Pricing" i18n="i18n.price">费用</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link scroll" href="#Contact-Us" i18n="i18n.contact">联系我们</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="api-docs/index.html" target="_blank" i18n="i18n.api_docs">API文档</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link scroll" href="#" i18n="i18n.language">语言</a>
-							<ul class="dropdown">
-								<li class="nav-item" onclick="languageSelect('cn')">
-									<a class="nav-link scroll" href="#">中文</a>
-								</li>
-								<li class="nav-item" onclick="languageSelect('en')">
-									<a class="nav-link scroll" href="#">EN</a>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</div>
-				<!-- <a href="#" class="header-btn"> Free Trial </a> -->
-			</nav>
-			<div class="mobile-menu" data-logo="static/images/logo.png"></div>
-		</div>
-	</div>
-</header>
-<!-- End-Menu-area-->
-
-<!-- Start-Main-Section -->
-<div class="maindiv" id="header">
-	<div class="hero-slider__content-wrapper">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-7 animated zoomIn">
-					<h4 class="hero-sub-title">FxMinerProy</h4>
-					<h1 class="hero-title" i18n="i18n.introduce">Best Application For Miner Proxy</h1>
-					<p class="hero-text" i18n="i18n.support">支持币种：BTC,LTC,ZEC,ETC,ETHF,ETHW,RVN,CFX,BEAM,ERGO,BTG,AE,FLUX,FIRO,NEOXA,XMR,KASPA,GRIN,KDA,DASH,CKB,ZEN,NEXA,HNS,BCH...</p>
-					<div class="grp-btn">
-						<div class="defualt-btn"><a download="FxMinerProxy" href="https://github.com/FxPool/FXMinerProxy/releases/download/v15.6.9@260228/fxminerproxyv3windows.zip"><i i18n="i18n.download">下载</i> <span><i class="fab fa-windows"></i>
-								</span> </a></div>
-						<div class="defualt-btn linux-btn"><a download="FxMinerProxy" href="https://github.com/FxPool/FXMinerProxy/releases/download/v15.6.9@260228/fxminerproxyv3linux.tar.gz" i18n="" target="_blank"><i i18n="i18n.download">下载</i> <span><i class="fab fa-linux"></i>
-							</a></div>
-					</div>
-				</div>
-				<div class="hero-slider-img">
-					<img src="static/images/product-img.png" alt="product-img">
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<!-- End-Main-Section -->
-
-<!--- Start feature-section -->
-<section class="ws-section-spacing feature-bg" id="Features">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="center-title">
-					<h2 class="title"><span i18n="i18n.features1">为你的设备提供</span> <br> <span i18n="i18n.features2">最好的服务</span> </h2>
-					<h4 class="sub-title"><span i18n="i18n.features3">支持Windows & Linux双系统</span> <br>
-						<span i18n="i18n.features4">支持矿池中转挖矿服务支持中转收费服务等</span></h4>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-lg-6 col-md-12">
-				<div class="features">
-					<div class="feature-iocn">
-						<span class="iocn-bg"><i class="flaticon-startup"></i></span>
-					</div>
-					<div class="feature-contain">
-						<h4 class="feature-title" i18n="i18n.features_point1">快速部署</h4>
-						<p><span i18n="i18n.features_point1_content1">Linux系统可通过此脚本一键安装部署</span>
-							<strong i18n="i18n.features_point1_content2">bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/install_en.sh)</strong>；
-							<span i18n="i18n.features_point1_content3">window直接下载解压执行</span></p>
-
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-md-12">
-				<div class="features">
-					<div class="feature-iocn">
-						<span class="iocn-bg bg-02"><i class="flaticon-sketch"></i></span>
-
-
-					</div>
-					<div class="feature-contain">
-						<h4 class="feature-title" i18n="i18n.features_point2">原创设计</h4>
-						<p i18n="i18n.features_point2_content">使用高性能百万并发GO语法、Vue、Echarts、Xterm虚拟终端以及语言国际化设计开发，从而使用户体验感达到最佳。 </p>
-
-					</div>
-				</div>
-			</div>
-
-			<div class="col-lg-6 col-md-12">
-				<div class="features">
-					<div class="feature-iocn">
-						<span class="iocn-bg bg-03"><i class="flaticon-vision"></i></span>
-
-
-					</div>
-					<div class="feature-contain">
-						<h4 class="feature-title" i18n="i18n.features_point3">视觉体验</h4>
-						<p i18n="i18n.features_point3_content">采用暗灰色为主要背景，减少背景色彩对用户视觉的刺激程度，利于用户长时间浏览，减少一定的视觉冲击力，更好的为用户呈现数据内容 </p>
-
-					</div>
-				</div>
-			</div>
-
-			<div class="col-lg-6 col-md-12">
-				<div class="features">
-					<div class="feature-iocn">
-						<span class="iocn-bg bg-04"><i class="flaticon-project-management"></i></span>
-
-
-					</div>
-					<div class="feature-contain">
-						<h4 class="feature-title" i18n="i18n.features_point4">安全性</h4>
-						<p i18n="i18n.features_point4_content">采用装机动态密码设计不使用默认密码,减少被爆破的可能性，支持IP白名单功能和二级密码(核心操作时必须输入)可防止黑客的攻击</p>
-
-					</div>
-				</div>
-			</div>
-
-		</div>
-	</div>
-</section>
-<!--- End feature-section -->
-
-<!--- Start service-section -->
-<section class="ws-section-spacing service-bg" id="See-demo">
-	<div class="container">
-		<div class="row justify-content-center">
-			<div class="col-lg-10">
-				<div class="laptop">
-					<img src="static/images/laptop.png" alt="Laptop">
-					<div class="pulse-box">
-						<div class="pulse-css"><a target="_blank" href="https://www.youtube.com/watch?v=fAce-zatHqA"> <i class="fas fa-play-circle"></i> </a></div>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="center-title">
-					<h2 class="title white-title"><span i18n="i18n.service_title1">为什么我们的软件</span> <br>
-						<span i18n="i18n.service_title2">是最好的</span> 
-					</h2>
-					<!-- <h4 class="sub-title white-sub-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-						sed do <br> eiusmod tempor incididunt ut labore et .</h4> -->
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-lg-4 col-md-6">
-				<div class="service-box">
-					<div class="service-icon">
-						<span class="service-icon-bg"><i class="flaticon-cloud-computing"></i></span>
-					</div>
-					<div class="service-content">
-						<h4 i18n="i18n.service_item1-title">高性能</h4>
-						<p i18n="i18n.service_item1-content">单台1核1G，轻松支持十万并发</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-lg-4 col-md-6">
-				<div class="service-box">
-					<div class="service-icon">
-						<span class="service-icon-bg"><i class="flaticon-hard-drive"></i></span>
-					</div>
-					<div class="service-content">
-						<h4 i18n="i18n.service_item2-title">低内存</h4>
-						<p i18n="i18n.service_item2-content">单台矿机内存在100-150Kb之间</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-lg-4 col-md-6">
-				<div class="service-box">
-					<div class="service-icon">
-						<span class="service-icon-bg"><i class="flaticon-tap"></i></span>
-					</div>
-					<div class="service-content">
-						<h4 i18n="i18n.service_item3-title">易安装</h4>
-						<p i18n="i18n.service_item3-content">通过全自动安装脚本实现</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-lg-4 col-md-6">
-				<div class="service-box">
-					<div class="service-icon">
-						<span class="service-icon-bg"><i class="flaticon-adaptive"></i></span>
-					</div>
-					<div class="service-content">
-						<h4 i18n="i18n.service_item4-title">API接口开放</h4>
-						<p i18n="i18n.service_item4-content">可通过API key实现第三方接入</p>
-					</div>
-				</div>
-			</div>
-
-			<!-- <div class="col-lg-4 col-md-6">
-				<div class="service-box">
-					<div class="service-icon">
-						<span class="service-icon-bg"><i class="flaticon-app"></i></span>
-					</div>
-					<div class="service-content">
-						<h4 i18n="i18n.service_item5-title">低内存</h4>
-						<p i18n="i18n.service_item5-content">单台矿机内存在100-150Kb之间</p>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-lg-4 col-md-6">
-				<div class="service-box">
-					<div class="service-icon">
-						<span class="service-icon-bg"><i class="flaticon-application"></i></span>
-					</div>
-					<div class="service-content">
-						<h4 i18n="i18n.service_item6-title">低内存</h4>
-						<p i18n="i18n.service_item6-content">单台矿机内存在100-150Kb之间</p>
-					</div>
-				</div>
-			</div> -->
-		</div>
-	</div>
-</section>
-
-<!--- End service-section -->
-
-<!--- Start About-section -->
-
-<section class="ws-section-spacing about-bg">
-	<div class="container">
-		<div class="row about-content">
-			<div class="col-lg-6 col-md-12">
-				<img src="static/images/rt-log.png" alt="img" class="about-img">
-			</div>
-
-			<div class="col-lg-6 col-md-12">
-
-				<div class="left-title">
-					<h2 class="title" i18n="i18n.about_title">矿机实时挖矿日志系统 & 统计图表</h2>
-					<!-- <h4 class="sub-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et.</h4> -->
-				</div>
-				<ul>
-					<li class="about-point"> <span class="dot"></span><span i18n="i18n.about_content1">矿机实时日志.(模拟矿工内核显示的日志可以分析矿机有效无效份额提交延迟信息等)</span>
-					</li>
-					<li class="about-point"> <span class="dot"></span><span i18n="i18n.about_content2">矿机历史日志. (算力日志, 上线离线日志, 抽水日志等)</span>
-					</li>
-					<li class="about-point"> <span class="dot"></span><span i18n="i18n.about_content3">系统日志</span>
-					</li>
-					<li class="about-point"> <span class="dot"></span><span i18n="i18n.about_content4">单个矿机的历史算力曲线统计</span>
-					</li>
-					<li class="about-point"> <span class="dot"></span><span i18n="i18n.about_content5">份额曲线. (抽水份额 矿机总份额 矿工份额 1小时份额 24小时份额)</span>
-					</li>
-					<li class="about-point"> <span class="dot"></span><span i18n="i18n.about_content6">延迟历史曲线.</span>
-					</li>
-					<li class="about-point"> <span class="dot"></span><span i18n="i18n.about_content7">总算力曲线.</span>
-					</li>
-				</ul>
-
-				<!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-					labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-					laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-					voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p> -->
-
-				<!-- <a href="#" class="btn active">See Demo</a> -->
-			</div>
-
-
-		</div>
-
-	</div>
-</section>
-
-<!--- End About-section -->
-
-<!--- Start Price-section -->
-
-<section class="ws-section-spacing animated fadeInUp" id="Pricing">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="center-title">
-					<h2 class="title" i18n="i18n.price_title">软件默认的开发者费用为0.27%（未开启抽水为0%） </h2>
-					<h4 class="sub-title" i18n="i18n.price_introduce">软件可激活，激活前提: 矿机数量 > 200；激活后的费用为以下所示</h4>
-				</div>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-lg-3 col-md-6 col-sm-12">
-				<div class="price-box">
-					<div class="pricing-header">
-						<h3 class="price-title" i18n="i18n.price_item-title">矿机数</h3>
-						<h4 class="price-title" i18n="i18n.price_item-number1">200-1000</h4>
-					</div>
-
-					<div class="pricing-value">
-						<h2 class="price-value">0.24<small>%</small></h2>
-					</div>
-					<div class="pricing-item">
-						<ul>
-						 	<li i18n="i18n.price_item-content1">激活时限 1年</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-lg-3 col-md-6 col-sm-12 ">
-				<div class="price-box">
-					<!-- <div class="recommend">Recommend</div> -->
-					<div class="pricing-header">
-						<h3 class="price-title" i18n="i18n.price_item-title">矿机数</h3>
-						<h4 class="price-title" i18n="i18n.price_item-number2">1000-5000</h4>
-					</div>
-
-					<div class="pricing-value">
-						<h2 class="price-value">0.2<small>%</small></h2>
-					</div>
-					<div class="pricing-item">
-						<ul>
-						 	<li i18n="i18n.price_item-content2">激活时限 2年</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-lg-3 col-md-6 col-sm-12 ">
-				<div class="price-box">
-					<div class="pricing-header">
-						<h3 class="price-title" i18n="i18n.price_item-title">矿机数</h3>
-						<h4 class="price-title" i18n="i18n.price_item-number3">5000-10000</h4>
-					</div>
-
-					<div class="pricing-value">
-						<h2 class="price-value">0.15<small>%</small></h2>
-					</div>
-					<div class="pricing-item">
-						<ul>
-						 	<li i18n="i18n.price_item-content3">激活时限 3年</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-3 col-md-6 col-sm-12 ">
-				<div class="price-box">
-					<div class="pricing-header">
-						<h3 class="price-title" i18n="i18n.price_item-title">矿机数</h3>
-						<h4 class="price-title" i18n="i18n.price_item-number4">>100000</h4>
-					</div>
-
-					<div class="pricing-value">
-						<h2 class="price-value">0.1<small>%</small></h2>
-					</div>
-					<div class="pricing-item">
-						<ul>
-						 	<li i18n="i18n.price_item-content4">激活时限 4年</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-
-<!--- End Price-section -->
-
-<!--- start testimonial-section -->
-<!-- <section class="ws-section-spacing testimonial-bg">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="center-title">
-					<h2 class="title">Testimonial</h2>
-					<h4 class="sub-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do <br>
-						eiusmod tempor incididunt ut labore et .</h4>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-lg-6">
-				<div class="testi-slide-one slider-for">
-					<div class="item-content">
-						<h3 class="name">Brain Ocorner 1</h3>
-						<span class="float-right">
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-						</span>
-						<span class="date">17/7/2021</span>
-						<p>Dolor sit et accusam ipsum ipsum duo clita tempor vero. Stet gubergren ea lorem vero
-							aliquyam tempor dolores, dolores sit labore lorem clita rebum diam rebum sanctus, erat
-							consetetur diam gubergren ipsum, sanctus ipsum ipsum tempor kasd, nonumy duo accusam.Et
-							et accusam justo labore aliquyam ea labore ut. Lorem lorem no tempor et magna sed no.
-							Sed diam et.No et dolores voluptua et dolor dolor sit diam. Voluptua sea ut consetetur
-							dolore labore diam magna.
-						</p>
-					</div> -->
-					<!-- item -->
-					<!-- <div class="item-content">
-						<h3 class="name">Brain Ocorner 2</h3>
-						<span class="float-right">
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-						</span>
-						<span class="date">17/7/2021</span>
-						<p>Dolor sit et accusam ipsum ipsum duo clita tempor vero. Stet gubergren ea lorem vero
-							aliquyam tempor dolores, dolores sit labore lorem clita rebum diam rebum sanctus, erat
-							consetetur diam gubergren ipsum, sanctus ipsum ipsum tempor kasd, nonumy duo accusam.Et
-							et accusam justo labore aliquyam ea labore ut. Lorem lorem no tempor et magna sed no.
-							Sed diam et.No et dolores voluptua et dolor dolor sit diam. Voluptua sea ut consetetur
-							dolore labore diam magna.
-						</p>
-					</div> -->
-					<!-- item -->
-					<!-- <div class="item-content">
-						<h3 class="name">Brain Ocorner 3</h3>
-						<span class="float-right">
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-						</span>
-						<span class="date">17/7/2021</span>
-						<p>Dolor sit et accusam ipsum ipsum duo clita tempor vero. Stet gubergren ea lorem vero
-							aliquyam tempor dolores, dolores sit labore lorem clita rebum diam rebum sanctus, erat
-							consetetur diam gubergren ipsum, sanctus ipsum ipsum tempor kasd, nonumy duo accusam.Et
-							et accusam justo labore aliquyam ea labore ut. Lorem lorem no tempor et magna sed no.
-							Sed diam et.No et dolores voluptua et dolor dolor sit diam. Voluptua sea ut consetetur
-							dolore labore diam magna.
-						</p>
-					</div> -->
-					<!-- item -->
-					<!-- <div class="item-content">
-						<h3 class="name">Brain Ocorner 4</h3>
-						<span class="float-right">
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-							<i class="fas fa-star"></i>
-						</span>
-						<span class="date">17/7/2021</span>
-						<p>Dolor sit et accusam ipsum ipsum duo clita tempor vero. Stet gubergren ea lorem vero
-							aliquyam tempor dolores, dolores sit labore lorem clita rebum diam rebum sanctus, erat
-							consetetur diam gubergren ipsum, sanctus ipsum ipsum tempor kasd, nonumy duo accusam.Et
-							et accusam justo labore aliquyam ea labore ut. Lorem lorem no tempor et magna sed no.
-							Sed diam et.No et dolores voluptua et dolor dolor sit diam. Voluptua sea ut consetetur
-							dolore labore diam magna.
-						</p>
-					</div>
-
-				</div> -->
-			<!-- </div>
-			<div class="col-lg-6">
-				<div class="testi-slide-two slider-nav">
-					<div class="img-wapper">
-						<img src="static/images/testi-01.jpg" alt="testi-01">
-					</div>
-					<div class="img-wapper">
-						<img src="static/images/testi-02.jpg" alt="testi-01">
-					</div>
-					<div class="img-wapper">
-						<img src="static/images/testi-03.jpg" alt="testi-01">
-					</div>
-					<div class="img-wapper">
-						<img src="static/images/testi-01.jpg" alt="testi-01">
-					</div>
-
-				</div>
-			</div>
-		</div>
-	</div>
-</section> -->
-<!--- End testimonial-section -->
-
-<!--- Start FunFact-section -->
-<!-- <section class="ws-section-spacing fun-fact-bg">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="center-title">
-					<h2 class="title">Over 100000+ Happy Customers With Us<br>Still They Love Our Product. </h2>
-				</div>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-lg-3 col-md-6">
-				<div class="fun-box">
-					<h2 class="fun-fact-value counter">100</h2><span class="count">k</span>
-					<p class="fun-fact-title">Happy Customer</p>
-				</div>
-			</div>
-
-			<div class="col-lg-3 col-md-6">
-				<div class="fun-box br-2">
-					<h2 class="fun-fact-value counter">80</h2><span class="count">k</span>
-					<p class="fun-fact-title">Active Acounts</p>
-				</div>
-			</div>
-
-
-			<div class="col-lg-3 col-md-6">
-				<div class="fun-box br-3">
-					<h2 class="fun-fact-value counter">20</h2><span class="count">k</span>
-					<p class="fun-fact-title">Positive Reviews</p>
-				</div>
-			</div>
-
-
-			<div class="col-lg-3 col-md-6">
-				<div class="fun-box br-4">
-					<h2 class="fun-fact-value counter">15</h2><span class="count">k</span>
-					<p class="fun-fact-title">In Business</p>
-				</div>
-			</div>
-		</div>
-	</div>
-</section> -->
-
-<!--- End-FunFact-section -->
-
-<!--- Start F.A.Q-section -->
-
-<section class="ws-section-spacing faq-bg" id="faq">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-6 col-md-12 col-sm-12">
-				<div class="left-title">
-					<h2 class="title" i18n="i18n.faq_title">常见问题</h2>
-					<!-- <h4 class="sub-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et.</h4> -->
-				</div>
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-lg-6">
-				<div class="faq">
-					<div class="accordion" id="accordionExample">
-						<div id="headingOne">
-							<button class="btn-faq active" type="button" data-toggle="collapse"
-								data-target="#collapseOne" aria-expanded="true" i18n="i18n.faq_item1-title">
-								软件安装失败原因
-							</button>
-						</div>
-
-						<div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-							data-parent="#accordionExample">
-							<div class="card-body">
-								<p i18n="i18n.faq_item1-content">如果出现permission denied 说明当前你不是root权限需要进去root权限 debian，unbantu，执行 su 命令 输入密码即可.</p>
-							</div>
-						</div>
-						<div id="headingTwo">
-							<button class="btn-faq collapsed" type="button" data-toggle="collapse"
-								data-target="#collapseTwo" aria-expanded="false" i18n="i18n.faq_item2-title">
-								软件安装成功浏览器打不开
-							</button>
-						</div>
-						<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-							data-parent="#accordionExample">
-							<div class="card-body">
-								<p i18n="i18n.faq_item2-content">这种问题一般是端口没有开放，如果你购买的云服务器比如阿里等需要首先到云服务器后台开放端口安全组，使用什么端口就开放什么端口，也可以全部开放范围0-65535.然后如果还是连接不上，且系统是linux的话还需要开放服务器的端口。服务器可以直接关闭防火墙。使用 ufw disable(debian和unbantu系统)。</p>
-							</div>
-						</div>
-						<div id="headingThree">
-
-							<button class="btn-faq collapsed" type="button" data-toggle="collapse"
-								data-target="#collapsethree" aria-expanded="false" i18n="i18n.faq_item3-title">
-								抽水转换率问题
-							</button>
-						</div>
-						<div id="collapsethree" class="collapse" aria-labelledby="headingThree"
-							data-parent="#accordionExample">
-							<div class="card-body">
-								<p i18n="i18n.faq_item3-content">由于抽水转换率根据份额和难度动态计算，可能开机时会很大不用担心，时间一长会接近你设置的值，可能也会小于你设置的值，但总体来说会接近你设置的值，实际情况还是看你抽水矿池的算力 芯片机抽水转换率统计会比显卡慢一些通常要运行24小时后会接近你设置的值。时间还是以矿池为准</p>
-							</div>
-						</div>
-						<div id="headingFour">
-
-							<button class="btn-faq collapsed" type="button" data-toggle="collapse"
-								data-target="#collapsefour" aria-expanded="false" i18n="i18n.faq_item4-title">
-								芯片机算力的问题
-							</button>
-						</div>
-						<div id="collapsefour" class="collapse" aria-labelledby="headingFour"
-							data-parent="#accordionExample">
-							<div class="card-body">
-								<p i18n="i18n.faq_item4-content">由于芯片机器不提交算力，fxminerproxy是根据难度动态计算，10分钟计算一次所以芯片机要等10分钟后才能显示，算力只做参考具体以矿池为准</p>
-							</div>
-						</div>
-						<div id="headingFive">
-
-							<button class="btn-faq collapsed" type="button" data-toggle="collapse"
-								data-target="#collapsefive" aria-expanded="false" i18n="i18n.faq_item5-title">
-								本地矿机已经连接上了但是后台不显示
-							</button>
-						</div>
-						<div id="collapsefive" class="collapse" aria-labelledby="headingFive"
-							data-parent="#accordionExample">
-							<div class="card-body">
-								<p i18n="i18n.faq_item5-content">fxminerproxy需要矿机成功提交一次有效的份额才会显示，请等待矿机提交有效的份额</p>
-							</div>
-						</div>
-						<div id="headingSix">
-
-							<button class="btn-faq collapsed" type="button" data-toggle="collapse"
-								data-target="#collapsesix" aria-expanded="false" i18n="i18n.faq_item6-title">
-								芯片机器问题
-							</button>
-						</div>
-						<div id="collapsesix" class="collapse" aria-labelledby="headingSix"
-							data-parent="#accordionExample">
-							<div class="card-body">
-								<p i18n="i18n.faq_item6-content1">程序的端口会自动判断是显卡机器还是芯片机器所以无效单独配置 A11矿机抽水最好是抽到相同的矿池，不同的矿池可能会出现无效，主要还是要看固件是否支持set_exnaoce方法(动态修改随机数)，保守做法抽到同一个矿池 奶牛、茉莉、亚米等矿机可抽任意矿池 **自己定义目标矿池的问题</p>
-								<p i18n="i18n.faq_item6-content2">fxminerProxy支持自定义端口，有小伙伴经常问到为什么只能下拉选择不能自己输入，其实输入和下拉是做到一起的，鼠标选中后直接输入回车确定即可</p>
-							</div>
-						</div>
-						<div id="headingSeven">
-
-							<button class="btn-faq collapsed" type="button" data-toggle="collapse"
-								data-target="#collapseseven" aria-expanded="false" i18n="i18n.faq_item7-title">
-								首页不显示数据但端口界面可以显示数据的问题
-							</button>
-						</div>
-						<div id="collapseseven" class="collapse" aria-labelledby="headingSeven"
-							data-parent="#accordionExample">
-							<div class="card-body">
-								<p i18n="i18n.faq_item7-content">先别急，运行10分钟后看，这个问题出现的概率很小，除非服务器获取的时间出现问题，常见使用了国际服务器，一般做法重启一下软件(设置界面)。重启后如果有些数据还是没有显示，那么不用担心先不用管，运行超过>=8小时（有可能是24小时）后会自动恢复正常，因为中国时间和国际时间的差值影响的</p>
-							</div>
-						</div>
-						<div id="headingEight">
-
-							<button class="btn-faq collapsed" type="button" data-toggle="collapse"
-								data-target="#collapseeight" aria-expanded="false" i18n="i18n.faq_item8-title">
-								不开抽水功能是否真的作者不抽水
-							</button>
-						</div>
-						<div id="collapseeight" class="collapse" aria-labelledby="headingEight"
-							data-parent="#accordionExample">
-							<div class="card-body">
-								<p><span i18n="i18n.faq_item8-content1">这个问题其实容易测试，可以用纯转发的软件测试对比算力。纯转发软件可以用这个：</span> <a target="_blank" href="https://github.com/snail007/goproxy" i18n="i18n.faq_item8-content2">纯转发(开源)</a></p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-lg-6 col-sm-12 faq-img">
-				<img src="static/images/faq-img.png" alt="faq-img">
-			</div>
-		</div>
-	</div>
-</section>
-
-<!--- End F.A.Q-section -->
-
-
-<!--- Start Blogs-section -->
-
-<!-- <section class="ws-section-spacing" id="News">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="center-title">
-					<h2 class="title">Latest News</h2>
-					<h4 class="sub-title">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do <br>
-						eiusmod tempor incididunt ut labore et .</h4>
-				</div>
-			</div>
-		</div> -->
-		<!-- item -->
-		<!-- <div class="row">
-			<div class="col-lg-4 col-md-6 col-sm-10">
-				<div class="blog-box">
-					<div class="blog-img">
-						<img src="static/images/blog-img-01.jpg" alt="blog-img">
-					</div>
-					<div class="blog-content">
-						<h3>
-							<a href="#"> Dolor sit erat amet ipsum eaeir.</a>
-						</h3>
-						<ul class="blog-meta-tag">
-							<li> <span> Date : </span> 24.07.2021 </li>
-							<li> <span> By : </span> <a href="#"> Admin </a></li>
-						</ul>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-							incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						</p>
-					</div>
-					<div class="blog-btn">
-						<a href="#">Read More</a>
-					</div>
-				</div>
-			</div> -->
-
-			<!-- item -->
-			<!-- <div class="col-lg-4 col-md-6 col-sm-10">
-				<div class="blog-box active">
-					<div class="blog-img">
-						<img src="static/images/blog-img-02.jpg" alt="blog-img">
-					</div>
-					<div class="blog-content">
-						<h3>
-							<a href="#"> Dolor sit erat amet ipsum eaeir.</a>
-						</h3>
-						<ul class="blog-meta-tag">
-							<li> <span> Date : </span> 24.07.2021 </li>
-							<li> <span> By : </span> <a href="#"> Admin </a></li>
-						</ul>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-							incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						</p>
-					</div>
-					<div class="blog-btn">
-						<a href="#">Read More</a>
-					</div>
-				</div>
-			</div> -->
-			<!-- item -->
-			<!-- <div class="col-lg-4 col-md-6 col-sm-10">
-				<div class="blog-box">
-					<div class="blog-img">
-						<img src="static/images/blog-img-03.jpg" alt="blog-img">
-					</div>
-					<div class="blog-content">
-						<h3>
-							<a href="#"> Dolor sit erat amet ipsum eaeir.</a>
-						</h3>
-						<ul class="blog-meta-tag">
-							<li> <span> Date : </span> 24.07.2021 </li>
-							<li> <span> By : </span> <a href="#"> Admin </a></li>
-						</ul>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-							incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						</p>
-					</div>
-					<div class="blog-btn">
-						<a href="#">Read More</a>
-					</div>
-				</div>
-			</div>
-
-		</div>
-	</div>
-</section> -->
-<!--- End Blogs-section -->
-
-
-<!--- Start Contact-Us-section -->
-<section class="ws-section-spacing contact-bg" id="Contact-Us">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-12">
-				<div class="left-title">
-					<h2 class="title white-title" i18n="i18n_contact-title">联系我们 </h2>
-					<h4 class="sub-title white-sub-title" i18n="i18n_contact-content1">邮箱：hansenloveyou520@gmail.com</h4>
-					<h4 class="sub-title white-sub-title"><span i18n="i18n_contact-content2">QQ群：933494627</span>
-						<a target="_blank" class="qq" href="https://qm.qq.com/cgi-bin/qm/qr?k=rxUt_mukm5EdrE5SGY7pnyU4VNnKSx3V&jump_from=webapi&authKey=h+p674FGJ9WiG3XO1Elhu+vOIzn+fP9r+pHcJcQmyVbyy/PBM8oXvLAyj3j07e6r">
-							<img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="fxminerproxy2025" title="fxminerproxy2025">
-						</a>
-					</h4>
-					<h4 class="sub-title white-sub-title"><a target="_blank" href="https://t.me/fxminerproxy_chat_cn" i18n="i18n_contact-content3">点击:飞机群</a></h4>
-				</div>
-			</div>
-		</div>
-
-		<!-- <div class="row">
-			<div class="col-lg-6 col-md-12">
-				<form class="contact-form">
-					<div class="row">
-						<div class="col-lg-6 col-md-12">
-							<div class="form-group">
-								<input type="text" class="form-control" id="uname" placeholder="Name" name="Name"
-									required="">
-							</div>
-
-						</div>
-
-						<div class="col-lg-6 col-md-12">
-							<div class="form-group">
-								<input type="text" class="form-control" id="last-name" placeholder="Last Name"
-									name="Last Name" required="">
-							</div>
-
-						</div>
-
-						<div class="col-lg-12">
-							<div class="form-group">
-								<input type="Email" class="form-control" id="pwd" placeholder="Email" name="Email"
-									required="">
-							</div>
-						</div>
-
-						<div class="col-lg-12">
-							<textarea class="form-control" rows="5" id="comment"
-								placeholder="Your Comment"></textarea>
-						</div>
-					</div>
-
-					<button type="submit" class="btn-1">Send <span class="send-icon"><i
-								class="fas fa-paper-plane"></i></span></button>
-				</form>
-			</div> -->
-
-			<div class="col-lg-6 contact-img">
-				<img src="static/images/contact-img.png" alt="contact-img">
-			</div>
-		</div>
-	</div>
-</section>
-<!--- End Contact-Us-section -->
-
-<!--- Start Footer-section -->
-<footer class="same-section-spacing footer-bg">
-	<div class="container">
-		<div class="row">
-			<!-- item -->
-			<div class="col-lg-4 col-md-4 col-sm-6">
-				<div class="footer-about">
-					<div class="footer-title">
-						<h3> Follow us</h3>
-					</div>
-					<div class="footer-icon">
-						<ul>
-							<li><a class="fab fa-telegram" href="https://t.me/fxminerproxy_chat_cn" target="_blank"></a></li>
-						</ul>
-					</div>
-					<div class="address">
-						<p>hansenloveyou520@gmail.com</p>
-					</div>
-				</div>
-			</div>
-			<!-- item -->
-			<div class="col-lg-2 col-md-4 col-sm-6">
-				<div class="footer-listing">
-					<div class="footer-title">
-						<h3 i18n="i18n_about_us">关于我们</h3>
-					</div>
-
-					<ul i18n="i18n_about_us_intro">
-						专业提供矿场解决方法，专业的矿池代理抽水软件
-					</ul>
-				</div>
-			</div>
-			<!-- item -->
-			<div class="col-lg-2 col-md-4 col-sm-6">
-				<div class="footer-listing">
-					<div class="footer-title">
-						<h3 i18n="i18n_support">支持</h3>
-					</div>
-
-					<ul>
-						<li><a href="https://fxpool.github.io/cn/" target="_blank" i18n="i18n_manual">说明书</a></li>
-						<li><a href="https://fxpool.github.io/cn/zh/chapter-8/problem.html" target="_blank">F.A.Q</a></li>
-						<li><a href="api-docs/index.html" target="_blank" i18n="i18n_api_docs">API 文档</a></li>
-					</ul>
-				</div>
-			</div>
-			<!-- item -->
-			<div class="col-lg-2 col-md-4 col-sm-6">
-				<div class="footer-listing">
-					<div class="footer-title">
-						<h3 i18n="i18n_download">下载</h3>
-					</div>
-
-					<ul>
-						<li><a href="https://github.com/FxPool/FXMinerProxy/releases/download/v15.6.9@260228/fxminerproxyv3windows.zip" target="_blank">Window</a></li>
-						<li><a href="https://github.com/FxPool/FXMinerProxy/releases/download/v15.6.9@260228/fxminerproxyv3linux.tar.gz" target="_blank">linux</a></li>
-						<li><a href="https://fxpool.github.io/cn/zh/chapter-7/sslmix-install.html" target="_blank">sslmix</a></li>
-					</ul>
-				</div>
-			</div>
-			<!-- item -->
-			<div class="col-lg-2 col-md-4 col-sm-6">
-				<div class="footer-listing">
-					<div class="footer-title">
-						<h3 i18n="i18n_links">友情链接</h3>
-					</div>
-					<ul>
-						<li><a href="https://www.f2pool.com/" target="_blank" i18n="i18n_pool">鱼池 F2Pool</a></li>
-						<li><a href="https://www.coincarp.com/zh/" target="_blank" i18n="i18n_price">加密货币价格</a></li>
-						<li><a href="https://www.okx.com/" target="_blank" i18n="i18n_exchange">交易所</a></li>
-					</ul>
-				</div>
-			</div>
-
-		</div>
-	</div>
-
-
-	<!--- copyright-area -->
-	<div class="copyright">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-4 col-md-4">
-					<!-- <p>Copyright &copy; 2021.Company name All rights reserved.<a target="_blank" href="http://www.cssmoban.com/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p> -->
-					<p>Copyright &copy; 2023. fxpool.org  All rights reserved.</p>
-				</div>
-
-				<!-- <div class="col-lg-8 col-md-8">
-					<ul>
-						<li><a href="#">Private Policy</a></li>
-						<li><a href="#">Terms & Conditions</a></li>
-						<li><a href="#">Copyright Notifications</a></li>
-					</ul>
-				</div> -->
-
-			</div>
-		</div>
-	</div>
-
-</footer>
-
-<!--- scroll-to-top -->
-
-<a href="#" id="btn-to-top"> <img src="static/images/scroll-top.gif" alt="scroll-top"></a>
-
-<!-- Jquery.min.js-->
-
-<script src="static/js/jquery.1.12.4.js"></script>
-<!-- jquery.i18n.js -->
-<script src="static/js/jquery.i18n.js"></script>
-<!--bootstrap.min.js-->
-<script src="static/js/bootstrap.min.js"></script>
-<script src="static/js/popper.min.js"></script>
-<!--slicknav.min.js-->
-<script src="static/js/jquery.slicknav.min.js"></script>
-<!--slickslider.min.js-->
-<script src="static/js/slick.min.js"></script>
-<!-- counterup.min.js -->
-<script src="static/js/waypoints.min.js"></script>
-<script src="static/js/jquery.counterup.min.js"></script>
-<!-- magnific-popup.js -->
-<script src="static/js/lity.min.js"></script>
-<!-- wow.js -->
-<script type="static/js/wow.min.js"></script>
-<!-- main.js -->
-<script src="static/js/main.js"></script>
-<script>
-	$(function () {
-		var language = navigator.language;
-		if(!sessionStorage.getItem('__bdht_lan')){
-			if(/^zh\b/.test(language)) {
-				sessionStorage.setItem('__bdht_lan',"cn")
-			} else {
-				sessionStorage.setItem('__bdht_lan',"en")
-			}
-		}
-		var defaultLang = sessionStorage.getItem("__bdht_lan");
-		languageSelect(defaultLang);	
-	});
-	function languageSelect(defaultLang) {
-		$("[i18n]").i18n({
-			defaultLang: defaultLang,
-			filePath: "../static/i18n/",
-			filePrefix: "i18n_",
-			fileSuffix: "",
-			forever: true,
-			callback: function (res) {
-				// console.log(res)
-			}
-    	});
-	}
-</script>
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Header Section -->
+  <header class="fx-header">
+    <div class="fx-container">
+      <a href="index.html" class="fx-logo">
+        <img src="static/images/logo.png" alt="FxMinerProxy">
+      </a>
+      
+      <div class="mobile-toggle" id="mobile-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <nav class="fx-nav" id="fx-nav">
+        <a href="#header" class="active scroll" i18n="i18n.home">主页</a>
+        <a href="#Features" class="scroll" i18n="i18n.features">特点</a>
+        <a href="#Pricing" class="scroll" i18n="i18n.price">费用</a>
+        <a href="#Contact-Us" class="scroll" i18n="i18n.contact">联系我们</a>
+        <a href="api-docs/index.html" target="_blank" i18n="i18n.api_docs">API文档</a>
+        
+        <div class="lang-dropdown">
+          <a href="javascript:void(0)" i18n="i18n.language">语言 <i class="fas fa-chevron-down" style="font-size: 0.8em; margin-left: 4px;"></i></a>
+          <div class="lang-menu">
+            <a href="javascript:void(0)" onclick="languageSelect('cn')">中文</a>
+            <a href="javascript:void(0)" onclick="languageSelect('en')">English</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="fx-hero" id="header">
+    <canvas id="particles-canvas"></canvas>
+    <div class="fx-container">
+      <div class="hero-content">
+        <div class="hero-text reveal">
+          <div class="hero-badge">
+            <span class="pulse-dot"></span> V15.6.9 Now Available
+          </div>
+          <h1 class="hero-title">
+            <span class="gradient-text">FxMinerProxy</span><br>
+            <span i18n="i18n.introduce">Best Application For Miner Proxy</span>
+          </h1>
+          <div class="hero-buttons">
+            <a href="https://github.com/FxPool/FXMinerProxy/releases/download/v15.6.9@260228/fxminerproxyv3windows.zip" class="btn-primary">
+              <i class="fab fa-windows"></i> <span i18n="i18n.download">下载</span>
+            </a>
+            <a href="https://github.com/FxPool/FXMinerProxy/releases/download/v15.6.9@260228/fxminerproxyv3linux.tar.gz" class="btn-secondary" target="_blank">
+              <i class="fab fa-linux"></i> <span i18n="i18n.download">下载</span>
+            </a>
+            <a href="https://github.com/FxPool/FXMinerProxy" class="btn-secondary" target="_blank">
+              <i class="fab fa-github"></i> <span style="margin-left: 4px;">GitHub</span>
+            </a>
+          </div>
+          
+          <div class="hero-stats reveal reveal-delay-2">
+            <div class="hero-stat">
+              <h3 class="counter">100</h3>
+              <p>Thousand+ Concurrency</p>
+            </div>
+            <div class="hero-stat">
+              <h3 class="counter">99.9</h3>
+              <p>Uptime Percentage</p>
+            </div>
+            <div class="hero-stat">
+              <h3 class="counter">150</h3>
+              <p>KB Memory Usage</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="hero-image reveal reveal-delay-1">
+          <img src="static/images/product-img.png" alt="Dashboard Preview">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Grid -->
+  <section class="fx-section fx-features" id="Features">
+    <div class="fx-container">
+      <div class="section-header reveal">
+        <span class="section-badge">Core Capabilities</span>
+        <h2 class="section-title"><span i18n="i18n.features1">为你的设备提供</span> <span i18n="i18n.features2">最好的服务</span></h2>
+        <p class="section-subtitle"><span i18n="i18n.features3">支持Windows & Linux双系统</span> | <span i18n="i18n.features4">支持矿池中转挖矿服务支持中转收费服务等</span></p>
+      </div>
+
+      <div class="features-grid">
+        <!-- Feature 1 -->
+        <div class="feature-card reveal">
+          <div class="feature-icon icon-1">
+            <i class="fas fa-rocket"></i>
+          </div>
+          <h4 i18n="i18n.features_point1">快速部署</h4>
+          <p>
+            <span i18n="i18n.features_point1_content1">Linux系统可通过此脚本一键安装部署</span>
+            <br>
+            <code style="background: rgba(0,0,0,0.3); padding: 4px 8px; border-radius: 4px; color: #3b82f6; display: inline-block; margin: 8px 0; font-size: 0.85rem;" i18n="i18n.features_point1_content2">bash <(curl -s -L https://raw.githubusercontent.com/FxPool/FXMinerProxy/main/install_en.sh)</code>
+            <br>
+            <span i18n="i18n.features_point1_content3">window直接下载解压执行</span>
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="feature-card reveal reveal-delay-1">
+          <div class="feature-icon icon-2">
+            <i class="fas fa-layer-group"></i>
+          </div>
+          <h4 i18n="i18n.features_point2">原创设计</h4>
+          <p i18n="i18n.features_point2_content">使用高性能百万并发GO语法、Vue、Echarts、Xterm虚拟终端以及语言国际化设计开发，从而使用户体验感达到最佳。</p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="feature-card reveal">
+          <div class="feature-icon icon-3">
+            <i class="fas fa-eye"></i>
+          </div>
+          <h4 i18n="i18n.features_point3">视觉体验</h4>
+          <p i18n="i18n.features_point3_content">采用暗灰色为主要背景，减少背景色彩对用户视觉的刺激程度，利于用户长时间浏览，减少一定的视觉冲击力，更好的为用户呈现数据内容</p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="feature-card reveal reveal-delay-1">
+          <div class="feature-icon icon-4">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h4 i18n="i18n.features_point4">安全性</h4>
+          <p i18n="i18n.features_point4_content">采用装机动态密码设计不使用默认密码,减少被爆破的可能性，支持IP白名单功能和二级密码(核心操作时必须输入)可防止黑客的攻击</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services / Advantages -->
+  <section class="fx-section fx-services" id="See-demo">
+    <div class="fx-container">
+      
+      <div class="demo-laptop-wrap reveal">
+        <img src="static/images/laptop.png" alt="Laptop Preview">
+        <a class="demo-play-btn" target="_blank" href="https://www.youtube.com/watch?v=fAce-zatHqA">
+          <i class="fas fa-play"></i>
+        </a>
+      </div>
+
+      <div class="section-header reveal">
+        <span class="section-badge">Why Choose Us</span>
+        <h2 class="section-title"><span i18n="i18n.service_title1">为什么我们的软件</span> <span i18n="i18n.service_title2">是最好的</span></h2>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon-wrap"><i class="fas fa-microchip"></i></div>
+          <h4 i18n="i18n.service_item1-title">高性能</h4>
+          <p i18n="i18n.service_item1-content">单台1核1G，轻松支持十万并发</p>
+        </div>
+
+        <div class="service-card reveal reveal-delay-1">
+          <div class="service-icon-wrap"><i class="fas fa-memory"></i></div>
+          <h4 i18n="i18n.service_item2-title">低内存</h4>
+          <p i18n="i18n.service_item2-content">单台矿机内存在100-150Kb之间</p>
+        </div>
+
+        <div class="service-card reveal reveal-delay-2">
+          <div class="service-icon-wrap"><i class="fas fa-bolt"></i></div>
+          <h4 i18n="i18n.service_item3-title">易安装</h4>
+          <p i18n="i18n.service_item3-content">通过全自动安装脚本实现</p>
+        </div>
+
+        <div class="service-card reveal reveal-delay-3">
+          <div class="service-icon-wrap"><i class="fas fa-network-wired"></i></div>
+          <h4 i18n="i18n.service_item4-title">API接口开放</h4>
+          <p i18n="i18n.service_item4-content">可通过API key实现第三方接入</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="fx-section fx-about" id="About">
+    <div class="fx-container">
+      <div class="about-content">
+        <div class="about-image reveal">
+          <img src="static/images/rt-log.png" alt="Realtime Logs">
+        </div>
+        <div class="about-text reveal reveal-delay-1">
+          <span class="section-badge">Real-Time Data</span>
+          <h2 class="section-title" i18n="i18n.about_title">矿机实时挖矿日志系统 & 统计图表</h2>
+          
+          <ul class="about-list">
+            <li>
+              <div class="check-icon"><i class="fas fa-check"></i></div>
+              <span i18n="i18n.about_content1">矿机实时日志.(模拟矿工内核显示的日志可以分析矿机有效无效份额提交延迟信息等)</span>
+            </li>
+            <li>
+              <div class="check-icon"><i class="fas fa-check"></i></div>
+              <span i18n="i18n.about_content2">矿机历史日志. (算力日志, 上线离线日志, 抽水日志等)</span>
+            </li>
+            <li>
+              <div class="check-icon"><i class="fas fa-check"></i></div>
+              <span i18n="i18n.about_content3">系统日志</span>
+            </li>
+            <li>
+              <div class="check-icon"><i class="fas fa-check"></i></div>
+              <span i18n="i18n.about_content4">单个矿机的历史算力曲线统计</span>
+            </li>
+            <li>
+              <div class="check-icon"><i class="fas fa-check"></i></div>
+              <span i18n="i18n.about_content5">份额曲线. (抽水份额 矿机总份额 矿工份额 1小时份额 24小时份额)</span>
+            </li>
+            <li>
+              <div class="check-icon"><i class="fas fa-check"></i></div>
+              <span i18n="i18n.about_content6">延迟历史曲线.</span>
+            </li>
+            <li>
+              <div class="check-icon"><i class="fas fa-check"></i></div>
+              <span i18n="i18n.about_content7">总算力曲线.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="fx-section fx-pricing" id="Pricing">
+    <div class="fx-container">
+      <div class="section-header reveal">
+        <span class="section-badge">Transparent Pricing</span>
+        <h2 class="section-title" i18n="i18n.price_title">软件默认的开发者费用为0.2%（未开启抽水为0%）</h2>
+        <p class="section-subtitle" i18n="i18n.price_introduce">软件可激活，激活前提: 矿机数量 > 200；激活后的费用为以下所示</p>
+      </div>
+
+      <div class="pricing-grid">
+        <div class="price-card reveal">
+          <div class="price-card-header">
+            <h3 i18n="i18n.price_item-title">矿机数</h3>
+            <h4 i18n="i18n.price_item-number1">200-1000</h4>
+          </div>
+          <div class="price-value">0.18<small>%</small></div>
+          <div class="price-detail" i18n="i18n.price_item-content1">激活时限 1年</div>
+        </div>
+
+        <div class="price-card featured reveal reveal-delay-1">
+          <div class="price-card-header">
+            <h3 i18n="i18n.price_item-title">矿机数</h3>
+            <h4 i18n="i18n.price_item-number2">1000-5000</h4>
+          </div>
+          <div class="price-value">0.15<small>%</small></div>
+          <div class="price-detail" i18n="i18n.price_item-content2">激活时限 2年</div>
+        </div>
+
+        <div class="price-card reveal reveal-delay-2">
+          <div class="price-card-header">
+            <h3 i18n="i18n.price_item-title">矿机数</h3>
+            <h4 i18n="i18n.price_item-number3">5000-10000</h4>
+          </div>
+          <div class="price-value">0.12<small>%</small></div>
+          <div class="price-detail" i18n="i18n.price_item-content3">激活时限 3年</div>
+        </div>
+
+        <div class="price-card reveal reveal-delay-3">
+          <div class="price-card-header">
+            <h3 i18n="i18n.price_item-title">矿机数</h3>
+            <h4 i18n="i18n.price_item-number4">>100000</h4>
+          </div>
+          <div class="price-value">0.1<small>%</small></div>
+          <div class="price-detail" i18n="i18n.price_item-content4">激活时限 4年</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="fx-section fx-faq" id="faq">
+    <div class="fx-container">
+      <div class="faq-layout">
+        <div class="faq-left reveal">
+          <span class="section-badge">Support</span>
+          <h2 class="section-title" i18n="i18n.faq_title">常见问题</h2>
+          <div class="faq-image">
+            <img src="static/images/faq-img.png" alt="FAQ Map">
+          </div>
+        </div>
+
+        <div class="faq-accordion reveal reveal-delay-1">
+          <div class="faq-item active">
+            <button class="faq-question">
+              <span i18n="i18n.faq_item1-title">软件安装失败原因</span>
+              <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="faq-answer open">
+              <div class="faq-answer-inner" i18n="i18n.faq_item1-content">
+                如果出现permission denied 说明当前你不是root权限需要进去root权限 debian，unbantu，执行 su 命令 输入密码即可.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span i18n="i18n.faq_item2-title">软件安装成功浏览器打不开</span>
+              <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner" i18n="i18n.faq_item2-content">
+                这种问题一般是端口没有开放，如果你购买的云服务器比如阿里等需要首先到云服务器后台开放端口安全组，使用什么端口就开放什么端口，也可以全部开放范围0-65535.然后如果还是连接不上，且系统是linux的话还需要开放服务器的端口。服务器可以直接关闭防火墙。使用 ufw disable(debian和unbantu系统)。
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span i18n="i18n.faq_item3-title">抽水转换率问题</span>
+              <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner" i18n="i18n.faq_item3-content">
+                由于抽水转换率根据份额和难度动态计算，可能开机时会很大不用担心，时间一长会接近你设置的值，可能也会小于你设置的值，但总体来说会接近你设置的值，实际情况还是看你抽水矿池的算力 芯片机抽水转换率统计会比显卡慢一些通常要运行24小时后会接近你设置的值。时间还是以矿池为准
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span i18n="i18n.faq_item5-title">本地矿机已经连接上了但是后台不显示</span>
+              <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner" i18n="i18n.faq_item5-content">
+                fxminerproxy需要矿机成功提交一次有效的份额才会显示，请等待矿机提交有效的份额
+              </div>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <button class="faq-question">
+              <span i18n="i18n.faq_item7-title">首页不显示数据但端口界面可以显示数据的问题</span>
+              <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner" i18n="i18n.faq_item7-content">
+                先别急，运行10分钟后看，这个问题出现的概率很小，除非服务器获取的时间出现问题，常见使用了国际服务器，一般做法重启一下软件(设置界面)。重启后如果有些数据还是没有显示，那么不用担心先不用管，运行超过>=8小时（有可能是24小时）后会自动恢复正常，因为中国时间和国际时间的差值影响的
+              </div>
+            </div>
+          </div>
+          
+          <div class="faq-item">
+            <button class="faq-question">
+              <span i18n="i18n.faq_item8-title">不开抽水功能是否真的作者不抽水</span>
+              <span class="faq-toggle"><i class="fas fa-chevron-down"></i></span>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                <span i18n="i18n.faq_item8-content1">这个问题其实容易测试，可以用纯转发的软件测试对比算力。纯转发软件可以用这个：</span> 
+                <a target="_blank" href="https://github.com/snail007/goproxy" i18n="i18n.faq_item8-content2" style="color: var(--accent-secondary)">纯转发(开源)</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="fx-section fx-contact" id="Contact-Us">
+    <div class="fx-container">
+      <div class="contact-layout">
+        <div class="contact-info reveal">
+          <span class="section-badge">Get In Touch</span>
+          <h2 class="section-title" i18n="i18n_contact-title">联系我们</h2>
+          
+          <div class="contact-items">
+            <div class="contact-item">
+              <div class="contact-item-icon"><i class="fas fa-envelope"></i></div>
+              <div class="contact-item-text">
+                <h4 i18n="i18n_contact-content1">邮箱 Email</h4>
+                <p>hansenloveyou520@gmail.com</p>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-item-icon"><i class="fab fa-qq"></i></div>
+              <div class="contact-item-text">
+                <h4 i18n="i18n_contact-content2">QQ群</h4>
+                <a target="_blank" href="https://qm.qq.com/cgi-bin/qm/qr?k=rxUt_mukm5EdrE5SGY7pnyU4VNnKSx3V&jump_from=webapi&authKey=h+p674FGJ9WiG3XO1Elhu+vOIzn+fP9r+pHcJcQmyVbyy/PBM8oXvLAyj3j07e6r">933494627 <img border="0" src="//pub.idqqimg.com/wpa/images/group.png" alt="QQ Group" style="vertical-align: middle; margin-left: 8px;"></a>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-item-icon"><i class="fab fa-telegram-plane"></i></div>
+              <div class="contact-item-text">
+                <h4>Telegram / 飞机群</h4>
+                <a target="_blank" href="https://t.me/fxminerproxy_chat_cn" i18n="i18n_contact-content3">点击:飞机群</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="contact-image reveal reveal-delay-1">
+          <img src="static/images/contact-img.png" alt="Contact Us">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="fx-footer">
+    <div class="fx-container">
+      <div class="footer-grid">
+        
+        <div class="footer-brand">
+          <div class="fx-logo">
+            <img src="static/images/logo.png" alt="FxMinerProxy">
+          </div>
+          <p>The safest and most stable miner proxy software. Advanced high concurrency architecture.</p>
+          <div class="footer-social">
+            <a href="https://t.me/fxminerproxy_chat_cn" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+            <a href="https://github.com/FxPool/FXMinerProxy" target="_blank"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 i18n="i18n_about_us">关于我们</h4>
+          <p class="footer-text" i18n="i18n_about_us_intro">专业提供矿场解决方法，专业的矿池代理抽水软件</p>
+        </div>
+
+        <div class="footer-col">
+          <h4 i18n="i18n_support">支持</h4>
+          <ul>
+            <li><a href="https://fxpool.github.io/cn/" target="_blank" i18n="i18n_manual">说明书</a></li>
+            <li><a href="https://fxpool.github.io/cn/zh/chapter-8/problem.html" target="_blank">F.A.Q</a></li>
+            <li><a href="api-docs/index.html" target="_blank" i18n="i18n_api_docs">API文档</a></li>
+            <li><a href="dns/index.html" target="_blank" i18n="i18n_dns">DNS劫持</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 i18n="i18n_download">下载</h4>
+          <ul>
+            <li><a href="https://github.com/FxPool/FXMinerProxy/releases/download/v15.6.9@260228/fxminerproxyv3windows.zip" target="_blank"><i class="fab fa-windows" style="margin-right: 6px;"></i> Windows</a></li>
+            <li><a href="https://github.com/FxPool/FXMinerProxy/releases/download/v15.6.9@260228/fxminerproxyv3linux.tar.gz" target="_blank"><i class="fab fa-linux" style="margin-right: 6px;"></i> Linux</a></li>
+            <li><a href="https://fxpool.github.io/cn/zh/chapter-7/sslmix-install.html" target="_blank">SSL Mix</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 i18n="i18n_links">友情链接</h4>
+          <ul>
+            <li><a href="https://www.f2pool.com/" target="_blank" i18n="i18n_pool">鱼池 F2Pool</a></li>
+            <li><a href="https://www.coincarp.com/zh/" target="_blank" i18n="i18n_price">加密货币价格</a></li>
+            <li><a href="https://www.okx.com/" target="_blank" i18n="i18n_exchange">交易所</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>Copyright &copy; 2026 FxMinerProxy. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scroll To Top -->
+  <button class="scroll-top-btn" id="btn-to-top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- jQuery & i18n Core -->
+  <script src="static/js/jquery.1.12.4.js"></script>
+  <script src="static/i18n/i18n_cn.js"></script>
+  <script src="static/i18n/i18n_en.js"></script>
+  <script src="static/js/jquery.i18n.js"></script>
+
+  <!-- Custom Scripts for New Design -->
+  <script>
+    // i18n Setup
+    $(function () {
+      var language = navigator.language;
+      if (!sessionStorage.getItem('__bdht_lan')) {
+        if (/^zh\b/.test(language)) {
+          sessionStorage.setItem('__bdht_lan', "cn")
+        } else {
+          sessionStorage.setItem('__bdht_lan', "en")
+        }
+      }
+      var defaultLang = sessionStorage.getItem("__bdht_lan");
+      languageSelect(defaultLang);
+      
+      // Initialize interactive UI elements
+      initUI();
+      initParticles();
+    });
+
+    function languageSelect(defaultLang) {
+      sessionStorage.setItem('__bdht_lan', defaultLang);
+      $.ajaxSetup({ cache: false });
+      $("[i18n]").i18n({
+        defaultLang: defaultLang,
+        lang: defaultLang,
+        filePath: "static/i18n/",
+        filePrefix: "i18n_",
+        fileSuffix: "",
+        forever: true,
+        callback: function (res) {}
+      });
+    }
+
+    // UI Interactions
+    function initUI() {
+      // Remove Preloader
+      setTimeout(function() {
+        $('#preloader').addClass('loaded');
+      }, 500);
+
+      // Header Scroll Effect & Scroll To Top Button
+      $(window).on('scroll', function() {
+        if ($(window).scrollTop() > 50) {
+          $('.fx-header').addClass('scrolled');
+        } else {
+          $('.fx-header').removeClass('scrolled');
+        }
+        
+        if ($(window).scrollTop() > 300) {
+          $('#btn-to-top').addClass('visible');
+        } else {
+          $('#btn-to-top').removeClass('visible');
+        }
+        
+        // Active Nav Link based on scroll
+        var scrollPosition = $(window).scrollTop() + 100;
+        $('section').each(function() {
+          var currentId = $(this).attr('id');
+          if (currentId && $(this).offset().top <= scrollPosition && ($(this).offset().top + $(this).outerHeight()) > scrollPosition) {
+            $('.fx-nav a').removeClass('active');
+            $('.fx-nav a[href="#' + currentId + '"]').addClass('active');
+          }
+        });
+      });
+
+      // Smooth Scroll
+      $('a.scroll[href^="#"]').on('click', function(e) {
+        e.preventDefault();
+        var target = $(this.hash);
+        if (target.length) {
+          $('html, body').animate({
+            scrollTop: target.offset().top - 70
+          }, 600);
+          
+          // Close mobile menu if open
+          if ($('.fx-nav').hasClass('open')) {
+            $('.fx-nav').removeClass('open');
+            $('#mobile-toggle').removeClass('active');
+          }
+        }
+      });
+
+      // Simple Click to top
+      $('#btn-to-top').on('click', function(e) {
+        e.preventDefault();
+        $('html, body').animate({scrollTop: 0}, 600);
+      });
+
+      // Mobile Menu
+      $('#mobile-toggle').on('click', function() {
+        $(this).toggleClass('active');
+        $('#fx-nav').toggleClass('open');
+      });
+
+      // FAQ Accordion
+      $('.faq-question').on('click', function() {
+        var parent = $(this).parent();
+        var answer = $(this).next();
+        
+        if (parent.hasClass('active')) {
+          parent.removeClass('active');
+          answer.removeClass('open');
+        } else {
+          // Close others
+          $('.faq-item').removeClass('active');
+          $('.faq-answer').removeClass('open');
+          // Open this
+          parent.addClass('active');
+          answer.addClass('open');
+        }
+      });
+
+      // Reveal Animations on Scroll
+      function checkReveal() {
+        var windowHeight = $(window).height();
+        var windowTopPosition = $(window).scrollTop();
+        var windowBottomPosition = (windowTopPosition + windowHeight);
+
+        $('.reveal').each(function() {
+          var element = $(this);
+          var elementHeight = element.outerHeight();
+          var elementTopPosition = element.offset().top;
+          var elementBottomPosition = (elementTopPosition + elementHeight);
+
+          if ((elementBottomPosition >= windowTopPosition) && (elementTopPosition <= windowBottomPosition - 50)) {
+            element.addClass('visible');
+          }
+        });
+      }
+
+      $(window).on('scroll resize', checkReveal);
+      setTimeout(checkReveal, 600);
+    }
+    
+    // Canvas Particles Effect
+    function initParticles() {
+      var canvas = document.getElementById('particles-canvas');
+      if (!canvas) return;
+      var ctx = canvas.getContext('2d');
+      var particles = [];
+      
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = document.querySelector('.fx-hero').offsetHeight;
+      }
+      
+      window.addEventListener('resize', resize);
+      resize();
+      
+      class Particle {
+        constructor() {
+          this.x = Math.random() * canvas.width;
+          this.y = Math.random() * canvas.height;
+          this.size = Math.random() * 2 + 0.5;
+          this.speedX = Math.random() * 1 - 0.5;
+          this.speedY = Math.random() * -1 - 0.2;
+          this.color = Math.random() > 0.5 ? 'rgba(124, 58, 237, 0.5)' : 'rgba(59, 130, 246, 0.5)';
+        }
+        update() {
+          this.x += this.speedX;
+          this.y += this.speedY;
+          if (this.y < 0) {
+            this.y = canvas.height;
+            this.x = Math.random() * canvas.width;
+          }
+          if (this.x < 0 || this.x > canvas.width) {
+            this.speedX = -this.speedX;
+          }
+        }
+        draw() {
+          ctx.fillStyle = this.color;
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+      
+      function createParticles() {
+        var particleCount = Math.floor(window.innerWidth / 15);
+        for (var i = 0; i < particleCount; i++) {
+          particles.push(new Particle());
+        }
+      }
+      
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        for (var i = 0; i < particles.length; i++) {
+          particles[i].update();
+          particles[i].draw();
+        }
+        requestAnimationFrame(animate);
+      }
+      
+      createParticles();
+      animate();
+    }
+  </script>
 </body>
 </html>

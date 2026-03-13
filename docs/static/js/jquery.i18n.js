@@ -47,32 +47,32 @@
             };
 
             var i = this;
-            $.getJSON(options.filePath + options.filePrefix + options.lang + options.fileSuffix + ".json", function (data) {
-                var i18nLang = {};
-                if (data != null) {
-                    i18nLang = data;
-                }
+            var varName = options.filePrefix + options.lang;
+            var data = window[varName];
+            var i18nLang = {};
+            if (data != null) {
+                i18nLang = data;
+            }
 
-                $(i).each(function (i) {
-                    var i18nOnly = $(this).attr("i18n-only");
-                    if ($(this).val() != null && $(this).val() != "") {
-                        if (i18nOnly == null || i18nOnly == undefined || i18nOnly == "" || i18nOnly == "value") {
-                            $(this).val(i18nLang[$(this).attr("i18n")])
-                        }
+            $(i).each(function (i) {
+                var i18nOnly = $(this).attr("i18n-only");
+                if ($(this).val() != null && $(this).val() != "") {
+                    if (i18nOnly == null || i18nOnly == undefined || i18nOnly == "" || i18nOnly == "value") {
+                        $(this).val(i18nLang[$(this).attr("i18n")])
                     }
-                    if ($(this).html() != null && $(this).html() != "") {
-                        if (i18nOnly == null || i18nOnly == undefined || i18nOnly == "" || i18nOnly == "html") {
-                            $(this).html(i18nLang[$(this).attr("i18n")])
-                        }
+                }
+                if ($(this).html() != null && $(this).html() != "") {
+                    if (i18nOnly == null || i18nOnly == undefined || i18nOnly == "" || i18nOnly == "html") {
+                        $(this).html(i18nLang[$(this).attr("i18n")])
                     }
-                    if ($(this).attr('placeholder') != null && $(this).attr('placeholder') != "") {
-                        if (i18nOnly == null || i18nOnly == undefined || i18nOnly == "" || i18nOnly == "placeholder") {
-                            $(this).attr('placeholder', i18nLang[$(this).attr("i18n")])
-                        }
+                }
+                if ($(this).attr('placeholder') != null && $(this).attr('placeholder') != "") {
+                    if (i18nOnly == null || i18nOnly == undefined || i18nOnly == "" || i18nOnly == "placeholder") {
+                        $(this).attr('placeholder', i18nLang[$(this).attr("i18n")])
                     }
-                });
-                options.callback();
+                }
             });
+            options.callback();
         }
     });
 }) (jQuery);
