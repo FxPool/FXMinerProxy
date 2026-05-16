@@ -42,7 +42,7 @@ init_strings() {
         CONFIRM_UPDATE="确认更新？按回车确认，CTRL+C退出："
         OPERATION_COMPLETE="操作完成，按回车返回主菜单："
         UNSUPPORTED_OS="检测到不支持的操作系统。推荐：CentOS、Ubuntu 或 Debian。按回车继续安装，CTRL+C退出："
-        CONNECTION_LIMIT_CHANGED="连接限制已更改为65535，服务器重启后生效"
+        CONNECTION_LIMIT_CHANGED="连接限制已更改为1048576，服务器重启后生效"
         CURRENT_CONNECTION_LIMIT="当前连接限制："
         AUTO_START_SUCCESS="开机自启设置成功，Linux发行版："
         WHITELIST_DISABLED="禁用成功"
@@ -56,7 +56,7 @@ init_strings() {
         MENU_LINE="线路："
         MENU_SCRIPT_VERSION="脚本版本"
         MENU_SOFTWARE_VERSION="软件版本"
-        MENU_CONNECTION_INFO="安装过程中已将Linux最大连接数默认改为65535（需要服务器重启生效）"
+        MENU_CONNECTION_INFO="安装过程中已将Linux最大连接数默认改为1048576（需要服务器重启生效）"
         MENU_AUTOSTART_INFO="安装过程中已设置开机自启"
         MENU_EXIT="退出"
         MENU_INSTALL="安装"
@@ -65,7 +65,7 @@ init_strings() {
         MENU_START="启动"
         MENU_STOP="停止"
         MENU_CHECK_CONNECTIONS="检查Linux最大连接数"
-        MENU_CHANGE_CONNECTIONS="修改Linux最大连接数为65535（需要服务器重启）"
+        MENU_CHANGE_CONNECTIONS="修改Linux最大连接数为1048576（需要服务器重启）"
         MENU_SET_AUTOSTART="手动设置开机自启"
         MENU_DISABLE_WHITELIST="禁用IP白名单（禁用后需重新登录）"
         MENU_VIEW_CONFIG="查看配置文件（登录信息等）"
@@ -89,7 +89,7 @@ init_strings() {
         CONFIRM_UPDATE="Confirm update? Press Enter to confirm, CTRL+C to exit: "
         OPERATION_COMPLETE="Operation complete, press Enter to return to main menu: "
         UNSUPPORTED_OS="Unsupported OS detected. Recommended: CentOS, Ubuntu, or Debian. Press Enter to continue installation, CTRL+C to exit: "
-        CONNECTION_LIMIT_CHANGED="Connection limit changed to 65535, effective after server reboot"
+        CONNECTION_LIMIT_CHANGED="Connection limit changed to 1048576, effective after server reboot"
         CURRENT_CONNECTION_LIMIT="Current connection limit: "
         AUTO_START_SUCCESS="Auto-start setup successful, Linux distribution: "
         WHITELIST_DISABLED="Disabled successfully"
@@ -103,7 +103,7 @@ init_strings() {
         MENU_LINE="Line:"
         MENU_SCRIPT_VERSION="Script Version"
         MENU_SOFTWARE_VERSION="Software Version"
-        MENU_CONNECTION_INFO="During installation, the default Linux max connections have been changed to 65535 (requires server reboot to take effect)"
+        MENU_CONNECTION_INFO="During installation, the default Linux max connections have been changed to 1048576 (requires server reboot to take effect)"
         MENU_AUTOSTART_INFO="Auto-start has been set up during installation"
         MENU_EXIT="Exit"
         MENU_INSTALL="Install"
@@ -112,7 +112,7 @@ init_strings() {
         MENU_START="Start"
         MENU_STOP="Stop"
         MENU_CHECK_CONNECTIONS="Check Linux max connections"
-        MENU_CHANGE_CONNECTIONS="Change Linux max connections to 65535 (requires server reboot)"
+        MENU_CHANGE_CONNECTIONS="Change Linux max connections to 1048576 (requires server reboot)"
         MENU_SET_AUTOSTART="Manually set auto-start"
         MENU_DISABLE_WHITELIST="Disable IP whitelist (re-login after disabling)"
         MENU_VIEW_CONFIG="View configuration file (login info, etc.)"
@@ -120,7 +120,7 @@ init_strings() {
     fi
 }
 
-version='v15.9.0@260507'
+version='v15.9.1@260516'
 
 if [ -n "$1" ]; then
     version=$1
@@ -219,25 +219,37 @@ OsSupport()
 change_limit() {
     changeLimit="n"
     if [ $(grep -c "root soft nofile" /etc/security/limits.conf) -eq '0' ]; then
-        echo "root soft nofile 65535" >>/etc/security/limits.conf
-        echo "* soft nofile 65535" >>/etc/security/limits.conf
+        echo "root soft nofile 1048576" >>/etc/security/limits.conf
+        echo "* soft nofile 1048576" >>/etc/security/limits.conf
         changeLimit="y"
     fi
 
     if [ $(grep -c "root hard nofile" /etc/security/limits.conf) -eq '0' ]; then
-        echo "root hard nofile 65535" >>/etc/security/limits.conf
-        echo "* hard nofile 65535" >>/etc/security/limits.conf
+        echo "root hard nofile 1048576" >>/etc/security/limits.conf
+        echo "* hard nofile 1048576" >>/etc/security/limits.conf
         changeLimit="y"
     fi
-    if [ $(grep -c "DefaultLimitNOFILE=65535" /etc/systemd/user.conf) -eq '0' ]; then
-        echo "DefaultLimitNOFILE=65535" >>/etc/systemd/user.conf
+    if [ $(grep -c "DefaultLimitNOFILE=1048576" /etc/systemd/user.conf) -eq '0' ]; then
+        echo "DefaultLimitNOFILE=1048576" >>/etc/systemd/user.conf
         changeLimit="y"
     fi
 
-    if [ $(grep -c "DefaultLimitNOFILE=65535" /etc/systemd/system.conf) -eq '0' ]; then
-        echo "DefaultLimitNOFILE=65535" >>/etc/systemd/system.conf
+    if [ $(grep -c "DefaultLimitNOFILE=1048576" /etc/systemd/system.conf) -eq '0' ]; then
+        echo "DefaultLimitNOFILE=1048576" >>/etc/systemd/system.conf
         changeLimit="y"
     fi
+
+    if [ $(grep -c "fs.nr_open" /etc/sysctl.conf) -eq '0' ]; then
+        echo "fs.nr_open = 2097152" >>/etc/sysctl.conf
+        changeLimit="y"
+    fi
+
+    if [ $(grep -c "fs.file-max" /etc/sysctl.conf) -eq '0' ]; then
+        echo "fs.file-max = 2097152" >>/etc/sysctl.conf
+        changeLimit="y"
+    fi
+
+    sysctl -p >/dev/null 2>&1
 
     if [[ "$changeLimit" = "y" ]]; then
         echo "${CONNECTION_LIMIT_CHANGED}"
@@ -308,23 +320,32 @@ install() {
             fi
             changeLimit="n"
             if [ $(grep -c "root soft nofile" /etc/security/limits.conf) -eq '0' ]; then
-                echo "root soft nofile 65535" >>/etc/security/limits.conf
-                echo "* soft nofile 65535" >>/etc/security/limits.conf
+                echo "root soft nofile 1048576" >>/etc/security/limits.conf
+                echo "* soft nofile 1048576" >>/etc/security/limits.conf
                 changeLimit="y"
             fi
             if [ $(grep -c "root hard nofile" /etc/security/limits.conf) -eq '0' ]; then
-                echo "root hard nofile 65535" >>/etc/security/limits.conf
-                echo "* hard nofile 65535" >>/etc/security/limits.conf
+                echo "root hard nofile 1048576" >>/etc/security/limits.conf
+                echo "* hard nofile 1048576" >>/etc/security/limits.conf
                 changeLimit="y"
             fi
-            if [ $(grep -c "DefaultLimitNOFILE=65535" /etc/systemd/user.conf) -eq '0' ]; then
-                echo "DefaultLimitNOFILE=65535" >>/etc/systemd/user.conf
+            if [ $(grep -c "DefaultLimitNOFILE=1048576" /etc/systemd/user.conf) -eq '0' ]; then
+                echo "DefaultLimitNOFILE=1048576" >>/etc/systemd/user.conf
                 changeLimit="y"
             fi
-            if [ $(grep -c "DefaultLimitNOFILE=65535" /etc/systemd/system.conf) -eq '0' ]; then
-                echo "DefaultLimitNOFILE=65535" >>/etc/systemd/system.conf
+            if [ $(grep -c "DefaultLimitNOFILE=1048576" /etc/systemd/system.conf) -eq '0' ]; then
+                echo "DefaultLimitNOFILE=1048576" >>/etc/systemd/system.conf
                 changeLimit="y"
             fi
+            if [ $(grep -c "fs.nr_open" /etc/sysctl.conf) -eq '0' ]; then
+                echo "fs.nr_open = 2097152" >>/etc/sysctl.conf
+                changeLimit="y"
+            fi
+            if [ $(grep -c "fs.file-max" /etc/sysctl.conf) -eq '0' ]; then
+                echo "fs.file-max = 2097152" >>/etc/sysctl.conf
+                changeLimit="y"
+            fi
+            sysctl -p >/dev/null 2>&1
             if [[ "$changeLimit" = "y" ]]; then
                 echo "${CONNECTION_LIMIT_CHANGED}"
             else
