@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scrolling Ad Banner</title>
+    <title>滚动广告</title>
     <style>
         * {
             margin: 0;
@@ -59,6 +59,7 @@
             align-items: center;
             justify-content: center;
             background-color: rgba(255,255,255,0.2);
+            border-radius: 4px;
         }
         
         @keyframes scroll {
@@ -73,20 +74,13 @@
     </div>
 
     <script>
+        // 新的广告内容 - 按要求修改
         const ads = [
-            { text: "🔥 Limited Time Offer! All Items 50% Off and More", color: "#ff6b6b", icon: "🔥" },
-            { text: "🚚 Free Shipping! Orders Over $99 Ship Free", color: "#4ecdc4", icon: "🚚" },
-            { text: "📱 New Arrival! Smartphone Flash Sale", color: "#ffd166", icon: "📱" },
-            { text: "🎁 Sign-up Bonus! New Users Get $100 Coupon", color: "#06d6a0", icon: "🎁" },
-            { text: "✈️ Travel Season! Super Value Flight & Hotel Packages", color: "#118ab2", icon: "✈️" },
-            { text: "💻 Digital Frenzy! Laptops Slashed by $1000", color: "#ef476f", icon: "💻" },
-            { text: "🏠 Home Refresh! Spring Home Decor Sale", color: "#073b4c", icon: "🏠" },
-            { text: "🏃‍♀️ Healthy Living! Sportswear & Gear Limited Time Discount", color: "#7209b7", icon: "🏃‍♀️" },
-            { text: "🛒 Stock Up! Groceries & Daily Essentials Buy One Get One Free", color: "#ff9e00", icon: "🛒" },
-            { text: "🎬 Entertainment Feast! Annual Video Membership Special", color: "#9d4edd", icon: "🎬" }
+            { text: "⚠️ If ViaBTC mining pool has too many invalid shares, please update to the latest version and set difficulty to 65536 to reduce invalid shares. If dynamic fee modification doesn't work, please update to the latest version.", color: "#ff6b6b", icon: "⚠️" }
         ];
         
         const scrollingContent = document.getElementById('scrollingContent');
+        // 复制多份以实现无缝滚动（原有逻辑是复制两份，这里保持相同方式）
         const adsCopy = [...ads, ...ads];
         
         adsCopy.forEach((ad, index) => {
