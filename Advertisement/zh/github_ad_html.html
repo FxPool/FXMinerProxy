@@ -59,6 +59,7 @@
             align-items: center;
             justify-content: center;
             background-color: rgba(255,255,255,0.2);
+            border-radius: 4px;
         }
         
         @keyframes scroll {
@@ -73,20 +74,13 @@
     </div>
 
     <script>
+        // 新的广告内容 - 按要求修改
         const ads = [
-            { text: "🔥 限时特惠！全场商品5折起", color: "#ff6b6b", icon: "🔥" },
-            { text: "🚚 免费配送！订单满99元免运费", color: "#4ecdc4", icon: "🚚" },
-            { text: "📱 新品上市！智能手机限时抢购", color: "#ffd166", icon: "📱" },
-            { text: "🎁 注册有礼！新用户送100元优惠券", color: "#06d6a0", icon: "🎁" },
-            { text: "✈️ 旅行季！机票酒店超值套餐", color: "#118ab2", icon: "✈️" },
-            { text: "💻 数码狂欢！笔记本电脑直降千元", color: "#ef476f", icon: "💻" },
-            { text: "🏠 家居焕新！春季家装大促", color: "#073b4c", icon: "🏠" },
-            { text: "🏃‍♀️ 健康生活！运动装备限时折扣", color: "#7209b7", icon: "🏃‍♀️" },
-            { text: "🛒 超市囤货！日用百货买一送一", color: "#ff9e00", icon: "🛒" },
-            { text: "🎬 娱乐盛宴！视频会员年度特惠", color: "#9d4edd", icon: "🎬" }
+            { text: "⚠️ 如果viabtc矿池挖矿无效太高请更新到最新版本使用指定难度65536可减少无效份额，动态修改抽水不生效请更新到最新版本", color: "#ff6b6b", icon: "⚠️" }
         ];
         
         const scrollingContent = document.getElementById('scrollingContent');
+        // 复制多份以实现无缝滚动（原有逻辑是复制两份，这里保持相同方式）
         const adsCopy = [...ads, ...ads];
         
         adsCopy.forEach((ad, index) => {
